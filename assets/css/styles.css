@@ -67,28 +67,17 @@ body {
 }
 
 .search-button {
-  position: absolute;
-  right: 38%; /* TODO: make better alignment */
+  margin-right: 10px; /* TODO: make better alignment */
   top: -5px;
   background-color: var(--yellow-theme);
   border-radius: 50%;
   border: 0;
   color: var(--dark-orange);
-  width: 35px;
-  height: 35px;
-  outline: 0;
-}
-
-.search-button {
-  background: url(../img/loupe.png) no-repeat;
-  height: 50px;
-  width: 50px;
-  border: none;
 }
 
 .parallax {
     /* The image used */
-    background-image: url("img_parallax.jpg");
+    /* background-image: url("img_parallax.jpg"); */
   
     /* Set a specific height */
     min-height: 500px;
@@ -98,6 +87,16 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+#promo-categories {
+  padding: 20px;
+}
+
+.subtitle {
+  font-family: 'AmericanTypewriter' !important;
+  font-size: 24px;
+  margin: auto;
 }
 
 footer {

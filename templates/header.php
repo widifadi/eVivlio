@@ -15,7 +15,6 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!-- <a class="navbar-brand" href="#" class="site-title">eVivlío</a> -->
         <div class="navbar-brand"  id="logo">
             <a href="#">
                 <img src="../assets/img/open-book-back.png" alt="eVivlío logo" 
@@ -31,6 +30,8 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <button class="btn menu-btn">Book Catalogue</button>
+            </div>
+            <div class="navbar-nav ml-auto">
                 <button class="btn menu-btn">My Page</button>
                 <button class="btn menu-btn">Login</button>
             </div>

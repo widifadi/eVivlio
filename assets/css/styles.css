@@ -1,3 +1,91 @@
+@import "font_styles.css";
+
+:root {
+  --blue-theme: #396273;
+  --light-yellow-theme: #F2E8B3;
+  --yellow-theme: #F2C84B;
+  --orange: #F29F05;
+  --dark-orange: #F28705;
+  --light-grey: #F2F2F2;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-title {
+  font-family: 'Luminari' !important;
+}
+
+#logo {
+  background: url(../img/stack.png) no-repeat;
+  border-radius: 50%;
+  background-color: var(--blue-theme);
+  width: 50px;
+  height: 50px;
+}
+
+.menu-button {
+  border: 1px solid var(--blue-theme);
+  color: var(--blue-theme);
+}
+
+#front-page {
+  background-color: var(--blue-theme);
+  min-height: 50vh;
+  width: 100%;
+}
+
+#site-motto {
+  margin-top: 100px;
+  color: var(--light-grey);
+  font-size: 32px;
+}
+
+#front-page-search-div{
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  width: 100%;
+  height: 200px;
+}
+
+.search-box {
+  position: absolute;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  outline: none;
+  color: var(--light-yellow-theme);
+  border: 0;
+  border-radius: 20px;
+  width: 300px;
+}
+
+.search-button {
+  position: absolute;
+  right: 38%; /* TODO: make better alignment */
+  top: -5px;
+  background-color: var(--yellow-theme);
+  border-radius: 50%;
+  border: 0;
+  color: var(--dark-orange);
+  width: 35px;
+  height: 35px;
+  outline: 0;
+}
+
+.search-button {
+  background: url(../img/loupe.png) no-repeat;
+  height: 50px;
+  width: 50px;
+  border: none;
+}
+
 .parallax {
     /* The image used */
     background-image: url("img_parallax.jpg");
@@ -10,4 +98,22 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-  }
+}
+
+footer {
+  margin-top: auto;
+  height: 250px;
+  background-color: var(--blue-theme);
+}
+
+#about-us {
+  text-align: center;
+  color: var(--light-yellow-theme);
+  padding: 2px;
+}
+
+#contact-us {
+  text-align: center;
+  color: var(--light-yellow-theme);
+  padding: 2px;
+}

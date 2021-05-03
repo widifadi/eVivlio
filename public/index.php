@@ -3,7 +3,14 @@
 
     require_once("../templates/header.php");
 ?>
-    <div class="container">Content goes here</div>
+
+<?php 
+    require_once("../templates/front_page.php");
+?>    
+
+<?php
+    require_once("../templates/front_feature.php");
+?>
 
 <?php 
     require_once("../templates/footer.php");

@@ -3,6 +3,8 @@
 <head>
     <title>eVivlío</title>
 
+    <link rel="icon" href="../assets/img/open-book-back.png">
+
     <!-- Bootstrap CSS and JS -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <script src="../assets/js/jquery-3.5.1.slim.min.js"></script>
@@ -15,9 +17,15 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <!-- <a class="navbar-brand" href="#" class="site-title">eVivlío</a> -->
         <div class="navbar-brand"  id="logo">
-            <a href="#"></a>
+            <a href="#">
+                <img src="../assets/img/open-book-back.png" alt="eVivlío logo" 
+                    width="30px" height="30px" 
+                    style="display: block; margin: 0 auto; margin-top: 5px;">
+            </a>
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" 
+            data-toggle="collapse" data-target="#navbarNavAltMarkup" 
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">

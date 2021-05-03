@@ -21,7 +21,7 @@ body {
 }
 
 #logo {
-  background: url(../img/stack.png) no-repeat;
+  position:relative;
   border-radius: 50%;
   background-color: var(--blue-theme);
   width: 50px;

@@ -108,7 +108,7 @@ a:hover {
     background-size: cover;
 }
 
-#promo-categories, #features-div {
+#promo-categories #features-div {
   padding: 20px;
 }
 
@@ -191,6 +191,12 @@ a:hover {
 .book-title {
   color: var(--blue-theme);
   font-size: 12px;
+}
+
+.book-price {
+  color: var(--blue-theme);
+  font-size: 14px;
+  margin: auto;
 }
 /* BOOK CATALOGUE end */
 

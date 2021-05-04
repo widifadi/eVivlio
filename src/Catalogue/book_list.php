@@ -8,13 +8,7 @@
                 <br>
                 <div class="book-title">"Title", Author (Year)</div>
             </a>
-        </div>
-        <div class="col book">
-        <a href="book">
-                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
-                <br>
-                <div class="book-title">"Title", Author (Year)</div>
-            </a>
+            <div class="book-price">€30.00</div>
         </div>
         <div class="col book">
             <a href="book">
@@ -22,6 +16,7 @@
                 <br>
                 <div class="book-title">"Title", Author (Year)</div>
             </a>
+            <div class="book-price">€30.00</div>
         </div>
         <div class="col book">
             <a href="book">
@@ -29,6 +24,7 @@
                 <br>
                 <div class="book-title">"Title", Author (Year)</div>
             </a>
+            <div class="book-price">€30.00</div>
         </div>
         <div class="col book">
             <a href="book">
@@ -36,6 +32,15 @@
                 <br>
                 <div class="book-title">"Title", Author (Year)</div>
             </a>
+            <div class="book-price">€30.00</div>
+        </div>
+        <div class="col book">
+            <a href="book">
+                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
+                <br>
+                <div class="book-title">"Title", Author (Year)</div>
+            </a>
+            <div class="book-price">€30.00</div>
         </div>
     </div>
 </div>

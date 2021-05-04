@@ -183,7 +183,7 @@ body {
 
 /* MY PAGE start*/
 
-#wishlist #personal-details #order-history{
+#wishlist #personal-details #order-history #details-form{
   margin-left: 10px;
   margin-top: 20px;
   border: solid var(--light-grey) 1px;
@@ -194,6 +194,12 @@ body {
   font-size: 14px;
   margin: 2px 2px 2px 2px;
 }
+.btn-mypage-menu {
+  width: 250px;
+  margin-top: 70px;
+  }
+
+
 
 /* MY PAGE end*/
 

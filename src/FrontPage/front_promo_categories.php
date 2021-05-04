@@ -32,7 +32,6 @@
 
     <div class="col" id="feature-categories">
         <span class="subtitle">Book Categories</span>
-        <!-- TODO on hover, show category name -->
         <div class="row"> 
             <div class="col book-category-div">
                 <img src="../assets/img/medieval.png" alt="history" width="100px"

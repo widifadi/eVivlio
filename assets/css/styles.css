@@ -161,6 +161,26 @@ body {
 /* Features on front page start */
 
 
+/* BOOK CATALOGUE start */
+#book-categories {
+  margin-left: 10px;
+  margin-top: 20px;
+  border: solid var(--light-grey) 1px;
+}
+
+#book-list {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.book {
+  border: solid var(--light-grey) 1px;
+  margin: 2px 2px 2px 2px;
+}
+
+/* BOOK CATALOGUE end */
+
+
 footer {
   margin-top: auto;
   height: 250px;

@@ -1,6 +1,6 @@
 <div class="row" id="promo-categories">
 
-    <div class="col" id="">
+    <div class="col">
         <span class="subtitle">Promos</span>
         <div id="carouselExampleIndicators" class="carousel slide feature-promos" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -10,13 +10,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img class="d-block w-100" src="../assets/img/stack.png" alt="First slide">
+                <img class="d-block w-100" src="../assets/img/promos/new-release.png" alt="New Release">
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="../assets/img/brown-books.png" alt="Second slide">
+                <img class="d-block w-100" src="../assets/img/promos/summer-sale.png" alt="Summer Sale">
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="../assets/img/book.png" alt="Third slide">
+                <img class="d-block w-100" src="../assets/img/promos/coming-soon.png" alt="Coming soon">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
             <a href="index.php">
                 <img src="../assets/img/open-book-back.png" alt="eVivlío logo" 

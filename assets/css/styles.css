@@ -149,6 +149,7 @@ a:hover {
 }
 /* Book categories on front page end */
 
+
 /* Features on front page start */
 .feature-div {
   padding: 10px;
@@ -187,11 +188,14 @@ a:hover {
   margin: 2px 2px 2px 2px;
 }
 
+.book-title {
+  color: var(--blue-theme);
+  font-size: 12px;
+}
 /* BOOK CATALOGUE end */
 
 
 /* MY PAGE start*/
-
 #wishlist #personal-details #order-history #details-form{
   margin-left: 10px;
   margin-top: 20px;
@@ -203,13 +207,11 @@ a:hover {
   font-size: 14px;
   margin: 2px 2px 2px 2px;
 }
+
 .btn-mypage-menu {
   width: 250px;
   margin-top: 70px;
   }
-
-
-
 /* MY PAGE end*/
 
 footer {

@@ -12,7 +12,14 @@
                 </div>
                 <div class="col-6" id="contact-us">
                     <a href="contact.php"><div class="subtitle footer-subtitle">Contact Us</div></a>
-
+                    <div id="contact-items">
+                        <i class="fas fa-map-marked"></i> 14th km Thessaloniki, Nea Moudania 570 01, Greece
+                        <br>
+                        <i class="fas fa-phone-alt"></i> 999 999 9999
+                        <br>
+                        <i class="fas fa-envelope"></i> 
+                        <a href="mailto:contact@eVivlio.com">contact@eVivlio.com</a>
+                    </div>
                 </div>
             </div>
         </div>

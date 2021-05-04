@@ -36,6 +36,7 @@
             <div class="col book-category-div">
                 <img src="../assets/img/medieval.png" alt="history" width="100px"
                     class="book-category-image">
+                    <!-- Add link to category -->
                 <div class="book-category-middle">History</div>
             </div>
             <div class="col book-category-div">

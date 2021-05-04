@@ -39,7 +39,7 @@
                 </a>    
                 <button class="btn menu-btn">
                     <i class="fas fa-sign-in-alt"></i>
-                    Login
+                    Sign-Up/Login
                 </button>
             </div>
         </div>

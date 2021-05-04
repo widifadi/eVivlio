@@ -29,6 +29,16 @@ body {
   color: var(--blue-theme);
 }
 
+a {
+  color: var(--light-yellow-theme);
+}
+
+a:hover {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+
 /* Front page start */
 #front-page {
   background-color: var(--blue-theme);
@@ -211,15 +221,15 @@ footer {
 #about-us {
   text-align: center;
   color: var(--light-grey);
-  padding: 2px;
+  padding: 10px;
 }
 
 #contact-us {
   text-align: center;
   color: var(--light-grey);
-  padding: 2px;
+  padding: 10px;
 }
 
-.footer-subtitle {
-  color: var(--light-yellow-theme)
+#contact-items {
+  text-align: left;
 }

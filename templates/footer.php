@@ -25,5 +25,7 @@
         </div>
     </footer>
 
+    <script src="../assets/js/load-book-detail.js"></script>
+
 </body>
 </html>

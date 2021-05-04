@@ -186,6 +186,7 @@ a:hover {
 .book {
   border: solid var(--light-grey) 1px;
   margin: 2px 2px 2px 2px;
+  text-align: center;
 }
 
 .book-title {
@@ -197,6 +198,16 @@ a:hover {
   color: var(--blue-theme);
   font-size: 14px;
   margin: auto;
+}
+
+.book-detail-tab {
+  color: var(--dark-orange);
+}
+
+/* TODO change active tab color */
+.book-detail-tab:active {
+  background-color: var(--dark-orange) !important;
+  color: var(--light-grey);
 }
 /* BOOK CATALOGUE end */
 

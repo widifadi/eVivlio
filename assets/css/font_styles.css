@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Luminari"; 
+    src: url("../fonts/Luminari-Regular.ttf");
+}
+
+@font-face {
+    font-family: "AmericanTypewriter";
+    src: url("../fonts/american-typewriter/american-typewriter.ttf");
+}
+
+@font-face {
+    font-family: "AmericanTypewriter";
+    src: url("../fonts/american-typewriter/american-typewriter-bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: "AmericanTypewriter";
+    src: url("../fonts/american-typewriter/american-typewriter-light.ttf");
+    font-weight: light;
+}

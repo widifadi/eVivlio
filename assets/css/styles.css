@@ -163,8 +163,7 @@ body {
 
 /* BOOK CATALOGUE start */
 #book-categories {
-  margin-left: 10px;
-  margin-top: 20px;
+  margin: 10px;
   border: solid var(--light-grey) 1px;
 }
 
@@ -189,12 +188,16 @@ footer {
 
 #about-us {
   text-align: center;
-  color: var(--light-yellow-theme);
+  color: var(--light-grey);
   padding: 2px;
 }
 
 #contact-us {
   text-align: center;
-  color: var(--light-yellow-theme);
+  color: var(--light-grey);
   padding: 2px;
+}
+
+.footer-subtitle {
+  color: var(--light-yellow-theme)
 }

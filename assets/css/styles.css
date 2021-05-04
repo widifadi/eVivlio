@@ -1,0 +1,180 @@
+@import "font_styles.css";
+
+:root {
+  --blue-theme: #396273;
+  --light-yellow-theme: #F2E8B3;
+  --yellow-theme: #F2C84B;
+  --orange: #F29F05;
+  --dark-orange: #F28705;
+  --light-grey: #F2F2F2;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#logo {
+  position:relative;
+  border-radius: 50%;
+  background-color: var(--blue-theme);
+  width: 50px;
+  height: 50px;
+}
+
+.menu-button {
+  border: 1px solid var(--blue-theme);
+  color: var(--blue-theme);
+}
+
+/* Front page start */
+#front-page {
+  background-color: var(--blue-theme);
+  min-height: 50vh;
+  width: 100%;
+}
+
+#webpage-title {
+  font-family: 'Luminari' !important;
+  color: var(--light-yellow-theme);
+  font-size: 48px;
+  margin-top: 100px;
+}
+
+#site-motto {
+  margin-top: 100px;
+  color: var(--light-grey);
+  font-size: 32px;
+  font-family: 'Luminari';
+}
+
+#front-page-search-div{
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  width: 100%;
+  height: 200px;
+}
+
+.search-box {
+  position: absolute;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+  outline: none;
+  color: var(--light-yellow-theme);
+  border: 0;
+  border-radius: 20px;
+  width: 300px;
+}
+
+.search-button {
+  position: absolute;
+  right: 200px; /* TODO: make better alignment */
+  top: 1px;
+  background-color: var(--yellow-theme);
+  border-radius: 50%;
+  border: 0;
+  color: var(--dark-orange);
+}
+
+/* Front page end */
+
+
+.parallax {
+    /* The image used */
+    /* background-image: url("img_parallax.jpg"); */
+  
+    /* Set a specific height */
+    min-height: 500px;
+  
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#promo-categories, #features-div {
+  padding: 20px;
+}
+
+
+/* Book categories on front page start */
+.book-category-div {
+  position: relative;
+  padding: 20px;
+}
+
+.book-category-image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.book-category-middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: 'Luminari';
+}
+
+.book-category-div:hover .book-category-image {
+  opacity: 0.3;
+}
+
+.book-category-div:hover .book-category-middle {
+  opacity: 1;
+}
+/* Book categories on front page end */
+
+/* Features on front page start */
+.feature-div {
+  padding: 10px;
+  border: solid var(--light-grey);
+  height: 300px;
+  border-width: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-family: 'AmericanTypewriter' !important;
+  font-size: 24px;
+  text-align: center;
+}
+
+.feature-promos {
+  padding: 20px;
+}
+/* Features on front page start */
+
+
+footer {
+  margin-top: auto;
+  height: 250px;
+  background-color: var(--blue-theme);
+}
+
+#about-us {
+  text-align: center;
+  color: var(--light-yellow-theme);
+  padding: 2px;
+}
+
+#contact-us {
+  text-align: center;
+  color: var(--light-yellow-theme);
+  padding: 2px;
+}

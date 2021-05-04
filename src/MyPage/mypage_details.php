@@ -43,5 +43,7 @@
                +3000000000
           </div>
       </div>
+      <a href="../public/edit_details.php">
       <button type="button" class="btn btn-outline-warning">Edit</button>
+      </a> 
 </div>

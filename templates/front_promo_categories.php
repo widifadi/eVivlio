@@ -1,8 +1,8 @@
 <div class="row" id="promo-categories">
 
-    <div class="col" id="feature-promos">
+    <div class="col" id="">
         <span class="subtitle">Promos</span>
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide feature-promos" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -34,31 +34,55 @@
         <span class="subtitle">Book Categories</span>
         <!-- TODO on hover, show category name -->
         <div class="row"> 
-            <div class="col">
-                <img src="../assets/img/medieval.png" alt="history" width="100px">
-                <br>History
+            <div class="col book-category-div">
+                <img src="../assets/img/medieval.png" alt="history" width="100px"
+                    class="book-category-image">
+                <div class="book-category-middle">History</div>
             </div>
-            <div class="col">
-                <img src="../assets/img/mystery.png" alt="science fiction" width="100px">
-                <br>Science Fiction
+            <div class="col book-category-div">
+                <img src="../assets/img/science-fiction.png" alt="science fiction" width="100px"
+                    class="book-category-image">
+                <div class="book-category-middle">Science Fiction</div>
             </div>
-            <div class="col">Literature</div>
+            <div class="col book-category-div">
+                <img src="../assets/img/open-book-back.png" alt="literature" width="100px"
+                    class="book-category-image">
+                <div class="book-category-middle">Literature</div>
+            </div>
         </div>
         <div class="row"> 
-            <div class="col">Science & Technology</div>
-            <div class="col">
-                <img src="../assets/img/earth-globe.png" alt="science fiction" width="100px">
-                <br>Geography
+            <div class="col book-category-div">
+                <img src="../assets/img/books-glasses.png" alt="scitech" width="100px"
+                    class="book-category-image">
+                <div class="book-category-middle">Science & Technology</div>
             </div>
-            <div class="col">Philosophy</div>
+            <div class="col book-category-div">
+                <img src="../assets/img/earth-globe.png" alt="science fiction" width="100px"
+                    class="book-category-image">
+                <div class="book-category-middle">Geography</div>
+            </div>
+            <div class="col book-category-div">
+                <img src="../assets/img/mystery.png" alt="Philosophy" width="100px"
+                    class="book-category-image">
+                    <div class="book-category-middle">Philosophy</div>
+            </div>
         </div>
         <div class="row"> 
-            <div class="col">Novels</div>
-            <div class="col">
-                <img src="../assets/img/childrens-books.png" alt="children's books" width="100px">
-                <br>Children's Collection
+            <div class="col book-category-div">
+                <img src="../assets/img/books-card.png" alt="business" width="100px"
+                    class="book-category-image">
+                <div class="book-category-middle">Business</div>
             </div>
-            <div class="col">Teen's Collection</div>
+            <div class="col book-category-div">
+                <img src="../assets/img/coffee-mug.png" alt="novels" width="100px"
+                    class="book-category-image">
+                <div class="book-category-middle">Novels</div>
+            </div>
+            <div class="col book-category-div">
+                <img src="../assets/img/childrens-books.png" alt="children's books" width="100px"
+                    class="book-category-image">
+                <div class="book-category-middle">Children's Collection</div>
+            </div>
         </div>
     </div>
 

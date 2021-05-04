@@ -33,7 +33,10 @@
             </div>
             <div class="navbar-nav ml-auto">
                 <button class="btn menu-btn">My Page</button>
-                <button class="btn menu-btn">Login</button>
+                <button class="btn menu-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
             </div>
         </div>
     </nav>

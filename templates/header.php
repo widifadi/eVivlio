@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="navbar-brand"  id="logo">
-            <a href="#">
+            <a href="index.php">
                 <img src="../assets/img/open-book-back.png" alt="eVivlío logo" 
                     width="30px" height="30px" 
                     style="display: block; margin: 0 auto; margin-top: 5px;">
@@ -29,7 +29,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <button class="btn menu-btn">Book Catalogue</button>
+                <a href="catalog.php">
+                    <button class="btn menu-btn">Book Catalogue</button>
+                </a>
             </div>
             <div class="navbar-nav ml-auto">
                 <button class="btn menu-btn">My Page</button>

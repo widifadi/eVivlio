@@ -1,5 +1,7 @@
-// highlight open page
+// TODO highlight open page
 
-// search tab
+// TODO search tab
 
-// login vs my page&cart
+// TODO login vs my page&cart
+
+// TODO logout

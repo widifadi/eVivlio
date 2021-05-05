@@ -255,6 +255,26 @@ a:hover {
   margin-top: 70px;
   }
 /* MY PAGE end*/
+/* CONTACT US start */
+#contact-text {
+  margin-top: 20px;
+  margin-bottom: 40px ;
+  color: var(--dark-orange);
+  font-size: 14px;
+}
+.i-yellow {
+  color: var(--yellow-theme);
+}
+.contact-details {
+  color: var(--blue-theme);
+  font-size: 14px;
+}
+#faq{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+/* CONTACT US end */
 
 footer {
   margin-top: auto;

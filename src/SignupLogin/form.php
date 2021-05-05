@@ -33,7 +33,7 @@
         </div>
 
         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-            <form action="registration.php" method="post">
+            <form action="registration_post.php" method="POST">
                 <div class="form-group row">
                     <label for="firstName" class="col-sm-3 col-form-label">First Name</label>
                     <div class="col-sm-9">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="birthdate" class="col-sm-3 col-form-label">Birthday</label>
+                    <label for="birthdate" class="col-sm-3 col-form-label">Birthdate</label>
                     <div class="col-sm-9">
                     <input type="date" class="form-control" id="birthdate" required>
                     </div>
@@ -108,7 +108,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-primary" type="submit" name="reg_button">Register</button>                                 
+                    <button class="btn btn-primary" type="submit" name="register_btn">Register</button>                                 
                 </div>
             </form>
         </div>

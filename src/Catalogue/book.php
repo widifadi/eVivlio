@@ -30,6 +30,7 @@
             </li>
         </ul>
         <!-- Tabs navs -->
+        
         <!-- Tabs content -->
         <!-- TODO fixed size? -->
         <div class="tab-content" id="myTabContent" style="border: solid 1px #F2F2F2;">

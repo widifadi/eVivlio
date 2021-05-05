@@ -1,9 +1,9 @@
 var book_title = $('.book').attr('id');
-console.log(book_title)
+console.log(book_title);
 
 function loadBookDetails() {
     $.ajax({
-        url: 'book.php',
+        url: 'catalog/book.php',
         method: 'GET',
         data: book_title,
         success: function(data) {

@@ -7,9 +7,11 @@
         <?php require_once("../src/Catalogue/categories.php"); ?>
     </div>
     <div class="col-8">
-        <div class="container">
+        <div class="container catalog-breadcrumbs">
+            <!-- TODO backend/js code -->
             <!-- breadcrumbs -->
-            <a href=""> Category </a> / 
+            <a href="catalog.php"> Catalog </a> > 
+            <a href=""> Category </a> > 
             <a href=""> Book Title </a>
         </div>
         <!-- TODO if book is clicked on catalog, change to book detail: use AJAX?  -->

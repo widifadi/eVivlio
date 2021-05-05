@@ -178,6 +178,11 @@ a:hover {
   border: solid var(--light-grey) 1px;
 }
 
+.catalog-breadcrumbs {
+  background-color: var(--blue-theme);
+  border-radius: 5px;
+}
+
 #book-list {
   margin-top: 20px;
   margin-left: 10px;
@@ -187,6 +192,12 @@ a:hover {
   border: solid var(--light-grey) 1px;
   margin: 2px 2px 2px 2px;
   text-align: center;
+  padding-top: 3px;
+}
+
+.book:hover {
+  cursor: pointer !important;
+  background-color: var(--light-yellow-theme);
 }
 
 .book-title {

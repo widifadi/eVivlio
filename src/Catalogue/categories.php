@@ -1,15 +1,14 @@
 <div class="container" id="book-categories">
-    <span class="subtitle" style="font-size: 16px;">Book Categories</span>
-    <!-- TODO highlight when clicked -->
+    <span class="subtitle" style="font-size: 18px;">Book Categories</span>
+    <!-- TODO load page on backend function -->
     <div class="category-list" style="margin-left: 10px;"> 
-        <span class="category-name">History</span> <br />
-        <span class="category-name">Science Fiction</span> <br />
-        <span class="category-name">Literature</span> <br />
-        <span class="category-name">Science & Technology</span> <br />
-        <span class="category-name">Geography</span> <br />
-        <span class="category-name">Philosophy</span> <br />
-        <span class="category-name">Business</span> <br />
-        <span class="category-name">Novels</span> <br />
-        <span class="category-name">Children's Collection</span> <br />
+        <span class="category-name" id="history-category">History</span> <br />
+        <span class="category-name" id="scifi-category">Science Fiction</span> <br />
+        <span class="category-name" id="lit-category">Literature</span> <br />
+        <span class="category-name" id="scitech-category">Science & Technology</span> <br />
+        <span class="category-name" id="philo-category">Philosophy</span> <br />
+        <span class="category-name" id="business-category">Business</span> <br />
+        <span class="category-name" id="novels-category">Novels</span> <br />
+        <span class="category-name" id="childrens-category">Children's Collection</span> <br />
     </div>
 </div>

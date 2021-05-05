@@ -1,8 +1,7 @@
 <div class="row" id="promo-categories">
-
-    <div class="col">
+    <div class="col" id="feature-promos">
         <span class="subtitle">Promos</span>
-        <div id="carouselExampleIndicators" class="carousel slide feature-promos" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -49,25 +48,18 @@
                     class="book-category-image">
                 <div class="book-category-middle">Literature</div>
             </div>
-        </div>
-        <div class="row"> 
             <div class="col book-category-div">
                 <img src="../assets/img/books-glasses.png" alt="scitech" width="100px"
                     class="book-category-image">
                 <div class="book-category-middle">Science & Technology</div>
             </div>
-            <div class="col book-category-div">
-                <img src="../assets/img/earth-globe.png" alt="science fiction" width="100px"
-                    class="book-category-image">
-                <div class="book-category-middle">Geography</div>
-            </div>
+        </div>
+        <div class="row"> 
             <div class="col book-category-div">
                 <img src="../assets/img/mystery.png" alt="Philosophy" width="100px"
                     class="book-category-image">
                     <div class="book-category-middle">Philosophy</div>
             </div>
-        </div>
-        <div class="row"> 
             <div class="col book-category-div">
                 <img src="../assets/img/books-card.png" alt="business" width="100px"
                     class="book-category-image">

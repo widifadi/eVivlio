@@ -169,8 +169,9 @@ a:hover {
   text-align: center;
 }
 
-.feature-promos {
+#feature-promos #feature-categories {
   padding: 20px;
+  height: 500px;
 }
 /* Features on front page start */
 

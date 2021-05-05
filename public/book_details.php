@@ -1,3 +1,4 @@
+<!-- TODO temporary until ajax -->
 <?php
     require_once("../templates/header.php");
 ?>
@@ -8,17 +9,13 @@
     </div>
     <div class="col-8">
         <div class="container catalog-breadcrumbs">
-            <!-- TODO backend/js code -->
-            <!-- breadcrumbs -->
             <a href="catalog.php"> Catalog </a> 
             <i class="fas fa-chevron-right" style="color: grey;"></i>
             <a href=""> Category </a> 
-            <!-- <i class="fas fa-chevron-right" style="color: grey;"></i> -->
-            <!-- <a href=""> Book Title </a> -->
+            <i class="fas fa-chevron-right" style="color: grey;"></i>
+            <a href=""> Book Title </a>
         </div>
-        <!-- TODO if book is clicked on catalog, change to book detail: use AJAX?  -->
-        <!-- DEVELOP book_list.php or book.php -->
-        <?php require_once("../src/Catalogue/book_list.php"); ?> 
+        <?php require_once("../src/Catalogue/book.php"); ?> 
     </div>
 </div>
 

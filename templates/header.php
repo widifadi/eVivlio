@@ -35,11 +35,20 @@
             </div>
             <div class="navbar-nav ml-auto">
                 <a href="my_page.php">
-                    <button class="btn menu-btn">My Page</button>
-                </a>    
+                    <button class="btn menu-btn">
+                        <i class="fas fa-user"></i> My Page
+                    </button>
+                </a>
+                <button class="btn menu-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                </button>
                 <button class="btn menu-btn">
                     <i class="fas fa-sign-in-alt"></i>
                     Sign-Up/Login
+                </button>
+                <button class="btn menu-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
                 </button>
             </div>
         </div>

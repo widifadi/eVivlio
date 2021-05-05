@@ -181,6 +181,16 @@ a:hover {
   border: solid var(--light-grey) 1px;
 }
 
+.category-name {
+  margin: 2px;
+  color: var(--blue-theme);
+}
+
+.category-name:hover {
+  color: var(--dark-orange);
+  cursor: pointer;
+}
+
 .catalog-breadcrumbs {
   background-color: var(--blue-theme);
   border-radius: 5px;

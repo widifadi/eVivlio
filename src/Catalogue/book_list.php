@@ -1,7 +1,7 @@
 <div id="book-list">
     <!-- TODO loop for books in database, 5 columns -->
     <div class="row">
-        <!-- TODO can put title as variable to loadBookDetails() -->
+        <!-- TODO can put title as variable to loadBookDetails() edit -->
         <a href="book_details.php">
         <div class="col book" id="The_Lord_of_the_Rings">
         <!-- <div class="col book" id="The_Lord_of_the_Rings" onclick="loadBookDetails()"> -->

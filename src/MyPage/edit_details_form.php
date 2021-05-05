@@ -1,9 +1,9 @@
-<div class="container rounded bg-white mt-5 mb-5">
+<div class="container rounded bg-white mt-3">
     <div class="row">
         <div class="col">
-            <div class="p-3 py-10">
+            
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-center">Edit Personal Details</h4>
+                    <span class="subtitle" style="font-size: 16px;">Edit Personal Details</span>
                 </div>
                 <div class="row">
                     <div class="col"><label class="labels">Fisrt Name</label><input type="text" class="form-control" placeholder="First name" value=""></div>
@@ -18,7 +18,7 @@
                 </div>
                
                 <div class="mt-5 text-center"><button class="btn btn btn-outline-warning" type="button">Save</button></div>
-            </div>
+           
         </div>
         
     </div>

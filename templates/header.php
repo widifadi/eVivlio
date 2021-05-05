@@ -13,6 +13,7 @@
     <link href="../assets/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
@@ -42,13 +43,13 @@
                 <button class="btn menu-btn">
                     <i class="fas fa-shopping-cart"></i>
                 </button>
+                <a href="signup_login.php">
+                    <button class="btn menu-btn">
+                        <i class="fas fa-sign-in-alt"></i> Signup/Login
+                    </button>
+                </a>
                 <button class="btn menu-btn">
-                    <i class="fas fa-sign-in-alt"></i>
-                    Sign-Up/Login
-                </button>
-                <button class="btn menu-btn">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
+                    <i class="fas fa-sign-out-alt"></i> Logout
                 </button>
             </div>
         </div>

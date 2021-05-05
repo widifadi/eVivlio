@@ -38,6 +38,9 @@ a:hover {
   text-decoration: none;
 }
 
+.title-link span {
+  color: var(--blue-theme);
+}
 
 /* Front page start */
 #front-page {

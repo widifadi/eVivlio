@@ -1,5 +1,5 @@
-<div class="container" id="personal-details">
-    <span class="subtitle" style="font-size: 16px;">Personal Details</span>
+<div class="container mt-3" id="personal-details">
+    <a class="title-link" href="my_page.php"><span class="subtitle" style="font-size: 16px;">Personal Details</span></a>
     <br>
     <br>
       <div class="row">

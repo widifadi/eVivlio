@@ -235,14 +235,15 @@ a:hover {
   color: var(--light-grey);
 }
 /* BOOK CATALOGUE end */
-
+https://github.com/widifadi/eVivlio/blob/develop/assets/css/styles.css
 
 /* MY PAGE start*/
-#wishlist #personal-details #order-history #details-form{
+#wishlist  #order-history #details-form #personal-detils{
   margin-left: 10px;
   margin-top: 20px;
   border: solid var(--light-grey) 1px;
 }
+
 
 .wl-book {
   font-family: 'AmericanTypewriter';
@@ -254,6 +255,26 @@ a:hover {
   width: 250px;
   margin-top: 70px;
   }
+
+.mypage-tab {
+  color: var(--dark-orange);
+  border-right: 2px solid var(--dark-orange);
+  border-left: 2px solid var(--dark-orange);
+  border-bottom: 2px solid var(--dark-orange);
+  border-top: 2px solid var(--dark-orange);
+  border-radius: 0px;
+  margin-top: 20px;
+}
+
+
+.mypage-tab:active {
+  background-color: var(--dark-orange) !important;
+  color: var(--light-grey);
+}
+.mypage-tab.active {
+  background-color: var(--dark-orange) !important;
+  color: var(--light-grey);
+}
 /* MY PAGE end*/
 /* CONTACT US start */
 #contact-text {

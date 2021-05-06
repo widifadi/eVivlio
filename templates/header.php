@@ -15,6 +15,8 @@
 </head>
 
 <body>
+    <?php require_once("../config/config.php"); ?>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
             <a href="index.php">

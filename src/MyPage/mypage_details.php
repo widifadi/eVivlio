@@ -20,20 +20,20 @@
                         <a href=""> Personal Details </a> 
                     </div>     
                     <!---DETAILS TABS---->
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <ul class="nav nav-tabs" id="myPageTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active mypage-tab" id="preview-tab" 
                              data-toggle="tab" href="#preview" role="tab" 
                             aria-controls="preview" aria-selected="true">Preview</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item ">
                             <a class="nav-link mypage-tab" id="edits-tab" 
                             data-toggle="tab" href="#edit" role="tab" 
                             aria-controls="edit" aria-selected="false">Edit</a>
                         </li>
                     </ul>
                     <!--- DETAILS TABS CONTENT---->
-                    <div class="tab-content" id="myTabContent" >
+                    <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="preview" role="tabpanel" 
                             aria-labelledby="preview-tab" style="font-size: 14px; padding: 10px;">
                             <div class="row mt-3">
@@ -99,7 +99,7 @@
                                             
                                         </div>
                                     
-                                        <div class="mt-5 text-center"><button class="btn btn btn-outline-warning" type="button">Save</button></div>
+                                        <div class="mt-5 text-center"><button class="btn  btn-outline-warning" type="button">Save</button></div>
                                 
                                 </div>
         
@@ -261,3 +261,4 @@
         </div>
     </div>
 </div>
+

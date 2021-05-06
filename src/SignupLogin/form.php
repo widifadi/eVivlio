@@ -12,22 +12,23 @@
 
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <form action="/" method="post">
+            <form action="login_post.php" method="post">
                 <div class="form-group row">
-                    <label for="emailAddress" class="col-sm-2 col-form-label">Email</label>
+                    <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
-                    <input type="email" class="form-control" id="emailAddress"
-                        placeholder="Enter email">
+                    <input type="email" class="form-control" id="username" name="username"
+                        placeholder="Username">
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    <input type="password" class="form-control" id="password" name="password" 
+                        placeholder="Password">
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-success">Get Started</button>
+                    <button type="submit" class="btn btn-success" name="login_btn">Login</button>
                 </div>
             </form>
         </div>

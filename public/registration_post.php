@@ -14,8 +14,6 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // $conn = mysqli_connect($servername, $username, $password,'www_project') or die("Couldn't connect to database");
-
     if (isset($_POST['register_btn'])) {
         $first_name     =   $_POST['firstName'];
         $last_name      =   $_POST['lastName'];

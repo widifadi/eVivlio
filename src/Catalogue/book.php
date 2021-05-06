@@ -5,12 +5,11 @@
             "The Lord of the Rings", J. R. R. Tolkien (1995)</div>
         <span class="book-detail-price" style="font-size: 20px;">
             €30.00</span> <br> <br>
-        Stocks available: <span class="stock-detail">10</span>
+        Stocks available: <span class="stock-detail">10</span> <br>
         <button type="button" class="btn btn-info">ADD TO CART</button>
     </div>       
 
     <div class="col-8">
-
         <!-- Tabs navs -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">

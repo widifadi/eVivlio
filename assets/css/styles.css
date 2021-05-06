@@ -270,10 +270,12 @@ a:hover {
   background-color: var(--dark-orange) !important;
   color: var(--light-grey);
 }
-.mypage-tab.active {
+.mypage-tab.active{
   background-color: var(--dark-orange) !important;
-  color: var(--light-grey);
+  color: var(--light-grey) !important;
 }
+
+
 /* MY PAGE end*/
 /* CONTACT US start */
 #contact-text {

@@ -47,7 +47,6 @@
         }
 
         // TODO username has to be unique
-        // TODO error on insert fail
         $customer_query = "INSERT INTO customer (first_name, last_name, email, username, birthdate, phone, street_address, city, state) 
                         VALUES ('$first_name', '$last_name', '$email', '$username', '$birthdate', '$phone', '$street_address', '$city', '$state')";
         if ($conn->query($customer_query) === TRUE) {
@@ -57,7 +56,7 @@
         }
 
         $user_query = "INSERT INTO user (username, password) 
-                    VALUES ('$username', '$password')";
+                    VALUES ('$username', '$hash_password')";
         if ($conn->query($user_query) === TRUE) {
             echo "New user created successfully. <br>";
         } else {
@@ -66,6 +65,7 @@
 
 
         $_SESSION['success'] = "Congratulations! You have successfully registered.";
-        // header("location: index.php");
+
+        header("location: index.php");
     } 
 ?>

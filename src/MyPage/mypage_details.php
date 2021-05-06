@@ -4,16 +4,16 @@
 
         <div class="col-3">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active mypage-tab" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Personal Details</a>
-                <a class="nav-link mypage-tab" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">My Wishlist</a>
-                <a class="nav-link mypage-tab" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Order History</a>
+                <a class="nav-link active mypage-tab" id="v-pills-personal-tab" data-toggle="pill" href="#v-pills-personal" role="tab" aria-controls="v-pills-home" aria-selected="true">Personal Details</a>
+                <a class="nav-link mypage-tab" id="v-pills-wishlist-tab" data-toggle="pill" href="#v-pills-wishlist" role="tab" aria-controls="v-pills-wishlist" aria-selected="false">My Wishlist</a>
+                <a class="nav-link mypage-tab" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders" aria-selected="false">Order History</a>
             </div>
         </div>
 
         <div class="col-9">
 
             <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" style="margin-left:100px" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="tab-pane fade show active" style="margin-left:100px" id="v-pills-personal" role="tabpanel" aria-labelledby="v-pills-personal-tab">
                     <div class="container catalog-breadcrumbs">
                         <a href="my_page.php"> My Page </a> 
                         <i class="fas fa-chevron-right" style="color: grey;"></i>
@@ -110,7 +110,7 @@
 
 
 
-                <div class="tab-pane fade" style="margin-left:100px" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                <div class="tab-pane fade" style="margin-left:100px" id="v-pills-wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
                     <div class="container catalog-breadcrumbs">
                         <a href="my_page.php"> My Page </a> 
                         <i class="fas fa-chevron-right" style="color: grey;"></i>
@@ -219,7 +219,7 @@
                 </div>
 
 
-                <div class="tab-pane fade" style="margin-left:100px" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                <div class="tab-pane fade" style="margin-left:100px" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                     <div class="container catalog-breadcrumbs">
                         <a href="my_page.php"> My Page </a> 
                         <i class="fas fa-chevron-right" style="color: grey;"></i>

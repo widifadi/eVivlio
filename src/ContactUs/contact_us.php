@@ -53,7 +53,7 @@
 
                 <div class="tab-pane fade" style="margin-left:100px" id="v-pills-faq" role="tabpanel" aria-labelledby="v-pills-faq-tab">
                     <div class="container catalog-breadcrumbs">
-                        <a href="my_page.php"> Contact Us </a> 
+                        <a href="contact.php"> Contact Us </a> 
                         <i class="fas fa-chevron-right" style="color: grey;"></i>
                         <a href=""> FAQ </a> 
                     </div> 

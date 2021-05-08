@@ -32,6 +32,11 @@ body {
   color: var(--blue-theme);
 }
 
+.activePage {
+  background-color: var(--blue-theme);
+  color: var(--light-grey);
+}
+
 a {
   color: var(--light-yellow-theme);
 }

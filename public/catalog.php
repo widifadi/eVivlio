@@ -22,6 +22,10 @@
     </div>
 </div>
 
+<script>
+    var admin_btn = $("#catalog-btn").addClass("activePage")
+</script>
+
 <?php 
     require_once("../templates/footer.php");
 ?>

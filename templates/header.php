@@ -40,27 +40,27 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a href="catalog.php">
-                    <button class="btn menu-btn">Book Catalogue</button>
+                    <button class="btn menu-btn" id="catalog-btn">Book Catalogue</button>
                 </a>
             </div>
             <div class="navbar-nav ml-auto">
                 <a href="my_page.php">
-                    <button class="btn menu-btn">
+                    <button class="btn menu-btn" id="mypage-btn">
                         <i class="fas fa-user"></i> My Page
                     </button>
                 </a>
                 <a href="cart.php">
-                    <button class="btn menu-btn">
+                    <button class="btn menu-btn" id="cart-btn">
                         <i class="fas fa-shopping-cart"></i>
                     </button>
                 </a>
                 <a href="admin_page.php">
-                    <button class="btn menu-btn">
+                    <button class="btn menu-btn" id="adminpage-btn">
                         <i class="fas fa-wrench"></i> Admin Page
                     </button>
                 </a>
                 <a href="signup_login.php">
-                    <button class="btn menu-btn">
+                    <button class="btn menu-btn" id="loginpage-btn">
                         <i class="fas fa-sign-in-alt"></i> Signup/Login
                     </button>
                 </a>

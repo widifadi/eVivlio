@@ -1,19 +1,20 @@
 <div>
 <table class="table">
-    <th>
-        <td>User ID</td>
-        <td>Username</td> 
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Email</td>
-        <td>Birthdate</td>
-        <td>Contact Num</td>
-        <td>Address</td>
-    </th>
-    <tbody>
-        <!-- TODO for loop for displaying books here -->
+    <thead class="thead-light">
         <tr>
-
+            <th scope="col">User ID</th>
+            <th scope="col">Username</th> 
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Birthdate</th>
+            <th scope="col">Contact Num</th>
+            <th scope="col">Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+        
         </tr>
     </tbody>
 </table>

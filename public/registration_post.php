@@ -61,9 +61,6 @@
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-
-        $_SESSION['success'] = "Congratulations! You have successfully registered.";
-
         header("location: index.php");
     } 
 ?>

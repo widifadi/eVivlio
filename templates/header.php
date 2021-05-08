@@ -17,6 +17,11 @@
 <body>
     <?php require_once("../config/config.php"); ?>
 
+    <?php
+        session_start();
+        echo "user: " . $_SESSION['user'];
+    ?>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
             <a href="index.php">
@@ -52,9 +57,11 @@
                         <i class="fas fa-sign-in-alt"></i> Signup/Login
                     </button>
                 </a>
-                <button class="btn menu-btn">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </button>
+                <form action="logout.php" method="POST">
+                    <button class="btn menu-btn" onclick="">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </nav>

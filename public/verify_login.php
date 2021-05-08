@@ -8,8 +8,6 @@
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -22,28 +20,32 @@
         $password = mysqli_real_escape_string($conn, $password);
         $hash_password = md5($password); 
 
-        // TODO query the password and compare
         $password_query = "SELECT * FROM user WHERE username='$username' AND password='$hash_password' ";
         $result = mysqli_query($conn, $password_query);
 
         if (mysqli_num_rows($result)) {
             echo "Login successful.";
+
+            // Unset all of the session variables.
+            $_SESSION = array();
+            // Save user session
+            $_SESSION['user'] = $username;
+
+            // TODO query the permission
+            $_SESSION['admin_permission'] = $admin_permission;
+
+            header("location: index.php");
+            exit();
+
         } else {
             echo "User not found.";
             // TODO pass login error to login page
         }
 
-        // TODO query the permission
-
-        // $_SESSION['success'] = "Congratulations! You have successfully logged in.";
-
-        $_SESSION['user'] = $username;
-        $_SESSION['admin_permission'] = $admin_permission;
-
-        echo $_SESSION['user'];
-        // TODO store user in session
-        header("location: index.php");
+        // echo $_SESSION['user'];
 
         // TODO if user is not null, show appropriate buttons on header
     } 
+
+    // TODO close conn
 ?>

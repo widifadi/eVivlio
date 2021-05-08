@@ -94,26 +94,50 @@ a:hover {
   color: var(--dark-orange);
 }
 
-/* Front page end */
-
-
-.parallax {
-    /* The image used */
-    /* background-image: url("img_parallax.jpg"); */
-  
-    /* Set a specific height */
-    min-height: 500px;
-  
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
 #promo-categories #features-div {
   padding: 20px;
 }
+
+.parallax {
+  /* The image used */
+  /* background-image: url("img_parallax.jpg"); */
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Front page end */
+
+/* SignUp Login page start */
+#login-form, #signup-form {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: var(--blue-theme);
+  color: var(--light-yellow-theme);
+}
+
+#login-btn, #signup-btn {
+  background-color: var(--orange);
+  color: var(--blue-theme);
+  width: 200px;
+}
+
+#pills-login-tab, #pills-signup-tab {
+  border: 2px solid  var(--dark-orange);
+  color: var(--dark-orange);
+  margin-left: 10px;
+}
+
+#pills-login-tab.active, #pills-signup-tab.active {
+  background-color: var(--dark-orange);
+  color: var(--light-grey);
+}
+/* SignUp Login page start */
 
 
 /* Book categories on front page start */
@@ -229,10 +253,10 @@ a:hover {
   color: var(--dark-orange);
 }
 
-/* TODO change active tab color */
-.book-detail-tab:active {
+.book-detail-tab.active {
   background-color: var(--dark-orange) !important;
-  color: var(--light-grey);
+  color: var(--light-grey) !important;
+  border-color: var(--dark-orange) !important;
 }
 /* BOOK CATALOGUE end */
 
@@ -242,7 +266,6 @@ a:hover {
   margin-top: 20px;
   border: solid var(--light-grey) 1px;
 }
-
 
 .wl-book {
   font-family: 'AmericanTypewriter';
@@ -257,26 +280,18 @@ a:hover {
 
 .mypage-tab {
   color: var(--dark-orange);
-  border-right: 2px solid var(--dark-orange);
-  border-left: 2px solid var(--dark-orange);
-  border-bottom: 2px solid var(--dark-orange);
-  border-top: 2px solid var(--dark-orange);
+  border: 2px solid var(--dark-orange);
   border-radius: 0px;
   margin-top: 20px;
 }
 
-
-.mypage-tab:active {
-  background-color: var(--dark-orange) !important;
-  color: var(--light-grey);
-}
 .mypage-tab.active{
   background-color: var(--dark-orange) !important;
   color: var(--light-grey) !important;
 }
-
-
 /* MY PAGE end*/
+
+
 /* CONTACT US start */
 #contact-text {
   margin-top: 20px;
@@ -295,7 +310,6 @@ a:hover {
   margin-left: 10px;
   margin-top: 10px;
 }
-
 /* CONTACT US end */
 
 footer {

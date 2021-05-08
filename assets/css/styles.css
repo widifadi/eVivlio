@@ -156,7 +156,41 @@ a:hover {
   background-color: var(--dark-orange);
   color: var(--light-grey);
 }
-/* SignUp Login page start */
+
+.signup-label {
+  text-align: right;
+}
+/* SignUp Login page end */
+
+/* Admin Page Start */
+.pills-admin-tab {
+  border: 2px solid  var(--blue-theme);
+  color: var(--blue-theme);
+  margin-left: 10px;
+}
+
+.pills-admin-tab.active {
+  color: var(--light-yellow-theme);
+  background-color: var(--blue-theme) !important;
+}
+
+.managebook-tab {
+  border: 2px solid  var(--light-yellow-theme) !important;
+  color: var(--yellow-theme);
+}
+
+.managebook-tab.active {
+  background-color: var(--light-yellow-theme) !important;
+}
+
+#managebook-content {
+  border: 1px solid  var(--light-yellow-theme) !important;
+}
+
+.addbook-label {
+  text-align: right;
+}
+/* Admin Page End */
 
 
 /* Book categories on front page start */
@@ -304,7 +338,7 @@ a:hover {
   margin-top: 20px;
 }
 
-.mypage-tab.active{
+.mypage-tab.active {
   background-color: var(--dark-orange) !important;
   color: var(--light-grey) !important;
 }

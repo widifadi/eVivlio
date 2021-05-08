@@ -54,6 +54,11 @@
                         <i class="fas fa-shopping-cart"></i>
                     </button>
                 </a>
+                <a href="admin_page.php">
+                    <button class="btn menu-btn">
+                        <i class="fas fa-wrench"></i> Admin Page
+                    </button>
+                </a>
                 <a href="signup_login.php">
                     <button class="btn menu-btn">
                         <i class="fas fa-sign-in-alt"></i> Signup/Login

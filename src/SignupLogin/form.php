@@ -1,4 +1,4 @@
-<div class="container signup_login" style="margin-top: 100px; margin-bottom: 20px; width: 50%;">
+<div class="container signup_login" style="margin-top: 100px; margin-bottom: 20px; width: 60%;">
     <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="pills-login-tab" data-toggle="pill" 
@@ -20,14 +20,14 @@
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
                     <input type="text" class="form-control" id="username" name="username"
-                        placeholder="Username">
+                        placeholder="Username" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="password" class="col-sm-2 col-form-label">Password</label>
                     <div class="col-sm-10">
                     <input type="password" class="form-control" id="password" name="password" 
-                        placeholder="Password">
+                        placeholder="Password" required>
                     </div>
                 </div>
                 <div class="text-center">

@@ -1,7 +1,12 @@
-<?php 
-    session_destroy();
-    // unset($_SESSION['user']);
-    $_SESSION = [];
-    header('location: index.php');
-    exit();
-?>
+<?php require_once("../templates/header.php"); ?>
+
+<div class="container" id="logout-message">
+    Logged out successfully.
+    <br>
+    <br>
+    <a href="index.php">
+        <button class="btn btn-info"> Go back to Home Page </button>
+    </a>
+</div>
+
+<?php require_once("../templates/footer.php"); ?>

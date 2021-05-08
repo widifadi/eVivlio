@@ -59,7 +59,7 @@
                         <i class="fas fa-sign-in-alt"></i> Signup/Login
                     </button>
                 </a>
-                <form action="logout.php" method="POST">
+                <form action="logout_process.php" method="POST">
                     <button class="btn menu-btn" onclick="">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>

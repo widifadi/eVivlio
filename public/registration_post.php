@@ -3,8 +3,8 @@
     // TODO use database_functions file
     $servername = "localhost";
     $username = "root";
-    $password = "root";
-    $dbname = "eVivlio";
+    $password = "";
+    $dbname = "bookshop";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);

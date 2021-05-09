@@ -17,11 +17,6 @@
 <body>
     <?php require_once("../config/config.php"); ?>
 
-    <?php
-        session_start();
-        echo "user: " . $_SESSION['user'];
-    ?>
-
     <!-- TODO display necessary buttons depending on session -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -64,11 +59,11 @@
                         <i class="fas fa-sign-in-alt"></i> Signup/Login
                     </button>
                 </a>
-                <form action="logout_process.php" method="POST">
-                    <button class="btn menu-btn" onclick="">
+                <a href="logout_process.php">
+                    <button class="btn menu-btn">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
-                </form>
+                </a>
             </div>
         </div>
     </nav>

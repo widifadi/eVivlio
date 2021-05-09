@@ -8,6 +8,7 @@
                 href="#pills-managebooks" role="tab" aria-controls="pills-managebooks"
                 aria-selected="true">Books</a>
         </li>
+
         <li class="nav-item" role="presentation">
             <a class="nav-link pills-admin-tab" id="pills-manageusers-tab" data-toggle="pill" 
                 href="#pills-manageusers" role="tab" aria-controls="pills-manageusers"
@@ -34,7 +35,7 @@
 
         <div class="tab-pane fade" id="pills-manageorders" role="tabpanel"
             aria-labelledby="pills-manageorders-tab">
-            <?php require_once("../src/AdminPage/manage_orders.php") ?>
+            <?php include("../src/AdminPage/manage_orders.php") ?>
         </div>
     </div>
 </div>

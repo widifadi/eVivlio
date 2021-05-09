@@ -1,6 +1,5 @@
 <form action="add_book_post.php" method="POST" id="add-book-form">
     <div class="form-group row">
-        <!-- TODO integer? -->
         <label for="isbn" class="col-sm-3 col-form-label addbook-label">ISBN</label>
         <div class="col-sm-9">
         <input type="text" class="form-control" id="isbn" name="isbn" 

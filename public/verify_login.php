@@ -26,6 +26,7 @@
         if (mysqli_num_rows($result)) {
             echo "Login successful.";
 
+            session_start();
             // Unset all of the session variables.
             $_SESSION = array();
             // Save user session
@@ -41,8 +42,6 @@
             echo "User not found.";
             // TODO pass login error to login page
         }
-
-        // echo $_SESSION['user'];
 
         // TODO if user is not null, show appropriate buttons on header
     } 

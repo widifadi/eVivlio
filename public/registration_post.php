@@ -3,8 +3,8 @@
     // TODO use database_functions file
     $servername = "localhost";
     $username = "root";
-    $password = "";
-    $dbname = "bookshop";
+    $password = "root";
+    $dbname = "eVivlio";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -61,6 +61,6 @@
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        header("location: index.php");
+        header("location: successful_registration.php");
     } 
 ?>

@@ -39,6 +39,13 @@
                 </a>
             </div>
             <div class="navbar-nav ml-auto">
+                <!-- IF a user and is not admin is logged in -->
+                <!-- TODO change condition to user permission instead of username -->
+                <?php
+                    session_start();
+                    if($_SESSION['user'] && $_SESSION['user'] != "admin")
+                    {
+                ?>
                 <a href="my_page.php">
                     <button class="btn menu-btn" id="mypage-btn">
                         <i class="fas fa-user"></i> My Page
@@ -49,21 +56,59 @@
                         <i class="fas fa-shopping-cart"></i>
                     </button>
                 </a>
+                <!-- close if statement -->
+                <?php    
+                    } 
+                ?>
+
+                <!-- IF an admin user is logged in -->
+                <!-- TODO check permission instead of username -->
+                <?php
+                    session_start();
+                    if($_SESSION['user'] == "admin")
+                    {
+                ?>
                 <a href="admin_page.php">
                     <button class="btn menu-btn" id="adminpage-btn">
                         <i class="fas fa-wrench"></i> Admin Page
                     </button>
                 </a>
+                <!-- close if statement -->
+                <?php    
+                    } 
+                ?>
+
+                <!-- IF a user is logged in -->
+                <?php
+                    session_start();
+                    if(!$_SESSION['user'])
+                    {
+                ?>
                 <a href="signup_login.php">
                     <button class="btn menu-btn" id="loginpage-btn">
                         <i class="fas fa-sign-in-alt"></i> Signup/Login
                     </button>
                 </a>
+                <!-- close if statement -->
+                <?php    
+                    } 
+                ?>
+
+                <!-- IF a user is logged in -->
+                <?php
+                    session_start();
+                    if($_SESSION['user'])
+                    {
+                ?>
                 <a href="logout_process.php">
                     <button class="btn menu-btn">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
                 </a>
+                <!-- close if statement -->
+                <?php    
+                    } 
+                ?>
             </div>
         </div>
     </nav>

@@ -6,7 +6,7 @@
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a class="nav-link active mypage-tab" id="v-pills-contacts-tab" data-toggle="pill" href="#v-pills-contacts" role="tab" aria-controls="v-pills-contacts" aria-selected="true">Contacts</a>
                 <a class="nav-link mypage-tab" id="v-pills-faq-tab" data-toggle="pill" href="#v-pills-faq" role="tab" aria-controls="v-pills-profile" aria-selected="false">FAQ</a>
-                <a class="nav-link mypage-tab" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Order History</a>
+                <a class="nav-link mypage-tab" id="v-pills-feedback-tab" data-toggle="pill" href="#v-pills-feedback" role="tab" aria-controls="v-pills-feedback" aria-selected="false">Feedback</a>
             </div>
         </div>
 
@@ -128,75 +128,61 @@
                 </div>
 
 
-                <div class="tab-pane fade" style="margin-left:100px" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                    <div class="container catalog-breadcrumbs">
-                        <a href="my_page.php"> My Page </a> 
-                        <i class="fas fa-chevron-right" style="color: grey;"></i>
-                        <a href=""> Order History </a> 
 
+                <div class="tab-pane fade" style="margin-left:100px" id="v-pills-feedback" role="tabpanel" aria-labelledby="v-pills-feedback-tab">
+                    <div class="container catalog-breadcrumbs">
+                        <a href="contact.php"> Contact Us </a> 
+                        <i class="fas fa-chevron-right" style="color: grey;"></i>
+                        <a href=""> Feedback </a> 
                     </div> 
-                    <div class="col "> 
-                        <div class="row wl-book">
-                            <div class="col-2">
-                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
-                            </div>
-                            <div class="col-4">
-                                <br>
-                                <div id="book-title">"Title", Author (Year)</div>
-                            </div>
-                        </div>
-                        <div class="row wl-book">
-                            <div class="col-2">
-                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
-                            </div>
-                            <div class="col-4">
-                                <br>
-                                <div id="book-title">"Title", Author (Year)</div>
-                            </div>
-                        </div>
-                        <div class="row wl-book">
-                            <div class="col-2">
-                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
-                            </div>
-                            <div class="col-4">
-                                <br>
-                                <div id="book-title">"Title", Author (Year)</div>
-                            </div>
-                        </div>
-                        <div class="row wl-book">
-                            <div class="col-2">
-                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
-                            </div>
-                            <div class="col-4">
-                                <br>
-                                <div id="book-title">"Title", Author (Year)</div>
-                            </div>
-                        </div>
-                        <div class="row wl-book">
-                            <div class="col-2">
-                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
-                            </div>
-                            <div class="col-4">
-                                <br>
-                                <div id="book-title">"Title", Author (Year)</div>
-                            </div>
-                        </div>
-                        <div class="row wl-book">
-                            <div class="col-2">
-                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
-                            </div>
-                            <div class="col-4">
-                                <br>
-                                <div id="book-title">"Title", Author (Year)</div>
-                            </div>
-                        </div>
-                        <div class="row wl-book">
-                            <div class="col-2">
-                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
-                            </div>
-                            <div class="col-4">
-                                <br>
-                                <div id="book-title">"Title", Author (Year)</div>
+                    <div class="container mt-3">
+                        <div class="faq-text"> Did not find an answer for your question? Or want to send some feedback on your eVivlio experience? You can use the form below and we will get to you shortly! </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-md-8 col-lg-12 pb-8">
+                                <form action="mail.php" method="post">
+                                    <div class="card border-primary rounded-0" style="border-color: #F2C84B !important;">
+                                        <div class="card-header p-0">
+                                            <div class="bg text-white text-center py-2" style="background: #F2C84B;">
+                                                <p class="m-0"><i class="fa fa-envelope"></i> Share your thoughts!</p>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-3">
+                                            <div class="form-group">
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-user" style="color: #F2C84B;"></i></div>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="feedback_name" name="name" placeholder="Please enter your name." required>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-envelope" style="color: #F2C84B;"></i></div>
+                                                    </div>
+                                                    <input type="email" class="form-control"  name="email" placeholder="What email can we use to reach you?" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="input-group mb-2">
+                                                    <div class="input-group-prepend">
+                                                        <div class="input-group-text"><i class="fa fa-comment" style="color: #F2C84B;"></i></div>
+                                                    </div>
+                                                    <textarea class="form-control" rows="5" placeholder="Leave your feedback here." required></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="text-center">
+                                                <input type="submit" value="Send" class="btn  btn-block rounded-0 py-2" style="background: #F2C84B; color:white;">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </form>
+                                
+
+
                             </div>
                         </div>
                     </div>

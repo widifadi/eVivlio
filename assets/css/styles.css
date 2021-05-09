@@ -37,6 +37,10 @@ body {
   color: var(--light-grey);
 }
 
+.activePage:hover {
+  color: var(--light-yellow-theme);
+}
+
 a {
   color: var(--light-yellow-theme);
 }

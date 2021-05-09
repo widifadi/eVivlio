@@ -16,7 +16,14 @@
     </div>
 
     <div class="form-group row">
-        <!-- TODO subgroup for author table  -->
+        <label for="title" class="col-sm-3 col-form-label addbook-label">Book Cover</label>
+        <div class="col-sm-9">
+        <input type="file" name="cover" id="cover">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <!-- TODO search for existing author or add a new one?  -->
         <label for="author" class="col-sm-3 col-form-label addbook-label">Author</label>
         <div class="col-sm-9">
         <input type="text" class="form-control" id="author" name="author" 
@@ -44,14 +51,35 @@
         <label for="category" class="col-sm-3 col-form-label addbook-label">Genre</label>
         <!-- TODO 2 columns -->
         <div class="col-sm-9 form-check">
-            <input class="form-check-input" type="checkbox" value="" id="history"> History<br>
-            <input class="form-check-input" type="checkbox" value="" id="scifi"> Science Fiction<br>
-            <input class="form-check-input" type="checkbox" value="" id="literature"> Literature<br>
-            <input class="form-check-input" type="checkbox" value="" id="scitech"> Science & Technology<br>
-            <input class="form-check-input" type="checkbox" value="" id="philo"> Philosophy<br>
-            <input class="form-check-input" type="checkbox" value="" id="business"> Business<br>
-            <input class="form-check-input" type="checkbox" value="" id="novels"> Novels<br>
-            <input class="form-check-input" type="checkbox" value="" id="childrens"> Children's Collection<br>
+            <div class="row">
+                <div class="col">
+                    <input class="form-check-input" type="checkbox" value="" id="history"> 
+                    <label class="form-check-label" for="history">History</label><br>
+
+                    <input class="form-check-input" type="checkbox" value="" id="scifi">
+                    <label class="form-check-label" for="scifi">Science Fiction</label><br>
+
+                    <input class="form-check-input" type="checkbox" value="" id="literature">
+                    <label class="form-check-label" for="literature">Literature</label><br>
+
+                    <input class="form-check-input" type="checkbox" value="" id="scitech">
+                    <label class="form-check-label" for="scitech">Science & Technology</label><br>
+                
+                </div>
+                <div class="col">
+                    <input class="form-check-input" type="checkbox" value="" id="philo">
+                    <label class="form-check-label" for="philo">Philosophy</label><br>
+
+                    <input class="form-check-input" type="checkbox" value="" id="business">
+                    <label class="form-check-label" for="business">Business</label><br>
+
+                    <input class="form-check-input" type="checkbox" value="" id="novels">
+                    <label class="form-check-label" for="novels">Novels</label><br>
+
+                    <input class="form-check-input" type="checkbox" value="" id="childrens">
+                    <label class="form-check-label" for="childrens">Children's Collection</label><br>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -72,11 +100,12 @@
 
     <div class="form-group row">
         <label for="price" class="col-sm-3 col-form-label addbook-label">Price</label>
-        <div class="col-sm-9">
-            <!-- TODO float -->
-            <!-- TODO input group for euros -->
-        <input type="text" class="form-control" id="price" name="price" 
-            placeholder="Price" required>
+        <div class="col-sm-9 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">€</span>
+            </div>
+            <input type="number" step="0.01" class="form-control" id="price" name="price" 
+                placeholder="Price" required>
         </div>
     </div>
 
@@ -89,10 +118,16 @@
     </div>
 
     <div class="form-group row">
-        <label for="feature" class="col-sm-3 col-form-label addbook-label">Feature?</label>
-        <div class="col-sm-9">
-            <!-- TODO selection -->
-        <input type="text" class="form-control" id="feature" name="feature" required>
+        <label for="feature" class="col-sm-3 col-form-label addbook-label">Feature</label>
+        <div class="col-sm-9 form-check">
+            <input class="form-check-input" type="checkbox" value="" id="new-release"> 
+            <label class="form-check-label" for="new-release">New Release</label><br>
+
+            <input class="form-check-input" type="checkbox" value="" id="best-seller"> 
+            <label class="form-check-label" for="best-seller">Best Seller of the Month</label><br>
+
+            <input class="form-check-input" type="checkbox" value="" id="editors-pick"> 
+            <label class="form-check-label" for="editors-pick">Editor's Pick</label><br>
         </div>
     </div>
     

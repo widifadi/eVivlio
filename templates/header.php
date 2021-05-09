@@ -17,8 +17,6 @@
 <body>
     <?php require_once("../config/config.php"); ?>
 
-    <!-- TODO display necessary buttons depending on session -->
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
             <a href="index.php">
@@ -78,7 +76,7 @@
                     } 
                 ?>
 
-                <!-- IF a user is logged in -->
+                <!-- IF a user is not logged in -->
                 <?php
                     session_start();
                     if(!$_SESSION['user'])

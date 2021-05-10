@@ -38,10 +38,9 @@
             </div>
             <div class="navbar-nav ml-auto">
                 <!-- IF a user and is not admin is logged in -->
-                <!-- TODO change condition to user permission instead of username -->
                 <?php
                     session_start();
-                    if($_SESSION['user'] && $_SESSION['user'] != "admin")
+                    if ($_SESSION['user'] && $_SESSION['admin_permission'] == 0)
                     {
                 ?>
                 <a href="my_page.php">
@@ -60,10 +59,9 @@
                 ?>
 
                 <!-- IF an admin user is logged in -->
-                <!-- TODO check permission instead of username -->
                 <?php
                     session_start();
-                    if($_SESSION['user'] == "admin")
+                    if($_SESSION['user'] && $_SESSION['admin_permission'] == 1)
                     {
                 ?>
                 <a href="admin_page.php">
@@ -84,7 +82,7 @@
                 ?>
                 <a href="signup_login.php">
                     <button class="btn menu-btn" id="loginpage-btn">
-                        <i class="fas fa-sign-in-alt"></i> Signup/Login
+                        <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </a>
                 <!-- close if statement -->

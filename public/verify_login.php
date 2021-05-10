@@ -32,7 +32,9 @@
             // Save user session
             $_SESSION['user'] = $username;
 
-            // TODO query the permission
+            // get the permission
+            $user_row = mysqli_fetch_array($result);
+            $admin_permission = $user_row['admin_permission'];
             $_SESSION['admin_permission'] = $admin_permission;
 
             header("location: index.php");
@@ -42,8 +44,6 @@
             echo "User not found.";
             // TODO pass login error to login page
         }
-
-        // TODO if user is not null, show appropriate buttons on header
     } 
 
     // TODO close conn

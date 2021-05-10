@@ -16,6 +16,12 @@
         </li>
 
         <li class="nav-item" role="presentation">
+            <a class="nav-link pills-admin-tab" id="pills-managecustomers-tab" data-toggle="pill" 
+                href="#pills-managecustomers" role="tab" aria-controls="pills-managecustomers"
+                aria-selected="true">Customers</a>
+        </li>
+
+        <li class="nav-item" role="presentation">
             <a class="nav-link pills-admin-tab" id="pills-manageorders-tab" data-toggle="pill" 
                 href="#pills-manageorders" role="tab" aria-controls="pills-manageorders"
                 aria-selected="true">Orders</a>
@@ -31,6 +37,11 @@
         <div class="tab-pane fade" id="pills-manageusers" role="tabpanel"
             aria-labelledby="pills-manageusers-tab">
             <?php include("../src/AdminPage/manage_users.php") ?>
+        </div>
+
+        <div class="tab-pane fade" id="pills-managecustomers" role="tabpanel"
+            aria-labelledby="pills-managecustomers-tab">
+            <?php include("../src/AdminPage/manage_customers.php") ?>
         </div>
 
         <div class="tab-pane fade" id="pills-manageorders" role="tabpanel"

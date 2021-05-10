@@ -4,9 +4,12 @@
         <tr>
             <th scope="col">User ID</th>
             <th scope="col">Username</th> 
-            <!-- TODO link customer details -->
-            <th scope="col">Customer ID</th>
-            <th scope="col">Admin Permission</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Birthdate</th>
+            <th scope="col">Contact Num</th>
+            <th scope="col">Address</th>
         </tr>
     </thead>
     <tbody>

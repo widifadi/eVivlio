@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 10, 2021 at 05:42 PM
+-- Generation Time: May 10, 2021 at 09:15 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -31,6 +31,16 @@ CREATE TABLE `author` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `best_seller`
+--
+
+CREATE TABLE `best_seller` (
+  `book_id` int(13) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `book`
 --
 
@@ -38,13 +48,15 @@ CREATE TABLE `book` (
   `book_id` int(11) NOT NULL,
   `isbn` varchar(13) NOT NULL,
   `title` varchar(100) NOT NULL,
+  `cover` varchar(100) NOT NULL,
   `author` int(11) NOT NULL,
   `publisher` int(11) NOT NULL,
+  `year` int(4) NOT NULL,
   `category` int(11) NOT NULL,
-  `price` float NOT NULL,
-  `stock` int(11) NOT NULL,
   `pages` int(11) NOT NULL,
-  `description` text NOT NULL
+  `summary` text NOT NULL,
+  `price` float NOT NULL,
+  `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -80,12 +92,32 @@ CREATE TABLE `customer` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `editors_pick`
+--
+
+CREATE TABLE `editors_pick` (
+  `book_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `new_release`
+--
+
+CREATE TABLE `new_release` (
+  `book_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `publisher`
 --
 
 CREATE TABLE `publisher` (
   `publisher_id` int(11) NOT NULL,
-  `publisher_name` varchar(100) NOT NULL
+  `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -112,6 +144,12 @@ ALTER TABLE `author`
   ADD PRIMARY KEY (`author_id`);
 
 --
+-- Indexes for table `best_seller`
+--
+ALTER TABLE `best_seller`
+  ADD KEY `isbn` (`book_id`);
+
+--
 -- Indexes for table `book`
 --
 ALTER TABLE `book`
@@ -132,6 +170,18 @@ ALTER TABLE `category`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`);
+
+--
+-- Indexes for table `editors_pick`
+--
+ALTER TABLE `editors_pick`
+  ADD KEY `book_id` (`book_id`);
+
+--
+-- Indexes for table `new_release`
+--
+ALTER TABLE `new_release`
+  ADD KEY `book_id` (`book_id`);
 
 --
 -- Indexes for table `publisher`
@@ -191,9 +241,27 @@ ALTER TABLE `user`
 --
 
 --
+-- Constraints for table `best_seller`
+--
+ALTER TABLE `best_seller`
+  ADD CONSTRAINT `best_seller_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
+
+--
 -- Constraints for table `book`
 --
 ALTER TABLE `book`
   ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author`) REFERENCES `author` (`author_id`),
   ADD CONSTRAINT `book_ibfk_2` FOREIGN KEY (`publisher`) REFERENCES `publisher` (`publisher_id`),
   ADD CONSTRAINT `book_ibfk_3` FOREIGN KEY (`category`) REFERENCES `category` (`category_id`);
+
+--
+-- Constraints for table `editors_pick`
+--
+ALTER TABLE `editors_pick`
+  ADD CONSTRAINT `editors_pick_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
+
+--
+-- Constraints for table `new_release`
+--
+ALTER TABLE `new_release`
+  ADD CONSTRAINT `new_release_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);

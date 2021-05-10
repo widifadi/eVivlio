@@ -1,12 +1,12 @@
 <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
         <thead class="thead-light">
             <tr>
+                <th scope="col">Update</th>
                 <th scope="col">User ID</th>
                 <th scope="col">Username</th> 
                 <th scope="col">Customer ID</th>
                 <th scope="col">Admin Permission</th>
-                <th scope="col">Update/Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +31,11 @@
                 { 
             ?>
             <tr>
+                <td>
+                    <!-- TODO enable operations -->
+                    <i class="fas fa-user-edit"></i>
+                    <i class="fas fa-trash-alt"></i>
+                </td>
                 <td><?php echo $row['user_id']; ?></td>
                 <td><?php echo $user_name = $row['username']; ?></td>
                 <td>
@@ -43,11 +48,6 @@
                     ?>
                 </td>
                 <td><?php echo $row['admin_permission']; ?></td>
-                <td>
-                    <!-- TODO enable operations -->
-                    <i class="fas fa-user-edit"></i>
-                    <i class="fas fa-user-slash"></i>
-                </td>
             </tr> 
             <?php
                 }

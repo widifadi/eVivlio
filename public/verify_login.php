@@ -20,7 +20,8 @@
         $password = mysqli_real_escape_string($conn, $password);
         $hash_password = md5($password); 
 
-        $password_query = "SELECT * FROM user WHERE username='$username' AND password='$hash_password' ";
+        $password_query = "SELECT * FROM user 
+                            WHERE username = '$username' AND password = '$hash_password' ";
         $result = mysqli_query($conn, $password_query);
 
         if (mysqli_num_rows($result)) {

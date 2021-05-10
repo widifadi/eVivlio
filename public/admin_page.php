@@ -26,6 +26,8 @@
                 href="#pills-manageorders" role="tab" aria-controls="pills-manageorders"
                 aria-selected="true">Orders</a>
         </li>
+
+        <!-- TODO categories, authors, publishers??? -->
     </ul>
 
     <div class="tab-content admin-page-tab" id="pills-tabContent">

@@ -1,3 +1,4 @@
+<!-- TODO alphabetical -->
 <div class="row" id="promo-categories">
     <div class="col" id="feature-promos">
         <span class="subtitle">Promos</span>

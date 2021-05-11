@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 10, 2021 at 09:15 PM
+-- Generation Time: May 11, 2021 at 01:56 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -51,8 +51,8 @@ CREATE TABLE `book` (
   `cover` varchar(100) NOT NULL,
   `author` int(11) NOT NULL,
   `publisher` int(11) NOT NULL,
-  `year` int(4) NOT NULL,
-  `category` int(11) NOT NULL,
+  `publishing_year` int(4) NOT NULL,
+  `category` json NOT NULL,
   `pages` int(11) NOT NULL,
   `summary` text NOT NULL,
   `price` float NOT NULL,
@@ -67,7 +67,7 @@ CREATE TABLE `book` (
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `category_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -117,7 +117,7 @@ CREATE TABLE `new_release` (
 
 CREATE TABLE `publisher` (
   `publisher_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `publisher_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -156,8 +156,7 @@ ALTER TABLE `book`
   ADD PRIMARY KEY (`book_id`),
   ADD UNIQUE KEY `ISBN` (`isbn`),
   ADD KEY `author` (`author`),
-  ADD KEY `publisher` (`publisher`),
-  ADD KEY `category` (`category`);
+  ADD KEY `publisher` (`publisher`);
 
 --
 -- Indexes for table `category`
@@ -251,8 +250,7 @@ ALTER TABLE `best_seller`
 --
 ALTER TABLE `book`
   ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author`) REFERENCES `author` (`author_id`),
-  ADD CONSTRAINT `book_ibfk_2` FOREIGN KEY (`publisher`) REFERENCES `publisher` (`publisher_id`),
-  ADD CONSTRAINT `book_ibfk_3` FOREIGN KEY (`category`) REFERENCES `category` (`category_id`);
+  ADD CONSTRAINT `book_ibfk_2` FOREIGN KEY (`publisher`) REFERENCES `publisher` (`publisher_id`);
 
 --
 -- Constraints for table `editors_pick`

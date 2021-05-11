@@ -61,11 +61,11 @@
                         <tr id=<?php echo $book_id ?> >
                             <td>
                                 <!-- TODO modify hover color and cursor -->
-                                <!-- TODO enable operations -->
-                                <em class="fas fa-edit update-book" id="update-<?php echo $book_id ?>"
+                                <em class="fas fa-edit update-book" id="updatebook-<?php echo $book_id ?>"
                                     data-toggle="modal" data-target=".update-book-modal"></em>
-                                <em class="fas fa-trash-alt delete-book" id="delete-<?php echo $book_id ?>" 
-                                    title=<?php echo $row['title'] ?>
+                                <em class="fas fa-trash-alt delete-book" 
+                                    id="deletebook-<?php echo $book_id ?>" 
+                                    title='<?php echo $row['title'] ?>'
                                     data-toggle="modal" data-target=".delete-book-modal"></em>
                             </td>
                             <td><?php echo $book_id; ?></td>

@@ -1,6 +1,5 @@
 $('.delete-book').click(function() {
     var book_id = $(this).attr('id').split("-")[1];
-    // TODO title special characters
     var book_title = $(this).attr('title');
 
     $("#book-title").html(book_title);
@@ -11,9 +10,8 @@ $('.delete-book').click(function() {
         $.ajax({
             type: 'POST',
             url: delete_post,
-            data: {"book_id": book_id },
+            data: { "book_id": book_id },
             success: function(response) {
-                console.log(response);
                 if (response == 0) {
                     $("#delete-response").html("Book deleted successfully. <br> Reloading the page.");
                     $("#delete-response").addClass("alert-success");
@@ -23,8 +21,12 @@ $('.delete-book').click(function() {
                     }, 2000);
 
                 } else {
-                    $("#delete-response").html(response);
+                    $("#delete-response").html(response + "<br> Reloading the page.");
                     $("#delete-response").addClass("alert-danger");
+
+                    setTimeout(function() {
+                        location.reload();
+                    }, 2000);
                 }
 
             },

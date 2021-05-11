@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 11, 2021 at 01:56 PM
+-- Generation Time: May 11, 2021 at 03:27 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -48,11 +48,10 @@ CREATE TABLE `book` (
   `book_id` int(11) NOT NULL,
   `isbn` varchar(13) NOT NULL,
   `title` varchar(100) NOT NULL,
-  `cover` varchar(100) NOT NULL,
   `author` int(11) NOT NULL,
   `publisher` int(11) NOT NULL,
   `publishing_year` int(4) NOT NULL,
-  `category` json NOT NULL,
+  `category` varchar(100) NOT NULL,
   `pages` int(11) NOT NULL,
   `summary` text NOT NULL,
   `price` float NOT NULL,
@@ -69,6 +68,20 @@ CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
   `category_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
+(1, 'Business'),
+(2, 'Children Collection'),
+(3, 'History'),
+(4, 'Literature'),
+(5, 'Novels'),
+(6, 'Science Fiction'),
+(7, 'Science and Technology'),
+(8, 'Philosophy');
 
 -- --------------------------------------------------------
 
@@ -147,6 +160,7 @@ ALTER TABLE `author`
 -- Indexes for table `best_seller`
 --
 ALTER TABLE `best_seller`
+  ADD UNIQUE KEY `book_id` (`book_id`),
   ADD KEY `isbn` (`book_id`);
 
 --
@@ -174,12 +188,14 @@ ALTER TABLE `customer`
 -- Indexes for table `editors_pick`
 --
 ALTER TABLE `editors_pick`
+  ADD UNIQUE KEY `book_id_2` (`book_id`),
   ADD KEY `book_id` (`book_id`);
 
 --
 -- Indexes for table `new_release`
 --
 ALTER TABLE `new_release`
+  ADD UNIQUE KEY `book_id_2` (`book_id`),
   ADD KEY `book_id` (`book_id`);
 
 --
@@ -215,7 +231,7 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `customer`

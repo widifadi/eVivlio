@@ -58,12 +58,15 @@
                             {
                                 $book_id = $row['book_id'];
                         ?>
-                        <tr>
+                        <tr id=<?php echo $book_id ?> >
                             <td>
-                                <!-- TODO enable operations -->
-                                <i class="fas fa-edit"></i>
                                 <!-- TODO modify hover color and cursor -->
-                                <i class="fas fa-trash-alt" data-toggle="modal" data-target="#delete-<?php echo $book_id?>"></i>
+                                <!-- TODO enable operations -->
+                                <em class="fas fa-edit update-book" id="update-<?php echo $book_id ?>"
+                                    data-toggle="modal" data-target=".update-book-modal"></em>
+                                <em class="fas fa-trash-alt delete-book" id="delete-<?php echo $book_id ?>" 
+                                    title=<?php echo $row['title'] ?>
+                                    data-toggle="modal" data-target=".delete-book-modal"></em>
                             </td>
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
@@ -114,6 +117,7 @@
                                     }
 
                                     echo implode(", ", $features);
+                                    // TODO put into bootstrap badge
                                 ?>
                             </td>
                             <td>
@@ -134,26 +138,52 @@
         </div>
     </div>
     <!-- Tabs content -->
-    
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="delete-bookidhere" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+<!-- Delete Book Modal -->
+<div class="modal fade delete-book-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Confirm Book Deletion</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Delete <span id="book-title"></span>?
+            <br>
+            <br>
+            <div class="alert" id="delete-response" role="alert"></div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="delete-book-btn">Delete Book</button>
+        </div>
+        </div>
     </div>
-  </div>
 </div>
+
+<!-- Update Book Modal -->
+<div class="modal fade update-book-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Book Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            Update
+            <form></form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-primary" id="delete-book-btn">Update</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script src="../assets/js/admin-book-operations.js"></script>

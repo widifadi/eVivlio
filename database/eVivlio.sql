@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 11, 2021 at 03:27 PM
+-- Generation Time: May 11, 2021 at 05:59 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -46,7 +46,7 @@ CREATE TABLE `best_seller` (
 
 CREATE TABLE `book` (
   `book_id` int(11) NOT NULL,
-  `isbn` varchar(13) NOT NULL,
+  `isbn` varchar(17) NOT NULL,
   `title` varchar(100) NOT NULL,
   `author` int(11) NOT NULL,
   `publisher` int(11) NOT NULL,

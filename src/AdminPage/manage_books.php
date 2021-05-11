@@ -25,13 +25,11 @@
                             <th scope="col">Book ID</th> 
                             <th scope="col">ISBN</th> 
                             <th scope="col">Title</th>
-                            <th scope="col">Cover</th>
                             <th scope="col">Author</th>
                             <th scope="col">Publisher</th>
                             <th scope="col">Year</th>
                             <th scope="col">Category</th>
                             <th scope="col">Pages</th>
-                            <th scope="col">Summary</th>
                             <th scope="col">Price</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Feature</th>
@@ -64,14 +62,12 @@
                             <td>
                                 <!-- TODO enable operations -->
                                 <i class="fas fa-edit"></i>
-                                <i class="fas fa-trash-alt"></i>
+                                <!-- TODO modify hover color and cursor -->
+                                <i class="fas fa-trash-alt" data-toggle="modal" data-target="#delete-<?php echo $book_id?>"></i>
                             </td>
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['title']; ?></td>
-                            <td>
-                                <?php echo $row['cover']; ?>
-                            </td>
                             <td><?php echo $row['author']; ?></td>
                             <td><?php echo $row['publisher']; ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
@@ -93,7 +89,6 @@
                                 ?>
                             </td>
                             <td><?php echo $row['pages']; ?></td>
-                            <td><?php echo $row['summary']; ?></td>
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['stock']; ?></td>
                             <td>
@@ -140,4 +135,25 @@
     </div>
     <!-- Tabs content -->
     
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-bookidhere" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>

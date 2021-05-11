@@ -1,4 +1,4 @@
-<form action="add_book_post.php" method="POST" id="add-book-form">
+<form action="add_book_post.php" method="POST" id="add-book-form" enctype="multipart/form-data">
     <div class="form-group row">
         <label for="isbn" class="col-sm-3 col-form-label addbook-label">ISBN</label>
         <div class="col-sm-9">
@@ -16,7 +16,7 @@
     </div>
 
     <div class="form-group row">
-        <label for="title" class="col-sm-3 col-form-label addbook-label">Book Cover</label>
+        <label for="cover" class="col-sm-3 col-form-label addbook-label">Book Cover</label>
         <div class="col-sm-9">
         <input type="file" name="cover" id="cover">
         </div>
@@ -42,7 +42,7 @@
         <label for="publisher" class="col-sm-3 col-form-label addbook-label">Publisher</label>
         <div class="col-sm-9">
         <input type="text" class="form-control" id="publisher" name="publisher" 
-            placeholder="Publisher">
+            placeholder="Publisher" required>
         </div>
     </div>
 
@@ -50,7 +50,7 @@
         <label for="year" class="col-sm-3 col-form-label addbook-label">Publishing Year</label>
         <div class="col-sm-9">
         <input type="number" class="form-control" id="year" name="year" 
-            placeholder="Publishing Year">
+            placeholder="Publishing Year" required>
         </div>
     </div>
 
@@ -64,7 +64,7 @@
                     <label class="form-check-label" for="business">Business</label><br>
 
                     <input class="form-check-input" type="checkbox" name="category[]" 
-                        value="Children's Collection" id="childrens">
+                        value="Children Collection" id="childrens">
                     <label class="form-check-label" for="childrens">Children's Collection</label><br>
 
                     <input class="form-check-input" type="checkbox" name="category[]" 

@@ -21,6 +21,7 @@
                 <table class="table table-hover">
                     <thead class="thead-light">
                         <tr>
+                            <th scope="col">Update</th>
                             <th scope="col">Book ID</th> 
                             <th scope="col">ISBN</th> 
                             <th scope="col">Title</th>
@@ -34,7 +35,6 @@
                             <th scope="col">Price</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Feature</th>
-                            <th scope="col">Update/Delete</th>
                             <th scope="col">Number of Orders</th>
                         </tr>
                     </thead>
@@ -54,25 +54,76 @@
                                 die("Connection failed: " . $conn->connect_error);
                             }
 
-                            $book_query = "SELECT * FROM book"; 
+                            $book_query = "SELECT * FROM book";
                             $result = mysqli_query($conn, $book_query); 
                             while($row = mysqli_fetch_assoc($result)) 
-                            { 
+                            {
+                                $book_id = $row['book_id'];
                         ?>
                         <tr>
-                            <td><?php echo $row['book_id']; ?></td>
+                            <td>
+                                <!-- TODO enable operations -->
+                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-trash-alt"></i>
+                            </td>
+                            <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['title']; ?></td>
-                            <td><?php echo $row['cover']; ?></td>
+                            <td>
+                                <?php echo $row['cover']; ?>
+                            </td>
                             <td><?php echo $row['author']; ?></td>
                             <td><?php echo $row['publisher']; ?></td>
-                            <td><?php echo $row['year']; ?></td>
-                            <td><?php echo $row['category']; ?></td>
+                            <td><?php echo $row['publishing_year']; ?></td>
+                            <td>
+                                <?php 
+                                    $categories = explode(",", $row['category']);
+                                    foreach ($categories as $category_id) {
+                                        $category_query = "SELECT * FROM category WHERE category_id=$category_id ";
+                                        $category_result = mysqli_query($conn, $category_query);
+                                        $category_row = mysqli_fetch_assoc($category_result);
+                                        $category_name = $category_row['category_name'];
+
+                                        if (!next($categories)) {
+                                            echo $category_name;
+                                        } else {
+                                            echo $category_name . ", ";
+                                        }
+                                    }
+                                ?>
+                            </td>
                             <td><?php echo $row['pages']; ?></td>
                             <td><?php echo $row['summary']; ?></td>
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['stock']; ?></td>
+                            <td>
+                                <?php
+                                    $features = array();
 
+                                    $bestseller_query = "SELECT * FROM best_seller WHERE book_id=$book_id";
+                                    $bestseller_result = mysqli_query($conn, $bestseller_query);
+                                    if (mysqli_num_rows($bestseller_result)) {
+                                        array_push($features, "Best Seller");
+                                    }
+
+                                    $new_query = "SELECT * FROM new_release WHERE book_id=$book_id";
+                                    $new_result = mysqli_query($conn, $new_query);
+                                    if (mysqli_num_rows($new_result)) {
+                                        array_push($features, "New Release");
+                                    }
+
+                                    $pick_query = "SELECT * FROM editors_pick WHERE book_id=$book_id";
+                                    $pick_result = mysqli_query($conn, $pick_query);
+                                    if (mysqli_num_rows($pick_result)) {
+                                        array_push($features, "Editor's Pick");
+                                    }
+
+                                    echo implode(", ", $features);
+                                ?>
+                            </td>
+                            <td>
+                                <!-- TODO order summary -->
+                            </td>
                         </tr>
                         <?php
                             }

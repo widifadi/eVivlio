@@ -20,14 +20,14 @@
         $title = $_POST['title'];
         $title = mysqli_real_escape_string($conn, $title);
 
-        // TODO cover
-        if (isset($_FILES['image']) && $_FILES['image']['name'] != "") {
-			$cover = $_FILES['image']['name'];
-			$directory_self = str_replace(basename($_SERVER['PHP_SELF']), '', $_SERVER['PHP_SELF']);
-            echo $directory_self;
-			$upload_directory = $_SERVER['DOCUMENT_ROOT'] . $directory_self . "/assets/img/book-covers/";
-			$upload_directory .= $cover;
-			move_uploaded_file($_FILES['image']['tmp_name'], $upload_directory);
+        // upload cover on img/book-covers cover
+        if (isset($_FILES['cover']) && $_FILES['cover']['error'] === UPLOAD_ERR_OK) {
+			$cover = $_FILES['cover']['name'];
+
+			$upload_directory = dirname(__DIR__, 1) . "/assets/img/book-covers/";
+            $ext = end((explode(".", $cover))); # extra () to prevent notice
+            $upload_directory .= $isbn . "." . $ext;
+			move_uploaded_file($_FILES['cover']['tmp_name'], $upload_directory);
 		}
 
         $author_firstname = $_POST['author_firstname'];
@@ -35,16 +35,16 @@
         $author_lastname = $_POST['author_lastname'];
         $author_lastname = mysqli_real_escape_string($conn, $author_lastname);
         // if author is not in db, create new
-		$query_author = "SELECT * FROM author 
-                            WHERE author_firstname = '$author_firstname' AND 
-                                    author_lastname = '$author_lastname' ";
+		$query_author = "SELECT * FROM author
+                            WHERE first_name = '$author_firstname' AND 
+                                    last_name = '$author_lastname' ";
 		$author_result = mysqli_query($conn, $query_author);
-        if (!$author_result) {
+        if (!mysqli_num_rows($author_result)) {
 			// insert into author table and return id
 			$insert_author = "INSERT INTO author (first_name, last_name) 
-                                VALUES ('$author_firstname', '$author_lastname')";
+                                VALUES ('$author_firstname', '$author_lastname') ";
 			$insert_author_result = mysqli_query($conn, $insert_author);
-			if(!$insert_author_result){
+			if (!$insert_author_result) {
 				echo "Can't add new author " . mysqli_error($conn);
 				exit;
 			}
@@ -57,13 +57,15 @@
         $publisher = $_POST['publisher'];
         $publisher = mysqli_real_escape_string($conn, $publisher);
 		// if publisher is not in db, create new
-        $query_publisher = "SELECT * FROM publisher WHERE name = '$publisher' ";
-		$publisher_result = mysqli_query($conn, $query_publisher);
-        if (!$publisher_result) {
+        $query_publisher = "SELECT * FROM publisher WHERE publisher_name='$publisher' ";
+        $publisher_result = mysqli_query($conn, $query_publisher);
+        if (!mysqli_num_rows($publisher_result)) {
 			// insert into publisher table and return id
-			$insert_publisher = "INSERT INTO publisher (name) VALUES ('$publisher')";
+			$insert_publisher = "INSERT INTO publisher (publisher_name)
+                                    VALUES ('$publisher') ";
+
 			$insert_pub_result = mysqli_query($conn, $insert_publisher);
-			if(!$insert_pub_result){
+			if (!$insert_pub_result) {
 				echo "Can't add new publisher " . mysqli_error($conn);
 				exit;
 			}
@@ -77,37 +79,43 @@
 
         $category = $_POST['category'];
         $categories = "";
-        foreach ($category as $choice)  
+        foreach ($category as $choice) 
         {
+            $choice = mysqli_real_escape_string($conn, $choice);
+
             // query category table
-            $query_category = "SELECT * FROM category WHERE name = '$choice' ";
+            $query_category = "SELECT * FROM category WHERE category_name='$choice' ";
             $category_result = mysqli_query($conn, $query_category);
             $cat_row = mysqli_fetch_assoc($category_result);
-            $category_id = $pub_row['category_id'];
+            $category_id = $cat_row['category_id'];
 
-            // category as array
-            $categories .= $category_id . ",";  
+            // category as "1,2,3" format
+            if (!next($category)) {
+                $categories .= $category_id;
+            } else {
+                $categories .= $category_id . ",";
+            }
         }
 
         $pages = $_POST['pages'];
 
         $summary = $_POST['summary'];
-        $summary = mysqli_real_escape_string($conn, $summary); // TODO long text
+        $summary = mysqli_real_escape_string($conn, $summary);
 
         $price = $_POST['price'];
 
         $stock = $_POST['stocks'];
 
-        $addbook_query = "INSERT INTO book (isbn, title, cover, author, publisher, year, 
+        $addbook_query = "INSERT INTO book (isbn, title, author, publisher, publishing_year, 
                                             category, pages, summary, price, stock)
-                            VALUES ('$isbn', '$title', '$cover', '$author_id', '$publisher_id', '$year', 
-                                            '$categories', '$pages', '$summary', '$price', '$stock')";
+                            VALUES ('$isbn', '$title', '$author_id', '$publisher_id', '$year', 
+                                            '$categories', '$pages', '$summary', '$price', '$stock' )";
 
 
         if ($conn->query($addbook_query) === TRUE) {
             echo "New book created successfully. <br>";
         } else {
-            echo "Book Table Error: " . $sql . "<br>" . $conn->error;
+            echo "Book Table Error: " . $sql . "<br>" . $conn->error . "<br>";
         }
 
         $feature = $_POST['feature'];
@@ -118,25 +126,25 @@
                 $add_bestseller = "INSERT INTO best_seller(book_id) 
                                     SELECT book_id FROM book WHERE isbn = '$isbn' ";
                 if ($conn->query($add_bestseller) === TRUE) {
-                    echo "New Best Seller record created successfully.";
+                    echo "New Best Seller record created successfully. <br>";
                 } else {
-                    echo "Best Seller Table Error: " . $sql . "<br>" . $conn->error;
+                    echo "Best Seller Table Error: " . $sql . "<br>" . $conn->error . "<br>";
                 }
             } else if ($feature_choice == 'editors_pick') {
                 $add_editorspick = "INSERT INTO editors_pick(book_id) 
                                     SELECT book_id FROM book WHERE isbn = '$isbn' ";
                 if ($conn->query($add_editorspick) === TRUE) {
-                    echo "New Editor's Pick record created successfully.";
+                    echo "New Editor's Pick record created successfully. <br>";
                 } else {
-                    echo "Editor's Pick Table Error: " . $sql . "<br>" . $conn->error;
+                    echo "Editor's Pick Table Error: " . $sql . "<br>" . $conn->error . "<br>";
                 }
             } else if ($feature_choice == 'new_release') {
                 $add_newrelease = "INSERT INTO new_release(book_id) 
                                     SELECT book_id FROM book WHERE isbn = '$isbn' ";
                 if ($conn->query($add_newrelease) === TRUE) {
-                    echo "New Release record created successfully.";
+                    echo "New Release record created successfully. <br>";
                 } else {
-                    echo "New Release Table Error: " . $sql . "<br>" . $conn->error;
+                    echo "New Release Table Error: " . $sql . "<br>" . $conn->error . "<br>";
                 }
             }
         }

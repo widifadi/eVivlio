@@ -40,65 +40,50 @@
                 <!-- IF a user and is not admin is logged in -->
                 <?php
                     session_start();
-                    if ($_SESSION['user'] && $_SESSION['admin_permission'] == 0)
-                    {
+                    if (isset($_SESSION['user']) && $_SESSION['admin_permission'] == 0) {
                 ?>
                 <a href="my_page.php">
                     <button class="btn menu-btn" id="mypage-btn">
-                        <i class="fas fa-user"></i> My Page
+                        <em class="fas fa-user"></em> My Page
                     </button>
                 </a>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">
-                        <i class="fas fa-shopping-cart"></i>
+                        <em class="fas fa-shopping-cart"></em>
                     </button>
                 </a>
-                <!-- close if statement -->
-                <?php    
-                    } 
-                ?>
 
-                <!-- IF an admin user is logged in -->
                 <?php
-                    session_start();
-                    if($_SESSION['user'] && $_SESSION['admin_permission'] == 1)
-                    {
+                    }
+                    // IF an admin user is logged in
+                    if(isset($_SESSION['user']) && $_SESSION['admin_permission'] == 1) {
                 ?>
                 <a href="admin_page.php">
                     <button class="btn menu-btn" id="adminpage-btn">
-                        <i class="fas fa-wrench"></i> Admin Page
+                        <em class="fas fa-wrench"></em> Admin Page
                     </button>
                 </a>
-                <!-- close if statement -->
-                <?php    
-                    } 
-                ?>
 
-                <!-- IF a user is not logged in -->
                 <?php
-                    session_start();
-                    if(!$_SESSION['user'])
-                    {
+                    }
+                    // IF a user is not logged in
+                    if(!isset($_SESSION['user'])) {
                 ?>
                 <a href="signup_login.php">
                     <button class="btn menu-btn" id="loginpage-btn">
-                        <i class="fas fa-sign-in-alt"></i>
+                        <em class="fas fa-sign-in-alt"></em>
                     </button>
                 </a>
-                <!-- close if statement -->
-                <?php    
-                    } 
-                ?>
 
-                <!-- IF a user is logged in -->
                 <?php
-                    session_start();
-                    if($_SESSION['user'])
-                    {
+                    }
+
+                // IF a user is logged in
+                    if(isset($_SESSION['user'])) {
                 ?>
                 <a href="logout_process.php">
                     <button class="btn menu-btn">
-                        <i class="fas fa-sign-out-alt"></i>
+                        <em class="fas fa-sign-out-alt"></em>
                     </button>
                 </a>
                 <!-- close if statement -->

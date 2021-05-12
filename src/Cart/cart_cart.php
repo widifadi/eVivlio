@@ -39,6 +39,21 @@
                             <td class="border-0 align-middle book-price"><a href="#" class="text-dark"><i class="fa fa-heart"></i></a></td>
                             </tr>
                             <tr>
+                            <tr>
+                            <th scope="row" class="border-0">
+                                <div class="p-2">
+                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
+                                <div class="ml-3 d-inline-block align-middle">
+                                    <a href="#" class="text-dark"><div class="book-title" id="book-title">"Title", Author (Year)</div></a>
+                                </div>
+                                </div>
+                            </th>
+                            <td class="border-0 align-middle book-price" id="book-price"><strong>$$</strong></td>
+                            <td class="border-0 align-middle book-price" id="book-quantity"><strong>0</strong></td>
+                            <td class="border-0 align-middle book-price"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                            <td class="border-0 align-middle book-price"><a href="#" class="text-dark"><i class="fa fa-heart"></i></a></td>
+                            </tr>
+                            <tr>
                             <th scope="row" >
                                 <div class="p-2">
                                 <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">

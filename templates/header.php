@@ -37,7 +37,7 @@
                 </a>
             </div>
             <div class="navbar-nav ml-auto">
-                <!-- IF a user and is not admin is logged in -->
+                <!-- IF a user that is not admin is logged in -->
                 <?php
                     session_start();
                     if (isset($_SESSION['user']) && $_SESSION['admin_permission'] == 0) {
@@ -66,6 +66,7 @@
 
                 <?php
                     }
+
                     // IF a user is not logged in
                     if(!isset($_SESSION['user'])) {
                 ?>
@@ -78,7 +79,7 @@
                 <?php
                     }
 
-                // IF a user is logged in
+                    // IF a user is logged in
                     if(isset($_SESSION['user'])) {
                 ?>
                 <a href="logout_process.php">

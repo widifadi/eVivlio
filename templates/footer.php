@@ -28,6 +28,5 @@
     <script src="../assets/js/load-book-detail.js"></script>
     <script src="../assets/js/tabs-link.js"></script>
 
-
 </body>
 </html>

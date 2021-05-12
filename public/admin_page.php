@@ -1,4 +1,12 @@
-<?php require_once("../templates/header.php"); ?>
+<?php 
+    require_once("../templates/header.php"); 
+
+    // restrict access
+    session_start();
+    if (isset($_SESSION['user']) && $_SESSION['admin_permission'] == 0) {
+        header("location: index.php");
+    }
+?>
 
 <div class="container" style="margin-top: 100px; margin-bottom: 20px; ">
     <h5>Manage Website</h5>

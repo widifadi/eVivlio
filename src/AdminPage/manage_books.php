@@ -61,9 +61,10 @@
                         <tr id=<?php echo $book_id ?> >
                             <td>
                                 <!-- TODO modify hover color and cursor -->
-                                <em class="fas fa-edit update-book" id="updatebook-<?php echo $book_id ?>"
+                                <em class="fas fa-edit update-book" 
+                                    id="updatebook-<?php echo $book_id ?>"
                                     data-toggle="modal" data-target=".update-book-modal"></em>
-                                <em class="fas fa-trash-alt delete-book" 
+                                <em class="fas fa-trash-alt delete-book"
                                     id="deletebook-<?php echo $book_id ?>" 
                                     title='<?php echo $row['title'] ?>'
                                     data-toggle="modal" data-target=".delete-book-modal"></em>
@@ -166,21 +167,19 @@
 
 <!-- Update Book Modal -->
 <div class="modal fade update-book-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Book Details</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Update Book Details</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
-            Update
-            <form></form>
+            <?php include("update_book_form.php") ?>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" id="delete-book-btn">Update</button>
         </div>
         </div>
     </div>

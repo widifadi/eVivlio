@@ -70,6 +70,11 @@ a:hover {
   color: var(--blue-theme);
 }
 
+/* TODO blue theme button */
+
+/* TODO yellow theme button */
+
+
 /* Front page start */
 #front-page {
   background-color: var(--blue-theme);
@@ -196,7 +201,7 @@ a:hover {
   border: 1px solid  var(--light-yellow-theme) !important;
 }
 
-.addbook-label {
+.addbook-label, .updatebook-label {
   text-align: right;
 }
 /* Admin Page End */
@@ -235,6 +240,15 @@ a:hover {
 
 .book-category-div:hover .book-category-middle {
   opacity: 1;
+}
+
+.delete-book, .delete-user, .delete-customer {
+  color: salmon;
+}
+
+.delete-book:hover, .delete-user:hover, .delete-customer:hover {
+  color: orangered;
+  font-size: larger;
 }
 /* Book categories on front page end */
 
@@ -302,7 +316,7 @@ a:hover {
 
 .book-title {
   color: var(--blue-theme);
-  font-size: 12px;
+  font-size: 20px;
 }
 
 .book-price {
@@ -319,6 +333,10 @@ a:hover {
   background-color: var(--dark-orange) !important;
   color: var(--light-grey) !important;
   border-color: var(--dark-orange) !important;
+}
+
+.book-cover {
+  margin: auto;
 }
 /* BOOK CATALOGUE end */
 

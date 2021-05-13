@@ -24,10 +24,10 @@
         echo "Error deleting customer: " . mysqli_error($conn);
     }
 
+    // delete user if it exists
     $delete_user = "DELETE FROM user WHERE username=$username; ";
     mysqli_query($conn, $delete_user);
     
-      
     mysqli_close($conn);
 
 ?>

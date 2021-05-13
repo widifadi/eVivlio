@@ -277,13 +277,7 @@ a:hover {
 
 
 /* BOOK CATALOGUE start */
-#book-categories {
-  margin: 10px;
-  border: solid var(--light-grey) 1px;
-}
-
 .category-name {
-  margin: 2px;
   color: var(--blue-theme);
 }
 
@@ -302,27 +296,32 @@ a:hover {
   margin-left: 10px;
 }
 
-.book {
-  border: solid var(--light-grey) 1px;
-  margin: 2px 2px 2px 2px;
-  text-align: center;
-  padding-top: 3px;
-}
-
 .book:hover {
   cursor: pointer !important;
-  background-color: var(--light-yellow-theme);
+  background-color: var(--light-grey);
 }
 
 .book-title {
   color: var(--blue-theme);
+  font-size: 18px;
+}
+
+.book-author {
+  color: var(--blue-theme);
+}
+
+.add-cart-btn {
+  color:darkolivegreen;
   font-size: 20px;
 }
 
-.book-price {
-  color: var(--blue-theme);
-  font-size: 14px;
-  margin: auto;
+.add-wlist-btn {
+  color:lightcoral;
+  font-size: 20px;
+}
+
+.add-cart-btn:hover, .add-wlist-btn:hover {
+  font-size: 24px;
 }
 
 .book-detail-tab {

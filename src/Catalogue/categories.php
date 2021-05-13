@@ -1,5 +1,5 @@
-<div class="card" id="book-categories" style="width: 18rem;">
-  <div class="card-header subtitle" style="font-size: 18px;">
+<div class="card" id="book-categories" style="margin-left:50px;">
+  <div class="card-header subtitle" style="font-size: 18px; background-color:#F2E8B3;">
     Book Categories
   </div>
   <ul class="list-group list-group-flush">

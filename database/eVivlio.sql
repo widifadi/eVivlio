@@ -288,3 +288,69 @@ ALTER TABLE `editors_pick`
 --
 ALTER TABLE `new_release`
   ADD CONSTRAINT `new_release_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` varchar(50) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `qty` int(10) NOT NULL,
+  `total_price` varchar(100) NOT NULL,
+  `isbn` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Table structure for table `wishlists`
+--
+
+CREATE TABLE `wishlists` (
+  `id` int(11) NOT NULL,
+  `Name` varchar(255) NOT NULL,
+  `price` varchar(50) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `isbn` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

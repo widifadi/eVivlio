@@ -4,7 +4,7 @@
         <label for="isbn" class="col-sm-3 col-form-label updatebook-label">ISBN</label>
         <div class="col-sm-9">
         <input type="text" class="form-control" id="update-isbn" name="isbn" 
-            placeholder="ISBN" required>
+            placeholder="ISBN" readonly>
         </div>
     </div>
 

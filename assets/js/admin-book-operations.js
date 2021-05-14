@@ -56,6 +56,7 @@ $('.update-book').click(function() {
             // TODO cover
             var cover_path = "../assets/img/book-covers/" + details.book_cover;
             $("#update-cover").attr("src", cover_path);
+            console.log(cover_path);
 
             // TODO author
             $('#update-author1-firstname').val(details.author_fname);
@@ -65,10 +66,8 @@ $('.update-book').click(function() {
             
             // categories
             details.category.forEach(function (category, index) {
-                console.log(category);
                 $('.update-category#' + category).prop('checked', true);
             });
-
 
             $('#update-pages').val(details.pages);
             $('#update-summary').val(details.summary);
@@ -76,7 +75,6 @@ $('.update-book').click(function() {
             $('#update-stocks').val(details.stock);
 
             // feature  
-            console.log(details.features);
             details.features.forEach(function (feature, index) {
                 $('.update-features#' + feature).prop('checked', true);
             });

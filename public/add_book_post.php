@@ -80,6 +80,7 @@
         $year = $_POST['year'];
 
         $category = $_POST['category'];
+        // TODO use array 
         $categories = "";
         foreach ($category as $choice) 
         {
@@ -110,8 +111,8 @@
 
         $addbook_query = "INSERT INTO book (isbn, title, book_cover, author, publisher, publishing_year, 
                                             category, pages, summary, price, stock)
-                            VALUES ('$isbn', '$title', '$book_cover', '$author_id', '$publisher_id', '$year', 
-                                            '$categories', '$pages', '$summary', '$price', '$stock' )";
+                            VALUES ('$isbn', '$title', '$book_cover', '$author_id', '$publisher_id', $year, 
+                                            '$categories', $pages, '$summary', $price, $stock )";
 
 
         if ($conn->query($addbook_query) === TRUE) {
@@ -151,7 +152,8 @@
             }
         }
 
-        header("location: admin_page.php#managebooks");
+        header("location: admin_page.php");
+
     }
 
     $conn->close();

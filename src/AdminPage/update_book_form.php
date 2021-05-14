@@ -1,6 +1,5 @@
-<!-- TODO php to fetch row data but need the book_id-->
-
-<form action="../src/AdminPage/update_book_post.php" method="POST" id="update-book-form" enctype="multipart/form-data">
+<form action="../src/AdminPage/update_book_post.php" method="POST" id="update-book-form" 
+    enctype="multipart/form-data">
     <div class="form-group row">
         <label for="isbn" class="col-sm-3 col-form-label updatebook-label">ISBN</label>
         <div class="col-sm-9">
@@ -12,7 +11,7 @@
     <div class="form-group row">
         <label for="title" class="col-sm-3 col-form-label updatebook-label">Book Title</label>
         <div class="col-sm-9">
-        <input type="text" class="form-control" id="title" name="title" 
+        <input type="text" class="form-control" id="update-title" name="title" 
             placeholder="Title" required>
         </div>
     </div>
@@ -150,7 +149,7 @@
     </div>
     
     <div class="text-center">
-        <button class="btn btn-info" type="submit" name="update-book-btn"
+        <button class="btn blue-theme-btn" type="submit" name="update-book-btn"
             id="update-book-btn">Update Book Details</button>                                 
     </div>
 </form>

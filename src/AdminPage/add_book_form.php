@@ -148,7 +148,7 @@
     </div>
     
     <div class="text-center">
-        <button class="btn btn-secondary" type="submit" name="add_book_btn"
+        <button class="btn blue-theme-btn" type="submit" name="add_book_btn"
             id="add_book_btn">Add Book</button>                                 
     </div>
 </form>

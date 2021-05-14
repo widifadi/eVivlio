@@ -5,7 +5,7 @@ $('.delete-book').click(function() {
     $("#book-title").html(book_title);
 
     var delete_post = "../src/AdminPage/delete_book_post.php";
-    
+
     $("#delete-book-btn").click(function() {
         $.ajax({
             type: 'POST',
@@ -28,8 +28,40 @@ $('.delete-book').click(function() {
                         location.reload();
                     }, 2000);
                 }
+            },
+        });
+    });
+});
+
+
+$('.update-book').click(function() {
+    var update_book_id = $(this).attr('id').split("-")[1];
+
+    var update_book_get = "../src/AdminPage/update_book_get.php";
+    var update_book_post = "../src/AdminPage/update_book_post.php"; 
+
+    // GET book details
+    $.ajax({
+        type: 'GET',
+        url: update_book_get,
+        data: { "book_id": update_book_id },
+        success: function(details) {
+            // fill out form values
+            console.log(details)
+            $('#update-title').val("BookTitle");
+
+        },
+    });
+
+    // POST updated book details
+    $("#update-book-btn").click(function() {
+        $.ajax({
+            type: 'POST',
+            url: update_book_post,
+            data: { "book_id": update_book_id },
+            success: function(response) {
 
             },
-          });
+        });
     });
 });

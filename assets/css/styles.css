@@ -71,6 +71,14 @@ a:hover {
 }
 
 /* TODO blue theme button */
+.blue-theme-btn {
+  background-color: var(--blue-theme);
+  color: var(--light-grey)
+}
+
+.blue-theme-btn:hover {
+  color: var(--light-yellow-theme);
+}
 
 /* TODO yellow theme button */
 
@@ -242,6 +250,15 @@ a:hover {
   opacity: 1;
 }
 
+.update-book, .update-user {
+  color: olive;
+}
+
+.update-book:hover, .update-user:hover {
+  color: darkolivegreen;
+  font-size: larger;
+}
+
 .delete-book, .delete-user, .delete-customer {
   color: salmon;
 }
@@ -308,6 +325,13 @@ a:hover {
 
 .book-author {
   color: var(--blue-theme);
+  font-size: 16px;
+}
+
+.book-price {
+  background-color: var(--blue-theme);
+  font-size: 16px;
+  font-weight: normal !important;
 }
 
 .add-cart-btn {

@@ -1,12 +1,19 @@
-<div class="row book-details" style="padding: 5px;">
-    <div class="col-4 book-detail-preview">
-        <img src="../assets/img/book-samples/tlor.jpeg" alt="Lord of the Rings" width="200"> <br>
-        <div class="book-detail-title" style="font-weight: bold;">
-            "The Lord of the Rings", J. R. R. Tolkien (1995)</div>
-        <span class="book-detail-price" style="font-size: 20px;">
-            €30.00</span> <br> <br>
-        Stocks available: <span class="stock-detail">10</span> <br>
-        <button type="button" class="btn btn-info">ADD TO CART</button>
+<div class="row book-details" style="padding: 5px; margin-top:10px;">
+    <div class="col-4 book-detail-preview text-center">
+        <img src="../assets/img/book-samples/tlor.jpeg" alt="Lord of the Rings" width="200">
+        <br>
+        <span class="book-title">The Lord of the Rings</span> <br>
+        <span class="book-author">J. R. R. Tolkien (1995)</span> <br>
+        <span class="badge badge-pill badge-secondary book-price">€30.00</span>
+        <br>
+        <br>
+        <span style="color: #396273">
+        Stocks available:<span class="stock-detail">10</span>
+        </span>
+        <br>
+        <br>
+        <em class="fas fa-cart-plus add-cart-btn"></em>
+        <em class="fas fa-heart add-wlist-btn"></em>
     </div>       
 
     <div class="col-8">

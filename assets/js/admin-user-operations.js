@@ -35,3 +35,37 @@ $('.delete-user').click(function() {
         });
     });
 });
+
+
+$('.update-user').click(function() {
+    var user_id = $(this).attr('id').split("-")[1];
+    var username = $(this).attr('username');
+    var customer_id = $(this).attr('customer-id');
+    var admin_permission = $(this).attr('admin-permission');
+    
+    $('input:checkbox').prop('checked', false);
+
+
+    $("#update-userid").val(user_id);
+    $("#update-username").val(username);
+    $("#update-customerid").val(customer_id);
+    if (admin_permission == 1) {
+        $("#update-permission").prop('checked', true);
+    } else if (admin_permission == 0){
+        $("#update-permission").prop('checked', false);
+    }
+
+    var update_post = "../src/AdminPage/update_user_post.php";
+    
+    $("#update-user-btn").click(function() {
+        $.ajax({
+            type: 'POST',
+            url: update_post,
+            data: { "user_id": user_id },
+            success: function(response) {
+                console.log(response);
+
+            },
+        });
+    });
+});

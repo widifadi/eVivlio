@@ -252,11 +252,11 @@ a:hover {
   opacity: 1;
 }
 
-.update-book, .update-user {
+.update-book, .update-user, .update-customer {
   color: olive;
 }
 
-.update-book:hover, .update-user:hover {
+.update-book:hover, .update-user:hover, .update-customer:hover {
   color: darkolivegreen;
   font-size: larger;
 }

@@ -40,7 +40,7 @@
             ?>
             <tr>
                 <td>
-                    <em class="fas fa-user-edit"></em>
+                    <em class="fas fa-user-edit update-customer"></em>
                     <em class="fas fa-trash-alt delete-customer"
                         id="deletecustomer-<?php echo $customer_id ?>"
                         username='<?php echo $user_name ?>'

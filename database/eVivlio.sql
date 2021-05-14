@@ -387,3 +387,17 @@ CREATE TABLE `feedback` (
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedback_email`(20));
 COMMIT;
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `order_id` int(50) NOT NULL,
+  `customer_id` int(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `order_date` date NOT NULL,
+  `order_content` varchar(250) NOT NULL,
+  `order_value` decimal(5,2) NOT NULL,
+  `order_status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

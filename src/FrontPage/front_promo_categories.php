@@ -1,8 +1,8 @@
+<!-- TODO alphabetical -->
 <div class="row" id="promo-categories">
-
-    <div class="col" id="">
+    <div class="col" id="feature-promos">
         <span class="subtitle">Promos</span>
-        <div id="carouselExampleIndicators" class="carousel slide feature-promos" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -10,13 +10,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img class="d-block w-100" src="../assets/img/stack.png" alt="First slide">
+                <img class="d-block w-100" src="../assets/img/promos/new-release.png" alt="New Release">
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="../assets/img/brown-books.png" alt="Second slide">
+                <img class="d-block w-100" src="../assets/img/promos/summer-sale.png" alt="Summer Sale">
                 </div>
                 <div class="carousel-item">
-                <img class="d-block w-100" src="../assets/img/book.png" alt="Third slide">
+                <img class="d-block w-100" src="../assets/img/promos/coming-soon.png" alt="Coming soon">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -36,6 +36,7 @@
             <div class="col book-category-div">
                 <img src="../assets/img/medieval.png" alt="history" width="100px"
                     class="book-category-image">
+                    <!-- Add link to category -->
                 <div class="book-category-middle">History</div>
             </div>
             <div class="col book-category-div">
@@ -48,25 +49,18 @@
                     class="book-category-image">
                 <div class="book-category-middle">Literature</div>
             </div>
-        </div>
-        <div class="row"> 
             <div class="col book-category-div">
                 <img src="../assets/img/books-glasses.png" alt="scitech" width="100px"
                     class="book-category-image">
                 <div class="book-category-middle">Science & Technology</div>
             </div>
-            <div class="col book-category-div">
-                <img src="../assets/img/earth-globe.png" alt="science fiction" width="100px"
-                    class="book-category-image">
-                <div class="book-category-middle">Geography</div>
-            </div>
+        </div>
+        <div class="row"> 
             <div class="col book-category-div">
                 <img src="../assets/img/mystery.png" alt="Philosophy" width="100px"
                     class="book-category-image">
                     <div class="book-category-middle">Philosophy</div>
             </div>
-        </div>
-        <div class="row"> 
             <div class="col book-category-div">
                 <img src="../assets/img/books-card.png" alt="business" width="100px"
                     class="book-category-image">

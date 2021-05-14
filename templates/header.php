@@ -7,14 +7,17 @@
 
     <!-- Bootstrap CSS and JS -->
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <script src="../assets/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="../assets/js/jquery-3.5.1.min.js"></script>
     <script src="../assets/js/bootstrap.bundle.min.js"></script>
 
     <link href="../assets/fontawesome-free-5.15.3-web/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <?php require_once("../config/config.php"); ?>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
             <a href="index.php">
                 <img src="../assets/img/open-book-back.png" alt="eVivlío logo" 
@@ -30,15 +33,64 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a href="catalog.php">
-                    <button class="btn menu-btn">Book Catalogue</button>
+                    <button class="btn menu-btn" id="catalog-btn">Book Catalogue</button>
                 </a>
             </div>
             <div class="navbar-nav ml-auto">
-                <button class="btn menu-btn">My Page</button>
-                <button class="btn menu-btn">
-                    <i class="fas fa-sign-in-alt"></i>
-                    Login
-                </button>
+                <!-- IF a user that is not admin is logged in -->
+                <?php
+                    session_start();
+                    if (isset($_SESSION['user']) && $_SESSION['admin_permission'] == 0) {
+                ?>
+                <a href="my_page.php">
+                    <button class="btn menu-btn" id="mypage-btn">
+                        <em class="fas fa-user"></em> My Page
+                    </button>
+                </a>
+                <a href="cart.php">
+                    <button class="btn menu-btn" id="cart-btn">
+                        <em class="fas fa-shopping-cart"></em>
+                    </button>
+                </a>
+
+                <?php
+                    }
+                    // IF an admin user is logged in
+                    if(isset($_SESSION['user']) && $_SESSION['admin_permission'] == 1) {
+                ?>
+                <a href="admin_page.php">
+                    <button class="btn menu-btn" id="adminpage-btn">
+                        <em class="fas fa-wrench"></em> Admin Page
+                    </button>
+                </a>
+
+                <?php
+                    }
+
+                    // IF a user is not logged in
+                    if(!isset($_SESSION['user'])) {
+                ?>
+                <a href="signup_login.php">
+                    <button class="btn menu-btn" id="loginpage-btn">
+                        <em class="fas fa-sign-in-alt"></em>
+                    </button>
+                </a>
+
+                <?php
+                    }
+
+                    // IF a user is logged in
+                    if(isset($_SESSION['user'])) {
+                ?>
+                <a href="logout_process.php">
+                    <button class="btn menu-btn">
+                        <em class="fas fa-sign-out-alt"></em>
+                    </button>
+                </a>
+                <!-- close if statement -->
+                <?php    
+                    } 
+                ?>
             </div>
         </div>
     </nav>

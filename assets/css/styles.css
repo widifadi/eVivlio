@@ -24,10 +24,64 @@ body {
   height: 50px;
 }
 
-.menu-button {
-  border: 1px solid var(--blue-theme);
+.menu-btn {
+  /* background-image: url("../img/menu-btn-light.png"); */
+  background-size: cover;
+  margin-left: 2px;
+  /* border: 1px solid var(--blue-theme); */
   color: var(--blue-theme);
 }
+
+.activePage {
+  background-color: var(--blue-theme);
+  color: var(--light-grey);
+}
+
+.activePage:hover {
+  color: var(--light-yellow-theme);
+}
+
+a {
+  color: var(--light-yellow-theme);
+}
+
+a:hover {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+.title-link span {
+  color: var(--blue-theme);
+}
+
+#logout-message {
+  margin-top: 100px;
+  border-radius: 10px;
+  padding: 50px;
+  background-color: var(--blue-theme);
+  width: 50%;
+  color: var(--light-grey);
+  text-align: center;
+}
+
+#logout-message button {
+  background-color: var(--light-yellow-theme);
+  border: none;
+  color: var(--blue-theme);
+}
+
+/* TODO blue theme button */
+.blue-theme-btn {
+  background-color: var(--blue-theme);
+  color: var(--light-grey)
+}
+
+.blue-theme-btn:hover {
+  color: var(--light-yellow-theme);
+}
+
+/* TODO yellow theme button */
+
 
 /* Front page start */
 #front-page {
@@ -81,26 +135,84 @@ body {
   color: var(--dark-orange);
 }
 
-/* Front page end */
-
-
-.parallax {
-    /* The image used */
-    /* background-image: url("img_parallax.jpg"); */
-  
-    /* Set a specific height */
-    min-height: 500px;
-  
-    /* Create the parallax scrolling effect */
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-#promo-categories, #features-div {
+#promo-categories #features-div {
   padding: 20px;
 }
+
+.parallax {
+  /* The image used */
+  /* background-image: url("img_parallax.jpg"); */
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+/* Front page end */
+
+/* SignUp Login page start */
+#login-form, #signup-form {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: var(--blue-theme);
+  color: var(--light-yellow-theme);
+}
+
+#login-btn, #signup-btn {
+  background-color: var(--light-yellow-theme);
+  color: var(--blue-theme);
+  width: 200px;
+}
+
+#pills-login-tab, #pills-signup-tab {
+  border: 2px solid  var(--dark-orange);
+  color: var(--dark-orange);
+  margin-left: 10px;
+}
+
+#pills-login-tab.active, #pills-signup-tab.active {
+  background-color: var(--dark-orange);
+  color: var(--light-grey);
+}
+
+.signup-label {
+  text-align: right;
+}
+/* SignUp Login page end */
+
+/* Admin Page Start */
+.pills-admin-tab {
+  border: 2px solid  var(--blue-theme);
+  color: var(--blue-theme);
+  margin-left: 10px;
+}
+
+.pills-admin-tab.active {
+  color: var(--light-yellow-theme);
+  background-color: var(--blue-theme) !important;
+}
+
+.managebook-tab {
+  border: 2px solid  var(--light-yellow-theme) !important;
+  color: var(--yellow-theme);
+}
+
+.managebook-tab.active {
+  background-color: var(--light-yellow-theme) !important;
+}
+
+#managebook-content {
+  border: 1px solid  var(--light-yellow-theme) !important;
+}
+
+.addbook-label, .updatebook-label {
+  text-align: right;
+}
+/* Admin Page End */
 
 
 /* Book categories on front page start */
@@ -137,7 +249,26 @@ body {
 .book-category-div:hover .book-category-middle {
   opacity: 1;
 }
+
+.update-book, .update-user {
+  color: olive;
+}
+
+.update-book:hover, .update-user:hover {
+  color: darkolivegreen;
+  font-size: larger;
+}
+
+.delete-book, .delete-user, .delete-customer {
+  color: salmon;
+}
+
+.delete-book:hover, .delete-user:hover, .delete-customer:hover {
+  color: orangered;
+  font-size: larger;
+}
 /* Book categories on front page end */
+
 
 /* Features on front page start */
 .feature-div {
@@ -155,17 +286,26 @@ body {
   text-align: center;
 }
 
-.feature-promos {
+#feature-promos #feature-categories {
   padding: 20px;
+  height: 500px;
 }
 /* Features on front page start */
 
 
 /* BOOK CATALOGUE start */
-#book-categories {
-  margin-left: 10px;
-  margin-top: 20px;
-  border: solid var(--light-grey) 1px;
+.category-name {
+  color: var(--blue-theme);
+}
+
+.category-name:hover {
+  color: var(--dark-orange);
+  cursor: pointer;
+}
+
+.catalog-breadcrumbs {
+  background-color: var(--blue-theme);
+  border-radius: 5px;
 }
 
 #book-list {
@@ -173,13 +313,107 @@ body {
   margin-left: 10px;
 }
 
-.book {
+.book:hover {
+  cursor: pointer !important;
+  background-color: var(--light-grey);
+}
+
+.book-title {
+  color: var(--blue-theme);
+  font-size: 18px;
+}
+
+.book-author {
+  color: var(--blue-theme);
+  font-size: 16px;
+}
+
+.book-price {
+  background-color: var(--blue-theme);
+  font-size: 16px;
+  font-weight: normal !important;
+}
+
+.add-cart-btn {
+  color:darkolivegreen;
+  font-size: 20px;
+}
+
+.add-wlist-btn {
+  color:lightcoral;
+  font-size: 20px;
+}
+
+.add-cart-btn:hover, .add-wlist-btn:hover {
+  font-size: 24px;
+}
+
+.book-detail-tab {
+  color: var(--dark-orange);
+}
+
+.book-detail-tab.active {
+  background-color: var(--dark-orange) !important;
+  color: var(--light-grey) !important;
+  border-color: var(--dark-orange) !important;
+}
+
+.book-cover {
+  margin: auto;
+}
+/* BOOK CATALOGUE end */
+
+/* MY PAGE start*/
+#wishlist  #order-history #details-form #personal-detils{
+  margin-left: 10px;
+  margin-top: 20px;
   border: solid var(--light-grey) 1px;
+}
+
+.wl-book {
+  font-family: 'AmericanTypewriter';
+  font-size: 14px;
   margin: 2px 2px 2px 2px;
 }
 
-/* BOOK CATALOGUE end */
+.btn-mypage-menu {
+  width: 250px;
+  margin-top: 70px;
+  }
 
+.mypage-tab {
+  color: var(--dark-orange);
+  border: 2px solid var(--dark-orange);
+  border-radius: 0px;
+  margin-top: 20px;
+}
+
+.mypage-tab.active {
+  background-color: var(--dark-orange) !important;
+  color: var(--light-grey) !important;
+}
+/* MY PAGE end*/
+
+
+/* CONTACT US start */
+#contact-text {
+  margin-top: 20px;
+  margin-bottom: 40px ;
+  color: var(--dark-orange);
+  font-size: 14px;
+}
+.i-yellow {
+  color: var(--yellow-theme);
+}
+.contact-details {
+  color: var(--blue-theme);
+  font-size: 14px;
+}
+#faq{
+  margin-left: 10px;
+  margin-top: 10px;
+}
+/* CONTACT US end */
 
 footer {
   margin-top: auto;
@@ -189,12 +423,16 @@ footer {
 
 #about-us {
   text-align: center;
-  color: var(--light-yellow-theme);
-  padding: 2px;
+  color: var(--light-grey);
+  padding: 10px;
 }
 
 #contact-us {
   text-align: center;
-  color: var(--light-yellow-theme);
-  padding: 2px;
+  color: var(--light-grey);
+  padding: 10px;
+}
+
+#contact-items {
+  text-align: left;
 }

@@ -370,3 +370,20 @@ ALTER TABLE `wishlists`
 ALTER TABLE `wishlists`
   ADD CONSTRAINT `wishlist_fk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
   ADD CONSTRAINT `wishlist_fk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`);
+  --
+-- Table structure for table `feedback`
+--
+
+CREATE TABLE `feedback` (
+  `feedback_name` varchar(50) NOT NULL,
+  `feedback_email` varchar(50) NOT NULL,
+  `feedback_message` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+--
+-- Indexes for table `feedback`
+--
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedback_email`(20));
+COMMIT;

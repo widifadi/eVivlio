@@ -48,24 +48,39 @@ $('.update-book').click(function() {
         success: function(response) {
             // fill out form values
             var details = jQuery.parseJSON(response);
+            $('input:checkbox').prop('checked', false);
 
             $('#update-isbn').val(details.isbn);
             $('#update-title').val(details.title);
+
             // TODO cover
+            var cover_path = "../assets/img/book-covers/" + details.book_cover;
+            $("#update-cover").attr("src", cover_path);
+
             // TODO author
             $('#update-author1-firstname').val(details.author_fname);
             $('#update-author1-lastname').val(details.author_lname);
             $('#update-publisher').val(details.publisher);
             $('#update-year').val(details.publishing_year);
-            // TODO category
-            console.log(details.category);
+            
+            // categories
+            details.category.forEach(function (category, index) {
+                console.log(category);
+                $('.update-category#' + category).prop('checked', true);
+            });
+
 
             $('#update-pages').val(details.pages);
             $('#update-summary').val(details.summary);
             $('#update-price').val(details.price);
             $('#update-stocks').val(details.stock);
-            // TODO feature            
 
+            // feature  
+            console.log(details.features);
+            details.features.forEach(function (feature, index) {
+                $('.update-features#' + feature).prop('checked', true);
+            });
+          
         },
     });
 

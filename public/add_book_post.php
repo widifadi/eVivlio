@@ -28,6 +28,8 @@
             $ext = end((explode(".", $cover))); # extra () to prevent notice
             $upload_directory .= $isbn . "." . $ext;
 			move_uploaded_file($_FILES['cover']['tmp_name'], $upload_directory);
+
+            $book_cover = $isbn . "." . $ext;
 		}
 
         $author_firstname = $_POST['author_firstname'];
@@ -106,9 +108,9 @@
 
         $stock = $_POST['stocks'];
 
-        $addbook_query = "INSERT INTO book (isbn, title, author, publisher, publishing_year, 
+        $addbook_query = "INSERT INTO book (isbn, title, book_cover, author, publisher, publishing_year, 
                                             category, pages, summary, price, stock)
-                            VALUES ('$isbn', '$title', '$author_id', '$publisher_id', '$year', 
+                            VALUES ('$isbn', '$title', '$book_cover', '$author_id', '$publisher_id', '$year', 
                                             '$categories', '$pages', '$summary', '$price', '$stock' )";
 
 
@@ -148,6 +150,8 @@
                 }
             }
         }
+
+        header("location: admin_page.php#managebooks");
     }
 
     $conn->close();

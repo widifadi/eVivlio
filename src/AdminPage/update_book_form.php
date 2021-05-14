@@ -19,7 +19,8 @@
     <div class="form-group row">
         <label for="cover" class="col-sm-3 col-form-label updatebook-label">Book Cover</label>
         <div class="col-sm-9">
-        <input type="file" name="cover" id="cover">
+        <img class="" id="update-cover" src="" width="100px" alt="book cover"> <br>
+        Choose new cover: <input type="file" name="cover" id="cover">
         </div>
     </div>
 
@@ -60,36 +61,36 @@
         <div class="col-sm-9 form-check">
             <div class="row">
                 <div class="col">
-                    <input class="form-check-input" type="checkbox" name="category[]" 
+                    <input class="form-check-input update-category" type="checkbox" name="category[]" 
                         value="Business" id="business">
                     <label class="form-check-label" for="business">Business</label><br>
 
-                    <input class="form-check-input" type="checkbox" name="category[]" 
+                    <input class="form-check-input update-category" type="checkbox" name="category[]" 
                         value="Children Collection" id="childrens">
                     <label class="form-check-label" for="childrens">Children's Collection</label><br>
 
-                    <input class="form-check-input" type="checkbox" name="category[]" 
+                    <input class="form-check-input update-category" type="checkbox" name="category[]" 
                         value="History" id="history"> 
                     <label class="form-check-label" for="history">History</label><br>                    
 
-                    <input class="form-check-input" type="checkbox" name="category[]" 
+                    <input class="form-check-input update-category" type="checkbox" name="category[]" 
                         value="Literature" id="literature">
                     <label class="form-check-label" for="literature">Literature</label><br>                
                 </div>
                 <div class="col">
-                    <input class="form-check-input" type="checkbox" name="category[]" 
+                    <input class="form-check-input update-category" type="checkbox" name="category[]" 
                         value="Novels" id="novels">
                     <label class="form-check-label" for="novels">Novels</label><br>
 
-                    <input class="form-check-input" type="checkbox" name="category[]"
+                    <input class="form-check-input update-category" type="checkbox" name="category[]"
                         value="Science Fiction" id="scifi">
                     <label class="form-check-label" for="scifi">Science Fiction</label><br>
 
-                    <input class="form-check-input" type="checkbox" name="category[]" 
+                    <input class="form-check-input update-category" type="checkbox" name="category[]" 
                         value="Science and Technology" id="scitech">
                     <label class="form-check-label" for="scitech">Science & Technology</label><br>
 
-                    <input class="form-check-input" type="checkbox" name="category[]" 
+                    <input class="form-check-input update-category" type="checkbox" name="category[]" 
                         value="Philosophy" id="philo">
                     <label class="form-check-label" for="philo">Philosophy</label><br>                                    
                 </div>
@@ -134,15 +135,15 @@
     <div class="form-group row">
         <label for="feature" class="col-sm-3 col-form-label updatebook-label">Feature</label>
         <div class="col-sm-9 form-check">
-            <input class="form-check-input" type="checkbox" name="feature[]" 
+            <input class="form-check-input update-features" type="checkbox" name="feature[]" 
                 value="best_seller" id="best-seller"> 
             <label class="form-check-label" for="best-seller">Best Seller of the Month</label><br>
 
-            <input class="form-check-input" type="checkbox" name="feature[]" 
+            <input class="form-check-input update-features" type="checkbox" name="feature[]" 
                 value="editors_pick" id="editors-pick"> 
             <label class="form-check-label" for="editors-pick">Editor's Pick</label><br>
 
-            <input class="form-check-input" type="checkbox" name="feature[]" 
+            <input class="form-check-input update-features" type="checkbox" name="feature[]" 
                 value="new_release" id="new-release"> 
             <label class="form-check-label" for="new-release">New Release</label><br>
         </div>

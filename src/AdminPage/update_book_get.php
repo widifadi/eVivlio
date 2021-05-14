@@ -44,44 +44,33 @@
                 $category_query = "SELECT * FROM category WHERE category_id=$category_id ";
                 $category_result = mysqli_query($conn, $category_query);
                 $category_row = mysqli_fetch_assoc($category_result);
-                $category_name = $category_row['category_name'];
-
+                $category_name = $category_row['category_code'];
                 array_push($category_list, $category_name);
-
-                // if (!next($categories)) {
-                //     $category_list .= $category_name;
-                // } else {
-                //     $category_list .= $category_name . ", ";
-                // }
-
-
             }
 
-        // TODO query feature
+        // features
         $features = array();
-
         $bestseller_query = "SELECT * FROM best_seller WHERE book_id=$book_id";
         $bestseller_result = mysqli_query($conn, $bestseller_query);
         if (mysqli_num_rows($bestseller_result)) {
-            array_push($features, "Best Seller");
+            array_push($features, "best-seller");
         }
 
         $new_query = "SELECT * FROM new_release WHERE book_id=$book_id";
         $new_result = mysqli_query($conn, $new_query);
         if (mysqli_num_rows($new_result)) {
-            array_push($features, "New Release");
+            array_push($features, "new-release");
         }
 
         $pick_query = "SELECT * FROM editors_pick WHERE book_id=$book_id";
         $pick_result = mysqli_query($conn, $pick_query);
         if (mysqli_num_rows($pick_result)) {
-            array_push($features, "Editor's Pick");
+            array_push($features, "editors-pick");
         }
 
-        implode(", ", $features);
-
         $book_details = array('isbn' => $book_row['isbn'], 
-                            'title' => $book_row['title'], 
+                            'title' => $book_row['title'],
+                            'book_cover' => $book_row['book_cover'],
                             'author_fname' => $author_fname, // TODO multiple authors
                             'author_lname' => $author_lname,
                             'publisher' => $publisher,
@@ -90,9 +79,8 @@
                             'pages' => $book_row['pages'],
                             'summary' => $book_row['summary'],
                             'price' => $book_row['price'],
-                            'stock' => $book_row['stock']);
-
-        // TODO features
+                            'stock' => $book_row['stock'],
+                            'features' => $features);
 
         // echo result in JSON format
         echo json_encode($book_details);

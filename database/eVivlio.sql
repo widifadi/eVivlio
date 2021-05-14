@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 11, 2021 at 05:59 PM
+-- Generation Time: May 14, 2021 at 11:16 AM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -48,6 +48,7 @@ CREATE TABLE `book` (
   `book_id` int(11) NOT NULL,
   `isbn` varchar(17) NOT NULL,
   `title` varchar(100) NOT NULL,
+  `book_cover` varchar(200) NOT NULL,
   `author` int(11) NOT NULL,
   `publisher` int(11) NOT NULL,
   `publishing_year` int(4) NOT NULL,
@@ -66,6 +67,7 @@ CREATE TABLE `book` (
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
+  `category_code` varchar(50) NOT NULL,
   `category_name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -73,15 +75,15 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`category_id`, `category_name`) VALUES
-(1, 'Business'),
-(2, 'Children Collection'),
-(3, 'History'),
-(4, 'Literature'),
-(5, 'Novels'),
-(6, 'Science Fiction'),
-(7, 'Science and Technology'),
-(8, 'Philosophy');
+INSERT INTO `category` (`category_id`, `category_code`, `category_name`) VALUES
+(1, 'business', 'Business'),
+(2, 'childrens', 'Children Collection'),
+(3, 'history', 'History'),
+(4, 'literature', 'Literature'),
+(5, 'novels', 'Novels'),
+(6, 'scifi', 'Science Fiction'),
+(7, 'scitech', 'Science and Technology'),
+(8, 'philo', 'Philosophy');
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,7 @@ CREATE TABLE `customer` (
   `last_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `username` varchar(12) NOT NULL,
-  `birthdate` varchar(50) NOT NULL COMMENT 'should be date type',
+  `birthdate` varchar(50) NOT NULL,
   `phone` varchar(50) NOT NULL,
   `street_address` varchar(100) NOT NULL,
   `city` varchar(50) NOT NULL,
@@ -145,6 +147,13 @@ CREATE TABLE `user` (
   `password` varchar(32) NOT NULL,
   `admin_permission` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`user_id`, `username`, `password`, `admin_permission`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 
 --
 -- Indexes for dumped tables
@@ -249,7 +258,7 @@ ALTER TABLE `publisher`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables

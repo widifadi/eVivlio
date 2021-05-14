@@ -64,6 +64,46 @@
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" 
                 aria-labelledby="reviews-tab" style="padding: 10px;">
+                <div class="book-reviews">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="average-rating">
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating"></span>
+                                <span class="fa fa-star user-rating"></span>
+                            </div>
+                            <blockquote class="blockquote mb-0">
+                            <p>A customer's review.</p>
+                            <footer class="blockquote-footer">
+                                <cite title="username" id="username">Reviewer_username</cite>
+                            </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="average-rating">
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating"></span>
+                            </div>
+                            <blockquote class="blockquote mb-0">
+                            <p>Another customer's review.</p>
+                            <footer class="blockquote-footer">
+                                <cite title="username" id="username">Reviewer_username</cite>
+                            </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <br> 
+                <br>
                 <div class="card text-center">
                     <div class="card-header" style="color:#396273;">
                         Post a Review
@@ -96,7 +136,7 @@
                                 </div>
                             </div>
                             <div class="col-auto">
-                                <button type="submit" class="btn blue-theme-btn mb-2" 
+                                <button type="submit" class="btn yellow-theme-btn mb-2" 
                                     name="submit-review-btn" style="width:100%;">
                                     Submit Review
                                 </button>
@@ -104,10 +144,7 @@
                         </form>
                     </div>
                 </div>
-                <br>
-                <div class="book-reviews">
 
-                </div>
             </div>
         </div>
         <!-- Tabs content -->

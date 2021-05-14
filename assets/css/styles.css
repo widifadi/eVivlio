@@ -70,7 +70,6 @@ a:hover {
   color: var(--blue-theme);
 }
 
-/* TODO blue theme button */
 .blue-theme-btn {
   background-color: var(--blue-theme);
   color: var(--light-grey)
@@ -80,7 +79,10 @@ a:hover {
   color: var(--light-yellow-theme);
 }
 
-/* TODO yellow theme button */
+.yellow-theme-btn {
+  background-color: var(--yellow-theme);
+  color: var(--light-grey)
+}
 
 
 /* Front page start */
@@ -404,7 +406,13 @@ a:hover {
   color: #c59b08;
 }
 
-/* Modified from: https://github.com/mukulkant/Star-rating-using-pure-css */
+.user-rating {
+  color: var(--light-yellow-theme)
+}
+
+.user-rating.checked {
+  color: var(--orange);
+}
 /* BOOK CATALOGUE end */
 
 /* MY PAGE start*/
@@ -459,7 +467,7 @@ a:hover {
 }
 /* CONTACT US end */
 
-footer {
+.page-footer {
   margin-top: auto;
   height: 250px;
   background-color: var(--blue-theme);

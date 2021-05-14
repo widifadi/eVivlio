@@ -294,13 +294,14 @@ ALTER TABLE `new_release`
 --
 
 CREATE TABLE `cart` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `book_name` varchar(255) NOT NULL,
   `price` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `qty` int(10) NOT NULL,
+  `quantity` int(10) NOT NULL,
   `total_price` varchar(100) NOT NULL,
-  `isbn` varchar(255) NOT NULL
+  `book_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -311,7 +312,7 @@ CREATE TABLE `cart` (
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`cart_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -321,18 +322,26 @@ ALTER TABLE `cart`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_fk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  ADD CONSTRAINT `cart_fk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`);
 
 --
 -- Table structure for table `wishlists`
 --
 
 CREATE TABLE `wishlists` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
+  `wishlist_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `book_name` varchar(255) NOT NULL,
   `price` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
-  `isbn` varchar(255) NOT NULL
+  `book_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -343,7 +352,7 @@ CREATE TABLE `wishlists` (
 -- Indexes for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`wishlist_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -353,4 +362,11 @@ ALTER TABLE `wishlists`
 -- AUTO_INCREMENT for table `wishlists`
 --
 ALTER TABLE `wishlists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD CONSTRAINT `wishlist_fk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
+  ADD CONSTRAINT `wishlist_fk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`);

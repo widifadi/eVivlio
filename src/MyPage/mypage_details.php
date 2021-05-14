@@ -103,7 +103,7 @@
             </div>
             <div class="col-8 text-secondary">
                 <?php 
-                    echo  $customer_details['street_address'].",". $customer_details['city'].",". $customer_details['state'];
+                    echo  $customer_details['street_address'].", ". $customer_details['city'].", ". $customer_details['state'];
                 ?>
             </div>
         </div>

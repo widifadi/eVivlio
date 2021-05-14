@@ -60,7 +60,6 @@
                         ?>
                         <tr id=<?php echo $book_id ?> >
                             <td>
-                                <!-- TODO modify hover color and cursor -->
                                 <em class="fas fa-edit update-book" 
                                     id="updatebook-<?php echo $book_id ?>"
                                     data-toggle="modal" data-target=".update-book-modal"></em>
@@ -72,7 +71,9 @@
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['title']; ?></td>
+                            <!-- TODO get author name -->
                             <td><?php echo $row['author']; ?></td>
+                            <!-- TODO get publisher name -->
                             <td><?php echo $row['publisher']; ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
                             <td>

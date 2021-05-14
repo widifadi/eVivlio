@@ -34,7 +34,7 @@
             ?>
             <tr>
                 <td>
-                    <em class="fas fa-user-edit"></em>
+                    <em class="fas fa-user-edit update-user"></em>
                     <em class="fas fa-trash-alt delete-user"
                         id="deleteuser-<?php echo $user_id ?>" 
                         username='<?php echo $user_name ?>'

@@ -16,7 +16,7 @@
         <em class="fas fa-heart add-wlist-btn"></em>
     </div>
 
-    <div class="col-8">
+    <div class="col-8 book-detail-div">
         <!-- Tabs navs -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
@@ -38,7 +38,6 @@
         <!-- Tabs navs -->
         
         <!-- Tabs content -->
-        <!-- TODO fixed size? -->
         <div class="tab-content" id="myTabContent" style="border: solid 1px #F2F2F2;">
             <div class="tab-pane fade show active" id="summary" role="tabpanel" 
                 aria-labelledby="summary-tab" style="font-size: 14px; padding: 10px;">
@@ -55,13 +54,97 @@
                 aria-labelledby="details-tab" style="padding: 10px;">
                 Publisher: <span class="publisher">HarperCollins Publishers</span>
                 <br>
-                Publication Date: <span class="publishing-date">June 1995</span>
+                Publication Year: <span class="publishing-year"> 1995</span>
                 <br>
-                PAPERBACK / SOFTBACK - ISBN: <span class="ISBN">978-0-26110-325-2</span>
+                ISBN: <span class="isbn">978-0-26110-325-2</span>
+                <br>
+                Number of Pages: <span class="pages">102</span>
+                <br>
+                Categories: <span class="categories"></span>
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" 
                 aria-labelledby="reviews-tab" style="padding: 10px;">
-                Reviews go here
+                <div class="book-reviews">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="average-rating">
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating"></span>
+                                <span class="fa fa-star user-rating"></span>
+                            </div>
+                            <blockquote class="blockquote mb-0">
+                            <p>A customer's review.</p>
+                            <footer class="blockquote-footer">
+                                <cite title="username" id="username">Reviewer_username</cite>
+                            </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="average-rating">
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating checked"></span>
+                                <span class="fa fa-star user-rating"></span>
+                            </div>
+                            <blockquote class="blockquote mb-0">
+                            <p>Another customer's review.</p>
+                            <footer class="blockquote-footer">
+                                <cite title="username" id="username">Reviewer_username</cite>
+                            </footer>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <br> 
+                <br>
+                <div class="card text-center">
+                    <div class="card-header" style="color:#396273;">
+                        Post a Review
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            <div class="form-group row">
+                                <div class="rate mx-auto" id="book-rating">
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="raratingte" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group mb-2">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <em class="fa fa-comment" style="color:#396273;"></em>
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control" rows="5" id="review" name="review" 
+                                        placeholder="Write a review." required></textarea>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <button type="submit" class="btn yellow-theme-btn mb-2" 
+                                    name="submit-review-btn" style="width:100%;">
+                                    Submit Review
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             </div>
         </div>
         <!-- Tabs content -->
@@ -69,3 +152,4 @@
     </div>
 
 </div>
+

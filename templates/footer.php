@@ -1,4 +1,4 @@
-    <footer class="footer">
+    <footer class="footer page-footer">
         <div class="container">
             <div class="row">
                 <div class="col-6" id="about-us">

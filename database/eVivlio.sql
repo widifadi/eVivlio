@@ -329,7 +329,7 @@ ALTER TABLE `cart`
 
 CREATE TABLE `wishlists` (
   `id` int(11) NOT NULL,
-  `Name` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `price` varchar(50) NOT NULL,
   `image` varchar(255) NOT NULL,
   `isbn` varchar(255) NOT NULL

@@ -78,18 +78,16 @@
                             <td>
                                 <?php 
                                     $categories = explode(",", $row['category']);
+                                    $category_list = array();
                                     foreach ($categories as $category_id) {
                                         $category_query = "SELECT * FROM category WHERE category_id=$category_id ";
                                         $category_result = mysqli_query($conn, $category_query);
                                         $category_row = mysqli_fetch_assoc($category_result);
                                         $category_name = $category_row['category_name'];
 
-                                        if (!next($categories)) {
-                                            echo $category_name;
-                                        } else {
-                                            echo $category_name . ", ";
-                                        }
+                                        array_push($category_list, $category_name);
                                     }
+                                    echo implode(", ", $category_list);
                                 ?>
                             </td>
                             <td><?php echo $row['pages']; ?></td>

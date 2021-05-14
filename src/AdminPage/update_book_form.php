@@ -3,7 +3,7 @@
     <div class="form-group row">
         <label for="isbn" class="col-sm-3 col-form-label updatebook-label">ISBN</label>
         <div class="col-sm-9">
-        <input type="text" class="form-control" id="isbn" name="isbn" 
+        <input type="text" class="form-control" id="update-isbn" name="isbn" 
             placeholder="ISBN" required>
         </div>
     </div>
@@ -28,11 +28,11 @@
         <div class="col-sm-9">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" name="author_firstname" 
+                    <input type="text" class="form-control" id="update-author1-firstname" name="author_firstname" 
                         placeholder="First Name" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="author_lastname" 
+                    <input type="text" class="form-control" id="update-author1-lastname" name="author_lastname" 
                         placeholder="Last Name" required>
                 </div>
             </div>
@@ -42,7 +42,7 @@
     <div class="form-group row">
         <label for="publisher" class="col-sm-3 col-form-label updatebook-label">Publisher</label>
         <div class="col-sm-9">
-        <input type="text" class="form-control" id="publisher" name="publisher" 
+        <input type="text" class="form-control" id="update-publisher" name="publisher" 
             placeholder="Publisher" required>
         </div>
     </div>
@@ -50,7 +50,7 @@
     <div class="form-group row">
         <label for="year" class="col-sm-3 col-form-label updatebook-label">Publishing Year</label>
         <div class="col-sm-9">
-        <input type="number" class="form-control" id="year" name="year" 
+        <input type="number" class="form-control" id="update-year" name="year" 
             placeholder="Publishing Year" required>
         </div>
     </div>
@@ -100,7 +100,7 @@
     <div class="form-group row">
         <label for="pages" class="col-sm-3 col-form-label updatebook-label">Number of Pages</label>
         <div class="col-sm-9">
-        <input type="number" class="form-control" id="pages" name="pages" 
+        <input type="number" class="form-control" id="update-pages" name="pages" 
             placeholder="Number of Pages" required>
         </div>
     </div>
@@ -108,7 +108,7 @@
     <div class="form-group row">
         <label for="summary" class="col-sm-3 col-form-label updatebook-label">Summary</label>
         <div class="col-sm-9">
-            <textarea class="form-control" id="summary" name="summary" rows="5" required></textarea>
+            <textarea class="form-control" id="update-summary" name="summary" rows="5" required></textarea>
         </div>
     </div>
 
@@ -118,7 +118,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text">€</span>
             </div>
-            <input type="number" step="0.01" class="form-control" id="price" name="price" 
+            <input type="number" step="0.01" class="form-control" id="update-price" name="price" 
                 placeholder="Price" required>
         </div>
     </div>
@@ -126,7 +126,7 @@
     <div class="form-group row">
         <label for="stocks" class="col-sm-3 col-form-label updatebook-label">Stocks Available</label>
         <div class="col-sm-9">
-        <input type="number" class="form-control" id="stocks" name="stocks" 
+        <input type="number" class="form-control" id="update-stocks" name="stocks" 
             placeholder="10" required>
         </div>
     </div>

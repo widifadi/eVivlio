@@ -45,10 +45,26 @@ $('.update-book').click(function() {
         type: 'GET',
         url: update_book_get,
         data: { "book_id": update_book_id },
-        success: function(details) {
+        success: function(response) {
             // fill out form values
-            console.log(details)
-            $('#update-title').val("BookTitle");
+            var details = jQuery.parseJSON(response);
+
+            $('#update-isbn').val(details.isbn);
+            $('#update-title').val(details.title);
+            // TODO cover
+            // TODO author
+            $('#update-author1-firstname').val(details.author_fname);
+            $('#update-author1-lastname').val(details.author_lname);
+            $('#update-publisher').val(details.publisher);
+            $('#update-year').val(details.publishing_year);
+            // TODO category
+            console.log(details.category);
+
+            $('#update-pages').val(details.pages);
+            $('#update-summary').val(details.summary);
+            $('#update-price').val(details.price);
+            $('#update-stocks').val(details.stock);
+            // TODO feature            
 
         },
     });

@@ -21,12 +21,72 @@
     if (mysqli_num_rows($book_result)) {
         $book_row = mysqli_fetch_assoc($book_result);
 
+        // author
+        // TODO multiple authors
+        $author_id = $book_row['author'];
+        $query_author = "SELECT * FROM author WHERE author_id=$author_id;";
+        $author_result = mysqli_query($conn, $query_author);
+        $author_row = mysqli_fetch_assoc($author_result);
+        $author_fname = $author_row['first_name'];
+        $author_lname = $author_row['last_name'];
+
+        // publisher
+        $publisher_id = $book_row['publisher'];
+        $query_publisher = "SELECT * FROM publisher WHERE publisher_id=$publisher_id;";
+        $publisher_result = mysqli_query($conn, $query_publisher);
+        $publisher_row = mysqli_fetch_assoc($publisher_result);
+        $publisher = $publisher_row['publisher_name'];
+
+        // categories
+        $category_list = array();
+        $categories = explode(",", $book_row['category']);
+            foreach ($categories as $category_id) {
+                $category_query = "SELECT * FROM category WHERE category_id=$category_id ";
+                $category_result = mysqli_query($conn, $category_query);
+                $category_row = mysqli_fetch_assoc($category_result);
+                $category_name = $category_row['category_name'];
+
+                array_push($category_list, $category_name);
+
+                // if (!next($categories)) {
+                //     $category_list .= $category_name;
+                // } else {
+                //     $category_list .= $category_name . ", ";
+                // }
+
+
+            }
+
+        // TODO query feature
+        $features = array();
+
+        $bestseller_query = "SELECT * FROM best_seller WHERE book_id=$book_id";
+        $bestseller_result = mysqli_query($conn, $bestseller_query);
+        if (mysqli_num_rows($bestseller_result)) {
+            array_push($features, "Best Seller");
+        }
+
+        $new_query = "SELECT * FROM new_release WHERE book_id=$book_id";
+        $new_result = mysqli_query($conn, $new_query);
+        if (mysqli_num_rows($new_result)) {
+            array_push($features, "New Release");
+        }
+
+        $pick_query = "SELECT * FROM editors_pick WHERE book_id=$book_id";
+        $pick_result = mysqli_query($conn, $pick_query);
+        if (mysqli_num_rows($pick_result)) {
+            array_push($features, "Editor's Pick");
+        }
+
+        implode(", ", $features);
+
         $book_details = array('isbn' => $book_row['isbn'], 
                             'title' => $book_row['title'], 
-                            'author' => $book_row['author'], // TODO
-                            'publisher' => $book_row['publisher'],  // TODO
+                            'author_fname' => $author_fname, // TODO multiple authors
+                            'author_lname' => $author_lname,
+                            'publisher' => $publisher,
                             'publishing_year' => $book_row['publishing_year'],
-                            'category' => $book_row['category'],
+                            'category' => $category_list,
                             'pages' => $book_row['pages'],
                             'summary' => $book_row['summary'],
                             'price' => $book_row['price'],

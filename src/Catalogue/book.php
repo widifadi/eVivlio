@@ -14,7 +14,7 @@
         <br>
         <em class="fas fa-cart-plus add-cart-btn"></em>
         <em class="fas fa-heart add-wlist-btn"></em>
-    </div>       
+    </div>
 
     <div class="col-8">
         <!-- Tabs navs -->

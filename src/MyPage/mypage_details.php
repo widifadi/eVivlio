@@ -36,11 +36,36 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="preview" role="tabpanel" 
                             aria-labelledby="preview-tab" style="font-size: 14px; padding: 10px;">
+                            <!-- PHP database connection -->
+                            <?php
+                                $servername = "localhost";
+                                $username = "root";
+                                $password = "root";
+                                $dbname = "eVivlio";
+
+                                // Create connection
+                                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                                // Check connection
+                                if ($conn->connect_error) {
+                                    die("Connection failed: " . $conn->connect_error);
+                                }
+
+                                // TODO get username from session
+                                $user_name = $_SESSION['user'];
+                                
+                                // TODO select customer table WHERE username = username
+
+                            ?>
                             <div class="row mt-3">
                                 <div class="col-3">
                                     <h6 class="mb">Full Name</h6>
                                 </div>
                                 <div class="col-8 text-secondary">
+                                    <?php 
+                                        echo "hello"
+                                        // TODO echo $query_result['first_name']
+                                    ?>
                                         Someone
                                 </div>
                             </div>

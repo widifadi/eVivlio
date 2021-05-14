@@ -8,10 +8,6 @@
                 <span class="book-author">J. R. R. Tolkien (1995)</span>
                 <br>
                 <span class="badge badge-pill badge-secondary book-price">€30.00</span>
-                <br>
-                <br>
-                <em class="fas fa-cart-plus add-cart-btn"></em>
-                <em class="fas fa-heart add-wlist-btn"></em>
         </div>
     </a>
 
@@ -24,10 +20,6 @@
                 <span class="book-author">Rhonda Byrne (2017)</span>
                 <br>
                 <span class="badge badge-pill badge-secondary book-price">€30.00</span>
-                <br>
-                <br>
-                <em class="fas fa-cart-plus add-cart-btn"></em>
-                <em class="fas fa-heart add-wlist-btn"></em>
         </div>
     </a>
 

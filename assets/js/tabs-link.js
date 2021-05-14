@@ -14,3 +14,13 @@ $(".nav-pills").find("li a").each(function(key, val) {
         location.hash = $(this).attr('href');
     });
 });
+
+$(".nav-tabs").find("li a").each(function(key, val) {
+    if (hash == $(val).attr('href')) {
+        $(val).click();
+    }
+    
+    $(val).click(function(ky, vl) {
+        location.hash = $(this).attr('href');
+    });
+});

@@ -55,6 +55,11 @@
                                 $user_name = $_SESSION['user'];
                                 
                                 // TODO select customer table WHERE username = username
+                                $customer_query = "SELECT * FROM customer WHERE username='$user_name' "; 
+                                $customer_result = mysqli_query($conn, $customer_query);
+                                $customer_details = mysqli_fetch_assoc($customer_result);
+                               
+                                
 
                             ?>
                             <div class="row mt-3">
@@ -63,10 +68,9 @@
                                 </div>
                                 <div class="col-8 text-secondary">
                                     <?php 
-                                        echo "hello"
-                                        // TODO echo $query_result['first_name']
+                                        echo  $customer_details['first_name'] ." ". $customer_details['last_name'];
                                     ?>
-                                        Someone
+                                        
                                 </div>
                             </div>
                             <div class="row"> 
@@ -74,7 +78,9 @@
                                     <h6 class="mb">Username</h6>
                                 </div>
                                 <div class="col-8 text-secondary">
-                                    someone_cool
+                                    <?php 
+                                        echo  $customer_details['username'];
+                                    ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -82,7 +88,9 @@
                                     <h6 class="mb">E-mail</h6>
                                 </div>
                                 <div class="col-8 text-secondary">
-                                    someone_cool@gmail.com
+                                    <?php 
+                                        echo  $customer_details['email'];
+                                    ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -90,7 +98,9 @@
                                     <h6 class="mb">Date of birth</h6>
                                 </div>
                                 <div class="col-8 text-secondary">
-                                    22/04/1998
+                                    <?php 
+                                        echo  $customer_details['birthdate'];
+                                    ?>
                                 </div>
                             </div>
                             <div class="row">
@@ -98,7 +108,19 @@
                                     <h6 class="mb">Contact Number</h6>
                                 </div>
                                 <div class="col-8 text-secondary">
-                                +3000000000
+                                    <?php 
+                                        echo  $customer_details['phone'];
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <h6 class="mb">Shipping Address</h6>
+                                </div>
+                                <div class="col-8 text-secondary">
+                                    <?php 
+                                        echo  $customer_details['street_address'].",". $customer_details['city'].",". $customer_details['state'];
+                                    ?>
                                 </div>
                             </div>
                         </div>

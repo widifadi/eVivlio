@@ -184,10 +184,10 @@ CREATE TABLE `feedback` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Table structure for table `customer_order`
 --
 
-CREATE TABLE `order` (
+CREATE TABLE `customer_order` (
   `order_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `order_date` date NOT NULL,

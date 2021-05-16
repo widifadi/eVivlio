@@ -23,8 +23,8 @@
         <!-- PHP database connection -->
         <?php
 
-        require_once("../functions/database/database_functions.php");
-        $conn=db_connection();
+            require_once ("../database/database_functions.php");
+            $conn=db_connection();
 
         /*
             $servername = "localhost";

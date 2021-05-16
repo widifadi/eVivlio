@@ -14,22 +14,8 @@
         </thead>
         <tbody>
             <?php 
-                // include("../../database/database_functions.php");
-                // $conn = db_connection();
-                
-                // TODO do sql connection only once for the whole app
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "evivlio";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+                include("../database/database_functions.php");
+                $conn = db_connection();
 
                 $query = "SELECT * FROM customer"; 
                 $result = mysqli_query($conn, $query); 
@@ -42,7 +28,8 @@
             <tr>
                 <td>
                     <em class="fas fa-user-edit update-customer"
-                        id="updatecustomer-<?php echo $customer_id ?>"></em>
+                        id="updatecustomer-<?php echo $customer_id ?>"
+                        data-toggle="modal" data-target=".update-customer-modal"></em>
                     <em class="fas fa-trash-alt delete-customer"
                         id="deletecustomer-<?php echo $customer_id ?>"
                         first-name='<?php echo $first_name ?>'
@@ -103,7 +90,7 @@
 
 <!-- Update Customer Modal -->
 <div class="modal fade update-customer-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Update User Details</h5>
@@ -112,7 +99,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <?php include("update_user_form.php") ?>
+            <?php include("update_customer_form.php") ?>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

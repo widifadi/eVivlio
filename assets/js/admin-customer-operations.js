@@ -38,3 +38,31 @@ $('.delete-customer').click(function() {
         });
     });
 });
+
+
+$('.update-customer').click(function() {
+    var update_customer_id = $(this).attr('id').split("-")[1];
+
+    var update_customer_get = "../src/AdminPage/update_customer_get.php";
+
+    // GET book details
+    $.ajax({
+        type: 'GET',
+        url: update_customer_get,
+        data: { "customer_id": update_customer_id },
+        success: function(response) {
+            var details = jQuery.parseJSON(response);
+
+            $('#update-customer-id').val(update_customer_id);
+            $('#update-firstName').val(details.first_name);
+            $('#update-lastName').val(details.last_name);
+            $('#update-email').val(details.email);
+            $('#update-birthdate').val(details.birthday);
+            $('#update-phone').val(details.phone);
+            $('#update-address').val(details.address);
+            $('#update-city').val(details.city);
+            $('#update-state').val(details.state);
+        },
+    });
+
+});

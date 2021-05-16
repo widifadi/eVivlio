@@ -44,7 +44,7 @@
             $user_name = $_SESSION['user'];
             
             // TODO select customer table WHERE username = username
-            $customer_query = "SELECT * FROM customer WHERE username='$user_name' "; 
+            $customer_query = "SELECT * FROM customer INNER JOIN user ON customer.customer_id=user.customer_id"; 
             $customer_result = mysqli_query($conn, $customer_query);
             $customer_details = mysqli_fetch_assoc($customer_result);
             
@@ -88,7 +88,7 @@
             </div>
             <div class="col-8 text-secondary">
                 <?php 
-                    echo  $customer_details['birthdate'];
+                    echo  $customer_details['birthday'];
                 ?>
             </div>
         </div>
@@ -108,7 +108,7 @@
             </div>
             <div class="col-8 text-secondary">
                 <?php 
-                    echo  $customer_details['street_address'].", ". $customer_details['city'].", ". $customer_details['state'];
+                    echo  $customer_details['address'].", ". $customer_details['city'].", ". $customer_details['state'];
                 ?>
             </div>
         </div>

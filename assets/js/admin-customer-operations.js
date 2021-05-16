@@ -1,6 +1,5 @@
 $('.delete-customer').click(function() {
     var customer_id = $(this).attr('id').split("-")[1];
-    var user_name = $(this).attr('username');
     var first_name = $(this).attr('first-name');
     var last_name = $(this).attr('last-name');
 
@@ -13,8 +12,7 @@ $('.delete-customer').click(function() {
         $.ajax({
             type: 'POST',
             url: delete_post,
-            data: { "customer_id": customer_id,
-                    "username": user_name },
+            data: { "customer_id": customer_id },
             success: function(response) {
                 console.log(response);
                 

@@ -1,23 +1,11 @@
 <?php 
-    // TODO do sql connection only once for the whole app
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "evivlio";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    include("../../database/database_functions.php");
+    $conn = db_connection();
 
     // Get POST data from AJAX
     $customer_id = $_POST['customer_id'];
-    $username = $_POST['username'];
 
-    $delete_customer = "DELETE FROM customer WHERE customer_id='$customer_id'; "; 
+    $delete_customer = "DELETE FROM customer WHERE customer_id=$customer_id; "; 
     if (mysqli_query($conn, $delete_customer)) {
         echo "0";
     } else {
@@ -25,7 +13,7 @@
     }
 
     // delete user if it exists
-    $delete_user = "DELETE FROM user WHERE username=$username; ";
+    $delete_user = "DELETE FROM user WHERE customer_id=$customer_id; ";
     mysqli_query($conn, $delete_user);
     
     mysqli_close($conn);

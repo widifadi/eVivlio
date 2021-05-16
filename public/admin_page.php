@@ -35,7 +35,12 @@
                 aria-selected="true">Orders</a>
         </li>
 
-        <!-- TODO categories, authors, publishers??? -->
+        <li class="nav-item" role="presentation">
+            <a class="nav-link pills-admin-tab" id="pills-managefeedback-tab" data-toggle="pill" 
+                href="#managefeedback" role="tab" aria-controls="pills-managefeedback"
+                aria-selected="true">Feedback</a>
+        </li>
+
     </ul>
 
     <div class="tab-content admin-page-tab" id="pills-tabContent">
@@ -57,6 +62,11 @@
         <div class="tab-pane fade" id="manageorders" role="tabpanel"
             aria-labelledby="pills-manageorders-tab">
             <?php include("../src/AdminPage/manage_orders.php") ?>
+        </div>
+
+        <div class="tab-pane fade" id="managefeedback" role="tabpanel"
+            aria-labelledby="pills-managefeedback-tab">
+            <?php include("../src/AdminPage/manage_feedback.php") ?>
         </div>
     </div>
 </div>

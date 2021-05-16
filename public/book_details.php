@@ -10,9 +10,9 @@
     <div class="col-8">
         <div class="container catalog-breadcrumbs">
             <a href="catalog.php"> Catalog </a> 
-            <i class="fas fa-chevron-right" style="color: grey;"></i>
+            <em class="fas fa-chevron-right" style="color: grey;"></em>
             <a href=""> Category </a> 
-            <i class="fas fa-chevron-right" style="color: grey;"></i>
+            <em class="fas fa-chevron-right" style="color: grey;"></em>
             <a href=""> Book Title </a>
         </div>
         <?php require_once("../src/Catalogue/book.php"); ?> 

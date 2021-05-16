@@ -53,23 +53,25 @@
             echo 'Passwords do not match !';
         }
 
-        $customer_query = "INSERT INTO customer (first_name, last_name, email, username, birthdate, phone, street_address, city, state) 
-                        VALUES ('$first_name', '$last_name', '$email', '$username', '$birthdate', '$phone', '$street_address', '$city', '$state')";
+        $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 
+                        VALUES ('$first_name', '$last_name', '$email', '$birthdate', '$phone', '$street_address', '$city', '$state')";
         if ($conn->query($customer_query) === TRUE) {
             echo "New customer created successfully. <br>" . $first_name;
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        $user_query = "INSERT INTO user (username, password) 
-                    VALUES ('$username', '$hash_password')";
+        $customer_id = mysqli_insert_id($conn);;
+
+        $user_query = "INSERT INTO user (customer_id, username, password) 
+                    VALUES ('$customer_id', '$username', '$hash_password')";
         if ($conn->query($user_query) === TRUE) {
             echo "New user created successfully. <br>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        header("location: successful_registration.php");
+        // header("location: ../../public/successful_registration.php");
     }
 
     if (isset($conn)) {

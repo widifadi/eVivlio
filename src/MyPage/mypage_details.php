@@ -22,6 +22,11 @@
         aria-labelledby="preview-tab" style="font-size: 14px; padding: 10px;">
         <!-- PHP database connection -->
         <?php
+
+        require_once("../functions/database/database_functions.php");
+        $conn=db_connection();
+
+        /*
             $servername = "localhost";
             $username = "root";
             $password = "";
@@ -33,7 +38,7 @@
             // Check connection
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
-            }
+            } */
 
             // TODO get username from session
             $user_name = $_SESSION['user'];

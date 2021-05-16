@@ -82,7 +82,8 @@
                     // IF a user is logged in
                     if(isset($_SESSION['user'])) {
                 ?>
-                <a href="logout_process.php">
+                
+                <a href="../src/SignupLogin/logout_process.php">
                     <button class="btn menu-btn">
                         <em class="fas fa-sign-out-alt"></em>
                     </button>

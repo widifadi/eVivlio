@@ -1,18 +1,6 @@
-<?php 
-    // TODO do sql connection only once for the whole app
-    // TODO use database_functions file
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "evivlio";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+<?php  
+    include("../../database/database_functions.php");
+    $conn = db_connection();
 
     if (isset($_POST['register_btn'])) {
         $first_name = $_POST['firstName'];
@@ -50,7 +38,7 @@
         $state = mysqli_real_escape_string($conn, $state);
 
         if ($password != $password_check) {
-            echo 'Passwords do not match !';
+            echo 'Passwords do not match!';
         }
 
         $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 
@@ -61,7 +49,7 @@
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        $customer_id = mysqli_insert_id($conn);;
+        $customer_id = mysqli_insert_id($conn);
 
         $user_query = "INSERT INTO user (customer_id, username, password) 
                     VALUES ('$customer_id', '$username', '$hash_password')";
@@ -71,7 +59,7 @@
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        // header("location: ../../public/successful_registration.php");
+        header("location: ../../public/successful_registration.php");
     }
 
     if (isset($conn)) {

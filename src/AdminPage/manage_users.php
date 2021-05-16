@@ -31,12 +31,7 @@
                 { 
                     $user_id = $row['user_id'];
                     $user_name = $row['username'];
-
-                    $customer_query = "SELECT customer_id FROM customer WHERE username='$user_name' "; 
-                    $customer_result = mysqli_query($conn, $customer_query);
-                    $customer_data = mysqli_fetch_assoc($customer_result);
-                    $customer_id = $customer_data['customer_id'];
-
+                    $customer_id = $row['customer_id'];
                     $admin_permission = $row['admin_permission']
             ?>
             <tr>

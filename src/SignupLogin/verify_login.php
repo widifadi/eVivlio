@@ -1,16 +1,6 @@
 <?php 
-    // TODO do sql connection only once for the whole app
-    // TODO use database_functions file
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "evivlio";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    include("../../database/database_functions.php");
+    $conn = db_connection();
 
     if (isset($_POST['login_btn'])) {
         $username       =   $_POST['username'];
@@ -38,7 +28,7 @@
             $admin_permission = $user_row['admin_permission'];
             $_SESSION['admin_permission'] = $admin_permission;
 
-            header("location: index.php");
+            header("location: ../../public/index.php");
             exit();
 
         } else {
@@ -47,5 +37,7 @@
         }
     } 
 
-    // TODO close conn
+    if (isset($conn)) {
+        mysqli_close($conn);
+    }
 ?>

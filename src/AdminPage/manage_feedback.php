@@ -2,11 +2,8 @@
     <table class="table table-hover">
         <thead class="thead-light">
             <tr>
-                <th scope="col">Order ID</th>
-                <!-- TODO customer name? -->
-                <th scope="col">Customer ID</th>
-                <th scope="col">Order Date</th>
-                <th scope="col">Shipping Status</th> 
+                <th scope="col">User ID</th>
+                <th scope="col">Feedback</th> 
             </tr>
         </thead>
         <tbody>
@@ -25,16 +22,14 @@
                     die("Connection failed: " . $conn->connect_error);
                 }
 
-                $order_query = "SELECT * FROM order"; 
-                $result = mysqli_query($conn, $order_query); 
+                $feedback_query = "SELECT * FROM feedback"; 
+                $result = mysqli_query($conn, $feedback_query); 
                 while($row = mysqli_fetch_assoc($result)) 
                 { 
             ?>
             <tr>
-                <td><?php echo $row['order_id']; ?></td>
-                <td><?php echo $row['customer_id']; ?></td>
-                <td><?php echo $row['order_date']; ?></td>
-                <td><?php echo $row['customer_id']; ?></td>
+                <td><?php echo $row['user_id']; ?></td>
+                <td><?php echo $row['feedback']; ?></td>
             </tr> 
             <?php
                 }

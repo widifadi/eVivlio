@@ -41,8 +41,8 @@
                             // TODO do sql connection only once for the whole app
                             $servername = "localhost";
                             $username = "root";
-                            $password = "root";
-                            $dbname = "eVivlio";
+                            $password = "";
+                            $dbname = "evivlio";
 
                             // Create connection
                             $conn = new mysqli($servername, $username, $password, $dbname);

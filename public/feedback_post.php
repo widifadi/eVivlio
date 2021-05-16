@@ -11,33 +11,33 @@
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-   /* if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }*/
+   
 
     if (isset($_POST['btn_feedback'])) {
- 
+        $first_name = $_POST['feedback_fname'];
+        $first_name = mysqli_real_escape_string($conn, $first_name);
 
-        $user_name = $_SESSION['user'];
-        $feedback = $_POST['feedback'];
+        $last_name = $_POST['feedback_lname'];
+        $last_name = mysqli_real_escape_string($conn, $last_name);
+
+        $email = $_POST['feedback_email'];
+        $email = mysqli_real_escape_string($conn, $email);
+
+
+        $feedback = $_POST['feedback_text'];
         $feedback = mysqli_real_escape_string($conn, $feedback);
-        $userid_query = "SELECT * FROM user WHERE username='$user_name'"; 
-        $userid_result = mysqli_query($conn, $userid_query);
-        $user_id = mysqli_fetch_assoc($userid_result);
-        $userid = $user_id['user_id'];
 
 
-        $feedback_query = "INSERT INTO feedback (user_id, feedback)
-                        VALUES ('$userid', '$feedback')";
-       if ($conn->query($feedback_query) === TRUE) {
-            echo "New customer created successfully. <br>" . $feedback;
+        $feedback_query = "INSERT INTO feedback (first_name, last_name, email, feedback) 
+                        VALUES ('$first_name', '$last_name', '$email', '$feedback')";
+        if ($conn->query($feedback_query) === TRUE) {
+            echo "New customer created successfully. <br>" . $first_name;
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+        echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
 
-       header("location: contact_fb_sbn.php");
+        header("location: contact_fb_sbn.php");
     }
 
     if (isset($conn)) {

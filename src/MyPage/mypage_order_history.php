@@ -34,30 +34,33 @@
                 
                 $user_name = $_SESSION['user'];
             
-                $query = "SELECT * FROM orders WHERE username='$user_name' "; 
+                $query = "SELECT DISTINCT
+                b.book_title, oi.quantity, oi.total_price, o.order_id, o.order_date, o.shipping_status, u.username
+                FROM order_items oi
+                JOIN book b
+                USING (book_id)
+                JOIN `order` o
+                USING (order_id)
+                JOIN customer c
+                USING (customer_id)
+                JOIN user u
+                USING (customer_id) WHERE u.username='$user_name' "; 
                 $result = mysqli_query($conn, $query); 
+                //$row = mysqli_fetch_assoc($result); 
                 while($row = mysqli_fetch_assoc($result)) 
-                {
+               {
                     $order_id = $row['order_id'];
                     $order_date = $row['order_date'];
-                    $order_content = $row['order_content'];
-                    $order_value = $row['order_value'];
-                    $order_status = $row['order_status'];
+                    $order_books = $row['book_title'];
+                    $order_number = $row['quantity'];
+                    $order_value = $row['total_price'];
+                    $order_status = $row['shipping_status'];
                     
             ?>
             <tr>
-                <!--<td>
-                    <em class="fas fa-user-edit"></em>
-                    <em class="fas fa-trash-alt delete-customer"
-                        id="deletecustomer-<?php echo $customer_id ?>"
-                        username='<?php echo $user_name ?>'
-                        first-name='<?php echo $first_name ?>'
-                        last-name='<?php echo $last_name ?>'
-                        data-toggle="modal" data-target=".delete-customer-modal"></em>
-                </td>-->
                 <td><?php echo $order_id; ?></td>
                 <td><?php echo $order_date; ?></td>
-                <td><?php echo $order_content; ?></td>
+                <td><?php echo $order_books ." ". $order_number; ?></td>
                 <td><?php echo $order_value; ?></td>
                 <td><?php echo $order_status; ?></td>
 

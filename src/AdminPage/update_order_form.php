@@ -23,16 +23,16 @@
     </div>
 
     <div class="form-group row">
-        <label for="shipping" class="col-sm-3 col-form-label updateorder-label">
+        <label for="shipping_status" class="col-sm-3 col-form-label updateorder-label">
             Shipping Status</label>
         <div class="col-sm-9">
-            <select class="form-control" id="update-shipping" name="shipping">
-                <option>Order Received</option>
-                <option>In Depot</option>
-                <option>Packing</option>
-                <option>In Transit</option>
-                <option>Out for Delivery</option>
-                <option>Delivered</option>
+            <select class="form-control" id="update-shipping" name="shipping_status">
+                <option value="orderReceived">Order Received</option>
+                <option value="inDepot">In Depot</option>
+                <option value="packing">Packing</option>
+                <option value="inTransit">In Transit</option>
+                <option value="forDelivery">Out for Delivery</option>
+                <option value="delivered">Delivered</option>
             </select>
         </div>
     </div>

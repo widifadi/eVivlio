@@ -38,10 +38,13 @@
                     </thead>
                     <tbody>
                         <?php 
+                            // include("../../database/database_functions.php");
+                            // $conn = db_connection();
+                            
                             // TODO do sql connection only once for the whole app
                             $servername = "localhost";
                             $username = "root";
-                            $password = "";
+                            $password = "root";
                             $dbname = "evivlio";
 
                             // Create connection

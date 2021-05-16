@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 16, 2021 at 02:44 PM
+-- Generation Time: May 16, 2021 at 05:11 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -242,15 +242,15 @@ CREATE TABLE `user` (
   `customer_id` int(11) DEFAULT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `user_permission` tinyint(1) NOT NULL DEFAULT '0'
+  `admin_permission` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `user_permission`) VALUES
-(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1)
+INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_permission`) VALUES
+(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 
 -- --------------------------------------------------------
 

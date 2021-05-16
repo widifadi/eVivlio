@@ -1,17 +1,7 @@
-<?php 
-    // TODO do sql connection only once for the whole app
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "evivlio";
+<?php
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require_once("../../database/database_functions.php");
+    $conn = db_connection();
 
     if (isset($_POST['add_book_btn'])) {
         $isbn = $_POST['isbn'];

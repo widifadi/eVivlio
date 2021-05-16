@@ -1,4 +1,4 @@
-<form action="add_book_post.php" method="POST" id="add-book-form" enctype="multipart/form-data">
+<form action="../src/AdminPage/add_book_post.php" method="POST" id="add-book-form" enctype="multipart/form-data">
     <div class="form-group row">
         <label for="isbn" class="col-sm-3 col-form-label addbook-label">ISBN</label>
         <div class="col-sm-9">

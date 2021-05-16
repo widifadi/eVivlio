@@ -11,11 +11,13 @@
         </thead>
         <tbody>
             <?php 
-                // TODO do sql connection only once for the whole app
+                // include("../../database/database_functions.php");
+                // $conn = db_connection();
+
                 $servername = "localhost";
                 $username = "root";
                 $password = "root";
-                $dbname = "eVivlio";
+                $dbname = "evivlio";
 
                 // Create connection
                 $conn = new mysqli($servername, $username, $password, $dbname);

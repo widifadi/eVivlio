@@ -1,5 +1,6 @@
-<?php  
-    include("../../database/database_functions.php");
+<?php
+
+    require_once("../../database/database_functions.php");
     $conn = db_connection();
 
     if (isset($_POST['register_btn'])) {

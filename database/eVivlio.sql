@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 14, 2021 at 11:16 AM
+-- Generation Time: May 16, 2021 at 02:44 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -11,10 +11,10 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Database: `eVivlio`
+-- Database: `evivlio`
 --
-CREATE DATABASE IF NOT EXISTS `eVivlio` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `eVivlio`;
+CREATE DATABASE IF NOT EXISTS `evivlio` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `evivlio`;
 
 -- --------------------------------------------------------
 
@@ -24,19 +24,20 @@ USE `eVivlio`;
 
 CREATE TABLE `author` (
   `author_id` int(11) NOT NULL,
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `author_first_name` varchar(50) NOT NULL,
+  `author_last_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `best_seller`
+-- Table structure for table `author_tag`
 --
 
-CREATE TABLE `best_seller` (
-  `book_id` int(13) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `author_tag` (
+  `book_id` int(11) NOT NULL,
+  `author_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -46,18 +47,63 @@ CREATE TABLE `best_seller` (
 
 CREATE TABLE `book` (
   `book_id` int(11) NOT NULL,
+  `publisher_id` int(11) NOT NULL,
   `isbn` varchar(17) NOT NULL,
-  `title` varchar(100) NOT NULL,
+  `book_title` varchar(100) NOT NULL,
   `book_cover` varchar(200) NOT NULL,
-  `author` int(11) NOT NULL,
-  `publisher` int(11) NOT NULL,
-  `publishing_year` int(4) NOT NULL,
-  `category` varchar(100) NOT NULL,
+  `publishing_year` date NOT NULL,
   `pages` int(11) NOT NULL,
   `summary` text NOT NULL,
   `price` float NOT NULL,
   `stock` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book_feature`
+--
+
+CREATE TABLE `book_feature` (
+  `feature_id` int(11) NOT NULL,
+  `feature_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `book_feature`
+--
+
+INSERT INTO `book_feature` (`feature_id`, `feature_name`) VALUES
+(1, 'Best Sellers'),
+(2, 'Editor Recommends'),
+(3, 'New Release');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `book_review`
+--
+
+CREATE TABLE `book_review` (
+  `book_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
+  `rating` int(11) NOT NULL,
+  `content` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart`
+--
+
+CREATE TABLE `cart` (
+  `cart_id` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `total_price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -67,23 +113,33 @@ CREATE TABLE `book` (
 
 CREATE TABLE `category` (
   `category_id` int(11) NOT NULL,
-  `category_code` varchar(50) NOT NULL,
-  `category_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `category_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`category_id`, `category_code`, `category_name`) VALUES
-(1, 'business', 'Business'),
-(2, 'childrens', 'Children Collection'),
-(3, 'history', 'History'),
-(4, 'literature', 'Literature'),
-(5, 'novels', 'Novels'),
-(6, 'scifi', 'Science Fiction'),
-(7, 'scitech', 'Science and Technology'),
-(8, 'philo', 'Philosophy');
+INSERT INTO `category` (`category_id`, `category_name`) VALUES
+(1, 'Business'),
+(2, 'Children Collection'),
+(3, 'History'),
+(4, 'Literature'),
+(5, 'Novels'),
+(6, 'Science Fiction'),
+(7, 'Science and Technology'),
+(8, 'Philosophy');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category_tag`
+--
+
+CREATE TABLE `category_tag` (
+  `book_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -95,34 +151,74 @@ CREATE TABLE `customer` (
   `customer_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `username` varchar(12) NOT NULL,
-  `birthdate` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `birthday` date NOT NULL,
   `phone` varchar(50) NOT NULL,
-  `street_address` varchar(100) NOT NULL,
+  `address` varchar(200) NOT NULL,
   `city` varchar(50) NOT NULL,
-  `state` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `state` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `editors_pick`
+-- Table structure for table `feature_tag`
 --
 
-CREATE TABLE `editors_pick` (
-  `book_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `feature_tag` (
+  `book_id` int(11) NOT NULL,
+  `feature_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `new_release`
+-- Table structure for table `feedback`
 --
 
-CREATE TABLE `new_release` (
-  `book_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `feedback` (
+  `user_id` int(11) NOT NULL,
+  `feedback` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order`
+--
+
+CREATE TABLE `order` (
+  `order_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `order_date` date NOT NULL,
+  `shipping_status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `book_id` int(11) NOT NULL,
+  `order_id` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `total_price` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `payment_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `payment_date` date NOT NULL,
+  `payment_method` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -132,8 +228,8 @@ CREATE TABLE `new_release` (
 
 CREATE TABLE `publisher` (
   `publisher_id` int(11) NOT NULL,
-  `publisher_name` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `publisher` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -143,17 +239,29 @@ CREATE TABLE `publisher` (
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `admin_permission` tinyint(1) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `user_permission` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `username`, `password`, `admin_permission`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `user_permission`) VALUES
+(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1)
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `book_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -166,20 +274,40 @@ ALTER TABLE `author`
   ADD PRIMARY KEY (`author_id`);
 
 --
--- Indexes for table `best_seller`
+-- Indexes for table `author_tag`
 --
-ALTER TABLE `best_seller`
-  ADD UNIQUE KEY `book_id` (`book_id`),
-  ADD KEY `isbn` (`book_id`);
+ALTER TABLE `author_tag`
+  ADD KEY `author_id` (`author_id`),
+  ADD KEY `book_id` (`book_id`);
 
 --
 -- Indexes for table `book`
 --
 ALTER TABLE `book`
   ADD PRIMARY KEY (`book_id`),
-  ADD UNIQUE KEY `ISBN` (`isbn`),
-  ADD KEY `author` (`author`),
-  ADD KEY `publisher` (`publisher`);
+  ADD UNIQUE KEY `isbn` (`isbn`),
+  ADD KEY `publisher_id` (`publisher_id`);
+
+--
+-- Indexes for table `book_feature`
+--
+ALTER TABLE `book_feature`
+  ADD PRIMARY KEY (`feature_id`);
+
+--
+-- Indexes for table `book_review`
+--
+ALTER TABLE `book_review`
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `customer_id` (`customer_id`);
+
+--
+-- Indexes for table `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`cart_id`),
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `customer_id` (`customer_id`);
 
 --
 -- Indexes for table `category`
@@ -188,24 +316,51 @@ ALTER TABLE `category`
   ADD PRIMARY KEY (`category_id`);
 
 --
+-- Indexes for table `category_tag`
+--
+ALTER TABLE `category_tag`
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `category_id` (`category_id`);
+
+--
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`);
 
 --
--- Indexes for table `editors_pick`
+-- Indexes for table `feature_tag`
 --
-ALTER TABLE `editors_pick`
-  ADD UNIQUE KEY `book_id_2` (`book_id`),
-  ADD KEY `book_id` (`book_id`);
+ALTER TABLE `feature_tag`
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `feature_id` (`feature_id`);
 
 --
--- Indexes for table `new_release`
+-- Indexes for table `feedback`
 --
-ALTER TABLE `new_release`
-  ADD UNIQUE KEY `book_id_2` (`book_id`),
-  ADD KEY `book_id` (`book_id`);
+ALTER TABLE `feedback`
+  ADD KEY `user_id` (`user_id`);
+
+--
+-- Indexes for table `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `customer_id` (`customer_id`);
+
+--
+-- Indexes for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `order_id` (`order_id`);
+
+--
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`payment_id`),
+  ADD KEY `customer_id` (`customer_id`);
 
 --
 -- Indexes for table `publisher`
@@ -218,7 +373,15 @@ ALTER TABLE `publisher`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
-  ADD UNIQUE KEY `username` (`username`);
+  ADD UNIQUE KEY `username` (`username`),
+  ADD KEY `customer_id` (`customer_id`);
+
+--
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD KEY `book_id` (`book_id`),
+  ADD KEY `customer_id` (`customer_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -237,6 +400,18 @@ ALTER TABLE `book`
   MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `book_feature`
+--
+ALTER TABLE `book_feature`
+  MODIFY `feature_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
@@ -249,6 +424,18 @@ ALTER TABLE `customer`
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `order`
+--
+ALTER TABLE `order`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `payment`
+--
+ALTER TABLE `payment`
+  MODIFY `payment_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
@@ -258,146 +445,81 @@ ALTER TABLE `publisher`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `best_seller`
+-- Constraints for table `author_tag`
 --
-ALTER TABLE `best_seller`
-  ADD CONSTRAINT `best_seller_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
+ALTER TABLE `author_tag`
+  ADD CONSTRAINT `author_tag_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `author` (`author_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `author_tag_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `book`
 --
 ALTER TABLE `book`
-  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`author`) REFERENCES `author` (`author_id`),
-  ADD CONSTRAINT `book_ibfk_2` FOREIGN KEY (`publisher`) REFERENCES `publisher` (`publisher_id`);
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`publisher_id`) REFERENCES `publisher` (`publisher_id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `editors_pick`
+-- Constraints for table `book_review`
 --
-ALTER TABLE `editors_pick`
-  ADD CONSTRAINT `editors_pick_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
-
---
--- Constraints for table `new_release`
---
-ALTER TABLE `new_release`
-  ADD CONSTRAINT `new_release_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`);
-
---
--- Table structure for table `cart`
---
-
-CREATE TABLE `cart` (
-  `cart_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `book_name` varchar(255) NOT NULL,
-  `price` varchar(50) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `quantity` int(10) NOT NULL,
-  `total_price` varchar(100) NOT NULL,
-  `book_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cart_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `book_review`
+  ADD CONSTRAINT `book_review_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `book_review_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_fk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
-  ADD CONSTRAINT `cart_fk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`);
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
 
 --
--- Table structure for table `wishlists`
+-- Constraints for table `category_tag`
 --
-
-CREATE TABLE `wishlists` (
-  `wishlist_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `book_name` varchar(255) NOT NULL,
-  `price` varchar(50) NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `book_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+ALTER TABLE `category_tag`
+  ADD CONSTRAINT `category_tag_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `category_tag_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON UPDATE CASCADE;
 
 --
--- Indexes for dumped tables
+-- Constraints for table `feature_tag`
 --
+ALTER TABLE `feature_tag`
+  ADD CONSTRAINT `feature_tag_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `feature_tag_ibfk_2` FOREIGN KEY (`feature_id`) REFERENCES `book_feature` (`feature_id`) ON UPDATE CASCADE;
 
 --
--- Indexes for table `wishlists`
---
-ALTER TABLE `wishlists`
-  ADD PRIMARY KEY (`wishlist_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `wishlists`
---
-ALTER TABLE `wishlists`
-  MODIFY `wishlist_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for table `wishlists`
---
-ALTER TABLE `wishlists`
-  ADD CONSTRAINT `wishlist_fk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
-  ADD CONSTRAINT `wishlist_fk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`);
-  --
--- Table structure for table `feedback`
---
-
-CREATE TABLE `feedback` (
-  `feedback_name` varchar(50) NOT NULL,
-  `feedback_email` varchar(50) NOT NULL,
-  `feedback_message` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
---
--- Indexes for table `feedback`
+-- Constraints for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`feedback_email`(20));
-COMMIT;
+  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE;
 
 --
--- Table structure for table `orders`
+-- Constraints for table `order`
 --
+ALTER TABLE `order`
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
 
-CREATE TABLE `orders` (
-  `order_id` int(50) NOT NULL,
-  `customer_id` int(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `order_date` date NOT NULL,
-  `order_content` varchar(250) NOT NULL,
-  `order_value` decimal(5,2) NOT NULL,
-  `order_status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;

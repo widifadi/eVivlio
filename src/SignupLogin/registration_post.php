@@ -71,7 +71,7 @@
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        // header("location: ../../public/successful_registration.php");
+        header("location: ../../public/successful_registration.php");
     }
 
     if (isset($conn)) {

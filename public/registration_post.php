@@ -1,18 +1,6 @@
-<?php 
-    // TODO do sql connection only once for the whole app
-    // TODO use database_functions file
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "eVivlio";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+<?php  
+require_once("../functions/database/database_functions.php");
+$conn=db_connection();
 
     if (isset($_POST['register_btn'])) {
         $first_name = $_POST['firstName'];

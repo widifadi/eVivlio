@@ -1,11 +1,10 @@
-<?php require_once("../templates/header.php");  ?>
+<?php require_once("../templates/header.php"); ?>
+
 <div class="container" id="logout-message">
-<?php echo    "Registration successful" ?>
+    Registration successful.
+    <!-- NOTE: user isn't login yet so we can't use session here to output his name. -->
     <br>
-
-<?php 
-
-    echo "Hello USERNAME   Welcome to eVivlío! "; ?>
+    Welcome to eVivlío! 
     <br>
     <br>
     <a href="signup_login.php">

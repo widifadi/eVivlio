@@ -98,4 +98,24 @@
     </div>
 </div>
 
+<!-- Update Customer Modal -->
+<div class="modal fade update-customer-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update User Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <?php include("update_user_form.php") ?>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+        </div>
+    </div>
+</div>
+
 <script src="../assets/js/admin-customer-operations.js"></script>

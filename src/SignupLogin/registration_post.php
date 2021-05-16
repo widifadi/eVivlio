@@ -1,6 +1,6 @@
 <?php  
-require_once("../functions/database/database_functions.php");
-$conn=db_connection();
+    include("../../database/database_functions.php");
+    $conn = db_connection();
 
     if (isset($_POST['register_btn'])) {
         $first_name = $_POST['firstName'];
@@ -38,7 +38,7 @@ $conn=db_connection();
         $state = mysqli_real_escape_string($conn, $state);
 
         if ($password != $password_check) {
-            echo 'Passwords do not match !';
+            echo 'Passwords do not match!';
         }
 
         $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 
@@ -49,7 +49,7 @@ $conn=db_connection();
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        $customer_id = mysqli_insert_id($conn);;
+        $customer_id = mysqli_insert_id($conn);
 
         $user_query = "INSERT INTO user (customer_id, username, password) 
                     VALUES ('$customer_id', '$username', '$hash_password')";

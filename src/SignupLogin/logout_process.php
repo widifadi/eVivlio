@@ -2,6 +2,6 @@
     session_start();
     $_SESSION = array();
 
-    header('location: logout.php');
+    header('location: ../../public/logout.php');
     exit;
 ?>

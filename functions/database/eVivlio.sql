@@ -242,14 +242,14 @@ CREATE TABLE `user` (
   `customer_id` int(11) DEFAULT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `user_permission` tinyint(1) NOT NULL DEFAULT '0'
+  `admin_permission` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `user_permission`) VALUES
+INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_permission`) VALUES
 (1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1)
 
 -- --------------------------------------------------------

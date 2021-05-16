@@ -37,7 +37,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text"><i class="fa fa-comment" style="color: #F2C84B;"></i></div>
                                 </div>
-                                <textarea class="form-control" rows="5" id="feedback_text" name="feedback_text" placeholder="Leave your feedback here." required></textarea>
+                                <textarea class="form-control" rows="5" id="feedback" name="feedback" placeholder="Leave your feedback here." required></textarea>
                             </div>
                         </div>
 

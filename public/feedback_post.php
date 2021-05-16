@@ -1,11 +1,13 @@
+<?php require_once("../templates/header.php"); ?>
 <?php 
     // TODO do sql connection only once for the whole app
     // TODO use database_functions file
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "eVivlio";
+    $dbname = "evivlio";
 
+    
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -15,27 +17,27 @@
     }*/
 
     if (isset($_POST['btn_feedback'])) {
-        $feedback_name = $_POST['feedback_name'];
-        $feedback_name = mysqli_real_escape_string($conn, $feedback_name);
+ 
 
-        $feedback_email = $_POST['feedback_email'];
-        $feedback_email = mysqli_real_escape_string($conn, $feedback_email);
+        $user_name = $_SESSION['user'];
+        $feedback = $_POST['feedback'];
+        $feedback = mysqli_real_escape_string($conn, $feedback);
+        $userid_query = "SELECT * FROM user WHERE username='$user_name'"; 
+        $userid_result = mysqli_query($conn, $userid_query);
+        $user_id = mysqli_fetch_assoc($userid_result);
+        $userid = $user_id['user_id'];
 
 
-        $feedback_message = $_POST['feedback_text'];
-        $feedback_message = mysqli_real_escape_string($conn, $feedback_message);
-
-
-        $feedback_query = "INSERT INTO feedback (feedback_name, feedback_email, feedback_message) 
-                        VALUES ('$feedback_name', '$feedback_email', '$feedback_message')";
+        $feedback_query = "INSERT INTO feedback (user_id, feedback)
+                        VALUES ('$userid', '$feedback')";
        if ($conn->query($feedback_query) === TRUE) {
-            echo "New customer created successfully. <br>" . $feedback_name;
+            echo "New customer created successfully. <br>" . $feedback;
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
 
-        header("location: contact_fb_sbn.php");
+       header("location: contact_fb_sbn.php");
     }
 
     if (isset($conn)) {

@@ -2,6 +2,7 @@
     <table class="table table-hover">
         <thead class="thead-light">
             <tr>
+                <th>Update</th>
                 <th scope="col">Order ID</th>
                 <!-- TODO customer name? -->
                 <th scope="col">Customer ID</th>
@@ -33,6 +34,7 @@
                 { 
             ?>
             <tr>
+                <td></td>
                 <td><?php echo $row['order_id']; ?></td>
                 <td><?php echo $row['customer_id']; ?></td>
                 <td><?php echo $row['order_date']; ?></td>

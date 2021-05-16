@@ -10,6 +10,7 @@
         echo "0";
     } else {
         echo "Error deleting customer: " . mysqli_error($conn);
+        exit;
     }
 
     // delete user if it exists

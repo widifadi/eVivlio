@@ -106,7 +106,7 @@ a:hover {
   font-family: 'Luminari';
 }
 
-#front-page-search-div{
+#front-page-search-container {
   position: relative;
   margin: auto;
   margin-top: 50px;
@@ -114,27 +114,32 @@ a:hover {
   height: 200px;
 }
 
-.search-box {
+#front-page-search-group {
   position: absolute;
   left:0;
   right:0;
   margin-left:auto;
   margin-right:auto;
-  outline: none;
-  color: var(--light-yellow-theme);
-  border: 0;
-  border-radius: 20px;
   width: 300px;
 }
 
-.search-button {
-  position: absolute;
-  right: 200px; /* TODO: make better alignment */
-  top: 1px;
-  background-color: var(--yellow-theme);
-  border-radius: 50%;
+.search-box {
+  outline: none;
+  color: var(--blue-theme);
+  border: 0;
+  border-radius: 20px;
+}
+
+#search-button {
+  border-radius: 0 50% 50% 0;
+  background-color: white;
   border: 0;
   color: var(--dark-orange);
+}
+
+#search-button:hover {
+  cursor: pointer;
+  color: var(--blue-theme);
 }
 
 #promo-categories #features-div {
@@ -155,6 +160,24 @@ a:hover {
   background-size: cover;
 }
 /* Front page end */
+
+
+/* Search Page start */
+#search-page-search-container {
+  margin: auto;
+  width: 60%;
+}
+
+#search-page-input {
+  border: 1px solid var(--blue-theme);
+}
+
+.search-page-button {
+  background-color: var(--blue-theme) !important;
+  color: var(--light-yellow-theme) !important;
+}
+/* Search Page end */
+
 
 /* SignUp Login page start */
 #login-form, #signup-form {
@@ -252,6 +275,7 @@ a:hover {
   opacity: 1;
 }
 
+/* TODO use common class!!! */
 .update-book, .update-user, .update-customer, .update-order {
   color: olive;
 }

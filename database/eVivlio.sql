@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 16, 2021 at 05:11 PM
+-- Generation Time: May 17, 2021 at 04:00 PM
 -- Server version: 5.7.32
 -- PHP Version: 7.4.12
 
@@ -28,6 +28,14 @@ CREATE TABLE `author` (
   `author_last_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `author`
+--
+
+INSERT INTO `author` (`author_id`, `author_first_name`, `author_last_name`) VALUES
+(1, 'JRR', 'Tolkien'),
+(2, 'JK', 'Rowling');
+
 -- --------------------------------------------------------
 
 --
@@ -38,6 +46,15 @@ CREATE TABLE `author_tag` (
   `book_id` int(11) NOT NULL,
   `author_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `author_tag`
+--
+
+INSERT INTO `author_tag` (`book_id`, `author_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -51,12 +68,21 @@ CREATE TABLE `book` (
   `isbn` varchar(17) NOT NULL,
   `book_title` varchar(100) NOT NULL,
   `book_cover` varchar(200) NOT NULL,
-  `publishing_year` date NOT NULL,
+  `publishing_year` int(4) NOT NULL,
   `pages` int(11) NOT NULL,
   `summary` text NOT NULL,
   `price` float NOT NULL,
   `stock` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover`, `publishing_year`, `pages`, `summary`, `price`, `stock`) VALUES
+(1, 1, '9780261102217', 'The Hobbit', '9780261102217.jpg', 1991, 400, 'The Hobbit is a tale of high adventure, undertaken by a company of dwarves in search of dragon-guarded gold. A reluctant partner in this perilous quest is Bilbo Baggins, a comfort-loving unambitious hobbit, who surprises even himself by his resourcefulness and skill as a burglar. Encounters with trolls, goblins, dwarves, elves and giant spiders, conversations with the dragon, Smaug, and a rather unwilling presence at the Battle of Five Armies are just some of the adventures that befall Bilbo. Bilbo Baggins has taken his place among the ranks of the immortals of children\'s fiction. Written by Professor Tolkien for his own children, The Hobbit met with instant critical acclaim when published.\r\n', 11.04, 10),
+(2, 4, '978-1408855652', 'Harry Potter and the Philosopher\'s Stone', '978-1408855652.jpg', 2014, 256, 'Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger and a snake surrounding a large letter \'H\'.\r\n\r\nHarry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry\'s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!', 29.4, 10),
+(3, 4, '9781408855706', 'Harry Potter and the Half-Blood Prince', '9781408855706.jpg', 2014, 560, 'When Dumbledore arrives at Privet Drive one summer night to collect Harry Potter, his wand hand is blackened and shrivelled, but he does not reveal why. Secrets and suspicion are spreading through the wizarding world, and Hogwarts itself is not safe. Harry is convinced that Malfoy bears the Dark Mark: there is a Death Eater amongst them. Harry will need powerful magic and true friends as he explores Voldemort\'s darkest secrets, and Dumbledore prepares him to face his destiny.\r\n\r\nThese new editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able new jackets by Jonny Duddle, with huge child appeal, to bring Harry Potter to the next generation of readers. It\'s time to PASS THE MAGIC ON ...', 10.29, 10);
 
 -- --------------------------------------------------------
 
@@ -162,6 +188,19 @@ CREATE TABLE `customer` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `customer_order`
+--
+
+CREATE TABLE `customer_order` (
+  `order_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `order_date` date NOT NULL,
+  `shipping_status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `feature_tag`
 --
 
@@ -177,23 +216,10 @@ CREATE TABLE `feature_tag` (
 --
 
 CREATE TABLE `feedback` (
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `feedback` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer_order`
---
-
-CREATE TABLE `customer_order` (
-  `order_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `order_date` date NOT NULL,
-  `shipping_status` varchar(50) NOT NULL
+  `feedback_id` int(11) NOT NULL,
+  `feedback_name` varchar(50) NOT NULL,
+  `feedback_email` varchar(50) NOT NULL,
+  `feedback_message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -232,6 +258,14 @@ CREATE TABLE `publisher` (
   `publisher_id` int(11) NOT NULL,
   `publisher` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `publisher`
+--
+
+INSERT INTO `publisher` (`publisher_id`, `publisher`) VALUES
+(1, 'HarperCollins Publishers'),
+(2, 'Bloomsbury Publishing PLC');
 
 -- --------------------------------------------------------
 
@@ -331,6 +365,13 @@ ALTER TABLE `customer`
   ADD PRIMARY KEY (`customer_id`);
 
 --
+-- Indexes for table `customer_order`
+--
+ALTER TABLE `customer_order`
+  ADD PRIMARY KEY (`order_id`),
+  ADD KEY `customer_id` (`customer_id`);
+
+--
 -- Indexes for table `feature_tag`
 --
 ALTER TABLE `feature_tag`
@@ -341,14 +382,7 @@ ALTER TABLE `feature_tag`
 -- Indexes for table `feedback`
 --
 ALTER TABLE `feedback`
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `customer_id` (`customer_id`);
+  ADD PRIMARY KEY (`feedback_id`);
 
 --
 -- Indexes for table `order_items`
@@ -393,13 +427,13 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `book_feature`
@@ -426,10 +460,16 @@ ALTER TABLE `customer`
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `customer_order`
 --
-ALTER TABLE `order`
+ALTER TABLE `customer_order`
   MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `feedback`
+--
+ALTER TABLE `feedback`
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -441,7 +481,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
-  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -488,6 +528,12 @@ ALTER TABLE `category_tag`
   ADD CONSTRAINT `category_tag_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON UPDATE CASCADE;
 
 --
+-- Constraints for table `customer_order`
+--
+ALTER TABLE `customer_order`
+  ADD CONSTRAINT `customer_order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `feature_tag`
 --
 ALTER TABLE `feature_tag`
@@ -495,17 +541,11 @@ ALTER TABLE `feature_tag`
   ADD CONSTRAINT `feature_tag_ibfk_2` FOREIGN KEY (`feature_id`) REFERENCES `book_feature` (`feature_id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-
---
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`
   ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `order` (`order_id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `customer_order` (`order_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `payment`

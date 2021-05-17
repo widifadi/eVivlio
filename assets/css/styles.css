@@ -84,6 +84,14 @@ a:hover {
   color: var(--light-grey)
 }
 
+/* Card Columns */
+@media (min-width: 80em) {
+  .card-columns {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+  }
+}
 
 /* Front page start */
 #front-page {
@@ -168,14 +176,25 @@ a:hover {
   width: 60%;
 }
 
-#search-page-input {
+#search-page-input[type="text"] {
   border: 1px solid var(--blue-theme);
+  background-color: var(--blue-theme) !important;
+  color: var(--light-yellow-theme);
+}
+
+#search-page-input::placeholder{
+  color: var(--light-yellow-theme);
 }
 
 .search-page-button {
   background-color: var(--blue-theme) !important;
   color: var(--light-yellow-theme) !important;
 }
+
+.search-page-button:hover {
+  color: var(--orange) !important;
+}
+
 /* Search Page end */
 
 
@@ -332,11 +351,11 @@ a:hover {
 .catalog-breadcrumbs {
   background-color: var(--blue-theme);
   border-radius: 5px;
+  padding-left: 5px;
 }
 
 #book-list {
   margin-top: 20px;
-  margin-left: 10px;
 }
 
 .book:hover {

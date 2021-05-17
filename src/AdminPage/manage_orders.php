@@ -13,8 +13,22 @@
         </thead>
         <tbody>
             <?php
-                include("../../database/database_functions.php");
-                $conn = db_connection();
+                // include("../../database/database_functions.php");
+                // $conn = db_connection(); // TODO gives errors idk why
+                
+                // TODO do sql connection only once for the whole app
+                $servername = "localhost";
+                $username = "root";
+                $password = "root";
+                $dbname = "evivlio";
+
+                // Create connection
+                $conn = new mysqli($servername, $username, $password, $dbname);
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
 
                 $order_query = "SELECT * FROM customer_order"; 
                 $result = mysqli_query($conn, $order_query); 

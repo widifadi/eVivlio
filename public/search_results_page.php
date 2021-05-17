@@ -13,9 +13,11 @@
         </div>
     </div>
 
-    Results for: <span id="search-keyword"></span>
+    Results for: <span id="search-keyword" style="color:#F29F05;"></span>
 
-    <?php  require_once("../src/Search/search_results.php"); ?>
+    <div class="container" id="search-results-container">
+        <?php require_once("../src/Search/search_results.php"); ?>
+    </div>
 </div>
 
 <script src="../assets/js/search.js"></script>

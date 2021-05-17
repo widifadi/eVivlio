@@ -11,7 +11,7 @@
         </thead>
         <tbody>
             <?php 
-                include("../../database/database_functions.php");
+             //   include("../../database/database_functions.php");
                 // $conn = db_connection(); // TODO gives error, dunno why
 
                 // TODO do sql connection only once for the whole app

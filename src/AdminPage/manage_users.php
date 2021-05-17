@@ -11,17 +11,17 @@
         </thead>
         <tbody>
             <?php 
-                include("../../database/database_functions.php");
+             //   include("../../database/database_functions.php");
                 // $conn = db_connection(); // TODO gives error, dunno why
 
                 // TODO do sql connection only once for the whole app
                 $servername = "localhost";
                 $username = "root";
-                $password = "root";
+                $password = "";
                 $dbname = "evivlio";
 
                 // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
+                $conn = new mysqli($servername, $username, '', $dbname);
 
                 // Check connection
                 if ($conn->connect_error) {
@@ -35,7 +35,7 @@
                     $user_id = $row['user_id'];
                     $user_name = $row['username'];
                     $customer_id = $row['customer_id'];
-                    $admin_permission = $row['admin_permission']
+                    $admin_permission = $row['user_permission']
             ?>
             <tr>
                 <td>

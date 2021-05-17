@@ -26,8 +26,8 @@
 
             // get the permission
             $user_row = mysqli_fetch_array($result);
-            $admin_permission = $user_row['admin_permission'];
-            $_SESSION['admin_permission'] = $admin_permission;
+            $admin_permission = $user_row['user_permission'];
+            $_SESSION['user_permission'] = $admin_permission;
 
             header("location: ../../public/index.php");
             exit();

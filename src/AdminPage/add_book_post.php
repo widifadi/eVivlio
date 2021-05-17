@@ -19,9 +19,6 @@
 			move_uploaded_file($_FILES['cover']['tmp_name'], $upload_directory);
 
             $book_cover = $isbn . "." . $ext;
-
-            // TODO not moved to folder
-            echo $upload_directory;
 		}
 
         $author_firstname = $_POST['author_firstname'];

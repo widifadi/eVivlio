@@ -15,7 +15,7 @@
 
     Results for: <span id="search-keyword"></span>
 
-    <?php  require_once("../src/Search/search_results.php"); ?>
+    <?php require_once("../src/Search/search_results.php"); ?>
 </div>
 
 <script src="../assets/js/search.js"></script>

@@ -15,14 +15,14 @@
         exit;
     }
 
-    $keyword = $_POST['keyword'];
+    $keyword = $_GET['keyword'];
 
     // TODO author keyword
     $query = "SELECT * FROM book WHERE book_title LIKE '$keyword'; "; 
     $result = mysqli_query($conn, $query); 
     while($row = mysqli_fetch_assoc($result)) 
     {
-        echo 0;
+        echo $row['book_title'];
     }
 
     // TODO return results

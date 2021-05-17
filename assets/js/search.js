@@ -2,7 +2,6 @@ $(".search-box").keypress(function (e) {
     if (e.which == 13) {
         $("#search-button").click();
     }
-    
 });
 
 $("#search-button").click(function() {
@@ -10,8 +9,8 @@ $("#search-button").click(function() {
     var keyword = $(".search-box").val();
 
     $.ajax({
-        type: "POST",
-        url: "../src/Search/search_post.php",
+        type: "GET",
+        url: "../src/Search/search_get.php",
         data: { "keyword": keyword },
         success: function(response) {
             // TODO call results

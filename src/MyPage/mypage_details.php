@@ -117,28 +117,39 @@
 
     <div class="tab-pane fade" id="edit" role="tabpanel" 
                 aria-labelledby="edit-tab" style="padding: 10px;">
-         <form action="update_customer_post.php" method="POST">
-            <div class="row">
-                <div class="col">
-                    
-                    
-                    <div class="row">
-                        <div class="col"><label class="labels">Fisrt Name</label><input type="text" name="first_name" id="first_name" class="form-control" placeholder="First name" value=""></div>
-                        <div class="col"><label class="labels">Last Name</label><input type="text" class="form-control" name="last_name" id="last_name" value="" placeholder="Last name"></div>
-                    </div>
-                    <div class="row">
-                    <div class="col"><label class="labels">Username</label><input type="text" class="form-control" placeholder="Username" value=""></div>
-                        <div class="col"><label class="labels">E-mail</label><input type="text" class="form-control" name="email" id="email" placeholder="E-mail" value=""></div>
-                        <div class="col"><label class="labels">Date of birth</label><input type="text" class="form-control" placeholder="Date of birth" value=""></div>
-                        <div class="col"><label class="labels">Contact Number</label><input type="text" class="form-control" name="phone" id="phone" placeholder="Contact number" value=""></div>
-                        
-                    </div>
-                
-                    <div class="mt-5 text-center"><button class="btn  btn-outline-warning" type="button" name="pd_edit"  id="pd_edit">Save</button></div>
-                
+        <form action="../src/MyPage/update_customer_post.php" method="POST">
+               
+            <div class="form-group row">
+                <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-6">
+                <input type="text" class="form-control" id="first_name" name="first_name" 
+                    placeholder="First Name">
                 </div>
-
             </div>
+
+            <div class="form-group row">
+                <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-6">
+                <input type="text" class="form-control" id="last_name" name="last_name" 
+                    placeholder="Last Name">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="email" class="col-sm-2 col-form-label">E-mail</label>
+                <div class="col-sm-6">
+                <input type="text" class="form-control" id="email" name="email" 
+                    placeholder="E-mail">
+                </div>
+            </div>
+                    
+            <div class="text-center">
+                 
+            <div class="mt-5 text-center"><button class="btn  btn-outline-warning" type="submit" name="pd_edit"  id="pd_edit" >Save</button></div>
+                
+               
+
+        
         </form> 
     </div>
 </div>

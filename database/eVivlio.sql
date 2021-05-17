@@ -1,20 +1,25 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.7
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: May 16, 2021 at 05:11 PM
--- Server version: 5.7.32
--- PHP Version: 7.4.12
+-- Host: 127.0.0.1
+-- Generation Time: May 17, 2021 at 02:20 PM
+-- Server version: 10.4.18-MariaDB
+-- PHP Version: 8.0.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `evivlio`
 --
-CREATE DATABASE IF NOT EXISTS `evivlio` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `evivlio`;
 
 -- --------------------------------------------------------
 
@@ -51,7 +56,7 @@ CREATE TABLE `book` (
   `isbn` varchar(17) NOT NULL,
   `book_title` varchar(100) NOT NULL,
   `book_cover` varchar(200) NOT NULL,
-  `publishing_year` date NOT NULL,
+  `publishing_year` int(4) NOT NULL,
   `pages` int(11) NOT NULL,
   `summary` text NOT NULL,
   `price` float NOT NULL,
@@ -159,6 +164,26 @@ CREATE TABLE `customer` (
   `state` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `email`, `birthday`, `phone`, `address`, `city`, `state`) VALUES
+(1, 'Komar', 'Javanmardi', 'komar@gmail.com', '2202-02-10', '01010010', 'hahhaha', 'hahahha', 'hhaha');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `customer_order`
+--
+
+CREATE TABLE `customer_order` (
+  `order_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `order_date` date NOT NULL,
+  `shipping_status` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- --------------------------------------------------------
 
 --
@@ -177,7 +202,9 @@ CREATE TABLE `feature_tag` (
 --
 
 CREATE TABLE `feedback` (
-  `user_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `feedback` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -239,18 +266,18 @@ CREATE TABLE `publisher` (
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
-  `customer_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) NOT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `admin_permission` tinyint(1) NOT NULL DEFAULT '0'
+  `user_permission` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_permission`) VALUES
-(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `user_permission`) VALUES
+(4, 1, 'komar66', '202cb962ac59075b964b07152d234b70', 1);
 
 -- --------------------------------------------------------
 
@@ -336,12 +363,6 @@ ALTER TABLE `feature_tag`
   ADD KEY `feature_id` (`feature_id`);
 
 --
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD KEY `user_id` (`user_id`);
-
---
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
@@ -374,6 +395,7 @@ ALTER TABLE `publisher`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `username` (`username`),
+  ADD UNIQUE KEY `password` (`password`),
   ADD KEY `customer_id` (`customer_id`);
 
 --
@@ -391,7 +413,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `book`
@@ -421,7 +443,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -439,13 +461,13 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
-  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -493,12 +515,6 @@ ALTER TABLE `feature_tag`
   ADD CONSTRAINT `feature_tag_ibfk_2` FOREIGN KEY (`feature_id`) REFERENCES `book_feature` (`feature_id`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD CONSTRAINT `feedback_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON UPDATE CASCADE;
-
---
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
@@ -518,8 +534,19 @@ ALTER TABLE `payment`
   ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
 
 --
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `wishlist`
 --
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

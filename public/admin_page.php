@@ -2,7 +2,7 @@
     require_once("../templates/header.php"); 
 
     // restrict access
-    session_start();
+  //  session_start();
     if (!isset($_SESSION['user'])|| $_SESSION['admin_permission'] == 0) {
         header("location: index.php");
     }

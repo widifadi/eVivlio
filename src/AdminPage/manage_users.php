@@ -6,11 +6,14 @@
                 <th scope="col">User ID</th>
                 <th scope="col">Username</th> 
                 <th scope="col">Customer ID</th>
-                <th scope="col">Admin Permission</th>
+                <th scope="col">Permission</th>
             </tr>
         </thead>
         <tbody>
             <?php 
+             //   include("../../database/database_functions.php");
+                // $conn = db_connection(); // TODO gives error, dunno why
+
                 // TODO do sql connection only once for the whole app
                 $servername = "localhost";
                 $username = "root";
@@ -36,6 +39,7 @@
             ?>
             <tr>
                 <td>
+                    <!-- TODO might not be a good idea to pass all these as attr for security -->
                     <em class="fas fa-user-edit update-user"
                         id="updateuser-<?php echo $user_id ?>" 
                         username='<?php echo $user_name ?>'
@@ -45,6 +49,7 @@
                     <em class="fas fa-trash-alt delete-user"
                         id="deleteuser-<?php echo $user_id ?>" 
                         username='<?php echo $user_name ?>'
+                        customer-id='<?php echo $customer_id ?>'
                         data-toggle="modal" data-target=".delete-user-modal"></em>
                 </td>
                 <td><?php echo $user_id; ?></td>
@@ -55,8 +60,13 @@
                     ?>
                 </td>
                 <td>
-                    <!-- TODO use bootstrap badge -->
-                    <?php echo $admin_permission; ?>
+                    <?php 
+                        if ($admin_permission == 1) {
+                    ?>
+                        <span class="badge badge-success">Admin</span>
+                    <?php 
+                        }
+                    ?>
                 </td>
             </tr> 
             <?php

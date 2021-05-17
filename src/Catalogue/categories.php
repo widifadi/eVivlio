@@ -1,4 +1,4 @@
-<div class="card" id="book-categories" style="margin-left:50px;">
+<div class="card" id="book-categories">
   <div class="card-header subtitle" style="font-size: 18px; background-color:#F2E8B3;">
     Book Categories
   </div>

@@ -252,20 +252,20 @@ a:hover {
   opacity: 1;
 }
 
-.update-book, .update-user, .update-customer {
+.update-book, .update-user, .update-customer, .update-order {
   color: olive;
 }
 
-.update-book:hover, .update-user:hover, .update-customer:hover {
+.update-book:hover, .update-user:hover, .update-customer:hover, .update-order:hover {
   color: darkolivegreen;
   font-size: larger;
 }
 
-.delete-book, .delete-user, .delete-customer {
+.delete-book, .delete-user, .delete-customer, .delete-order {
   color: salmon;
 }
 
-.delete-book:hover, .delete-user:hover, .delete-customer:hover {
+.delete-book:hover, .delete-user:hover, .delete-customer:hover, .delete-order:hover {
   color: orangered;
   font-size: larger;
 }

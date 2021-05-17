@@ -511,6 +511,24 @@ a:hover {
 
 /* CONTACT US end */
 
+/*ABOUT US start */
+
+.team:hover {
+  cursor: pointer !important;
+  background-color: var(--light-grey);
+}
+
+.team-name {
+  color: var(--blue-theme);
+  font-size: 18px;
+}
+
+.team-contact {
+  background-color: var(--blue-theme);
+  font-size: 16px;
+  font-weight: normal !important;
+}
+/*ABOUT US end */
 .page-footer {
   margin-top: auto;
   height: 250px;

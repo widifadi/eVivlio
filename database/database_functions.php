@@ -1,10 +1,17 @@
 <?php
 
 	function db_connection() {
+
 		$servername = "localhost";
 		$username = "root";
-		$password = "root";
+		$password = "";
 		$dbname = "evivlio";
+
+		$user_agent = getenv("HTTP_USER_AGENT");
+
+		if (strpos($user_agent, "Mac") !== FALSE) {
+			$password = "root";
+		}
 
 		$conn = mysqli_connect($servername, $username, $password, $dbname);
 

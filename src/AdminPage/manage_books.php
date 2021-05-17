@@ -44,11 +44,11 @@
                             // TODO do sql connection only once for the whole app
                             $servername = "localhost";
                             $username = "root";
-                            $password = "root";
+                            $password = "";
                             $dbname = "evivlio";
 
                             // Create connection
-                            $conn = new mysqli($servername, $username, $password, $dbname);
+                            $conn = new mysqli($servername, $username,'', $dbname);
 
                             // Check connection
                             if ($conn->connect_error) {

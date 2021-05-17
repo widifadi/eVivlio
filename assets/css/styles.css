@@ -84,6 +84,14 @@ a:hover {
   color: var(--light-grey)
 }
 
+/* Card Columns */
+@media (min-width: 80em) {
+  .card-columns {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+  }
+}
 
 /* Front page start */
 #front-page {
@@ -106,7 +114,7 @@ a:hover {
   font-family: 'Luminari';
 }
 
-#front-page-search-div{
+#front-page-search-container {
   position: relative;
   margin: auto;
   margin-top: 50px;
@@ -114,27 +122,32 @@ a:hover {
   height: 200px;
 }
 
-.search-box {
+#front-page-search-group {
   position: absolute;
   left:0;
   right:0;
   margin-left:auto;
   margin-right:auto;
-  outline: none;
-  color: var(--light-yellow-theme);
-  border: 0;
-  border-radius: 20px;
   width: 300px;
 }
 
-.search-button {
-  position: absolute;
-  right: 200px; /* TODO: make better alignment */
-  top: 1px;
-  background-color: var(--yellow-theme);
-  border-radius: 50%;
+.search-box {
+  outline: none;
+  color: var(--blue-theme);
+  border: 0;
+  border-radius: 20px;
+}
+
+#search-button {
+  border-radius: 0 50% 50% 0;
+  background-color: white;
   border: 0;
   color: var(--dark-orange);
+}
+
+#search-button:hover {
+  cursor: pointer;
+  color: var(--blue-theme);
 }
 
 #promo-categories #features-div {
@@ -155,6 +168,35 @@ a:hover {
   background-size: cover;
 }
 /* Front page end */
+
+
+/* Search Page start */
+#search-page-search-container {
+  margin: auto;
+  width: 60%;
+}
+
+#search-page-input[type="text"] {
+  border: 1px solid var(--blue-theme);
+  background-color: var(--blue-theme) !important;
+  color: var(--light-yellow-theme);
+}
+
+#search-page-input::placeholder{
+  color: var(--light-yellow-theme);
+}
+
+.search-page-button {
+  background-color: var(--blue-theme) !important;
+  color: var(--light-yellow-theme) !important;
+}
+
+.search-page-button:hover {
+  color: var(--orange) !important;
+}
+
+/* Search Page end */
+
 
 /* SignUp Login page start */
 #login-form, #signup-form {
@@ -252,20 +294,21 @@ a:hover {
   opacity: 1;
 }
 
-.update-book, .update-user, .update-customer {
+/* TODO use common class!!! */
+.update-book, .update-user, .update-customer, .update-order {
   color: olive;
 }
 
-.update-book:hover, .update-user:hover, .update-customer:hover {
+.update-book:hover, .update-user:hover, .update-customer:hover, .update-order:hover {
   color: darkolivegreen;
   font-size: larger;
 }
 
-.delete-book, .delete-user, .delete-customer {
+.delete-book, .delete-user, .delete-customer, .delete-order {
   color: salmon;
 }
 
-.delete-book:hover, .delete-user:hover, .delete-customer:hover {
+.delete-book:hover, .delete-user:hover, .delete-customer:hover, .delete-order:hover {
   color: orangered;
   font-size: larger;
 }
@@ -308,11 +351,11 @@ a:hover {
 .catalog-breadcrumbs {
   background-color: var(--blue-theme);
   border-radius: 5px;
+  padding-left: 5px;
 }
 
 #book-list {
   margin-top: 20px;
-  margin-left: 10px;
 }
 
 .book:hover {
@@ -468,6 +511,24 @@ a:hover {
 
 /* CONTACT US end */
 
+/*ABOUT US start */
+
+.team:hover {
+  cursor: pointer !important;
+  background-color: var(--light-grey);
+}
+
+.team-name {
+  color: var(--blue-theme);
+  font-size: 18px;
+}
+
+.team-contact {
+  background-color: var(--blue-theme);
+  font-size: 16px;
+  font-weight: normal !important;
+}
+/*ABOUT US end */
 .page-footer {
   margin-top: auto;
   height: 250px;

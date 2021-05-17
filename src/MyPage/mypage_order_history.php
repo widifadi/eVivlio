@@ -39,7 +39,7 @@
                 FROM order_items oi
                 JOIN book b
                 USING (book_id)
-                JOIN `order` o
+                JOIN customer_order o
                 USING (order_id)
                 JOIN customer c
                 USING (customer_id)

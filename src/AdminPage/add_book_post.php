@@ -1,5 +1,4 @@
 <?php
-
     require_once("../../database/database_functions.php");
     $conn = db_connection();
 
@@ -14,12 +13,15 @@
         if (isset($_FILES['cover']) && $_FILES['cover']['error'] === UPLOAD_ERR_OK) {
 			$cover = $_FILES['cover']['name'];
 
-			$upload_directory = dirname(__DIR__, 1) . "/assets/img/book-covers/";
+			$upload_directory = dirname(__DIR__, 2) . "/assets/img/book-covers/";
             $ext = end((explode(".", $cover))); # extra () to prevent notice
             $upload_directory .= $isbn . "." . $ext;
 			move_uploaded_file($_FILES['cover']['tmp_name'], $upload_directory);
 
             $book_cover = $isbn . "." . $ext;
+
+            // TODO not moved to folder
+            echo $upload_directory;
 		}
 
         $author_firstname = $_POST['author_firstname'];
@@ -33,7 +35,7 @@
 		$author_result = mysqli_query($conn, $query_author);
         if (!mysqli_num_rows($author_result)) {
 			// insert into author table and return id
-			$insert_author = "INSERT INTO author (first_name, last_name) 
+			$insert_author = "INSERT INTO author (author_first_name, author_last_name) 
                                 VALUES ('$author_firstname', '$author_lastname') ";
 			$insert_author_result = mysqli_query($conn, $insert_author);
 			if (!$insert_author_result) {
@@ -49,12 +51,11 @@
         $publisher = $_POST['publisher'];
         $publisher = mysqli_real_escape_string($conn, $publisher);
 		// if publisher is not in db, create new
-        $query_publisher = "SELECT * FROM publisher WHERE publisher_name='$publisher' ";
+        $query_publisher = "SELECT * FROM publisher WHERE publisher='$publisher' ";
         $publisher_result = mysqli_query($conn, $query_publisher);
         if (!mysqli_num_rows($publisher_result)) {
 			// insert into publisher table and return id
-			$insert_publisher = "INSERT INTO publisher (publisher_name)
-                                    VALUES ('$publisher') ";
+			$insert_publisher = "INSERT INTO publisher (publisher) VALUES ('$publisher') ";
 
 			$insert_pub_result = mysqli_query($conn, $insert_publisher);
 			if (!$insert_pub_result) {
@@ -67,28 +68,7 @@
 			$publisher_id = $pub_row['publisher_id'];
 		}
 
-        $year = $_POST['year'];
-
-        $category = $_POST['category'];
-        // TODO use array 
-        $categories = "";
-        foreach ($category as $choice) 
-        {
-            $choice = mysqli_real_escape_string($conn, $choice);
-
-            // query category table
-            $query_category = "SELECT * FROM category WHERE category_name='$choice' ";
-            $category_result = mysqli_query($conn, $query_category);
-            $cat_row = mysqli_fetch_assoc($category_result);
-            $category_id = $cat_row['category_id'];
-
-            // category as "1,2,3" format
-            if (!next($category)) {
-                $categories .= $category_id;
-            } else {
-                $categories .= $category_id . ",";
-            }
-        }
+        $publishing_year = $_POST['year'];
 
         $pages = $_POST['pages'];
 
@@ -96,56 +76,75 @@
         $summary = mysqli_real_escape_string($conn, $summary);
 
         $price = $_POST['price'];
-
         $stock = $_POST['stocks'];
 
-        $addbook_query = "INSERT INTO book (isbn, title, book_cover, author, publisher, publishing_year, 
-                                            category, pages, summary, price, stock)
-                            VALUES ('$isbn', '$title', '$book_cover', '$author_id', '$publisher_id', $year, 
-                                            '$categories', $pages, '$summary', $price, $stock )";
-
+        $addbook_query = "INSERT INTO book (publisher_id, isbn, book_title, book_cover, publishing_year, 
+                                            pages, summary, price, stock)
+                            VALUES ('$publisher_id', '$isbn', '$title', '$book_cover', '$publishing_year', 
+                                            $pages, '$summary', $price, $stock )";
 
         if ($conn->query($addbook_query) === TRUE) {
             echo "New book created successfully. <br>";
         } else {
-            echo "Book Table Error: " . $sql . "<br>" . $conn->error . "<br>";
+            echo "book table Error: " . mysqli_error($conn) . "<br>";
         }
 
+        $new_book_id = mysqli_insert_id($conn);
+
+        // add to author_tag table
+        $author_tag_query = "INSERT INTO author_tag (book_id, author_id) 
+                            VALUES ($new_book_id, $author_id);";
+        mysqli_query($conn, $author_tag_query);
+        if (mysqli_query($conn, $author_tag_query)) {
+            echo "New author_tag created successfully. <br>";
+        } else {
+            echo "author_tag table Error: " . mysqli_error($conn);
+        }
+
+        // add to category_tag table
+        $category = $_POST['category'];
+        foreach ($category as $category_choice) 
+        {
+            $category_query = "SELECT * FROM category WHERE category_name='$category_choice'; ";
+            $category_result = mysqli_query($conn, $category_query);
+            $cat_row = mysqli_fetch_assoc($category_result);
+            $category_id = $cat_row['category_id'];
+
+            $category_tag_query = "INSERT INTO category_tag (book_id, category_id) 
+                                    VALUES ($new_book_id, $category_id); ";
+            mysqli_query($conn, $category_tag_query);
+            if (mysqli_query($conn, $category_tag_query)) {
+                echo "New category_tag created successfully. <br>";
+            } else {
+                echo "category_tag table Error: " . mysqli_error($conn);
+            }
+
+        }
+
+        // add to feature_tag table
         $feature = $_POST['feature'];
         $features = "";
         foreach ($feature as $feature_choice)  
-        {  
-            if ($feature_choice == 'best_seller') {
-                $add_bestseller = "INSERT INTO best_seller(book_id) 
-                                    SELECT book_id FROM book WHERE isbn = '$isbn' ";
-                if ($conn->query($add_bestseller) === TRUE) {
-                    echo "New Best Seller record created successfully. <br>";
-                } else {
-                    echo "Best Seller Table Error: " . $sql . "<br>" . $conn->error . "<br>";
-                }
-            } else if ($feature_choice == 'editors_pick') {
-                $add_editorspick = "INSERT INTO editors_pick(book_id) 
-                                    SELECT book_id FROM book WHERE isbn = '$isbn' ";
-                if ($conn->query($add_editorspick) === TRUE) {
-                    echo "New Editor's Pick record created successfully. <br>";
-                } else {
-                    echo "Editor's Pick Table Error: " . $sql . "<br>" . $conn->error . "<br>";
-                }
-            } else if ($feature_choice == 'new_release') {
-                $add_newrelease = "INSERT INTO new_release(book_id) 
-                                    SELECT book_id FROM book WHERE isbn = '$isbn' ";
-                if ($conn->query($add_newrelease) === TRUE) {
-                    echo "New Release record created successfully. <br>";
-                } else {
-                    echo "New Release Table Error: " . $sql . "<br>" . $conn->error . "<br>";
-                }
+        {
+            $feature_query = "SELECT * FROM book_feature WHERE feature_name='$feature_choice'; ";
+            $feature_result = mysqli_query($conn, $feature_query);
+            $feat_row = mysqli_fetch_assoc($feature_result);
+            $feature_id = $feat_row['feature_id'];
+
+            $feature_tag_query = "INSERT INTO feature_tag (book_id, feature_id) 
+                                    VALUES ($new_book_id, $feature_id); ";
+            mysqli_query($conn, $feature_tag_query);
+            if (mysqli_query($conn, $feature_tag_query)) {
+                echo "New feature_tag created successfully. <br>";
+            } else {
+                echo "feature_tag table Error: " . mysqli_error($conn);
             }
         }
 
-        header("location: admin_page.php");
+        header("location: ../../public/admin_page.php#managebooks");
 
     }
 
-    $conn->close();
+    mysqli_close($conn);
 
 ?>

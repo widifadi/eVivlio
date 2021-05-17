@@ -11,22 +11,8 @@
         </thead>
         <tbody>
             <?php 
-             //   include("../../database/database_functions.php");
-                // $conn = db_connection(); // TODO gives error, dunno why
-
-                // TODO do sql connection only once for the whole app
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "evivlio";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+                include("../../database/database_functions.php");
+                $conn = db_connection();
 
                 $user_query = "SELECT * FROM user"; 
                 $result = mysqli_query($conn, $user_query); 

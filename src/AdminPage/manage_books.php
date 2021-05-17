@@ -38,22 +38,8 @@
                     </thead>
                     <tbody>
                         <?php 
-                            // include("../../database/database_functions.php");
-                            // $conn = db_connection();
-                            
-                            // TODO do sql connection only once for the whole app
-                            $servername = "localhost";
-                            $username = "root";
-                            $password = "root";
-                            $dbname = "evivlio";
-
-                            // Create connection
-                            $conn = new mysqli($servername, $username, $password, $dbname);
-
-                            // Check connection
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            }
+                            include("../database/database_functions.php");
+                            $conn = db_connection();
 
                             $book_query = "SELECT * FROM book";
                             $result = mysqli_query($conn, $book_query); 
@@ -73,25 +59,15 @@
                             </td>
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
-                            <td><?php echo $row['title']; ?></td>
+                            <td><?php echo $row['book_title']; ?></td>
                             <!-- TODO get author name -->
-                            <td><?php echo $row['author']; ?></td>
+                            <td><?php echo "TODO"; ?></td>
                             <!-- TODO get publisher name -->
-                            <td><?php echo $row['publisher']; ?></td>
+                            <td><?php echo $row['publisher_id']; ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
                             <td>
                                 <?php 
-                                    $categories = explode(",", $row['category']);
-                                    $category_list = array();
-                                    foreach ($categories as $category_id) {
-                                        $category_query = "SELECT * FROM category WHERE category_id=$category_id ";
-                                        $category_result = mysqli_query($conn, $category_query);
-                                        $category_row = mysqli_fetch_assoc($category_result);
-                                        $category_name = $category_row['category_name'];
-
-                                        array_push($category_list, $category_name);
-                                    }
-                                    echo implode(", ", $category_list);
+                                    echo "TODO"
                                 ?>
                             </td>
                             <td><?php echo $row['pages']; ?></td>
@@ -99,28 +75,7 @@
                             <td><?php echo $row['stock']; ?></td>
                             <td>
                                 <?php
-                                    $features = array();
-
-                                    $bestseller_query = "SELECT * FROM best_seller WHERE book_id=$book_id";
-                                    $bestseller_result = mysqli_query($conn, $bestseller_query);
-                                    if (mysqli_num_rows($bestseller_result)) {
-                                        array_push($features, "Best Seller");
-                                    }
-
-                                    $new_query = "SELECT * FROM new_release WHERE book_id=$book_id";
-                                    $new_result = mysqli_query($conn, $new_query);
-                                    if (mysqli_num_rows($new_result)) {
-                                        array_push($features, "New Release");
-                                    }
-
-                                    $pick_query = "SELECT * FROM editors_pick WHERE book_id=$book_id";
-                                    $pick_result = mysqli_query($conn, $pick_query);
-                                    if (mysqli_num_rows($pick_result)) {
-                                        array_push($features, "Editor's Pick");
-                                    }
-
-                                    echo implode(", ", $features);
-                                    // TODO put into bootstrap badge
+                                    echo "TODO"
                                 ?>
                             </td>
                             <td>

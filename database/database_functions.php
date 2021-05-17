@@ -12,6 +12,7 @@
 			echo "Can't connect database " . mysqli_connect_error($conn);
 			exit;
 		}
+		
 		return $conn;
 	}
 

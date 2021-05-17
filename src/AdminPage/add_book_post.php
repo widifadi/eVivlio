@@ -87,7 +87,6 @@
             echo "New book created successfully. <br>";
         } else {
             echo "book table Error: " . mysqli_error($conn) . "<br>";
-<<<<<<< HEAD
         }
 
         $new_book_id = mysqli_insert_id($conn);
@@ -102,22 +101,6 @@
             echo "author_tag table Error: " . mysqli_error($conn);
         }
 
-=======
-        }
-
-        $new_book_id = mysqli_insert_id($conn);
-
-        // add to author_tag table
-        $author_tag_query = "INSERT INTO author_tag (book_id, author_id) 
-                            VALUES ($new_book_id, $author_id);";
-        mysqli_query($conn, $author_tag_query);
-        if (mysqli_query($conn, $author_tag_query)) {
-            echo "New author_tag created successfully. <br>";
-        } else {
-            echo "author_tag table Error: " . mysqli_error($conn);
-        }
-
->>>>>>> 6432971d6462cb05cd820a6fa29cee3e9cef74e6
         // add to category_tag table
         $category = $_POST['category'];
         foreach ($category as $category_choice) 

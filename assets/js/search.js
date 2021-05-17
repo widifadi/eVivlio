@@ -9,15 +9,25 @@ $("#search-button").click(function() {
     var keyword = $(".search-box").val();
 
     $.ajax({
-        type: "GET",
-        url: "../src/Search/search_get.php",
+        type: "POST",
+        url: "../src/Search/search_function.php",
         data: { "keyword": keyword },
         success: function(response) {
-            // TODO call results
-            console.log(response);
-            window.location.href = 'search_results_page.php'
+            // window.location.href = 'search_results_page.php'
+            console.log(response)
+
+            var book_results = jQuery.parseJSON(response);
 
             $("#search-keyword").html(keyword); // TODO
+
+            $.ajax({
+                type: "POST",
+                url: "../src/Search/search_results.php",
+                data: { "book_results": book_results },
+                success: function(results_response) {
+                    console.log(results_response)
+                },
+            });
 
         },
     });

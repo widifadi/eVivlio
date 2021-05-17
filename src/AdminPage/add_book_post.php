@@ -14,10 +14,13 @@
         if (isset($_FILES['cover']) && $_FILES['cover']['error'] === UPLOAD_ERR_OK) {
 			$cover = $_FILES['cover']['name'];
 
-			$upload_directory = dirname(__DIR__, 1) . "/assets/img/book-covers/";
-            $ext = end((explode(".", $cover))); # extra () to prevent notice
-            $upload_directory .= $isbn . "." . $ext;
-			move_uploaded_file($_FILES['cover']['tmp_name'], $upload_directory);
+			$upload_directory = dirname(__DIR__, 1) . "../../assets/img/";
+          //  $ext = end((explode(".", $cover))); # extra () to prevent notice
+           
+          $tmp = explode('.', $cover);
+          $ext = end($tmp);
+          $upload_directory .= $isbn . "." . $ext;
+		 move_uploaded_file($_FILES['cover']['tmp_name'], $upload_directory);
 
             $book_cover = $isbn . "." . $ext;
 		}

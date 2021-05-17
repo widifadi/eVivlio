@@ -47,6 +47,12 @@
                         <em class="fas fa-user"></em> My Page
                     </button>
                 </a>
+
+                <?php
+                    }
+                    // if user is not admin
+                    if($_SESSION['admin_permission'] != 1) {
+                ?>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">
                         <em class="fas fa-shopping-cart"></em>

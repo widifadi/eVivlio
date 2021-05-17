@@ -1,5 +1,7 @@
 <?php
-    session_start();
+    //session_start();
+    require_once ('../database/database_functions.php');
+    db_connection();
 ?>
 
 <div class="container" style="margin-top:100px; margin-left: 10px;">
@@ -33,7 +35,8 @@
                         <tbody >
                                 <?php
                                     // Fetching information from cart table 
-                                    require 'database_functions.php';
+                                    require_once '../database/database_functions.php';
+                                    $conn = db_connection();
                                     $stmt = $conn->prepare("SELECT * FROM cart");
                                     $stmt->execute();
                                     $result = $stmt->get_result();

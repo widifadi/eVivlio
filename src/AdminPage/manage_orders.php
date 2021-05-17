@@ -13,7 +13,7 @@
         </thead>
         <tbody>
             <?php
-                include("../../database/database_functions.php");
+                require_once("../database/database_functions.php");
                 $conn = db_connection();
 
                 $order_query = "SELECT * FROM customer_order"; 

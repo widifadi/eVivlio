@@ -38,11 +38,11 @@
                     </thead>
                     <tbody>
                         <?php 
-                            // include("../../database/database_functions.php");
-                            // $conn = db_connection();
+                            require_once("../database/database_functions.php");
+                            $conn = db_connection();
                             
                             // TODO do sql connection only once for the whole app
-                            $servername = "localhost";
+                        /*    $servername = "localhost";
                             $username = "root";
                             $password = "";
                             $dbname = "evivlio";
@@ -53,9 +53,7 @@
                             // Check connection
                             if ($conn->connect_error) {
                                 die("Connection failed: " . $conn->connect_error);
-                            }
-                            include("../database/database_functions.php");
-                            $conn = db_connection();
+                            }*/
 
                             $book_query = "SELECT * FROM book";
                             $result = mysqli_query($conn, $book_query); 
@@ -73,10 +71,13 @@
                                     title='<?php echo $row['title'] ?>'
                                     data-toggle="modal" data-target=".delete-book-modal"></em>
                             </td>
+
+
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
                             <!-- TODO get author name -->
+                             
                             <td><?php echo "TODO"; ?></td>
                             <!-- TODO get publisher name -->
                             <td><?php echo $row['publisher_id']; ?></td>

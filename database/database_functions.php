@@ -1,7 +1,5 @@
 <?php
-
 	function db_connection() {
-
 		$servername = "localhost";
 		$username = "root";
 		$password = "";
@@ -22,5 +20,22 @@
 		
 		return $conn;
 	}
+
+	function GetAuthorName($conn, $author_id){
+		$conn = db_connection();
+		$query = "SELECT author_first_name FROM author WHERE author_id = '$author_id'";
+		$result = mysqli_query($conn, $query);
+		if(!$result){
+			echo "Can't retrieve data " . mysqli_error($conn);
+			exit;
+		}
+			if(mysqli_num_rows($result) == 0){
+				echo "Empty author ! Something wrong! check again";
+				exit;
+			}
+	
+			$row = mysqli_fetch_assoc($result);
+			return $row['author_first_name'];
+		}
 
 ?>

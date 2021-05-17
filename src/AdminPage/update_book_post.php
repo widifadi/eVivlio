@@ -1,8 +1,12 @@
 <?php 
     // TODO do sql connection only once for the whole app
+  
+ //   require_once('../../database/database_functions.php');
+ //   $conn = db_connection();
+
     $servername = "localhost";
     $username = "root";
-    $password = "root";
+    $password = "";
     $dbname = "evivlio";
 
     // Create connection
@@ -11,7 +15,7 @@
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
-    }
+    } 
 
     if (isset($_POST['update-book-btn'])) {
         $isbn = $_POST['isbn'];
@@ -25,7 +29,8 @@
 			$cover = $_FILES['cover']['name'];
 
 			$upload_directory = dirname(__DIR__, 2) . "/assets/img/book-covers/";
-            $ext = end((explode(".", $cover))); # extra () to prevent notice
+           $tmp= (explode(".", $cover)); # extra () to prevent notice
+           $ext = end($tmp);
             $upload_directory .= $isbn . "." . $ext;
             echo $upload_directory;
 			move_uploaded_file($_FILES['cover']['tmp_name'], $upload_directory);

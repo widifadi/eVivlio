@@ -31,8 +31,8 @@
         $author_lastname = mysqli_real_escape_string($conn, $author_lastname);
         // if author is not in db, create new
 		$query_author = "SELECT * FROM author
-                            WHERE first_name = '$author_firstname' AND 
-                                    last_name = '$author_lastname' ";
+                            WHERE author_first_name = '$author_firstname' AND 
+                                    author_last_name = '$author_lastname' ";
 		$author_result = mysqli_query($conn, $query_author);
         if (!mysqli_num_rows($author_result)) {
 			// insert into author table and return id

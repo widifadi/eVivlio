@@ -11,7 +11,7 @@
             <div class="catalog-breadcrumbs">
                 <!-- TODO backend/js code -->
                 <!-- breadcrumbs -->
-                <a href="catalog.php"> Catalog </a> 
+                <a href="catalog.php?p=all_books"> Catalog </a> 
                 <em class="fas fa-chevron-right" style="color: grey;"></em>
                 <a href=""> Category </a> 
                 <!-- <i class="fas fa-chevron-right" style="color: grey;"></i> -->

@@ -30,7 +30,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a href="catalog.php">
+                <a href="catalog.php?p=all_books">
                     <button class="btn menu-btn" id="catalog-btn">Book Catalogue</button>
                 </a>
             </div>

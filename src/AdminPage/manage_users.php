@@ -17,11 +17,11 @@
                 // TODO do sql connection only once for the whole app
                 $servername = "localhost";
                 $username = "root";
-                $password = "";
+                $password = "root";
                 $dbname = "evivlio";
 
                 // Create connection
-                $conn = new mysqli($servername, $username, '', $dbname);
+                $conn = new mysqli($servername, $username, $password, $dbname);
 
                 // Check connection
                 if ($conn->connect_error) {
@@ -35,7 +35,7 @@
                     $user_id = $row['user_id'];
                     $user_name = $row['username'];
                     $customer_id = $row['customer_id'];
-                    $admin_permission = $row['user_permission']
+                    $admin_permission = $row['admin_permission']
             ?>
             <tr>
                 <td>

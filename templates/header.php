@@ -15,8 +15,6 @@
 </head>
 
 <body>
-    <?php require_once("../config/config.php"); ?>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
             <a href="index.php">
@@ -40,7 +38,7 @@
                 <!-- IF a user that is not admin is logged in -->
                 <?php
                     session_start();
-                    if (isset($_SESSION['user']) && $_SESSION['user_permission'] == 0) {
+                    if (isset($_SESSION['user']) && $_SESSION['admin_permission'] == 0) {
                 ?>
                 <a href="my_page.php">
                     <button class="btn menu-btn" id="mypage-btn">
@@ -62,7 +60,7 @@
                 <?php
                     }
                     // IF an admin user is logged in
-                    if(isset($_SESSION['user']) && $_SESSION['user_permission'] == 1) {
+                    if(isset($_SESSION['user']) && $_SESSION['admin_permission'] == 1) {
                 ?>
                 <a href="admin_page.php">
                     <button class="btn menu-btn" id="adminpage-btn">

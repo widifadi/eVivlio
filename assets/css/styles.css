@@ -70,7 +70,6 @@ a:hover {
   color: var(--blue-theme);
 }
 
-/* TODO blue theme button */
 .blue-theme-btn {
   background-color: var(--blue-theme);
   color: var(--light-grey)
@@ -80,8 +79,19 @@ a:hover {
   color: var(--light-yellow-theme);
 }
 
-/* TODO yellow theme button */
+.yellow-theme-btn {
+  background-color: var(--yellow-theme);
+  color: var(--light-grey)
+}
 
+/* Card Columns */
+@media (min-width: 80em) {
+  .card-columns {
+      -webkit-column-count: 4;
+      -moz-column-count: 4;
+      column-count: 4;
+  }
+}
 
 /* Front page start */
 #front-page {
@@ -104,7 +114,7 @@ a:hover {
   font-family: 'Luminari';
 }
 
-#front-page-search-div{
+#front-page-search-container {
   position: relative;
   margin: auto;
   margin-top: 50px;
@@ -112,27 +122,32 @@ a:hover {
   height: 200px;
 }
 
-.search-box {
+#front-page-search-group {
   position: absolute;
   left:0;
   right:0;
   margin-left:auto;
   margin-right:auto;
-  outline: none;
-  color: var(--light-yellow-theme);
-  border: 0;
-  border-radius: 20px;
   width: 300px;
 }
 
-.search-button {
-  position: absolute;
-  right: 200px; /* TODO: make better alignment */
-  top: 1px;
-  background-color: var(--yellow-theme);
-  border-radius: 50%;
+.search-box {
+  outline: none;
+  color: var(--blue-theme);
+  border: 0;
+  border-radius: 20px;
+}
+
+#search-button {
+  border-radius: 0 50% 50% 0;
+  background-color: white;
   border: 0;
   color: var(--dark-orange);
+}
+
+#search-button:hover {
+  cursor: pointer;
+  color: var(--blue-theme);
 }
 
 #promo-categories #features-div {
@@ -153,6 +168,35 @@ a:hover {
   background-size: cover;
 }
 /* Front page end */
+
+
+/* Search Page start */
+#search-page-search-container {
+  margin: auto;
+  width: 60%;
+}
+
+#search-page-input[type="text"] {
+  border: 1px solid var(--blue-theme);
+  background-color: var(--blue-theme) !important;
+  color: var(--light-yellow-theme);
+}
+
+#search-page-input::placeholder{
+  color: var(--light-yellow-theme);
+}
+
+.search-page-button {
+  background-color: var(--blue-theme) !important;
+  color: var(--light-yellow-theme) !important;
+}
+
+.search-page-button:hover {
+  color: var(--orange) !important;
+}
+
+/* Search Page end */
+
 
 /* SignUp Login page start */
 #login-form, #signup-form {
@@ -250,20 +294,21 @@ a:hover {
   opacity: 1;
 }
 
-.update-book, .update-user {
+/* TODO use common class!!! */
+.update-book, .update-user, .update-customer, .update-order {
   color: olive;
 }
 
-.update-book:hover, .update-user:hover {
+.update-book:hover, .update-user:hover, .update-customer:hover, .update-order:hover {
   color: darkolivegreen;
   font-size: larger;
 }
 
-.delete-book, .delete-user, .delete-customer {
+.delete-book, .delete-user, .delete-customer, .delete-order {
   color: salmon;
 }
 
-.delete-book:hover, .delete-user:hover, .delete-customer:hover {
+.delete-book:hover, .delete-user:hover, .delete-customer:hover, .delete-order:hover {
   color: orangered;
   font-size: larger;
 }
@@ -306,11 +351,11 @@ a:hover {
 .catalog-breadcrumbs {
   background-color: var(--blue-theme);
   border-radius: 5px;
+  padding-left: 5px;
 }
 
 #book-list {
   margin-top: 20px;
-  margin-left: 10px;
 }
 
 .book:hover {
@@ -361,10 +406,60 @@ a:hover {
 .book-cover {
   margin: auto;
 }
+
+.rate {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+  content: '★ ';
+}
+
+.rate > input:checked ~ label {
+  color: #ffc700;    
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
+
+.user-rating {
+  color: var(--light-yellow-theme)
+}
+
+.user-rating.checked {
+  color: var(--orange);
+}
 /* BOOK CATALOGUE end */
 
 /* MY PAGE start*/
-#wishlist  #order-history #details-form #personal-detils{
+#wishlist  #order-history #details-form #personal-detils {
   margin-left: 10px;
   margin-top: 20px;
   border: solid var(--light-grey) 1px;
@@ -413,9 +508,28 @@ a:hover {
   margin-left: 10px;
   margin-top: 10px;
 }
+
 /* CONTACT US end */
 
-footer {
+/*ABOUT US start */
+
+.team:hover {
+  cursor: pointer !important;
+  background-color: var(--light-grey);
+}
+
+.team-name {
+  color: var(--blue-theme);
+  font-size: 18px;
+}
+
+.team-contact {
+  background-color: var(--blue-theme);
+  font-size: 16px;
+  font-weight: normal !important;
+}
+/*ABOUT US end */
+.page-footer {
   margin-top: auto;
   height: 250px;
   background-color: var(--blue-theme);

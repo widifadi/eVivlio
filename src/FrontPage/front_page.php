@@ -5,14 +5,19 @@
         consectetur adipiscing elit​.
     </span>
 
-    <div id="front-page-search-div"> 
-        <form>
-            <input type="text" class="form-control search-box" placeholder="Search a book" name="search">
-            <!-- TODO fix button placement -->
-            <!-- <button type="submit" class="btn search-button">
-                <i class="fas fa-search"></i>
-            </button> -->
-        </form>
+    <div id="front-page-search-container">
+        <!-- TODO error if empty -->
+        <div class="input-group mb-3" id="front-page-search-group">
+            <input type="text" class="form-control search-box" placeholder="Search a book" 
+                aria-label="Search keyword" aria-describedby="search-button">
+            <div class="input-group-append">
+                <span class="input-group-text" id="search-button">
+                    <em class="fas fa-search"></em>
+                </span>
+            </div>
+        </div>
     </div>
 
 </div>
+
+<script src="../assets/js/search.js"></script>

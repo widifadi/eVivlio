@@ -15,8 +15,6 @@
 </head>
 
 <body>
-    <?php require_once("../config/config.php"); ?>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
             <a href="index.php">
@@ -47,6 +45,13 @@
                         <em class="fas fa-user"></em> My Page
                     </button>
                 </a>
+
+                <?php
+                    }
+                    // if user is not admin
+                    if( !isset($_SESSION['user']) || 
+                        (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] != 1)) {
+                ?>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">
                         <em class="fas fa-shopping-cart"></em>
@@ -82,7 +87,8 @@
                     // IF a user is logged in
                     if(isset($_SESSION['user'])) {
                 ?>
-                <a href="logout_process.php">
+                
+                <a href="../src/SignupLogin/logout_process.php">
                     <button class="btn menu-btn">
                         <em class="fas fa-sign-out-alt"></em>
                     </button>

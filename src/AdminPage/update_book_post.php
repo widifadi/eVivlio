@@ -3,7 +3,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "root";
-    $dbname = "eVivlio";
+    $dbname = "evivlio";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);

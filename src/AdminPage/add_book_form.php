@@ -1,4 +1,4 @@
-<form action="add_book_post.php" method="POST" id="add-book-form" enctype="multipart/form-data">
+<form action="../src/AdminPage/add_book_post.php" method="POST" id="add-book-form" enctype="multipart/form-data">
     <div class="form-group row">
         <label for="isbn" class="col-sm-3 col-form-label addbook-label">ISBN</label>
         <div class="col-sm-9">
@@ -134,15 +134,15 @@
         <label for="feature" class="col-sm-3 col-form-label addbook-label">Feature</label>
         <div class="col-sm-9 form-check">
             <input class="form-check-input" type="checkbox" name="feature[]" 
-                value="best_seller" id="best-seller"> 
+                value="Best Sellers" id="best-seller"> 
             <label class="form-check-label" for="best-seller">Best Seller of the Month</label><br>
 
             <input class="form-check-input" type="checkbox" name="feature[]" 
-                value="editors_pick" id="editors-pick"> 
+                value="Editor Recommends" id="editors-pick"> 
             <label class="form-check-label" for="editors-pick">Editor's Pick</label><br>
 
             <input class="form-check-input" type="checkbox" name="feature[]" 
-                value="new_release" id="new-release"> 
+                value="New Release" id="new-release"> 
             <label class="form-check-label" for="new-release">New Release</label><br>
         </div>
     </div>

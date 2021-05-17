@@ -15,7 +15,7 @@
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-login" 
             role="tabpanel" aria-labelledby="pills-login-tab">
-            <form action="verify_login.php" method="post" id="login-form">
+            <form action="../src/SignupLogin/verify_login.php" method="post" id="login-form">
                 <div class="form-group row">
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
@@ -39,7 +39,7 @@
 
         <div class="tab-pane fade" id="pills-signup" role="tabpanel"
             aria-labelledby="pills-signup-tab">
-            <form action="registration_post.php" method="POST" id="signup-form">
+            <form action="../src/SignupLogin/registration_post.php" method="POST" id="signup-form">
                 <div class="form-group row">
                     <label for="firstName" class="col-sm-3 col-form-label signup-label">First Name</label>
                     <div class="col-sm-9">

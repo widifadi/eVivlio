@@ -1,18 +1,7 @@
-<?php 
-    // TODO do sql connection only once for the whole app
-    // TODO use database_functions file
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "eVivlio";
+<?php
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require_once("../../database/database_functions.php");
+    $conn = db_connection();
 
     if (isset($_POST['register_btn'])) {
         $first_name = $_POST['firstName'];
@@ -50,26 +39,28 @@
         $state = mysqli_real_escape_string($conn, $state);
 
         if ($password != $password_check) {
-            echo 'Passwords do not match !';
+            echo 'Passwords do not match!';
         }
 
-        $customer_query = "INSERT INTO customer (first_name, last_name, email, username, birthdate, phone, street_address, city, state) 
-                        VALUES ('$first_name', '$last_name', '$email', '$username', '$birthdate', '$phone', '$street_address', '$city', '$state')";
+        $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 
+                        VALUES ('$first_name', '$last_name', '$email', '$birthdate', '$phone', '$street_address', '$city', '$state')";
         if ($conn->query($customer_query) === TRUE) {
             echo "New customer created successfully. <br>" . $first_name;
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        $user_query = "INSERT INTO user (username, password) 
-                    VALUES ('$username', '$hash_password')";
+        $customer_id = mysqli_insert_id($conn);
+
+        $user_query = "INSERT INTO user (customer_id, username, password) 
+                    VALUES ('$customer_id', '$username', '$hash_password')";
         if ($conn->query($user_query) === TRUE) {
             echo "New user created successfully. <br>";
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
 
-        header("location: successful_registration.php");
+        header("location: ../../public/successful_registration.php");
     }
 
     if (isset($conn)) {

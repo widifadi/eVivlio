@@ -4,7 +4,6 @@
             <tr>
                 <th scope="col">Update</th>
                 <th scope="col">Customer ID</th>
-                <th scope="col">Username</th> 
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Email</th>
@@ -15,49 +14,37 @@
         </thead>
         <tbody>
             <?php 
-                // TODO do sql connection only once for the whole app
-                $servername = "localhost";
-                $username = "root";
-                $password = "root";
-                $dbname = "eVivlio";
-
-                // Create connection
-                $conn = new mysqli($servername, $username, $password, $dbname);
-
-                // Check connection
-                if ($conn->connect_error) {
-                    die("Connection failed: " . $conn->connect_error);
-                }
+                include("../database/database_functions.php");
+                $conn = db_connection();
 
                 $query = "SELECT * FROM customer"; 
                 $result = mysqli_query($conn, $query); 
                 while($row = mysqli_fetch_assoc($result)) 
                 {
                     $customer_id = $row['customer_id'];
-                    $user_name = $row['username'];
                     $first_name = $row['first_name'];
                     $last_name = $row['last_name'];
             ?>
             <tr>
                 <td>
-                    <em class="fas fa-user-edit"></em>
+                    <em class="fas fa-user-edit update-customer"
+                        id="updatecustomer-<?php echo $customer_id ?>"
+                        data-toggle="modal" data-target=".update-customer-modal"></em>
                     <em class="fas fa-trash-alt delete-customer"
                         id="deletecustomer-<?php echo $customer_id ?>"
-                        username='<?php echo $user_name ?>'
                         first-name='<?php echo $first_name ?>'
                         last-name='<?php echo $last_name ?>'
                         data-toggle="modal" data-target=".delete-customer-modal"></em>
                 </td>
                 <td><?php echo $customer_id; ?></td>
-                <td><?php echo $user_name; ?></td>
                 <td><?php echo $first_name; ?></td>
                 <td><?php echo $last_name; ?></td>
                 <td><?php echo $row['email']; ?></td>
-                <td><?php echo $row['birthdate']; ?></td>
+                <td><?php echo $row['birthday']; ?></td>
                 <td><?php echo $row['phone']; ?></td>
                 <td>
                     <?php 
-                        echo $row['street_address'] . ", " . $row['city'] . ", " . $row['state']; 
+                        echo $row['address'] . ", " . $row['city'] . ", " . $row['state']; 
                     ?>
                 </td>
             </tr>
@@ -96,6 +83,26 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
             <button type="button" class="btn btn-primary" id="delete-customer-btn">Delete Customer</button>
+        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Update Customer Modal -->
+<div class="modal fade update-customer-modal" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Update User Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <?php include("update_customer_form.php") ?>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         </div>
         </div>
     </div>

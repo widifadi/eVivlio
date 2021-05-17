@@ -3,6 +3,7 @@
     Book Categories
   </div>
   <ul class="list-group list-group-flush">
+  
     <li class="list-group-item category-name" id="business-category">Business</li>
     <li class="list-group-item category-name" id="childrens-category">Children's Collection</li>
     <li class="list-group-item category-name" id="history-category">History</li>

@@ -44,7 +44,7 @@
                             // TODO do sql connection only once for the whole app
                             $servername = "localhost";
                             $username = "root";
-                            $password = "root";
+                            $password = "";
                             $dbname = "evivlio";
 
                             // Create connection

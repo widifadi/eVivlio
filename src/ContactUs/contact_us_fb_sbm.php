@@ -7,7 +7,7 @@
     <div class="faq-text"> <strong> Thank you for submitting your feedback! We will process it within 3 days. </strong> </div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-12 pb-8">
-            <form action="feedback_post.php" method="POST">
+            <form action="../public/feedback_post.php" method="POST">
                 <div class="card border-primary rounded-0" style="border-color: #F2C84B !important;">
                     <div class="card-header p-0">
                         <div class="bg text-white text-center py-2" style="background: #F2C84B;">

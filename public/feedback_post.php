@@ -34,7 +34,7 @@
         }
 
 
-        header("location: contact_fb_sbn.php");
+        header("location:contact_fb_sbn.php");
     }
 
     if (isset($conn)) {

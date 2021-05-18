@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    // This file is used for storing data coming from client to db
     require 'database_functions.php';
 
+    // This is the part add to cart button functionality
     if(isset($_POST['pid'])){
         $pid = $_POST['pid'];
         $pname = $_POST['pname'];

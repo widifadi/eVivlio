@@ -110,7 +110,7 @@
             // function to display item number on cart icon badge
             function load_cart_item_number(){
                 $.ajax({
-                    url: '../Cart/action.php',
+                    url: '../Cart/cart_action.php',
                     method: 'get',
                     data: {cartItem:"cart_item"},
                     success: function(response){

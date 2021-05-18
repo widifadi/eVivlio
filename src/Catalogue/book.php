@@ -1,14 +1,55 @@
+
+<?php
+require_once("../database/functions/database/database_functions.php");
+$conn = db_connection();
+$bookId=$_GET["bookid"];
+
+    $query= "SELECT * FROM book JOIN category_tag ON category_tag.book_id = book.book_id JOIN category ON 
+    category_tag.category_id = category.category_id JOIN publisher ON 
+    publisher.publisher_id = book.publisher_id 
+    JOIN author_tag ON author_tag.book_id = book.book_id 
+    JOIN author ON author.author_id = author_tag.author_id 
+    WHERE book.book_id='$bookId'";
+    $query_run= mysqli_query($conn,$query);
+    $check_books=mysqli_num_rows($query_run) > 0;
+    
+    if($check_books){
+        $x=1;
+   while( $row=mysqli_fetch_assoc($query_run)){
+    $book["cover"]=$row['book_cover'];
+    $book["title"]=$row['book_title']; 
+    $book["isbn"]=$row['isbn']; 
+    $book["year"]=$row['publishing_year']; 
+    $book["pages"]=$row['pages']; 
+    $book["summary"]=$row['summary']; 
+    $book["price"]=$row['price']; 
+    $book["stock"]=$row['stock']; 
+    $book["publisher"]=$row['publisher']; 
+    $book_category[$x]=$row['category_name']; 
+    $book_author[$x]=$row['author_first_name']." ".$row['author_last_name']; 
+    $x++;
+    
+   }
+    }
+        else{
+            echo "no book found";
+            }
+    $conn->close();
+
+?>
+
 <div class="row book-details" style="padding: 5px; margin-top:10px;">
     <div class="col-4 book-detail-preview text-center">
-        <img src="../assets/img/book-samples/tlor.jpeg" alt="Lord of the Rings" width="200">
+        <img src="../assets/img/book-covers/<?php echo $book['cover'];?>" 
+        alt="Lord of the Rings" width="200">
         <br>
-        <span class="book-title">The Lord of the Rings</span> <br>
-        <span class="book-author">J. R. R. Tolkien (1995)</span> <br>
-        <span class="badge badge-pill badge-secondary book-price">€30.00</span>
+        <span class="book-title"><?php echo $book['title'];?></span> <br>
+        <!--<span class="book-author">J. R. R. Tolkien (1995)</span> <br>-->
+        <span class="badge badge-pill badge-secondary book-price">€<?php echo $book['price'];?></span>
         <br>
         <br>
         <span style="color: #396273">
-        Stocks available:<span class="stock-detail">10</span>
+        Stocks available:<span class="stock-detail"><?php echo $book['stock'];?></span>
         </span>
         <br>
         <br>
@@ -41,26 +82,25 @@
         <div class="tab-content" id="myTabContent" style="border: solid 1px #F2F2F2;">
             <div class="tab-pane fade show active" id="summary" role="tabpanel" 
                 aria-labelledby="summary-tab" style="font-size: 14px; padding: 10px;">
-                <p>Continuing the story begun in The Hobbit, all three parts of the epic masterpiece, The Lord of the Rings, in one paperback. Features the definitive edition of the text, fold-out flaps with the original two-colour maps, and a revised and expanded index. Sauron, the Dark Lord, has gathered to him all the Rings of Power - the means by which he intends to rule Middle-earth.
-                </p> 
-                <p>All he lacks in his plans for dominion is the One Ring - the ring that rules them all - which has fallen into the hands of the hobbit, Bilbo Baggins. In a sleepy village in the Shire, young Frodo Baggins finds himself faced with an immense task, as the Ring is entrusted to his care. He must leave his home and make a perilous journey across the realms of Middle-earth to the Crack of Doom, deep inside the territories of the Dark Lord.
-                </p>
-                <p>There he must destroy the Ring forever and foil the Dark Lord in his evil purpose. Since it was first published in 1954, The Lord of the Rings has been a book people have treasured. Steeped in unrivalled magic and otherworldliness, its sweeping fantasy has touched the hearts of young and old alike.
-                </p>
-                <p>This single-volume paperback edition is the definitive text, fully restored with almost 400 corrections - with the full co-operation of Christopher Tolkien - and features a striking new cover.
-                </p>
+                <p><?php echo $book['summary'];?> </p>
             </div>
             <div class="tab-pane fade" id="details" role="tabpanel" 
                 aria-labelledby="details-tab" style="padding: 10px;">
-                Publisher: <span class="publisher">HarperCollins Publishers</span>
+                Publisher: <span class="publisher"><?php echo $book['publisher'];?></span>
                 <br>
-                Publication Year: <span class="publishing-year"> 1995</span>
+                Publication Year: <span class="publishing-year"><?php echo $book['year'];?></span>
                 <br>
-                ISBN: <span class="isbn">978-0-26110-325-2</span>
+                ISBN: <span class="isbn"><?php echo $book['isbn'];?></span>
                 <br>
-                Number of Pages: <span class="pages">102</span>
+                Number of Pages: <span class="pages"><?php echo $book['pages'];?></span>
                 <br>
-                Categories: <span class="categories"></span>
+                Author:<span class="pages"><?php 
+                              foreach($book_author as $val) {echo "$val, ";}
+                               ?></span>
+                <br>
+                Categories:<span class="pages"><?php 
+                              foreach($book_category as $val) {echo "$val, ";}
+                               ?></span>
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" 
                 aria-labelledby="reviews-tab" style="padding: 10px;">
@@ -152,4 +192,3 @@
     </div>
 
 </div>
-

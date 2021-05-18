@@ -13,8 +13,8 @@
         </thead>
         <tbody>
             <?php
-                include("../database/database_functions.php");
-                db_connection();
+                include("../../database/database_functions.php");
+                $conn = db_connection();
 
                 $order_query = "SELECT * FROM customer_order"; 
                 $result = mysqli_query($conn, $order_query); 

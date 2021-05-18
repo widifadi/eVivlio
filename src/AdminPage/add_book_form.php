@@ -23,18 +23,40 @@
     </div>
 
     <div class="form-group row">
-        <label for="author" class="col-sm-3 col-form-label addbook-label">Author</label>
+        <label for="author" class="col-sm-3 col-form-label addbook-label">Author(s)</label>
         <div class="col-sm-9">
-            <div class="row">
+            <div class="row" style="margin-bottom: 10px;">
                 <div class="col">
-                    <input type="text" class="form-control" name="author_firstname" 
+                    <input type="text" class="form-control" name="author_firstname[]" 
                         placeholder="First Name" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" name="author_lastname" 
+                    <input type="text" class="form-control" name="author_lastname[]" 
                         placeholder="Last Name" required>
                 </div>
             </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <input type="text" class="form-control" name="author_firstname[]" 
+                        placeholder="First Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="author_lastname[]" 
+                        placeholder="Last Name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="author_firstname[]" 
+                        placeholder="First Name">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="author_lastname[]" 
+                        placeholder="Last Name">
+                </div>
+            </div>
+
+            
         </div>
     </div>
 
@@ -134,15 +156,15 @@
         <label for="feature" class="col-sm-3 col-form-label addbook-label">Feature</label>
         <div class="col-sm-9 form-check">
             <input class="form-check-input" type="checkbox" name="feature[]" 
-                value="best_seller" id="best-seller"> 
+                value="Best Sellers" id="best-seller"> 
             <label class="form-check-label" for="best-seller">Best Seller of the Month</label><br>
 
             <input class="form-check-input" type="checkbox" name="feature[]" 
-                value="editors_pick" id="editors-pick"> 
+                value="Editor Recommends" id="editors-pick"> 
             <label class="form-check-label" for="editors-pick">Editor's Pick</label><br>
 
             <input class="form-check-input" type="checkbox" name="feature[]" 
-                value="new_release" id="new-release"> 
+                value="New Release" id="new-release"> 
             <label class="form-check-label" for="new-release">New Release</label><br>
         </div>
     </div>

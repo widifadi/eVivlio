@@ -15,8 +15,6 @@
 </head>
 
 <body>
-    <?php require_once("../config/config.php"); ?>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div class="navbar-brand"  id="logo">
             <a href="index.php">
@@ -32,7 +30,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a href="catalog.php">
+                <a href="catalog.php?p=all_books">
                     <button class="btn menu-btn" id="catalog-btn">Book Catalogue</button>
                 </a>
             </div>
@@ -40,7 +38,7 @@
                 <!-- IF a user that is not admin is logged in -->
                 <?php
                     session_start();
-                    if (isset($_SESSION['user']) && $_SESSION['user_permission'] == 0) {
+                    if (isset($_SESSION['user']) && $_SESSION['admin_permission'] == 0) {
                 ?>
                 <a href="my_page.php">
                     <button class="btn menu-btn" id="mypage-btn">
@@ -51,18 +49,19 @@
                 <?php
                     }
                     // if user is not admin
-                    if($_SESSION['admin_permission'] != 1) {
+                    if( !isset($_SESSION['user']) || 
+                        (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] != 1)) {
                 ?>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">
-                        <em class="fas fa-shopping-cart"></em>
+                        <em class="fas fa-shopping-cart"><span id="cart-item" class="badge badge-danger"></span></em>
                     </button>
                 </a>
 
                 <?php
                     }
                     // IF an admin user is logged in
-                    if(isset($_SESSION['user']) && $_SESSION['user_permission'] == 1) {
+                    if(isset($_SESSION['user']) && $_SESSION['admin_permission'] == 1) {
                 ?>
                 <a href="admin_page.php">
                     <button class="btn menu-btn" id="adminpage-btn">
@@ -101,3 +100,23 @@
             </div>
         </div>
     </nav>
+
+<!-- Ajax Code for cart -->
+<script type="text/javascript">
+        $(document).ready(function(){
+
+            load_cart_item_number();
+
+            // function to display item number on cart icon badge
+            function load_cart_item_number(){
+                $.ajax({
+                    url: '../Cart/cart_action.php',
+                    method: 'get',
+                    data: {cartItem:"cart_item"},
+                    success: function(response){
+                        $("#cart-item").html(response);
+                    }
+                });
+            }
+        });
+</script>

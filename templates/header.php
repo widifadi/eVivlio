@@ -55,7 +55,7 @@
                 ?>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">
-                        <em class="fas fa-shopping-cart"></em>
+                        <em class="fas fa-shopping-cart"><span id="cart-item" class="badge badge-danger"></span></em>
                     </button>
                 </a>
 
@@ -101,3 +101,23 @@
             </div>
         </div>
     </nav>
+
+<!-- Ajax Code for cart -->
+<script type="text/javascript">
+        $(document).ready(function(){
+
+            load_cart_item_number();
+
+            // function to display item number on cart icon badge
+            function load_cart_item_number(){
+                $.ajax({
+                    url: '../Cart/action.php',
+                    method: 'get',
+                    data: {cartItem:"cart_item"},
+                    success: function(response){
+                        $("#cart-item").html(response);
+                    }
+                });
+            }
+        });
+</script>

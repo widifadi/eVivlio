@@ -34,47 +34,55 @@
         <span class="subtitle">Book Categories</span>
         <div class="row"> 
             <div class="col book-category-div">
+            <a  href="../public/catalog.php?p=History">
                 <img src="../assets/img/medieval.png" alt="history" width="100px"
-                    class="book-category-image">
+                    class="book-category-image"> 
                     <!-- Add link to category -->
-                <div class="book-category-middle">History</div>
+                <div class="book-category-middle">History</div></a>
             </div>
             <div class="col book-category-div">
+            <a href="../public/catalog.php?p=Science Fiction">
                 <img src="../assets/img/science-fiction.png" alt="science fiction" width="100px"
-                    class="book-category-image">
-                <div class="book-category-middle">Science Fiction</div>
+                    class="book-category-image"> 
+                <div class="book-category-middle">Science Fiction</div></a>
             </div>
             <div class="col book-category-div">
+            <a href="../public/catalog.php?p=Literature">
                 <img src="../assets/img/open-book-back.png" alt="literature" width="100px"
-                    class="book-category-image">
-                <div class="book-category-middle">Literature</div>
+                    class="book-category-image"> 
+                <div class="book-category-middle">Literature</div></a>
             </div>
             <div class="col book-category-div">
+            <a href="../public/catalog.php?p=Science and Technology">
                 <img src="../assets/img/books-glasses.png" alt="scitech" width="100px"
-                    class="book-category-image">
-                <div class="book-category-middle">Science & Technology</div>
+                    class="book-category-image"> 
+                <div class="book-category-middle">Science & Technology</div></a>
             </div>
         </div>
         <div class="row"> 
             <div class="col book-category-div">
+            <a href="../public/catalog.php?p=Philosophy">
                 <img src="../assets/img/mystery.png" alt="Philosophy" width="100px"
-                    class="book-category-image">
-                    <div class="book-category-middle">Philosophy</div>
+                    class="book-category-image"> 
+                    <div class="book-category-middle">Philosophy</div></a>
             </div>
             <div class="col book-category-div">
+            <a  href="../public/catalog.php?p=Business">
                 <img src="../assets/img/books-card.png" alt="business" width="100px"
-                    class="book-category-image">
-                <div class="book-category-middle">Business</div>
+                    class="book-category-image"> 
+                <div class="book-category-middle">Business</div></a>
             </div>
             <div class="col book-category-div">
+            <a href="../public/catalog.php?p=Novels">
                 <img src="../assets/img/coffee-mug.png" alt="novels" width="100px"
-                    class="book-category-image">
-                <div class="book-category-middle">Novels</div>
+                    class="book-category-image"> 
+                <div class="book-category-middle">Novels</div></a>
             </div>
             <div class="col book-category-div">
+            <a href="../public/catalog.php?p=Children Collection">
                 <img src="../assets/img/childrens-books.png" alt="children's books" width="100px"
-                    class="book-category-image">
-                <div class="book-category-middle">Children's Collection</div>
+                    class="book-category-image"> 
+                <div class="book-category-middle">Children's Collection</div></a>
             </div>
         </div>
     </div>

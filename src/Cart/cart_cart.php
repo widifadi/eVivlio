@@ -46,14 +46,14 @@
                             <tr >
                             <th scope="row" class="border-0" >
                                 <div class="p-2">
-                                <img src="../assets/img/open-book.png" alt="book" width="100px" id="book-cover">
+                                <img src="<?= $row['book_cover'] ?>" alt="book" width="100px" id="book-cover">
                                 <div class="ml-3 d-inline-block align-middle">
-                                    <a href="#" class="text-dark"><div class="book-title" id="book-title">"Title", Author (Year)</div></a>
+                                    <a href="#" class="text-dark"><div class="book-title" id="book-title">"<?= $row['book_title'] ?>", <?= $row['author_first_name'], $row['author_last_name'] ?> (<?= $row['publishing_year'] ?>)</div></a>
                                 </div>
                                 </div>
                             </th>
-                            <td class="border-0 align-middle book-price"  style="background:white;" id="book-price"><strong>$$</strong></td>
-                            <td class="border-0 align-middle book-price" style="background:white;" id="book-quantity"><strong>0</strong></td>
+                            <td class="border-0 align-middle book-price" style="background:white;" id="book-price"><strong><i class="fas fa-euro-sign"></i>&nbsp;<?= $row['price'] ?></strong></td>
+                            <td class="border-0 align-middle book-price" style="background:white;" id="book-quantity"><strong><?= $row['quantity'] ?></strong></td>
                             <td class="border-0 align-middle book-price" style="background:white;"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
                             <td class="border-0 align-middle book-price" style="background:white;"><a href="#" class="text-dark"><i class="fa fa-heart"></i></a></td>
                             </tr>
@@ -68,7 +68,7 @@
 </div>
 
 <!-- Ajax Code for cart -->
-<script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function(){
 
             $(".itemQty").on('change',function(){
@@ -81,7 +81,7 @@
                 location.reload(true);
 
                 $.ajax({
-                    url: 'action.php',
+                    url: 'cart_action.php',
                     method: 'post',
                     cache: false,
                     data: {qty:qty, pid:pid, pprice:pprice},
@@ -90,19 +90,5 @@
                     }
                 })
             });
-
-            load_cart_item_number();
-
-            // function to display item number on cart icon 
-            function load_cart_item_number(){
-                $.ajax({
-                    url: 'action.php',
-                    method: 'get',
-                    data: {cartItem:"cart_item"},
-                    success: function(response){
-                        $("#cart-item").html(response);
-                    }
-                });
-            }
         });
     </script>

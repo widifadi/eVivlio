@@ -1,4 +1,5 @@
 <?php
+    // TODO put if statement if there are no results
     $book_results = $_POST['book_results'];
 ?>
 

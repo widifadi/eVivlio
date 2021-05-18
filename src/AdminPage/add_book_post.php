@@ -22,29 +22,40 @@
             $book_cover = $isbn . "." . $ext;
 		}
 
-        $author_firstname = $_POST['author_firstname'];
-        $author_firstname = mysqli_real_escape_string($conn, $author_firstname);
-        $author_lastname = $_POST['author_lastname'];
-        $author_lastname = mysqli_real_escape_string($conn, $author_lastname);
-        // if author is not in db, create new
-		$query_author = "SELECT * FROM author
-                            WHERE author_first_name = '$author_firstname' AND 
-                                    author_last_name = '$author_lastname' ";
-		$author_result = mysqli_query($conn, $query_author);
-        if (!mysqli_num_rows($author_result)) {
-			// insert into author table and return id
-			$insert_author = "INSERT INTO author (author_first_name, author_last_name) 
-                                VALUES ('$author_firstname', '$author_lastname') ";
-			$insert_author_result = mysqli_query($conn, $insert_author);
-			if (!$insert_author_result) {
-				echo "Can't add new author " . mysqli_error($conn);
-				exit;
-			}
-			$author_id = mysqli_insert_id($conn);
-		} else {
-			$author_row = mysqli_fetch_assoc($author_result);
-			$author_id = $author_row['author_id'];
-		}
+        // multiple authors
+        $author_ids = array();
+        $author_firstnames = $_POST['author_firstname'];
+        $author_lastnames = $_POST['author_lastname'];
+
+        foreach($author_firstnames as $key=>$author_firstname) {
+            $author_firstname = mysqli_real_escape_string($conn, $author_firstname);
+
+            $author_lastname = $author_lastnames[$key];
+            $author_lastname = mysqli_real_escape_string($conn, $author_lastname);
+
+            if ($author_firstname != "" || $author_lastname != "") {
+                // if author is not in db, create new
+                $query_author = "SELECT * FROM author
+                        WHERE author_first_name = '$author_firstname' AND 
+                                author_last_name = '$author_lastname' ";
+                $author_result = mysqli_query($conn, $query_author);
+                if (!mysqli_num_rows($author_result)) {
+                // insert into author table and return id
+                $insert_author = "INSERT INTO author (author_first_name, author_last_name) 
+                            VALUES ('$author_firstname', '$author_lastname') ";
+                $insert_author_result = mysqli_query($conn, $insert_author);
+                if (!$insert_author_result) {
+                    echo "Can't add new author " . mysqli_error($conn);
+                    exit;
+                }
+                    $author_id = mysqli_insert_id($conn);
+                } else {
+                    $author_row = mysqli_fetch_assoc($author_result);
+                    $author_id = $author_row['author_id'];
+                }
+                array_push($author_ids, $author_id);
+            }
+        }
 
         $publisher = $_POST['publisher'];
         $publisher = mysqli_real_escape_string($conn, $publisher);
@@ -81,7 +92,7 @@
                             VALUES ('$publisher_id', '$isbn', '$title', '$book_cover', '$publishing_year', 
                                             $pages, '$summary', $price, $stock )";
 
-        if ($conn->query($addbook_query) === TRUE) {
+        if (mysqli_query($conn, $addbook_query)) {
             echo "New book created successfully. <br>";
         } else {
             echo "book table Error: " . mysqli_error($conn) . "<br>";
@@ -90,19 +101,19 @@
         $new_book_id = mysqli_insert_id($conn);
 
         // add to author_tag table
-        $author_tag_query = "INSERT INTO author_tag (book_id, author_id) 
-                            VALUES ($new_book_id, $author_id);";
-        mysqli_query($conn, $author_tag_query);
-        if (mysqli_query($conn, $author_tag_query)) {
-            echo "New author_tag created successfully. <br>";
-        } else {
-            echo "author_tag table Error: " . mysqli_error($conn);
+        foreach ($author_ids as $author_id_val) {
+            $author_tag_query = "INSERT INTO author_tag (book_id, author_id) 
+                                VALUES ($new_book_id, $author_id_val);";
+            if (mysqli_query($conn, $author_tag_query)) {
+                echo "New author_tag created successfully. <br>";
+            } else {
+                echo "author_tag table Error: " . mysqli_error($conn);
+            }
         }
 
         // add to category_tag table
         $category = $_POST['category'];
-        foreach ($category as $category_choice) 
-        {
+        foreach ($category as $category_choice) {
             $category_query = "SELECT * FROM category WHERE category_name='$category_choice'; ";
             $category_result = mysqli_query($conn, $category_query);
             $cat_row = mysqli_fetch_assoc($category_result);
@@ -110,20 +121,17 @@
 
             $category_tag_query = "INSERT INTO category_tag (book_id, category_id) 
                                     VALUES ($new_book_id, $category_id); ";
-            mysqli_query($conn, $category_tag_query);
             if (mysqli_query($conn, $category_tag_query)) {
                 echo "New category_tag created successfully. <br>";
             } else {
                 echo "category_tag table Error: " . mysqli_error($conn);
             }
-
         }
 
         // add to feature_tag table
         $feature = $_POST['feature'];
         $features = "";
-        foreach ($feature as $feature_choice)  
-        {
+        foreach ($feature as $feature_choice) {
             $feature_query = "SELECT * FROM book_feature WHERE feature_name='$feature_choice'; ";
             $feature_result = mysqli_query($conn, $feature_query);
             $feat_row = mysqli_fetch_assoc($feature_result);
@@ -131,7 +139,6 @@
 
             $feature_tag_query = "INSERT INTO feature_tag (book_id, feature_id) 
                                     VALUES ($new_book_id, $feature_id); ";
-            mysqli_query($conn, $feature_tag_query);
             if (mysqli_query($conn, $feature_tag_query)) {
                 echo "New feature_tag created successfully. <br>";
             } else {

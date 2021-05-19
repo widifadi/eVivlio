@@ -84,7 +84,7 @@
         </div>
         <div class="row">
             <div class="col-3">
-                <h6 class="mb">Date of birth</h6>
+                <h6 class="mb">Date of Birth</h6>
             </div>
             <div class="col-8 text-secondary">
                 <?php 
@@ -123,7 +123,10 @@
                 <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
                 <div class="col-sm-6">
                 <input type="text" class="form-control" id="first_name" name="first_name" 
-                    placeholder="First Name">
+                    value="<?php 
+                                echo  $customer_details['first_name'];
+                            ?>"
+                    >
                 </div>
             </div>
 
@@ -131,7 +134,10 @@
                 <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
                 <div class="col-sm-6">
                 <input type="text" class="form-control" id="last_name" name="last_name" 
-                    placeholder="Last Name">
+                    value="<?php 
+                                echo  $customer_details['last_name'];
+                            ?>"
+                >
                 </div>
             </div>
 
@@ -139,13 +145,73 @@
                 <label for="email" class="col-sm-2 col-form-label">E-mail</label>
                 <div class="col-sm-6">
                 <input type="text" class="form-control" id="email" name="email" 
-                    placeholder="E-mail">
+                value="<?php 
+                                echo  $customer_details['email'];
+                            ?>"
+                >
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label for="birthday" class="col-sm-2 col-form-label">Date of Birth</label>
+                <div class="col-sm-6">
+                <input type="date" class="form-control" id="birthday" name="birthday" 
+                value="<?php 
+                                echo  $customer_details['birthday'];
+                            ?>"
+                >
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="phone" class="col-sm-2 col-form-label">Contact Number</label>
+                <div class="col-sm-6">
+                <input type="text" class="form-control" id="phone" name="phone" 
+                value="<?php 
+                                echo  $customer_details['phone'];
+                            ?>"
+                >
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="address" class="col-sm-2 col-form-label">Street Address</label>
+                <div class="col-sm-6">
+                <input type="text" class="form-control" id="address" name="address" 
+                value="<?php 
+                                echo  $customer_details['address'];
+                            ?>"
+                >
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="city" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-6">
+                <input type="text" class="form-control" id="city" name="city" 
+                value="<?php 
+                                echo  $customer_details['city'];
+                            ?>"
+                >
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="state" class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-6">
+                <input type="text" class="form-control" id="state" name="state" 
+                value="<?php 
+                                echo  $customer_details['state'];
+                            ?>"
+                >
+                </div>
+            </div>
+            
                     
             <div class="text-center">
                  
-                <div class="mt-5 text-center"><button class="btn  btn-outline-warning" type="submit" name="pd_edit"  id="pd_edit" >Save</button></div>
+                <div class="mt-5 text-center"><button class="btn  btn-outline-warning" 
+                    type="submit" name="pd_edit"  id="pd_edit" >Save</button></div>
             </div>   
                
 

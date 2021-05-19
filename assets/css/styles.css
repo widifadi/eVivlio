@@ -558,6 +558,8 @@ a:hover {
 .team:hover {
   cursor: pointer !important;
   background-color: var(--light-grey);
+
+
 }
 
 .team-name {

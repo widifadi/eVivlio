@@ -44,7 +44,10 @@
             $user_name = $_SESSION['user'];
             
             // TODO select customer table WHERE username = username
-            $customer_query = "SELECT * FROM customer INNER JOIN user ON customer.customer_id=user.customer_id WHERE username='$user_name'"; 
+            $customer_query = "SELECT * FROM customer 
+            INNER JOIN user 
+            ON customer.customer_id=user.customer_id
+             WHERE username='$user_name'"; 
             $customer_result = mysqli_query($conn, $customer_query);
             $customer_details = mysqli_fetch_assoc($customer_result);
             

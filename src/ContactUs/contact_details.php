@@ -2,7 +2,8 @@
     <a href="contact.php"> Contact Us </a> 
 </div>     
 <div class="container mt-3" id="contacts">
-    <div class="faq-text" style= "font-size: 16px"id="contact-text"> Looking for product support?  Get in touch with us! </div>
+    <div class="faq-text" style= "font-size: 16px"id="contact-text">
+         Looking for product support?  Get in touch with us! </div>
     <br>
     <div class="row mb-3">
         <div class="col-1">

@@ -6,7 +6,7 @@
 <div class="card-columns" id="team">
 
     <div class="card text-center p-1 team" id="Aqeel_Ahmed">
-        <img class="card-img-top" src="../assets/img/team/aqeel.png" 
+        <img class="card-img-top team" src="../assets/img/team/aqeel.png" 
             alt="Aqeel Ahmed" ><br>
         <span class="team-name">Aqeel Ahmed</span> <br>
         <span class="badge badge-pill badge-secondary team-contact"><a href="mailto:aahmed@ihu.edu.gr">Contact me</a></span>

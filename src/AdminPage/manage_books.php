@@ -37,6 +37,7 @@
                     </thead>
                     <tbody>
                         <?php 
+                        +
                             include("../database/database_functions.php");
                             $conn = db_connection();
 
@@ -68,8 +69,14 @@
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
-                            <!-- TODO get author name -->
-                            <td><?php echo "TODO"; ?></td>
+                            <!-- TODO get author name -->z
+                               <?php  $query=  "SELECT a.author_first_name 
+                                                FROM book JOIN author.a 
+                                                USING book_id JOIN author_tag USING author_id"
+
+                                      //  $query_result=mysqli_num_rows($query);
+                                    ?>    
+                            <td><?php echo $query_result ?></td>
                             <!-- TODO get publisher name -->
                             <td><?php echo $row['publisher_id']; ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>

@@ -1,11 +1,12 @@
 $(".search-box").keypress(function (e) {
     if (e.which == 13) {
-        $("#search-button").click();
+        $(".search-btn").click();
     }
 });
 
 
-$("#search-button").click(function(e) {
+$(".search-btn").click(function(e) {
+    console.log("search button clicked.");
     var search_keyword = $(".search-box").val();
 
     window.location.href = 'search_results_page.php#'+ search_keyword;

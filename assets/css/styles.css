@@ -94,10 +94,61 @@ a:hover {
 }
 
 /* Front page start */
+.wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+}
+
+.section { 
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -1;
+}
+
+.static {
+  background: var(--blue-theme);
+}
+
+.bg1::after {
+  background-image: url('../img/backgrounds/3040791.jpg');
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.bg2::after {
+  background-image: url('../img/backgrounds/8.jpg');
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 #front-page {
-  background-color: var(--blue-theme);
   min-height: 50vh;
   width: 100%;
+  padding: 130px 0;
 }
 
 #webpage-title {
@@ -154,19 +205,6 @@ a:hover {
   padding: 20px;
 }
 
-.parallax {
-  /* The image used */
-  /* background-image: url("img_parallax.jpg"); */
-
-  /* Set a specific height */
-  min-height: 500px;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 /* Front page end */
 
 
@@ -176,22 +214,22 @@ a:hover {
   width: 60%;
 }
 
-#search-page-input[type="text"] {
+.search-input[type="text"] {
   border: 1px solid var(--blue-theme);
   background-color: var(--blue-theme) !important;
   color: var(--light-yellow-theme);
 }
 
-#search-page-input::placeholder{
+.search-input::placeholder{
   color: var(--light-yellow-theme);
 }
 
-.search-page-button {
+.dark-search-button {
   background-color: var(--blue-theme) !important;
   color: var(--light-yellow-theme) !important;
 }
 
-.search-page-button:hover {
+.dark-search-button:hover {
   color: var(--orange) !important;
 }
 
@@ -319,7 +357,7 @@ a:hover {
 .feature-div {
   padding: 10px;
   border: solid var(--light-grey);
-  height: 300px;
+  height: 230px;
   border-width: 1px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -331,10 +369,14 @@ a:hover {
   text-align: center;
 }
 
-#feature-promos #feature-categories {
-  padding: 20px;
-  height: 500px;
+#feature-promos {
+  padding: 150px;
 }
+
+#feature-categories {
+  padding: 150px;
+}
+
 /* Features on front page start */
 
 

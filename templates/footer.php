@@ -25,7 +25,9 @@
         </div>
     </footer>
 
-    <script src="../assets/js/tabs-link.js"></script>
+    <script src="../assets/js/tabs-link.js"></script>    
+    <script src="../assets/js/search-bar-visibility.js"></script>
+
 
 </body>
 </html>

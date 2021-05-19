@@ -2,11 +2,11 @@
 
 <div class="container" style="margin-top: 100px;">
     <div id="search-page-search-container">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control search-box" id="search-page-input" placeholder="Search a book" 
+        <div class="input-group mb-3 page-search">
+            <input type="text" class="form-control search-box search-input" placeholder="Search a book" 
                 aria-label="Search keyword" aria-describedby="search-button">
             <div class="input-group-append">
-                <span class="input-group-text search-page-button" id="search-button">
+                <span class="input-group-text dark-search-button search-btn" id="search-button">
                     <em class="fas fa-search"></em>
                 </span>
             </div>

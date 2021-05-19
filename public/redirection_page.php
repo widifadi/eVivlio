@@ -3,7 +3,7 @@
 <div class="container " style="margin-top: 100px; margin-bottom: -100px; width: 100%;">
     <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-              <a>  Please enter correct details and Login again or Sign Up for new account ! </a>
+              <a> <b> User not identified!  Please enter correct details and Login again or Sign Up for new account !</b> </a>
         </li>
     </ul>
     </div>

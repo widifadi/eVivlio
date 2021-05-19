@@ -33,7 +33,6 @@
                             <th scope="col">Price</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Feature</th>
-                            <th scope="col">Number of Orders</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,6 +59,15 @@
                             while($row = mysqli_fetch_assoc($result)) 
                             {
                                 $book_id = $row['book_id'];
+
+                                // get author
+                                // SELECT * author (join the author_tag table) where book_id=n
+
+                                // author1 = firstname . lastname
+
+                                // get publisher
+
+                                // category
                         ?>
                         <tr id=<?php echo $book_id ?> >
                             <td>
@@ -95,9 +103,7 @@
                                     echo "TODO"
                                 ?>
                             </td>
-                            <td>
-                                <!-- TODO order summary -->
-                            </td>
+            
                         </tr>
                         <?php
                             }

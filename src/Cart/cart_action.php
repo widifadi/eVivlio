@@ -6,13 +6,10 @@
     // This is the part add to cart button functionality
     if(isset($_POST['pid'])){
         $pid = $_POST['pid'];
-        $pname = $_POST['pname'];
-        $pprice = $_POST['pprice'];
-        $pimage = $_POST['pimage'];
-        $pisbn = $_POST['pisbn'];
+        $cid = $_POST['cid'];
         $pqty = 1;
 
-        $stmt = $conn->prepare("SELECT isbn FROM cart WHERE isbn=?");
+        $stmt = $conn->prepare("SELECT book_id FROM cart WHERE isbn=?");
         $stmt->bind_param("s",$pisbn);
         $stmt->execute();
         $res = $stmt->get_result();

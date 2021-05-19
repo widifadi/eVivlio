@@ -4,8 +4,7 @@
     $conn = db_connection();
 
     if (isset($_POST['pd_edit'])) {
-       /* $customer_id = $_POST['customer-id'];
-        $customer_id = mysqli_real_escape_string($conn, $customer_id);*/
+
         $user_name = $_SESSION['user'];
 
         $first_name = $_POST['first_name'];
@@ -17,30 +16,34 @@
         $email = $_POST['email'];
         $email = mysqli_real_escape_string($conn, $email);
 
-        /*$birthdate = $_POST['birthdate'];
-        $birthdate = mysqli_real_escape_string($conn, $birthdate);
+        $birthday = $_POST['birthday'];
+        $birthday = mysqli_real_escape_string($conn, $birthday);
 
         $phone = $_POST['phone'];
         $phone = mysqli_real_escape_string($conn, $phone);
 
-        $street_address = $_POST['stAddress'];
-        $street_address = mysqli_real_escape_string($conn, $street_address);
+        $address = $_POST['address'];
+        $address = mysqli_real_escape_string($conn, $address);
 
         $city = $_POST['city'];
         $city = mysqli_real_escape_string($conn, $city);
 
         $state = $_POST['state'];
-        $state = mysqli_real_escape_string($conn, $state);*/
+        $state = mysqli_real_escape_string($conn, $state);
 
         $update_customer_query = "UPDATE customer INNER JOIN user 
                                     ON customer.customer_id=user.customer_id
                                     SET first_name = '$first_name', 
                                         last_name = '$last_name',
-                                        email = '$email'
-                                        
+                                        email = '$email',
+                                        birthday = '$birthday',
+                                        phone = '$phone',
+                                        address = ' $address',
+                                        city = '$city',
+                                        state = '$state'
                                        WHERE username='$user_name' ";
 
-        echo $update_customer_query;
+        
 
         if ($conn->query($update_customer_query) === TRUE) {
             echo "Customer updated successfully. <br>";

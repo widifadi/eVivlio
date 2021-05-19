@@ -33,9 +33,13 @@
                                         $num_items += 1;
                                     endwhile; 
                                 ?>
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted" id="cart-number">Number of positions </strong><strong><?= number_format($num_items,0) ?></strong></li>
-                        <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted" id="cart-total">Total</strong>
-                            <h5 class="font-weight-bold"><b><i class="fas fa-euro-sign"></i>&nbsp; <?= number_format($grand_total,2) ?></b></h5>
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted" id="cart-number">Number of positions </strong>
+                            <strong><?= number_format($num_items,0) ?></strong></li>
+                        <li class="d-flex justify-content-between py-3 border-bottom">
+                            <strong class="text-muted" id="cart-total">Total</strong>
+                            <h5 class="font-weight-bold"><b><i class="fas fa-euro-sign"></i>
+                            &nbsp; <?= number_format($grand_total,2) ?></b></h5>
                         </li>
                         </ul><a href="#" class="btn btn-warning rounded-pill py-2 btn-block">Procceed to checkout</a>
                     </div>
@@ -71,10 +75,14 @@
                                 </div>
                                 </div>
                             </th>
-                            <td class="border-0 align-middle book-price" style="background:white;" id="book-price"><strong><i class="fas fa-euro-sign"></i>&nbsp;<?= $row['price'] ?></strong></td>
-                            <td class="border-0 align-middle book-price" style="background:white;" id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $row['quantity'] ?>" style="width:75px;"><strong></strong></td>
-                            <td class="border-0 align-middle book-price" style="background:white;"><a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                            <td class="border-0 align-middle book-price" style="background:white;"><a href="#" class="text-dark"><i class="fa fa-heart"></i></a></td>
+                            <td class="border-0 align-middle book-price" style="background:white;" 
+                                id="book-price"><strong><i class="fas fa-euro-sign"></i>&nbsp;<?= $row['price'] ?></strong></td>
+                            <td class="border-0 align-middle book-price" style="background:white;" 
+                                id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $row['quantity'] ?>" style="width:75px;"><strong></strong></td>
+                            <td class="border-0 align-middle book-price" style="background:white;">
+                                <a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
+                            <td class="border-0 align-middle book-price" style="background:white;">
+                                <a href="#" class="text-dark"><i class="fa fa-heart"></i></a></td>
                             </tr>
                                 <?php endwhile; $conn->close(); ?>
                             
@@ -85,6 +93,8 @@
         </div>
     </div>
 </div>
+
+<!-- Create session destroy or unset session for guest condition to delete all the cart if the guest is close the browser -->
 
 <!-- Ajax Code for cart -->
     <script type="text/javascript">

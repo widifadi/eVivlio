@@ -1,4 +1,4 @@
-<?php require_once("../database/functions/database/database_functions.php"); ?> 
+<?php require_once("../database/database_functions.php"); ?> 
 <!-- display book catalogue-->
 <?php 
 $category = $_GET["p"];

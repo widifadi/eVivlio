@@ -11,7 +11,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <a role="button" data-toggle="collapse" data-parent="#accordion" 
+                                href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 What kind of books can I by from eVivlio?
                             </a>
                         </h4>
@@ -26,14 +27,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <a class="collapsed" role="button" data-toggle="collapse"
+                                 data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             How do I purchase a hard copy of a book?
                             </a>
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
-                            <p>Simply pick a "paper copy" option at a book details web page. It will then be delivered to you by our partner courier company. </p>
+                            <p>Simply pick a "paper copy" option at a book details web page. 
+                                It will then be delivered to you by our partner courier company. </p>
                         </div>
                     </div>
                 </div>
@@ -41,14 +44,16 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingThree">
                         <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <a class="collapsed" role="button" data-toggle="collapse"
+                                 data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                             How do I purchase a hard copy of a book?
                             </a>
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
-                            <p>Simply pick a "soft copy" option at a book details web page. It will then be sent to your e-mail adress after purchasing.</p>
+                            <p>Simply pick a "soft copy" option at a book details web page. 
+                                It will then be sent to your e-mail adress after purchasing.</p>
                         </div>
                     </div>
                 </div>
@@ -56,7 +61,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingFour">
                         <h4 class="panel-title">
-                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                            <a class="collapsed" role="button" data-toggle="collapse"
+                                 data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
                             Can I get my book delivered to Athens?
                             </a>
                         </h4>

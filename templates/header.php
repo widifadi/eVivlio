@@ -23,6 +23,7 @@
                     style="display: block; margin: 0 auto; margin-top: 5px;">
             </a>
         </div>
+
         <button class="navbar-toggler" type="button" 
             data-toggle="collapse" data-target="#navbarNavAltMarkup" 
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,6 +35,20 @@
                     <button class="btn menu-btn" id="catalog-btn">Book Catalogue</button>
                 </a>
             </div>
+
+            <div class="mx-auto">
+                <!-- TODO error if empty -->
+                <div class="input-group header-search">
+                    <input type="text" class="form-control search-box search-input" placeholder="Search a book" 
+                        aria-label="Search keyword" aria-describedby="search-button">
+                    <div class="input-group-append">
+                        <span class="input-group-text dark-search-button search-btn" id="search-button">
+                            <em class="fas fa-search"></em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
             <div class="navbar-nav ml-auto">
                 <!-- IF a user that is not admin is logged in -->
                 <?php

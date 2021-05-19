@@ -79,6 +79,8 @@
     </div>
 </div>
 
+<!-- Create session destroy or unset session for guest condition to delete all the cart if the guest is close the browser -->
+
 <!-- Ajax Code for cart -->
     <script type="text/javascript">
         $(document).ready(function(){

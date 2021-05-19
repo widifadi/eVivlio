@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    require 'database_functions.php';
+    require '../database/database_functions.php';
 
     // This is the part add to cart button functionality
     if(isset($_POST['pid'])){

@@ -1,4 +1,5 @@
 <div class="container signup_login" style="margin-top: 100px; margin-bottom: 20px; width: 60%;">
+       
     <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
             <a class="nav-link active" id="pills-login-tab" data-toggle="pill" 
@@ -8,7 +9,7 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link" id="pills-signup-tab" data-toggle="pill" 
                 href="#pills-signup" role="tab" aria-controls="pills-signup"
-                aria-selected="false">Sign Up</a>
+                aria-selected="false">Sign Up</a> 
         </li>
     </ul>
 

@@ -229,17 +229,11 @@ CREATE TABLE `customer_order` (
 -- Table structure for table `feature_tag`
 --
 
-<<<<<<< HEAD
 CREATE TABLE `feedback` (
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
   `feedback` text NOT NULL
-=======
-CREATE TABLE `feature_tag` (
-  `book_id` int(11) NOT NULL,
-  `feature_id` int(11) NOT NULL
->>>>>>> 6432971d6462cb05cd820a6fa29cee3e9cef74e6
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -412,18 +406,11 @@ ALTER TABLE `feature_tag`
   ADD KEY `feature_id` (`feature_id`);
 
 --
-<<<<<<< HEAD
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`order_id`),
   ADD KEY `customer_id` (`customer_id`);
-=======
--- Indexes for table `feedback`
---
-ALTER TABLE `feedback`
-  ADD PRIMARY KEY (`feedback_id`);
->>>>>>> 6432971d6462cb05cd820a6fa29cee3e9cef74e6
 
 --
 -- Indexes for table `order_items`
@@ -523,11 +510,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
-<<<<<<< HEAD
   MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-=======
-  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 6432971d6462cb05cd820a6fa29cee3e9cef74e6
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -587,15 +570,12 @@ ALTER TABLE `feature_tag`
   ADD CONSTRAINT `feature_tag_ibfk_2` FOREIGN KEY (`feature_id`) REFERENCES `book_feature` (`feature_id`) ON UPDATE CASCADE;
 
 --
-<<<<<<< HEAD
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
 
 --
-=======
->>>>>>> 6432971d6462cb05cd820a6fa29cee3e9cef74e6
 -- Constraints for table `order_items`
 --
 ALTER TABLE `order_items`

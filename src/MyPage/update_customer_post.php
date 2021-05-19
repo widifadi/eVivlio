@@ -40,7 +40,7 @@
                                         
                                        WHERE username='$user_name' ";
 
-        echo $update_customer_query;
+        
 
         if ($conn->query($update_customer_query) === TRUE) {
             echo "Customer updated successfully. <br>";

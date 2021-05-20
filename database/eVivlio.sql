@@ -5,6 +5,7 @@
 -- Host: 127.0.0.1
 -- Generation Time: May 17, 2021 at 02:20 PM
 -- Generation Time: May 20, 2021 at 12:21 AM
+-- Generation Time: May 20, 2021 at 09:49 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -423,26 +424,6 @@ CREATE TABLE `customer` (
   `state` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `email`, `birthday`, `phone`, `address`, `city`, `state`) VALUES
-(1, 'Komar', 'Javanmardi', 'komar@gmail.com', '2202-02-10', '01010010', 'hahhaha', 'hahahha', 'hhaha');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer_order`
---
-
-CREATE TABLE `customer_order` (
-  `order_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
-  `order_date` date NOT NULL,
-  `shipping_status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 -- --------------------------------------------------------
 
 --
@@ -462,11 +443,9 @@ CREATE TABLE `customer_order` (
 -- Table structure for table `feature_tag`
 --
 
-CREATE TABLE `feedback` (
-  `first_name` varchar(50) NOT NULL,
-  `last_name` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `feedback` text NOT NULL
+CREATE TABLE `feature_tag` (
+  `book_id` int(11) NOT NULL,
+  `feature_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -616,22 +595,18 @@ INSERT INTO `publisher` (`publisher_id`, `publisher`) VALUES
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(32) NOT NULL,
-<<<<<<< HEAD
-  `user_permission` tinyint(1) NOT NULL DEFAULT 0
-=======
   `admin_permission` tinyint(1) NOT NULL DEFAULT 0
->>>>>>> 440e65c94087763138ecdbbdf9257193ff76e183
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `user_permission`) VALUES
-(4, 1, 'komar66', '202cb962ac59075b964b07152d234b70', 1);
+INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_permission`) VALUES
+(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 
 -- --------------------------------------------------------
 
@@ -724,11 +699,10 @@ ALTER TABLE `feature_tag`
   ADD KEY `feature_id` (`feature_id`);
 
 --
--- Indexes for table `order`
+-- Indexes for table `feedback`
 --
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`order_id`),
-  ADD KEY `customer_id` (`customer_id`);
+ALTER TABLE `feedback`
+  ADD PRIMARY KEY (`feedback_id`);
 
 --
 -- Indexes for table `order_items`
@@ -756,7 +730,6 @@ ALTER TABLE `publisher`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `password` (`password`),
   ADD KEY `customer_id` (`customer_id`);
 
 --
@@ -804,7 +777,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customer_order`
@@ -828,17 +801,13 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
-<<<<<<< HEAD
-  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-=======
   MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
->>>>>>> 440e65c94087763138ecdbbdf9257193ff76e183
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -859,69 +828,6 @@ ALTER TABLE `book_review`
   ADD CONSTRAINT `book_review_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
 COMMIT;
 
-<<<<<<< HEAD
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `category_tag`
---
-ALTER TABLE `category_tag`
-  ADD CONSTRAINT `category_tag_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `category_tag_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `customer_order`
---
-ALTER TABLE `customer_order`
-  ADD CONSTRAINT `customer_order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `feature_tag`
---
-ALTER TABLE `feature_tag`
-  ADD CONSTRAINT `feature_tag_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `feature_tag_ibfk_2` FOREIGN KEY (`feature_id`) REFERENCES `book_feature` (`feature_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `order`
---
-ALTER TABLE `order`
-  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `order_items`
---
-ALTER TABLE `order_items`
-  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `customer_order` (`order_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `payment`
---
-ALTER TABLE `payment`
-  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `user`
---
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `wishlist`
---
-ALTER TABLE `wishlist`
-  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-COMMIT;
-
-=======
->>>>>>> 440e65c94087763138ecdbbdf9257193ff76e183
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

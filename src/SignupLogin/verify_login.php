@@ -33,7 +33,8 @@
             exit();
 
         } else {
-            echo "User not found.";
+            echo " User not found. Pls Register here! ";
+            header("location: ../../public/redirection_page.php#pills-signup");
             // TODO pass login error to login page
         }
     } 

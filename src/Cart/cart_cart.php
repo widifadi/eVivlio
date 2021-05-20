@@ -1,3 +1,9 @@
+<?php
+    //session_start();
+    require_once ('../database/database_functions.php');
+    db_connection();
+?>
+
 <div class="container" style="margin-top:100px; margin-left: 10px;">
 
     <!-- Order Summary Section -->
@@ -49,16 +55,17 @@
             <div class="row">
                 <div class="table-responsive">
                     <table class="table" >
-                        <tbody>
-                                <?php 
-                                $stmt = $conn->prepare("SELECT * FROM cart 
-                                                    JOIN book ON book.book_id = cart.book_id 
-                                                    JOIN author_tag ON author_tag.book_id = book.book_id 
-                                                    JOIN author ON author.author_id = author_tag.author_id 
-                                                    WHERE customer_id = 1");
-                                $stmt->execute();
-                                $result = $stmt->get_result();
-                                while ($row = $result->fetch_assoc()): ?>
+                        <tbody >
+                                <?php
+                                    // Fetching information from cart table 
+                                    require_once '../database/database_functions.php';
+                                    $conn = db_connection();
+                                    $stmt = $conn->prepare("SELECT * FROM cart");
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    $grand_total = 0;
+                                    while ($row = $result->fetch_assoc()):
+                                ?>
                             <tr >
                             <th scope="row" class="border-0" >
                                 <div class="p-2">

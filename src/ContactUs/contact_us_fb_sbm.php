@@ -21,8 +21,24 @@
                                     <div class="input-group-text"><i class="fa fa-user" 
                                         style="color: #F2C84B;"></i></div>
                                 </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                <input type="text" class="form-control" id="feedback_fname" name="feedback_fname" placeholder="Please enter your first name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><i class="fa fa-user" style="color: #F2C84B;"></i></div>
+                                </div>
+                                <input type="text" class="form-control" id="feedback_lname" name="feedback_lname" placeholder="And your last name" required>
+=======
+                                <input type="text" class="form-control" id="feedback_name" name="feedback_name" placeholder="Please enter your name" required>
+>>>>>>> 6432971d6462cb05cd820a6fa29cee3e9cef74e6
+=======
                                 <input type="text" class="form-control" id="feedback_name" 
                                     name="feedback_name" placeholder="Please enter your name" required>
+>>>>>>> 440e65c94087763138ecdbbdf9257193ff76e183
                             </div>
                         </div>
                         <div class="form-group">
@@ -42,8 +58,16 @@
                                     <div class="input-group-text"><i class="fa fa-comment" 
                                         style="color: #F2C84B;"></i></div>
                                 </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
+                                <textarea class="form-control" rows="5" id="feedback_text" name="feedback_text" placeholder="Leave your feedback here" required></textarea>
+=======
+                                <textarea class="form-control" rows="5" id="feedback_text" name="feedback_message" placeholder="Leave your feedback here" required></textarea>
+>>>>>>> 6432971d6462cb05cd820a6fa29cee3e9cef74e6
+=======
                                 <textarea class="form-control" rows="5" id="feedback_text" 
                                     name="feedback_message" placeholder="Leave your feedback here" required></textarea>
+>>>>>>> 440e65c94087763138ecdbbdf9257193ff76e183
                             </div>
                         </div>
 

@@ -42,16 +42,22 @@
             echo 'Passwords do not match!';
         }
 
+        $user_check= "SELECT * FROM user WHERE username= '$username' LIMIT 1";
+        $result=mysqli_query($conn,$user_check) or die($conn->error);
+        $users =mysqli_fetch_assoc($result);
+        if($users){
+            if($users['username']=== $username){
+                  echo " username already exists ! ";
+                  header("location: ../../public/user_exists.php#pills-signup");}
+            else{
         $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 
-                        VALUES ('$first_name', '$last_name', '$email', '$birthdate', '$phone', '$street_address', '$city', '$state')";
+                        VALUES ('$first_name', '$last_name', '$email', '$birthdate', '$phone', '$street_address', '$city', '$state')";}
         if ($conn->query($customer_query) === TRUE) {
             echo "New customer created successfully. <br>" . $first_name;
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
-
         $customer_id = mysqli_insert_id($conn);
-
         $user_query = "INSERT INTO user (customer_id, username, password) 
                     VALUES ('$customer_id', '$username', '$hash_password')";
         if ($conn->query($user_query) === TRUE) {
@@ -59,7 +65,7 @@
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
         }
-
+    }
         header("location: ../../public/successful_registration.php");
     }
 

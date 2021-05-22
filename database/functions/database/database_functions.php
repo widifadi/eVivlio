@@ -1,5 +1,4 @@
 <?php
-
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -12,5 +11,5 @@ function db_connection(){
 		}
 		return $conn;
 	}
-
+	
     ?>

@@ -11,7 +11,7 @@
             <div class="catalog-breadcrumbs">
                 <!-- TODO backend/js code -->
                 <!-- breadcrumbs -->
-                <a href="catalog.php"> Catalog </a> 
+                <a href="catalog.php?p=all_books"> Catalog </a> 
                 <em class="fas fa-chevron-right" style="color: grey;"></em>
                 <a href=""> Category </a> 
                 <!-- <i class="fas fa-chevron-right" style="color: grey;"></i> -->
@@ -19,6 +19,7 @@
             </div>
             <!-- TODO if book is clicked on catalog, change to book detail: use AJAX?  -->
             <!-- DEVELOP book_list.php or book.php -->
+            <br>
             <?php require_once("../src/Catalogue/book_list.php"); ?> 
         </div>
     </div>

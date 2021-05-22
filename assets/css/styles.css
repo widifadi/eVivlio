@@ -14,6 +14,15 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; 
+
+  background-image: url('../img/backgrounds/8.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.navbar {
+  background-color:rgba(255,255,255,0.3);
 }
 
 #logo {
@@ -94,16 +103,60 @@ a:hover {
 }
 
 /* Front page start */
+.wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+}
+
+.section { 
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.parallax::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -1;
+}
+
+.static {
+  background: var(--blue-theme);
+}
+
+.bg1 {
+  background-color:rgba(0, 0, 0, 0.5);
+  background-image: url('../img/backgrounds/3040791.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.bg2 {
+  background-image: url('../img/backgrounds/8_updown.png');
+  /* background-attachment: fixed; */
+  background-size: cover; 
+}
+
 #front-page {
-  background-color: var(--blue-theme);
   min-height: 50vh;
   width: 100%;
+  padding: 130px 0;
 }
 
 #webpage-title {
   font-family: 'Luminari' !important;
   color: var(--light-yellow-theme);
-  font-size: 48px;
+  font-size: 50px;
   margin-top: 100px;
 }
 
@@ -138,14 +191,14 @@ a:hover {
   border-radius: 20px;
 }
 
-#search-button {
+.search-btn {
   border-radius: 0 50% 50% 0;
   background-color: white;
   border: 0;
   color: var(--dark-orange);
 }
 
-#search-button:hover {
+.search-btn:hover {
   cursor: pointer;
   color: var(--blue-theme);
 }
@@ -154,19 +207,6 @@ a:hover {
   padding: 20px;
 }
 
-.parallax {
-  /* The image used */
-  /* background-image: url("img_parallax.jpg"); */
-
-  /* Set a specific height */
-  min-height: 500px;
-
-  /* Create the parallax scrolling effect */
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
 /* Front page end */
 
 
@@ -176,22 +216,22 @@ a:hover {
   width: 60%;
 }
 
-#search-page-input[type="text"] {
+.search-input[type="text"] {
   border: 1px solid var(--blue-theme);
   background-color: var(--blue-theme) !important;
   color: var(--light-yellow-theme);
 }
 
-#search-page-input::placeholder{
+.search-input::placeholder{
   color: var(--light-yellow-theme);
 }
 
-.search-page-button {
+.dark-search-button {
   background-color: var(--blue-theme) !important;
   color: var(--light-yellow-theme) !important;
 }
 
-.search-page-button:hover {
+.dark-search-button:hover {
   color: var(--orange) !important;
 }
 
@@ -319,7 +359,7 @@ a:hover {
 .feature-div {
   padding: 10px;
   border: solid var(--light-grey);
-  height: 300px;
+  height: 230px;
   border-width: 1px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -331,10 +371,14 @@ a:hover {
   text-align: center;
 }
 
-#feature-promos #feature-categories {
-  padding: 20px;
-  height: 500px;
+#feature-promos {
+  padding: 150px;
 }
+
+#feature-categories {
+  padding: 150px;
+}
+
 /* Features on front page start */
 
 
@@ -516,6 +560,8 @@ a:hover {
 .team:hover {
   cursor: pointer !important;
   background-color: var(--light-grey);
+
+
 }
 
 .team-name {
@@ -531,7 +577,6 @@ a:hover {
 /*ABOUT US end */
 .page-footer {
   margin-top: auto;
-  height: 250px;
   background-color: var(--blue-theme);
 }
 

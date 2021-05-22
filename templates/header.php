@@ -23,6 +23,7 @@
                     style="display: block; margin: 0 auto; margin-top: 5px;">
             </a>
         </div>
+
         <button class="navbar-toggler" type="button" 
             data-toggle="collapse" data-target="#navbarNavAltMarkup" 
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,10 +31,25 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a href="catalog.php">
+                <a href="catalog.php?p=all_books">
                     <button class="btn menu-btn" id="catalog-btn">Book Catalogue</button>
                 </a>
             </div>
+
+            <div class="mx-auto">
+                <!-- TODO error if empty -->
+                <div class="input-group header-search" style="margin-left:100px;">
+                    <input type="text" class="form-control search-box search-input" id="header-search-box"
+                        placeholder="Search a book" 
+                        aria-label="Search keyword" aria-describedby="search-button">
+                    <div class="input-group-append">
+                        <span class="input-group-text dark-search-button search-btn" id="header-search">
+                            <em class="fas fa-search"></em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
             <div class="navbar-nav ml-auto">
                 <!-- IF a user that is not admin is logged in -->
                 <?php
@@ -49,12 +65,13 @@
                 <?php
                     }
                     // if user is not admin
-                    if( !isset($_SESSION['user']) || 
-                        (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] != 1)) {
+                    if(isset($_SESSION['user']) || 
+                    (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1))
+                         {
                 ?>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">
-                        <em class="fas fa-shopping-cart"></em>
+                        <em class="fas fa-shopping-cart"><span id="cart-item" class="badge badge-danger"></span></em>
                     </button>
                 </a>
 
@@ -100,3 +117,23 @@
             </div>
         </div>
     </nav>
+
+<!-- Ajax Code for cart -->
+<script type="text/javascript">
+        $(document).ready(function(){
+
+            load_cart_item_number();
+
+            // function to display item number on cart icon badge
+            function load_cart_item_number(){
+                $.ajax({
+                    url: '../Cart/cart_action.php',
+                    method: 'get',
+                    data: {cartItem:"cart_item"},
+                    success: function(response){
+                        $("#cart-item").html(response);
+                    }
+                });
+            }
+        });
+</script>

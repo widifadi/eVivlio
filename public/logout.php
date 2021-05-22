@@ -1,5 +1,7 @@
-<?php require_once("../templates/header.php"); ?>
-
+<?php require_once("../templates/header.php"); 
+  
+	session_destroy();
+    ?>
 <div class="container" id="logout-message">
     Logged out successfully.
     <br>

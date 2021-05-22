@@ -1,17 +1,21 @@
 <div id="front-page">
     <div class="d-flex justify-content-center" id="webpage-title">eVivlío</div>
     <span class="d-flex justify-content-center" id="site-motto">
-        Lorem ipsum dolor sit amet, ​<br>
-        consectetur adipiscing elit​.
+        Sleep is good, he said, and books are better.
     </span>
+    <br>
+    <em class="d-flex justify-content-center" style="color:white; font-size:smaller;">
+        George R.R. Martin
+    </em>
 
     <div id="front-page-search-container">
-        <!-- TODO error if empty -->
-        <div class="input-group mb-3" id="front-page-search-group">
-            <input type="text" class="form-control search-box" placeholder="Search a book" 
-                aria-label="Search keyword" aria-describedby="search-button">
+        <form>
+        <div class="input-group mb-3 page-search" id="front-page-search-group">
+            <input type="text" class="form-control search-box" id="frontpage-search-box"
+                placeholder="Search a book" 
+                aria-label="Search keyword" aria-describedby="frontpage-search-button">
             <div class="input-group-append">
-                <span class="input-group-text" id="search-button">
+                <span class="input-group-text search-btn" id="frontpage-search">
                     <em class="fas fa-search"></em>
                 </span>
             </div>
@@ -19,5 +23,3 @@
     </div>
 
 </div>
-
-<script src="../assets/js/search.js"></script>

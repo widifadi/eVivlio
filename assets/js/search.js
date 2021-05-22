@@ -1,51 +1,30 @@
+// for pressing enter in input
 $(".search-box").keypress(function (e) {
     if (e.which == 13) {
-        $("#search-button").click();
+        e.preventDefault();
+
+        var search_id = $(this).attr('id');
+        var input_keyword = $("#" + search_id).val();
+
+        if (input_keyword != "") {
+            submit_search(input_keyword);
+        }
     }
 });
 
+// for pressing search button
+$(".search-btn").click(function(e) {
+    var btn_id = $(this).attr('id');
+    // get nearest input value of this button
+    var frominput_keyword = $("#" + btn_id + "-box").val();
 
-$("#search-button").click(function(e) {
-    var search_keyword = $(".search-box").val();
+    if (frominput_keyword != "") {
+        submit_search(frominput_keyword);
+    }
 
-    window.location.href = 'search_results_page.php#'+ search_keyword;
-
-    load_search_results(search_keyword);
 });
 
 
-// used if coming from front page
-window.onload = function() {
-    if (window.location.href.indexOf('search_results_page.php') > -1) {
-
-        var keyword = decodeURIComponent(location.hash.slice(1));
-        load_search_results(keyword);
-    }
-}
-
-
-function load_search_results(keyword) {
-    $.ajax({
-        type: "POST",
-        url: "../src/Search/search_function.php",
-        data: { "keyword": keyword },
-        success: function(response) {
-            var book_results = jQuery.parseJSON(response);
-
-            $("#search-keyword").html(keyword);
-
-            $.ajax({
-                type: "POST",
-                url: "../src/Search/search_results.php",
-                data: { "book_results": book_results },
-                success: function(results_response) {
-
-                    $("#search-results-container").html(results_response);
-
-                },
-            });
-
-        },
-    });
-
+function submit_search(keyword) {
+    window.location.href = 'search_results_page.php?search='+ keyword;
 }

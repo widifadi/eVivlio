@@ -48,7 +48,6 @@
         } else {
             echo "Customer Table Error: " . $sql . "<br>" . $conn->error . "<br>";
         }
-
         header("location: ../../public/admin_page.php#managecustomers");
     }
       

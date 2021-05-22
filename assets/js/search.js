@@ -5,7 +5,10 @@ $(".search-box").keypress(function (e) {
 
         var search_id = $(this).attr('id');
         var input_keyword = $("#" + search_id).val();
-        submit_search(input_keyword);
+
+        if (input_keyword != "") {
+            submit_search(input_keyword);
+        }
     }
 });
 
@@ -14,7 +17,10 @@ $(".search-btn").click(function(e) {
     var btn_id = $(this).attr('id');
     // get nearest input value of this button
     var frominput_keyword = $("#" + btn_id + "-box").val();
-    submit_search(frominput_keyword);
+
+    if (frominput_keyword != "") {
+        submit_search(frominput_keyword);
+    }
 
 });
 

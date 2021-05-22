@@ -10,7 +10,7 @@
             foreach($book_results as $book_item) {
                 $book_cover = '../assets/img/book-samples/' . $book_item['book_cover'];
         ?>
-        <a href="book_details.php">
+        <a href="book_details.php?bookid=<?php echo $book_item['book_id']?>">
             <div class="card text-center p-1 book" id="The_Lord_of_the_Rings">
                 <img class="card-img-top book-cover" src='<?php echo $book_item['book_cover'] ?>'
                     alt='<?php echo $book_item['book_title'] ?>' >

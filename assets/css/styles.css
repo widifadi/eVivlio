@@ -191,14 +191,14 @@ a:hover {
   border-radius: 20px;
 }
 
-#search-button {
+.search-btn {
   border-radius: 0 50% 50% 0;
   background-color: white;
   border: 0;
   color: var(--dark-orange);
 }
 
-#search-button:hover {
+.search-btn:hover {
   cursor: pointer;
   color: var(--blue-theme);
 }

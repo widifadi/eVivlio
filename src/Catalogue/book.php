@@ -1,8 +1,8 @@
 
 <?php
-require_once("../database/database_functions.php");
-$conn = db_connection();
-$bookId=$_GET["bookid"];
+    require_once("../database/database_functions.php");
+    $conn = db_connection();
+    $bookId=$_GET["bookid"];
 
     $query= "SELECT * FROM book JOIN category_tag ON category_tag.book_id = book.book_id JOIN category ON 
     category_tag.category_id = category.category_id JOIN publisher ON 
@@ -57,13 +57,11 @@ $bookId=$_GET["bookid"];
         <form action="" class="form-submit">
             <input type="hidden" class="pid" value="<?= $bookId ?>">
             <input type="hidden" class="cid" value="<?= $customerId ?>">
-
             <em class="fas fa-cart-plus add-cart-btn"></em>
         </form>
         <form action="" class="form-submit">
             <input type="hidden" class="pid" value="<?= $bookId ?>">
             <input type="hidden" class="cid" value="<?= $customerId ?>">
-
             <em class="fas fa-heart add-wlist-btn"></em>
         </form>
     </div>

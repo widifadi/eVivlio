@@ -38,7 +38,7 @@
 
             <div class="mx-auto">
                 <!-- TODO error if empty -->
-                <div class="input-group header-search">
+                <div class="input-group header-search" style="margin-left:100px;">
                     <input type="text" class="form-control search-box search-input" placeholder="Search a book" 
                         aria-label="Search keyword" aria-describedby="search-button">
                     <div class="input-group-append">

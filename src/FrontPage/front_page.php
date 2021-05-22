@@ -1,9 +1,12 @@
 <div id="front-page">
     <div class="d-flex justify-content-center" id="webpage-title">eVivlío</div>
     <span class="d-flex justify-content-center" id="site-motto">
-        Lorem ipsum dolor sit amet, ​<br>
-        consectetur adipiscing elit​.
+        Sleep is good, he said, and books are better.
     </span>
+    <br>
+    <em class="d-flex justify-content-center" style="color:white; font-size:smaller;">
+        George R.R. Martin
+    </em>
 
     <div id="front-page-search-container">
         <!-- TODO error if empty -->

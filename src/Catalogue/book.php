@@ -1,6 +1,6 @@
 
 <?php
-require_once("../database/functions/database/database_functions.php");
+require_once("../database/database_functions.php");
 $conn = db_connection();
 $bookId=$_GET["bookid"];
 

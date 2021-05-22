@@ -40,7 +40,7 @@
                 <!-- TODO error if empty -->
                 <div class="input-group header-search" style="margin-left:100px;">
                     <input type="text" class="form-control search-box search-input" id="header-search-box"
-                        placeholder="Search a book" 
+                        placeholder="Search a book or author" 
                         aria-label="Search keyword" aria-describedby="search-button">
                     <div class="input-group-append">
                         <span class="input-group-text dark-search-button search-btn" id="header-search">

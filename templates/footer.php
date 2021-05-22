@@ -8,7 +8,6 @@
                         by six awesome students under the SMACCs Program. <br>
                         Our goal is to inspire people of all ages to read books <br>
                         and to widen their knowledge.
-
                     </div>
                     <div class="social-media" style="font-size: 30px;">
                         <em class="fab fa-facebook-square"></em>

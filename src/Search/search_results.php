@@ -16,8 +16,12 @@
         $query = "SELECT * FROM book WHERE book_title LIKE '%$keyword%'; "; 
         $result = mysqli_query($conn, $query);
 
-        if(mysqli_num_rows($result) < 0) {
-            echo "No book found.";
+        if(mysqli_num_rows($result) == 0) {
+        ?>
+            <span style="font-size:30px;">¯\_(ツ)_/¯</span>
+            <span>No book found.</span>
+        
+        <?php
         } else {
             while ($book_item = mysqli_fetch_assoc($result)) 
             {

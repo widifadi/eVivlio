@@ -40,17 +40,6 @@
                             require_once("../database/database_functions.php");
                             $conn = db_connection();
                             
-                            // TODO do sql connection only once for the whole app
-                        /*    $servername = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $dbname = "evivlio";
-                            // Create connection
-                            $conn = new mysqli($servername, $username,'', $dbname);
-                            // Check connection
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            }*/
 
                             $book_query = "SELECT * FROM book";
                             $result = mysqli_query($conn, $book_query); 

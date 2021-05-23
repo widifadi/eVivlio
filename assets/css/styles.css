@@ -595,3 +595,9 @@ a:hover {
 #contact-items {
   text-align: left;
 }
+.about-text {
+  margin-top: 20px;
+  margin-bottom: 40px ;
+  color: var(--blue-theme);
+  font-size: 18px;
+}

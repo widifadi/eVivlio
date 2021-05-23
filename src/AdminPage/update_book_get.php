@@ -1,7 +1,5 @@
 <?php 
     // TODO do sql connection only once for the whole app
- 
-
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -16,7 +14,6 @@
     } 
 
     $book_id = $_GET['book_id'];
-
     $query_book = "SELECT * FROM book WHERE book_id=$book_id;";
     $book_result = mysqli_query($conn, $query_book);
 

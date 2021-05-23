@@ -13,12 +13,17 @@
                 <!-- breadcrumbs -->
                 <a href="catalog.php?p=all_books"> Catalog </a> 
                 <em class="fas fa-chevron-right" style="color: grey;"></em>
-                <a href=""> Category </a> 
-                <!-- <i class="fas fa-chevron-right" style="color: grey;"></i> -->
-                <!-- <a href=""> Book Title </a> -->
+                <?php
+                    if (isset($_GET['p']) && $_GET['p'] != "all_books") {
+                        $category = $_GET['p'];
+                ?>
+                    <a href="catalog.php?p=<?php echo $category?>" > 
+                        <?php echo $category?> 
+                    </a> 
+                <?php
+                    }
+                ?>
             </div>
-            <!-- TODO if book is clicked on catalog, change to book detail: use AJAX?  -->
-            <!-- DEVELOP book_list.php or book.php -->
             <br>
             <?php require_once("../src/Catalogue/book_list.php"); ?> 
         </div>

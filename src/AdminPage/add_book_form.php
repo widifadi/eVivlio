@@ -32,7 +32,7 @@
                 </div>
                 <div class="col">
                     <input type="text" class="form-control" name="author_lastname[]" 
-                        placeholder="Last Name" required>
+                        placeholder="Last Name">
                 </div>
             </div>
             <div class="row" style="margin-bottom: 10px;">

@@ -14,6 +14,15 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; 
+
+  background-image: url('../img/backgrounds/8.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.navbar {
+  background-color:rgba(255,255,255,0.3);
 }
 
 #logo {
@@ -125,25 +134,18 @@ a:hover {
   background: var(--blue-theme);
 }
 
-.bg1::after {
+.bg1 {
+  background-color:rgba(0, 0, 0, 0.5);
   background-image: url('../img/backgrounds/3040791.jpg');
-
   background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-
-.bg2::after {
-  background-image: url('../img/backgrounds/8.jpg');
-
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
 }
 
+.bg2 {
+  background-image: url('../img/backgrounds/8_updown.png');
+  /* background-attachment: fixed; */
+  background-size: cover; 
+}
 
 #front-page {
   min-height: 50vh;
@@ -154,7 +156,7 @@ a:hover {
 #webpage-title {
   font-family: 'Luminari' !important;
   color: var(--light-yellow-theme);
-  font-size: 48px;
+  font-size: 50px;
   margin-top: 100px;
 }
 
@@ -189,14 +191,14 @@ a:hover {
   border-radius: 20px;
 }
 
-#search-button {
+.search-btn {
   border-radius: 0 50% 50% 0;
   background-color: white;
   border: 0;
   color: var(--dark-orange);
 }
 
-#search-button:hover {
+.search-btn:hover {
   cursor: pointer;
   color: var(--blue-theme);
 }
@@ -575,7 +577,6 @@ a:hover {
 /*ABOUT US end */
 .page-footer {
   margin-top: auto;
-  height: 250px;
   background-color: var(--blue-theme);
 }
 

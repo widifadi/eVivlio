@@ -1,38 +1,30 @@
+// for pressing enter in input
 $(".search-box").keypress(function (e) {
     if (e.which == 13) {
-        $(".search-btn").click();
+        e.preventDefault();
+
+        var search_id = $(this).attr('id');
+        var input_keyword = $("#" + search_id).val();
+
+        if (input_keyword != "") {
+            submit_search(input_keyword);
+        }
     }
 });
 
-$("#search-button").click(function() {
-
-    var keyword = $(".search-box").val();
+// for pressing search button
 $(".search-btn").click(function(e) {
-    console.log("search button clicked.");
-    var search_keyword = $(".search-box").val();
+    var btn_id = $(this).attr('id');
+    // get nearest input value of this button
+    var frominput_keyword = $("#" + btn_id + "-box").val();
 
-    $.ajax({
-        type: "POST",
-        url: "../src/Search/search_function.php",
-        data: { "keyword": keyword },
-        success: function(response) {
-            // window.location.href = 'search_results_page.php'
-            console.log(response)
-
-            var book_results = jQuery.parseJSON(response);
-
-            $("#search-keyword").html(keyword); // TODO
-
-            $.ajax({
-                type: "POST",
-                url: "../src/Search/search_results.php",
-                data: { "book_results": book_results },
-                success: function(results_response) {
-                    console.log(results_response)
-                },
-            });
-
-        },
-    });
+    if (frominput_keyword != "") {
+        submit_search(frominput_keyword);
+    }
 
 });
+
+
+function submit_search(keyword) {
+    window.location.href = 'search_results_page.php?search='+ keyword;
+}

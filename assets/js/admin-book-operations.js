@@ -59,8 +59,8 @@ $('.update-book').click(function() {
             console.log(cover_path);
 
             // TODO author
-            $('#update-author1-firstname').val(details.author_fname);
-            $('#update-author1-lastname').val(details.author_lname);
+            $('#update-author1-firstname').val(details.author_first_name);
+            $('#update-author1-lastname').val(details.author_last_name);
             $('#update-publisher').val(details.publisher);
             $('#update-year').val(details.publishing_year);
             

@@ -11,8 +11,6 @@
         require_once("../database/database_functions.php");
         $conn = db_connection();
 
-        // TODO author keyword
-
         $query = "SELECT DISTINCT book.book_id, book.book_title, book.book_cover, 
                         book.publishing_year, book.price 
                     FROM book LEFT OUTER JOIN author_tag ON book.book_id = author_tag.book_id 

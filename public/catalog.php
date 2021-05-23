@@ -9,8 +9,6 @@
         </div>
         <div class="col-9">
             <div class="catalog-breadcrumbs">
-                <!-- TODO backend/js code -->
-                <!-- breadcrumbs -->
                 <a href="catalog.php?p=all_books"> Catalog </a> 
                 <em class="fas fa-chevron-right" style="color: grey;"></em>
                 <?php

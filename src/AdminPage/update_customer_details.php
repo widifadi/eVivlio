@@ -2,7 +2,7 @@
     include("../../database/database_functions.php");
     $conn = db_connection();
 
-    $customer_id = $_GET['customer_id'];
+    $customer_id = $_POST['customer_id'];
 
     $query_customer = "SELECT * FROM customer WHERE customer_id=$customer_id;";
     $customer_result = mysqli_query($conn, $query_customer);

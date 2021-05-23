@@ -2,7 +2,7 @@
     include("../../database/database_functions.php");
     $conn = db_connection();
 
-    $order_id = $_GET['order_id'];
+    $order_id = $_POST['order_id'];
 
     $query_order = "SELECT * FROM customer_order WHERE order_id=$order_id;";
     $order_result = mysqli_query($conn, $query_order);

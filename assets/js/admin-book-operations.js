@@ -37,13 +37,13 @@ $('.delete-book').click(function() {
 $('.update-book').click(function() {
     var update_book_id = $(this).attr('id').split("-")[1];
 
-    var update_book_get = "../src/AdminPage/update_book_get.php";
+    var update_book_details = "../src/AdminPage/update_book_details.php";
     var update_book_post = "../src/AdminPage/update_book_post.php"; 
 
-    // GET book details
+    // get book details
     $.ajax({
-        type: 'GET',
-        url: update_book_get,
+        type: 'POST',
+        url: update_book_details,
         data: { "book_id": update_book_id },
         success: function(response) {
             // fill out form values

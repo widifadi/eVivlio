@@ -37,11 +37,11 @@ $('.delete-order').click(function() {
 $('.update-order').click(function() {
     var order_id = $(this).attr('id').split("-")[1];
 
-    var update_order_get = "../src/AdminPage/update_order_get.php";
+    var update_order_details = "../src/AdminPage/update_order_details.php";
 
     $.ajax({
-        type: 'GET',
-        url: update_order_get,
+        type: 'POST',
+        url: update_order_details,
         data: { "order_id": order_id },
         success: function(response) {
             var details = jQuery.parseJSON(response);

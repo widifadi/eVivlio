@@ -3,7 +3,7 @@
 <div class="container " style="margin-top: 100px; margin-bottom: -100px; width: 100%;">
     <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-              <a> <b> username or email already exists! Register with different username</b> </a>
+              <a> Username or email already exists! Register with different username. </a>
         </li>
     </ul>
     </div>

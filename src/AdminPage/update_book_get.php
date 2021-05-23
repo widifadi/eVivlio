@@ -13,7 +13,7 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $book_id = $_GET['book_id'];
+    $book_id = $_POST['book_id'];
     $query_book = "SELECT * FROM book WHERE book_id=$book_id;";
     $book_result = mysqli_query($conn, $query_book);
 

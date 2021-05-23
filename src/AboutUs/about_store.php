@@ -1,26 +1,16 @@
-<div class="card-columns" id="book-list">
-    <a href="book_details.php">
-        <div class="card text-center p-1 book" id="The_Lord_of_the_Rings">
-            <img class="card-img-top book-cover" src="../assets/img/book-samples/tlor.jpeg" 
-                alt="The Lord of the Rings" >
-                <br>
-                <span class="book-title">The Lord of the Rings</span> <br>
-                <span class="book-author">J. R. R. Tolkien (1995)</span>
-                <br>
-                <span class="badge badge-pill badge-secondary book-price">€30.00</span>
-        </div>
-    </a>
-
-    <a href="book_details.php">
-        <div class="card text-center p-1 book" id="The_Lord_of_the_Rings">
-            <img class="card-img-top book-cover" src="../assets/img/book-samples/the-secret.jpeg" 
-                alt="The Secret">
-                <br>
-                <span class="book-title">The Secret</span> <br>
-                <span class="book-author">Rhonda Byrne (2017)</span>
-                <br>
-                <span class="badge badge-pill badge-secondary book-price">€30.00</span>
-        </div>
-    </a>
-
+<div class="container catalog-breadcrumbs mb-3">
+        <a href="about.php"> About Us </a> 
+        <i class="fas fa-chevron-right" style="color: grey;"></i>
+        <a href=""> About the Store </a> 
 </div>
+<div class="container">
+    <div class="text mb-2 about-text"> &nbsp &nbsp eVivlio is an online bookstore brought to you 
+        by six awesome students under Smart Cities and Communities  Proggramme. 
+    </div>
+    <div class="text mb-2 about-text">
+        &nbsp &nbsp We believe that Smart Cities start with you!
+    </div>
+    <div class="text mb-2 about-text">
+        &nbsp &nbsp So you can make the world a smatter place by enjoying your favourite books!
+     </div>
+</div>  

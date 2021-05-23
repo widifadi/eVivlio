@@ -29,14 +29,14 @@
                         <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse"
                                  data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            How do I purchase a hard copy of a book?
+                            How do I make a purchase?
                             </a>
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
-                            <p>Simply pick a "paper copy" option at a book details web page. 
-                                It will then be delivered to you by our partner courier company. </p>
+                            <p>Simply add the books you like to your cart and proceed to payment once finished shopping. 
+                                Your order will then be delivered to you by our partner courier company. </p>
                         </div>
                     </div>
                 </div>
@@ -46,14 +46,14 @@
                         <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse"
                                  data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            How do I purchase a hard copy of a book?
+                            What if I don't want to make an order now?
                             </a>
                         </h4>
                     </div>
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                         <div class="panel-body">
-                            <p>Simply pick a "soft copy" option at a book details web page. 
-                                It will then be sent to your e-mail adress after purchasing.</p>
+                            <p>You can add the books you like to your Wishlist 
+                                and access it whenever you want.</p>
                         </div>
                     </div>
                 </div>

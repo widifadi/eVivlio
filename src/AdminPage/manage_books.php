@@ -33,6 +33,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Stock</th>
                             <th scope="col">Feature</th>
+                           
                         </tr>
                     </thead>
                     <tbody>
@@ -40,21 +41,30 @@
                             require_once("../database/database_functions.php");
                             $conn = db_connection();
                             
+                           /* $name_query = "SELECT author.author_first_name,author.author_last_name FROM author
+                            INNER JOIN author_tag ON author.author_id=author_tag.author_id WHERE author_tag.book_id=4";
+                            $result = mysqli_query($conn, $name_query); 
+                            $name = mysqli_fetch_assoc($result) ;*/
+                            
+                    
 
-                            $book_query = "SELECT * FROM book";
+                            $book_query = "SELECT * FROM book JOIN author_tag ON
+                             book.book_id=author_tag.book_id INNER JOIN author ON author_tag.author_id=author.author_id
+                             JOIN category_tag ON
+                             book.book_id=category_tag.book_id JOIN category ON category_tag.category_id=category.category_id
+                             JOIN feature_tag ON
+                             book.book_id=feature_tag.book_id JOIN book_feature ON feature_tag.feature_id=book_feature.feature_id
+                             INNER JOIN publisher ON book.book_id=book.book_id
+                             ";
+                             
+                             
+                
                             $result = mysqli_query($conn, $book_query); 
                             while($row = mysqli_fetch_assoc($result)) 
                             {
                                 $book_id = $row['book_id'];
 
-                                // get author
-                                // SELECT * author (join the author_tag table) where book_id=n
-
-                                // author1 = firstname . lastname
-
-                                // get publisher
-
-                                // category
+                                
                         ?>
                         <tr id=<?php echo $book_id ?> >
                             <td>
@@ -63,7 +73,7 @@
                                     data-toggle="modal" data-target=".update-book-modal"></em>
                                 <em class="fas fa-trash-alt delete-book"
                                     id="deletebook-<?php echo $book_id ?>" 
-                                    title='<?php echo $row['title'] ?>'
+                                    title='<?php echo $row['book_title'] ?>'
                                     data-toggle="modal" data-target=".delete-book-modal"></em>
                             </td>
 
@@ -71,24 +81,23 @@
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
-                            <!-- TODO get author name -->
-                             
-                            <td><?php echo "TODO"; ?></td>
+                         
+                            <td><?php echo $row['author_first_name']; echo $row['author_last_name']  ; ?></td>
+                            
                             <!-- TODO get publisher name -->
-                            <td><?php echo $row['publisher_id']; ?></td>
+                            <td><?php echo $row['publisher']; ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
                             <td>
                                 <?php 
-                                    echo "TODO"
+                                    echo $row['category_name'];
                                 ?>
                             </td>
                             <td><?php echo $row['pages']; ?></td>
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['stock']; ?></td>
-                            <td>
-                                <?php
-                                    echo "TODO"
-                                ?>
+                
+                            <!-- TODO get publisher name -->
+                            <td> <?php echo $row['feature_name']; ?></td>
                             </td>
             
                         </tr>
@@ -143,7 +152,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <?php include("update_book_form.php") ?>
+            <?php include('update_book_details.php') ?>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

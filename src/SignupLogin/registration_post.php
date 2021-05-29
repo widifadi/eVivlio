@@ -41,19 +41,20 @@
         if ($password != $password_check) {
             echo 'Passwords do not match!';
         }
-
-        $user_check= "SELECT * FROM user WHERE username= '$username' LIMIT 1";
+        
+        $user_check= "SELECT * FROM user u JOIN customer c USING (customer_id) WHERE u.username='$username' OR c.email='$email' LIMIT 1";
         echo $user_check;
         $result=mysqli_query($conn,$user_check) or die($conn->error);
         $users =mysqli_fetch_assoc($result);
         if ($users) {
-            if ($users['username'] === $username) {
+         if ($users['username'] === $username ){
                 header("location: ../../public/user_exists.php#pills-signup");
             }
-
-            // TODO insert check for email 
-            
-        } else {
+            if($users['email'] === $email) {
+                header("location: ../../public/user_exists.php#pills-signup");
+        }  
+        } 
+        else {
             $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 
                             VALUES ('$first_name', '$last_name', '$email', '$birthdate', '$phone', '$street_address', '$city', '$state')";
 

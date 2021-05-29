@@ -1,6 +1,6 @@
 <?php 
     // TODO do sql connection only once for the whole app
-    $servername = "localhost";
+   /* $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "evivlio";
@@ -11,7 +11,10 @@
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
-    } 
+    } */
+    
+    require_once("../database/database_functions.php");
+    $conn = db_connection();
 
     $book_id = $_POST['book_id'];
     $query_book = "SELECT * FROM book WHERE book_id=$book_id;";

@@ -15,7 +15,7 @@
     
     if($check_books){
         $x=1;
-   while( $row=mysqli_fetch_assoc($query_run)){
+    while( $row=mysqli_fetch_assoc($query_run)){
     $book["cover"]=$row['book_cover'];
     $book["title"]=$row['book_title']; 
     $book["isbn"]=$row['isbn']; 
@@ -54,14 +54,9 @@
         <br>
         <br>
         <!-- Add to cart and and to wishlish functionality --> 
-        <form action="" class="form-submit">
-            <input type="hidden" class="pid" value="<?= $bookId ?>">
-            <input type="hidden" class="cid" value="<?= $customerId ?>">
+        <form method="post" action="">
+            <input type="hidden" name="bookid" value="<?php echo $bookId ?>"
             <em class="fas fa-cart-plus add-cart-btn"></em>
-        </form>
-        <form action="" class="form-submit">
-            <input type="hidden" class="pid" value="<?= $bookId ?>">
-            <input type="hidden" class="cid" value="<?= $customerId ?>">
             <em class="fas fa-heart add-wlist-btn"></em>
         </form>
     </div>
@@ -201,56 +196,3 @@
     </div>
 
 </div>
-
-    <!-- Ajax Code for cart -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".add-cart-btn").click(function(e){
-                e.preventDefault();
-                var $form = $(this).closest(".form-submit");
-                var pid = $form.find(".pid").val();
-                var cid = $form.find(".cid").val();
-                
-
-                $.ajax({
-                    url: 'action.php',
-                    method: 'post',
-                    data: {pid:pid,cid:cid},
-                    success:function(response){
-                        $("#message").html(response);
-                        load_cart_item_number();
-                    }
-                });
-            });
-
-            $(".add-wlist-btn").click(function(e){
-                e.preventDefault();
-                var $form = $(this).closest(".form-submit");
-                var pid = $form.find(".pid").val();
-                var cid = $form.find(".cid").val();
-
-                $.ajax({
-                    url: 'action.php',
-                    method: 'post',
-                    data: {pid:pid,cid:cid},
-                    success:function(response){
-                        $("#message").html(response);
-                    }
-                });
-            });
-
-            load_cart_item_number();
-
-            // function to display item number on cart icon 
-            function load_cart_item_number(){
-                $.ajax({
-                    url: 'action.php',
-                    method: 'get',
-                    data: {cartItem:"cart_item"},
-                    success: function(response){
-                        $("#cart-item").html(response);
-                    }
-                });
-            }
-        });
-    </script>

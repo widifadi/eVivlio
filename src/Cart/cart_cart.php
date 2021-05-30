@@ -1,34 +1,7 @@
 <?php
     //session_start();
-<<<<<<< HEAD
     require_once ('../../database/database_functions.php');
     db_connection();
-=======
-    require_once ('../database/database_functions.php');
-    $conn  = db_connection();
-    // Fetching information from cart table based on guest ID or customer ID
-    // Add WHERE customer or guest id to select the cart item 
-    // For order summary
-    $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
-                            JOIN author_tag ON author_tag.book_id = book.book_id 
-                            JOIN author ON author.author_id = author_tag.author_id 
-                            WHERE customer_id = 1");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $grand_total = 0;
-    $num_items = 0;
-    while ($row = $result->fetch_assoc()):
-        $grand_total += $row['price'];
-        $num_items += 1;
-    endwhile; 
-    // For cart section
-    $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
-                            JOIN author_tag ON author_tag.book_id = book.book_id 
-                            JOIN author ON author.author_id = author_tag.author_id 
-                            WHERE customer_id = 1");
-    $stmt->execute();
-    $result = $stmt->get_result();
->>>>>>> c6cee0130d3927a726910fb55e367139b50b758c
 ?>
 
 <div class="container" style="margin-top:100px; margin-left: 10px;">
@@ -41,7 +14,6 @@
                 <div class="bg-light rounded-pill px-4 py-3 font-weight-bold">Order summary </div>
                     <div class="p-4">
                         <ul class="list-unstyled mb-4">
-<<<<<<< HEAD
                                 <?php
                                     // Fetching information from cart table based on guest ID or customer ID
                                     require_once '../../database/database_functions.php';
@@ -61,8 +33,6 @@
                                         $num_items += 1;
                                     endwhile; 
                                 ?>
-=======
->>>>>>> c6cee0130d3927a726910fb55e367139b50b758c
                         <li class="d-flex justify-content-between py-3 border-bottom">
                             <strong class="text-muted" id="cart-number">Number of positions </strong>
                             <strong><?= number_format($num_items,0) ?></strong></li>
@@ -86,7 +56,6 @@
                 <div class="table-responsive">
                     <table class="table" >
                         <tbody >
-<<<<<<< HEAD
                                 <?php
                                     // Fetching information from cart table 
                                     require_once '../../database/database_functions.php';
@@ -98,10 +67,6 @@
                                     while ($row = $result->fetch_assoc()):
                                 ?>
                             <tr >
-=======
-                                <?php while ($row = $result->fetch_assoc()): ?> <!-- ../assets/img/book-covers/Book Cover/bestseller/Amara The Brave.jpg -->
-                            <tr>
->>>>>>> c6cee0130d3927a726910fb55e367139b50b758c
                             <th scope="row" class="border-0" >
                                 <div class="p-2">
                                 <img src="<?= $row['book_cover'] ?>" alt="book" width="100px" id="book-cover">

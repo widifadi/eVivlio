@@ -78,6 +78,6 @@
     }
       
     mysqli_close($conn);
-    */
+    
 
 ?>

@@ -31,9 +31,7 @@
                             <th scope="col">Category</th>
                             <th scope="col">Pages</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Stock</th>
-                
-                           
+                            <th scope="col">Stock</th>                           
                         </tr>
                     </thead>
                     <tbody>

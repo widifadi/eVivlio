@@ -27,7 +27,7 @@
        <!-----------------------PHP---------------------------------------------->
                 <?php for($i;$i<=$j;$i++){ ?>
                       <div class="col-sm-3">
-                       <a href="book_details.php?bookid=<?php echo $featureBookTitle[$i];?>">
+                       <a href="book_details.php?bookid=<?php echo $featureBook_id[$i];?>">
                            <img src="../assets/img/book-covers/<?php echo $featureBookCover[$i];?>" 
                            alt="<?php echo $featureBookTitle[$i];?>" width=100px hight=50px >
                        </a>

@@ -53,7 +53,7 @@
         <!-- My Cart Section -->
         <div class="col-8">
             <div class="container catalog-breadcrumbs">
-                <a href="my_page.php"> My Cart </a> 
+                <a href="cart.php"> My Cart </a> 
             </div>
             <div class="row">
                 <div class="table-responsive">

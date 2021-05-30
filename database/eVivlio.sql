@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 02:11 PM
+-- Generation Time: May 30, 2021 at 04:15 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -38,8 +38,8 @@ CREATE TABLE `author` (
 --
 
 INSERT INTO `author` (`author_id`, `author_first_name`, `author_last_name`) VALUES
-(1, 'JRR', 'Tolkien'),
-(2, 'JK', 'Rowling'),
+(1, 'Melody ', 'Godfred'),
+(2, 'J.K.', 'Rowling'),
 (3, 'Stacey ', 'Abrams'),
 (4, 'John', ' Brooks '),
 (5, 'Benjamin', ' Graham'),
@@ -115,9 +115,6 @@ CREATE TABLE `author_tag` (
 --
 
 INSERT INTO `author_tag` (`book_id`, `author_id`) VALUES
-(1, 1),
-(2, 2),
-(3, 2),
 (4, 3),
 (5, 4),
 (6, 5),
@@ -176,7 +173,10 @@ INSERT INTO `author_tag` (`book_id`, `author_id`) VALUES
 (54, 57),
 (55, 58),
 (55, 59),
-(55, 60);
+(55, 60),
+(1, 1),
+(2, 2),
+(3, 2);
 
 -- --------------------------------------------------------
 
@@ -202,9 +202,9 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover`, `publishing_year`, `pages`, `summary`, `price`, `stock`) VALUES
-(1, 1, '9780261102217', 'The Hobbit', '9780261102217.jpg', 1991, 400, 'The Hobbit is a tale of high adventure, undertaken by a company of dwarves in search of dragon-guarded gold. A reluctant partner in this perilous quest is Bilbo Baggins, a comfort-loving unambitious hobbit, who surprises even himself by his resourcefulness and skill as a burglar. Encounters with trolls, goblins, dwarves, elves and giant spiders, conversations with the dragon, Smaug, and a rather unwilling presence at the Battle of Five Armies are just some of the adventures that befall Bilbo. Bilbo Baggins has taken his place among the ranks of the immortals of children\'s fiction. Written by Professor Tolkien for his own children, The Hobbit met with instant critical acclaim when published.\r\n', 11.04, 10),
-(2, 4, '978-1408855652', 'Harry Potter and the Philosopher\'s Stone', '978-1408855652.jpg', 2014, 256, 'Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger and a snake surrounding a large letter \'H\'.\r\n\r\nHarry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry\'s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!', 29.4, 10),
-(3, 4, '9781408855706', 'Harry Potter and the Half-Blood Prince', '9781408855706.jpg', 2014, 560, 'When Dumbledore arrives at Privet Drive one summer night to collect Harry Potter, his wand hand is blackened and shrivelled, but he does not reveal why. Secrets and suspicion are spreading through the wizarding world, and Hogwarts itself is not safe. Harry is convinced that Malfoy bears the Dark Mark: there is a Death Eater amongst them. Harry will need powerful magic and true friends as he explores Voldemort\'s darkest secrets, and Dumbledore prepares him to face his destiny.\r\n\r\nThese new editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able new jackets by Jonny Duddle, with huge child appeal, to bring Harry Potter to the next generation of readers. It\'s time to PASS THE MAGIC ON ...', 10.29, 10),
+(1, 18, '9798699634767', 'Self Love Poetry: For Thinkers and Feelers ', '9798699634767.jpg', 2020, 212, 'In Self Love Poetry for Thinkers & Feelers, Godfred explores concepts like authenticity, surrender, resilience, gratitude (including the 2020 poem above), believing in yourself, and of course, love, through 100 pairs of self love poems each dedicated to a central theme. On the left side of the book are poems that light up the analytical, literal, left side of the brain and on the right side are poems that bring your creative side to life. Combined, the poems electrify your mind, body and soul and inspire all of us to embrace all parts of ourselves.\r\n\r\nThis empowering book will not only engage you to think and feel, but will encourage self-reflection, make you feel seen, empower you to love yourself, and inspire you to seek out the hope and beauty in the world… and in yourself. It’s the perfect gift to yourself or someone you love. ', 13.69, 18),
+(2, 46, '1408855895', 'Harry Potter and the Philosopher\'s Stone', '1408855895.jpg', 2014, 352, 'Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry\'s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!\r\n\r\nThese editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able jackets by award-winning illustrator Jonny Duddle, and are the perfect starting point for anyone who\'s ready to lose themselves in the biggest children\'s books of all time.', 12.99, 32),
+(3, 46, '1408845679', 'Harry Potter and the Goblet of Fire', '1408845679.jpg', 2019, 464, 'Dragons! Daring! Danger! The first fully illustrated edition of Harry Potter and the Goblet of Fire is an extraordinary creative achievement by two extraordinary talents. Jim Kay\'s inspired reimagining of J.K. Rowling\'s classic series has captured a devoted following worldwide, and the drama just gets bigger as the series progresses. With over 150 illustrations, Jim Kay\'s unique vision delivers breathtaking scenes and unforgettable characters - including fan favourites Cedric Diggory, Fleur Delacour and Viktor Krum illustrated by Jim Kay for the first time.\r\n\r\nFizzing with magic and brimming with humour, this full-colour edition will captivate fans and new readers alike as Harry, now in his fourth year at Hogwarts School of Witchcraft and Wizardry, finds himself competing in the legendary Triwizard Tournament and facing death-defying tasks, dragons and Dark wizards . Making magic in paint, pencil and pixels, this is the Wizarding World as we have never seen it before.', 25.74, 33),
 (4, 3, '1250214807', 'Lead from the Outside: How to Build Your Future and Make Real Change', '1250214807.jpg', 2019, 256, 'Leadership is hard. Convincing others--and often yourself--that you possess the answers and are capable of world-affecting change requires confidence, insight, and sheer bravado. Lead from the Outside is the handbook for outsiders, written with the awareness of the experiences and challenges that hinder anyone who exists beyond the structure of traditional white male power--women, people of color, members of the LGBTQ community, and millennials ready to make a difference.\r\n\r\nIn Lead from the Outside, Stacey Abrams argues that knowing your own passion is the key to success, regardless of the scale or target. From launching a company, to starting a day care center for homeless teen moms, to running a successful political campaign, finding what you want to fight for is as critical as knowing how to turn thought into action. Stacey uses her experience and hard-won insights to break down how ambition, fear, money, and failure function in leadership, while offering personal stories that illuminate practical strategies.\r\n\r\nStacey includes exercises to help you hone your skills and realize your aspirations. She discusses candidly what she has learned over the course of her impressive career: that differences in race, gender, and class are surmountable. With direction and dedication, being in the minority actually provides unique and vital strength, which we can employ to rise to the top and make real change.', 12.06, 10),
 (5, 4, '1497644895', 'Business Adventures: Twelve Classic Tales from the World of Wall Street', '1497644895.jpg', 2014, 464, 'What do the $350 million Ford Motor Company disaster known as the Edsel, the fast and incredible rise of Xerox, and the unbelievable scandals at General Electric and Texas Gulf Sulphur have in common? Each is an example of how an iconic company was defined by a particular moment of fame or notoriety; these notable and fascinating accounts are as relevant today to understanding the intricacies of corporate life as they were when the events happened.\r\nStories about Wall Street are infused with drama and adventure and reveal the machinations and volatile nature of the world of finance. Longtime New Yorker contributor John Brooks’s insightful reportage is so full of personality and critical detail that whether he is looking at the astounding market crash of 1962, the collapse of a well-known brokerage firm, or the bold attempt by American bankers to save the British pound, one gets the sense that history repeats itself.\r\nFive additional stories on equally fascinating subjects round out this wonderful collection that will both entertain and inform readers . . . Business Adventures is truly financial journalism at its liveliest and best.', 14.25, 21),
 (6, 5, '9780060555', 'Intelligent Investor: The Definitive Book on Value Investing - A Book of Practical Counsel', '9780060555.jpg', 2003, 640, 'The greatest investment advisor of the twentieth century, Benjamin Graham taught and inspired people worldwide. Graham\'s philosophy of “value investing”—which shields investors from substantial error and teaches them to develop long-term strategies—has made The Intelligent Investor the stock market bible ever since its original publication in 1949.\r\nOver the years, market developments have proven the wisdom of Graham’s strategies. While preserving the integrity of Graham’s original text, this revised edition includes updated commentary by noted financial journalist Jason Zweig, whose perspective incorporates the realities of today’s market, draws parallels between Graham’s examples and today’s financial headlines, and gives readers a more thorough understanding of how to apply Graham’s principles.\r\nVital and indispensable, The Intelligent Investor is the most important book you will ever read on how to reach your financial goals.', 14.23, 8),
@@ -242,9 +242,9 @@ INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover
 (38, 33, '9780141033013', 'The Midwich Cuckoos', '9780141033013.jpg', 2008, 224, '\'Exciting, unsettling and technically brilliant\' - Spectator\r\nIn the sleepy English village of Midwich, a mysterious silver object appears and all the inhabitants fall unconscious. A day later the object is gone and everyone awakens unharmed - except that all the women in the village are discovered to be pregnant.\r\nThe resultant children of Midwich do not belong to their parents: all are blonde, all are golden eyed. They grow up too fast and their minds exhibit frightening abilities that give them control over others and brings them into conflict with the villagers just as a chilling realisation dawns on the world outside . . .\r\nThe Midwich Cuckoos is the classic tale of aliens in our midst, exploring how we respond when confronted by those who are innately superior to us in every conceivable way.', 8, 2),
 (39, 22, '1101910097', 'The Big Book of Science Fiction', '1101910097.jpg', 2016, 1216, 'Quite possibly the greatest science fiction collection of all time--past, present, and future! What if life was neverending? What if you could change your body to adapt to an alien ecology? What if the pope were a robot? Spanning galaxies and millennia, this must-have anthology showcases classic contributions from H. G. Wells, Arthur C. Clarke, Octavia E. Butler, and Kurt Vonnegut, alongside a century of the eccentrics, rebels, and visionaries who have inspired generations of readers. Within its pages, you\'ll find beloved worlds of space opera, hard SF, cyberpunk, the New Wave, and more. Learn about the secret history of science fiction, from titans of literature who also wrote SF to less well-known authors from more than twenty-five countries, some never before translated into English. In The Big Book of Science Fiction, literary power couple Ann and Jeff VanderMeer transport readers from Mars to Mechanopolis, planet Earth to parts unknown. Immerse yourself in the genre that predicted electric cars, space tourism, and smartphones. Sit back, buckle up, and dial in the coordinates, as this stellar anthology has got worlds within worlds. Including:\r\n- Legendary tales from Isaac Asimov and Ursula K. Le Guin\r\n- An unearthed sci-fi story from W. E. B. Du Bois\r\n- The first publication of the work of cybernetic visionary David R. Bunch in twenty years\r\n- A rare and brilliant novella by Chinese international sensation Cixin Liu Plus:\r\n- Aliens!\r\n- Space battles!\r\n- Robots!\r\n- Technology gone wrong!\r\n- Technology gone right!', 33.56, 8),
 (40, 34, '9780575094192', 'The Stars My Destination', '9780575094192.jpg', 2010, 256, 'That\'s the official verdict on Gully Foyle, unskilled space crewman.\r\n\r\nBut right now he is the only survivor on his drifting, wrecked spaceship, and when another space vessel - the Vorga - ignores his distress flares and sails by, Gully becomes obsessed with revenge. He endures 170 days alone in deep space before finding refuge on the Sargasso Asteroid and returning to Earth to track down the crew and owners of the Vorga. But, as he works out his murderous grudge, Gully Foyle also uncovers a secret of momentous proportions ...', 6.94, 6),
-(41, 33, '9780141032993', 'The Kraken Wakes ', '9780141032993.jpg', 2008, 240, 'It started with fireballs raining down from the sky and crashing into the oceans\' deeps. Then ships began sinking mysteriously and later \'sea tanks\' emerged from the deeps to claim people . . .\r\n\r\nFor journalists Mike and Phyllis Watson, what at first appears to be a curiosity becomes a global calamity. Helpless, they watch as humanity struggles to survive now that water - one of the compounds upon which life depends - is turned against them. Finally, sea levels begin their inexorable rise . . .\r\n\r\nThe Kraken Wakes is a brilliant novel of how humankind responds to the threat of its own extinction and, ultimately, asks what we are prepared to do in order to survive.', 11.18, 15),
-(42, 35, '1473222532', 'Judgment Night', '1473222532.jpg', 2019, 352, 'Released in 1952, Judgment Night collects five Moore novellas from the pages of editor John W. Campbell, Jr.\'s Astounding Science Fiction magazine:\r\n\r\n\'\'Judgment Night\'\' (first published in August and September, 1943) balances a lush rendering of a future galactic empire with a sober meditation on the nature of power and its inevitable loss;\r\n\r\n\'\'The Code\'\' (July, 1945) pays homage to the classic Faust with modern theories and Lovecraftian dread;\r\n\r\n\'\'Promised Land\'\' (February, 1950) and \'\'Heir Apparent\'\' (July, 1950) both document the grim twisting that mankind must undergo in order to spread into the solar system;\r\n\r\n\'\'Paradise Street\'\' (September, 1950) shows a futuristic take on the old western conflict between lone hunter and wilderness-taming settlers.\r\n\r\nChosen by the author herself as the best of her longer-form writing, these stories show a gifted wordsmith working at the height of her talents.', 10.43, 15);
+(41, 33, '9780141032993', 'The Kraken Wakes ', '9780141032993.jpg', 2008, 240, 'It started with fireballs raining down from the sky and crashing into the oceans\' deeps. Then ships began sinking mysteriously and later \'sea tanks\' emerged from the deeps to claim people . . .\r\n\r\nFor journalists Mike and Phyllis Watson, what at first appears to be a curiosity becomes a global calamity. Helpless, they watch as humanity struggles to survive now that water - one of the compounds upon which life depends - is turned against them. Finally, sea levels begin their inexorable rise . . .\r\n\r\nThe Kraken Wakes is a brilliant novel of how humankind responds to the threat of its own extinction and, ultimately, asks what we are prepared to do in order to survive.', 11.18, 15);
 INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover`, `publishing_year`, `pages`, `summary`, `price`, `stock`) VALUES
+(42, 35, '1473222532', 'Judgment Night', '1473222532.jpg', 2019, 352, 'Released in 1952, Judgment Night collects five Moore novellas from the pages of editor John W. Campbell, Jr.\'s Astounding Science Fiction magazine:\r\n\r\n\'\'Judgment Night\'\' (first published in August and September, 1943) balances a lush rendering of a future galactic empire with a sober meditation on the nature of power and its inevitable loss;\r\n\r\n\'\'The Code\'\' (July, 1945) pays homage to the classic Faust with modern theories and Lovecraftian dread;\r\n\r\n\'\'Promised Land\'\' (February, 1950) and \'\'Heir Apparent\'\' (July, 1950) both document the grim twisting that mankind must undergo in order to spread into the solar system;\r\n\r\n\'\'Paradise Street\'\' (September, 1950) shows a futuristic take on the old western conflict between lone hunter and wilderness-taming settlers.\r\n\r\nChosen by the author herself as the best of her longer-form writing, these stories show a gifted wordsmith working at the height of her talents.', 10.43, 15),
 (43, 2, '1472835697', 'Zona Alfa : Salvage and Survival in the Exclusion Zone', '1472835697.jpg', 2020, 64, 'Zona Alfa is a set of simple, fast-play skirmish rules for scavenging, exploring, and surviving in a near-future, post-apocalyptic Eastern European setting. Players take on the role of bandits, mercenaries, and military units fighting over the blasted Exclusion Zone and its abandoned artefacts. Customise your fighters with a variety of weapons and specialisms to create your ideal warband. With extended rules for campaigns, character progression, terrain, and environmental hazards, Zona Alfa contains all the tools required to engage in blistering firefights within the Exclusion Zone.', 14.89, 14),
 (44, 10, '194947450X', 'I Can Yell Louder', '194947450X.jpg', 2020, 48, 'Michelle loves to yell and scream as loudly as she can. The word \"quiet\" isn\'t even in her vocabulary...until one of Michelle\'s classmates comes up with a plan to beat her at her own game.', 14.95, 19),
 (45, 36, '1840221666', 'The Divine Comedy', '1840221666.jpg', 2019, 592, 'Dante Alighieri (1265-1321) is one of the most important and innovative figures of the European Middle Ages. Writing his Comedy (the epithet Divine was added by later admirers) in exile from his native Florence, he aimed to address a world gone astray both morally and politically. At the same time, he sought to push back the restrictive rules which traditionally governed writing in the Italian vernacular, to produce a radically new and all-encompassing work.\r\n\r\n\r\nThe Comedy tells of the journey of a character who is at one and the same time both Dante himself and Everyman through the three realms of the Christian afterlife: Hell, Purgatory and Heaven. He presents a vision of the afterlife which is strikingly original in its conception, with a complex architecture and a coherent structure. On this journey Dante\'s protagonist - and his reader - meet characters who are variously noble, grotesque, beguiling, fearful, ridiculous, admirable, horrific and tender, and through them he is shown the consequences of sin, repentance and virtue, as he learns to avoid Hell and, through cleansing in Purgatory, to taste the joys of Heaven.', 7.94, 7),
@@ -402,7 +402,10 @@ INSERT INTO `category_tag` (`book_id`, `category_id`) VALUES
 (52, 4),
 (53, 7),
 (54, 7),
-(55, 7);
+(55, 7),
+(1, 4),
+(3, 2),
+(3, 5);
 
 -- --------------------------------------------------------
 
@@ -482,7 +485,9 @@ INSERT INTO `feature_tag` (`book_id`, `feature_id`) VALUES
 (51, 1),
 (52, 3),
 (53, 2),
-(55, 2);
+(55, 2),
+(1, 1),
+(3, 1);
 
 -- --------------------------------------------------------
 
@@ -583,7 +588,8 @@ INSERT INTO `publisher` (`publisher_id`, `publisher`) VALUES
 (42, 'John Wiley & Sons Inc'),
 (43, 'JOHNS HOPKINS UNIVERSITY PRESS'),
 (44, 'Duke University Press'),
-(45, 'John Wiley and Sons Ltd');
+(45, 'John Wiley and Sons Ltd'),
+(46, 'Bloomsbury Children\'s Books');
 
 -- --------------------------------------------------------
 
@@ -745,13 +751,13 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `book_feature`
@@ -799,7 +805,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
-  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `user`

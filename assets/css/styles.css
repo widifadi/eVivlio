@@ -465,13 +465,13 @@ a:hover {
     font-size: 20px;
 }
 
-.add-wlist-btn {
+.add-wishlist-btn {
     color: lightcoral;
     font-size: 20px;
 }
 
 .add-cart-btn:hover,
-.add-wlist-btn:hover {
+.add-wishlist-btn:hover {
     font-size: 24px;
 }
 

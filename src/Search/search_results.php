@@ -37,6 +37,7 @@
                 $author_result = mysqli_query($conn, $author_query);
                 $author_row = mysqli_fetch_assoc($author_result);
 
+                // display only first author
                 $author = $author_row['author_first_name'] . $author_row['author_last_name'];
 
                 $book_cover = '../assets/img/book-covers/' . $book_item['book_cover'];

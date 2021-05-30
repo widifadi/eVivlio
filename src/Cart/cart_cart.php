@@ -1,7 +1,34 @@
 <?php
     //session_start();
-    require_once ('../database/database_functions.php');
+<<<<<<< HEAD
+    require_once ('../../database/database_functions.php');
     db_connection();
+=======
+    require_once ('../database/database_functions.php');
+    $conn  = db_connection();
+    // Fetching information from cart table based on guest ID or customer ID
+    // Add WHERE customer or guest id to select the cart item 
+    // For order summary
+    $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
+                            JOIN author_tag ON author_tag.book_id = book.book_id 
+                            JOIN author ON author.author_id = author_tag.author_id 
+                            WHERE customer_id = 1");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $grand_total = 0;
+    $num_items = 0;
+    while ($row = $result->fetch_assoc()):
+        $grand_total += $row['price'];
+        $num_items += 1;
+    endwhile; 
+    // For cart section
+    $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
+                            JOIN author_tag ON author_tag.book_id = book.book_id 
+                            JOIN author ON author.author_id = author_tag.author_id 
+                            WHERE customer_id = 1");
+    $stmt->execute();
+    $result = $stmt->get_result();
+>>>>>>> c6cee0130d3927a726910fb55e367139b50b758c
 ?>
 
 <div class="container" style="margin-top:100px; margin-left: 10px;">
@@ -14,9 +41,10 @@
                 <div class="bg-light rounded-pill px-4 py-3 font-weight-bold">Order summary </div>
                     <div class="p-4">
                         <ul class="list-unstyled mb-4">
+<<<<<<< HEAD
                                 <?php
                                     // Fetching information from cart table based on guest ID or customer ID
-                                    require '../database/database_functions.php';
+                                    require_once '../../database/database_functions.php';
                                     $conn = db_connection();
                                     // Add WHERE customer or guest id to select the cart item 
                                     $stmt = $conn->prepare("SELECT * FROM cart 
@@ -33,6 +61,8 @@
                                         $num_items += 1;
                                     endwhile; 
                                 ?>
+=======
+>>>>>>> c6cee0130d3927a726910fb55e367139b50b758c
                         <li class="d-flex justify-content-between py-3 border-bottom">
                             <strong class="text-muted" id="cart-number">Number of positions </strong>
                             <strong><?= number_format($num_items,0) ?></strong></li>
@@ -50,15 +80,16 @@
         <!-- My Cart Section -->
         <div class="col-8">
             <div class="container catalog-breadcrumbs">
-                <a href="my_page.php"> My Cart </a> 
+                <a href="cart.php"> My Cart </a> 
             </div>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table" >
                         <tbody >
+<<<<<<< HEAD
                                 <?php
                                     // Fetching information from cart table 
-                                    require_once '../database/database_functions.php';
+                                    require_once '../../database/database_functions.php';
                                     $conn = db_connection();
                                     $stmt = $conn->prepare("SELECT * FROM cart");
                                     $stmt->execute();
@@ -67,6 +98,10 @@
                                     while ($row = $result->fetch_assoc()):
                                 ?>
                             <tr >
+=======
+                                <?php while ($row = $result->fetch_assoc()): ?> <!-- ../assets/img/book-covers/Book Cover/bestseller/Amara The Brave.jpg -->
+                            <tr>
+>>>>>>> c6cee0130d3927a726910fb55e367139b50b758c
                             <th scope="row" class="border-0" >
                                 <div class="p-2">
                                 <img src="<?= $row['book_cover'] ?>" alt="book" width="100px" id="book-cover">
@@ -93,31 +128,3 @@
         </div>
     </div>
 </div>
-
-<!-- Create session destroy or unset session for guest condition to delete all the cart if the guest is close the browser -->
-
-<!-- Ajax Code for cart -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-
-            $(".itemQty").on('change',function(){
-                var $el = $(this).closest('tr');
-
-                var pid = $el.find(".book-title").val();
-                var pprice = $el.find(".book-price").val();
-                var qty = $el.find(".itemQty").val();
-                console.log(qty);
-                location.reload(true);
-
-                $.ajax({
-                    url: 'cart_action.php',
-                    method: 'post',
-                    cache: false,
-                    data: {qty:qty, pid:pid, pprice:pprice},
-                    success: function(response){
-                        console.log(response);
-                    }
-                })
-            });
-        });
-    </script>

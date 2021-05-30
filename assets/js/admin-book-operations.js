@@ -53,10 +53,8 @@ $('.update-book').click(function() {
             $('#update-isbn').val(details.isbn);
             $('#update-title').val(details.title);
 
-            // TODO cover
             var cover_path = "../assets/img/book-covers/" + details.book_cover;
             $("#update-cover").attr("src", cover_path);
-            console.log(cover_path);
 
             // TODO author
             $('#update-author1-firstname').val(details.author_first_name);

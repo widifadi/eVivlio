@@ -1,5 +1,4 @@
 <?php 
-    echo 0;
     
     require_once("../../database/database_functions.php");
     $conn = db_connection();
@@ -12,60 +11,55 @@
         $book_row = mysqli_fetch_assoc($book_result);
 
         // author
-        // TODO multiple authors
-        $author_id = $book_row['author'];
-        $query_author = "SELECT * FROM author WHERE author_id=$author_id;";
-        $author_result = mysqli_query($conn, $query_author);
-        $author_row = mysqli_fetch_assoc($author_result);
-        $author_fname = $author_row['first_name'];
-        $author_lname = $author_row['last_name'];
+        // authors
+        $authors_firstname = array();
+        $authors_lastname = array();
+        $author_query = "SELECT author.author_first_name, author.author_last_name FROM author 
+                            INNER JOIN author_tag 
+                            ON author_tag.author_id = author.author_id 
+                            WHERE author_tag.book_id = $book_id;";
+        $author_result = mysqli_query($conn, $author_query); 
+        while ($author_row = mysqli_fetch_assoc($author_result)) {
+            array_push($authors_firstname, $author_row['author_first_name']);
+            array_push($authors_lastname, $author_row['author_last_name']);
+        }
 
         // publisher
-        $publisher_id = $book_row['publisher'];
+        $publisher_id = $book_row['publisher_id'];
         $query_publisher = "SELECT * FROM publisher WHERE publisher_id=$publisher_id;";
         $publisher_result = mysqli_query($conn, $query_publisher);
         $publisher_row = mysqli_fetch_assoc($publisher_result);
-        $publisher = $publisher_row['publisher_name'];
+        $publisher = $publisher_row['publisher'];
 
         // categories
-        $category_list = array();
-        $categories = explode(",", $book_row['category']);
-            foreach ($categories as $category_id) {
-                $category_query = "SELECT * FROM category WHERE category_id=$category_id ";
-                $category_result = mysqli_query($conn, $category_query);
-                $category_row = mysqli_fetch_assoc($category_result);
-                $category_name = $category_row['category_code'];
-                array_push($category_list, $category_name);
-            }
+        $categories = array();
+        $category_query = "SELECT category.category_name FROM category 
+                            INNER JOIN category_tag 
+                            ON category_tag.category_id = category.category_id 
+                            WHERE category_tag.book_id = $book_id; ";
+        $category_result = mysqli_query($conn, $category_query); 
+        while ($category_row = mysqli_fetch_assoc($category_result)) {
+            array_push($categories, $category_row['category_name']);
+        }
 
         // features
-        $features = array();
-        $bestseller_query = "SELECT * FROM best_seller WHERE book_id=$book_id";
-        $bestseller_result = mysqli_query($conn, $bestseller_query);
-        if (mysqli_num_rows($bestseller_result)) {
-            array_push($features, "best-seller");
-        }
-
-        $new_query = "SELECT * FROM new_release WHERE book_id=$book_id";
-        $new_result = mysqli_query($conn, $new_query);
-        if (mysqli_num_rows($new_result)) {
-            array_push($features, "new-release");
-        }
-
-        $pick_query = "SELECT * FROM editors_pick WHERE book_id=$book_id";
-        $pick_result = mysqli_query($conn, $pick_query);
-        if (mysqli_num_rows($pick_result)) {
-            array_push($features, "editors-pick");
-        }
+        $feature_query = "SELECT book_feature.feature_name FROM book_feature 
+                            INNER JOIN feature_tag 
+                            ON feature_tag.feature_id = book_feature.feature_id 
+                            WHERE feature_tag.book_id = $book_id; ";
+        $feature_result = mysqli_query($conn, $feature_query); 
+        while ($feature_row = mysqli_fetch_assoc($feature_result)) {
+            array_push($features, $feature_row['feature_name']);
+         }
 
         $book_details = array('isbn' => $book_row['isbn'], 
-                            'title' => $book_row['title'],
+                            'title' => $book_row['book_title'],
                             'book_cover' => $book_row['book_cover'],
-                            'author_fname' => $author_fname, // TODO multiple authors
-                            'author_lname' => $author_lname,
+                            'authors_firstname' => $authors_firstname, // TODO multiple authors
+                            'authors_lastname' => $authors_lastname,
                             'publisher' => $publisher,
                             'publishing_year' => $book_row['publishing_year'],
-                            'category' => $category_list,
+                            'category' => $categories,
                             'pages' => $book_row['pages'],
                             'summary' => $book_row['summary'],
                             'price' => $book_row['price'],
@@ -78,6 +72,5 @@
     }
       
     mysqli_close($conn);
-    */
 
 ?>

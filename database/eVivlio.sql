@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 04:56 PM
+-- Generation Time: May 30, 2021 at 05:26 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `evivlio`
 --
+CREATE DATABASE IF NOT EXISTS `evivlio` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `evivlio`;
 
 -- --------------------------------------------------------
 

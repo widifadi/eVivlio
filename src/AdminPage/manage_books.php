@@ -56,7 +56,6 @@
                             $result = mysqli_query($conn, $book_query); 
                             while($row = mysqli_fetch_assoc($result)) 
                             {
-<<<<<<< HEAD
                                 $book_id = $row['book_id'];
 
                                 // get author
@@ -67,9 +66,6 @@
                                 // get publisher
 
                                 // category
-=======
-                                $book_id = $row['book_id'];    
->>>>>>> 1083c5078321642a79c599c7e8b12942b825ab05
                         ?>
                         <tr id=<?php echo $book_id ?> >
                             <td>
@@ -157,11 +153,7 @@
             </button>
         </div>
         <div class="modal-body">
-<<<<<<< HEAD
             <?php include("update_book_form.php") ?>
-=======
-            <?php include('update_book_form.php') ?>
->>>>>>> 1083c5078321642a79c599c7e8b12942b825ab05
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

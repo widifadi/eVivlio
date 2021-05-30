@@ -34,6 +34,25 @@
         else{
             echo "no book found";
             }
+
+          
+           $reviewContent=[];//Initialize Array to store Book Review Content
+           $reviewer=[];//Initialize Array to store customer name who review the book
+           $bookRating=array(0,0);//Initialize Array to store book rating
+           $reviewQuery= "SELECT book_review.content, book_review.rating, customer.first_name,
+           customer.last_name FROM book_review JOIN customer ON customer.customer_id=book_review.customer_id
+           where book_id='$bookId' ORDER BY RAND()*10 LIMIT 2";
+           $reviewQuery_run= mysqli_query($conn,$reviewQuery);
+           $checkReviewRow=mysqli_num_rows($reviewQuery_run) > 0;
+           if($checkReviewRow){
+               $index=0;
+               while($reviewRow=mysqli_fetch_assoc($reviewQuery_run)){
+                   $reviewContent[$index]=$reviewRow['content'];
+                   $reviewer[$index]=$reviewRow['first_name']." ".$reviewRow['last_name'];
+                   $bookRating[$index]=$reviewRow['rating'];
+                   $index++;
+            } }
+          
     $conn->close();
 
 ?>
@@ -103,13 +122,31 @@
                 <br>
                 Number of Pages: <span class="pages"><?php echo $book['pages'];?></span>
                 <br>
-                Author:<span class="pages"><?php 
-                              foreach($book_author as $val) {echo "$val, ";}
-                               ?></span>
+                Author:<span class="pages">
+            <!------------------------PHP------------------------------------------>     
+                <?php 
+                              $temp="null";   
+                              foreach($book_author as $val) {
+                                  if($val!==$temp){
+                                echo "$val, ";}
+                                $temp=$val;
+                                }
+                               ?>
+             <!------------------------PHP END------------------------------------------>                   
+                               </span>
                 <br>
-                Categories:<span class="pages"><?php 
-                              foreach($book_category as $val) {echo "$val, ";}
-                               ?></span>
+                Categories:<span class="pages">
+             <!------------------------PHP------------------------------------------>    
+                <?php 
+                              $temp="null";
+                              foreach($book_category as $val) {
+                                if($val!==$temp){
+                                    echo "$val, ";}
+                                    $temp=$val;
+                                }
+                               ?>
+            <!------------------------PHP END------------------------------------------>                    
+                               </span>
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" 
                 aria-labelledby="reviews-tab" style="padding: 10px;">
@@ -117,16 +154,39 @@
                     <div class="card">
                         <div class="card-body">
                             <div id="average-rating">
-                                <span class="fa fa-star user-rating checked"></span>
-                                <span class="fa fa-star user-rating checked"></span>
-                                <span class="fa fa-star user-rating checked"></span>
-                                <span class="fa fa-star user-rating"></span>
-                                <span class="fa fa-star user-rating"></span>
+        <!------------------------PHP------------------------------------------>                    
+                            <?php 
+                            for($x=0;$x<$bookRating[0];$x++){
+                                echo '<span class="fa fa-star user-rating checked"></span>'; }
+                            for($x=$bookRating[0]+1;$x<=5;$x++){
+                                echo '<span class="fa fa-star user-rating"></span>'; }
+                                ?>
+        <!------------------------PHP END------------------------------------------>                 
+                                
                             </div>
                             <blockquote class="blockquote mb-0">
-                            <p>A customer's review.</p>
+                            <p>
+        <!------------------------PHP------------------------------------------>  
+                            <?php 
+                            if(!empty($reviewContent[0]))
+                            echo $reviewContent[0];
+                            else
+                            echo "No Review" 
+                            ?>
+         <!------------------------PHP END------------------------------------------>                    
+                            </p>
                             <footer class="blockquote-footer">
-                                <cite title="username" id="username">Reviewer_username</cite>
+                                <cite title="username" id="username">
+         <!------------------------PHP------------------------------------------>                        
+                                <?php 
+                            if(!empty($reviewContent[0]))
+                            echo $reviewer[0];
+                            else
+                            echo "Reviewer_username" 
+                            
+                            ?>
+         <!------------------------PHP END------------------------------------------>                    
+                                </cite>
                             </footer>
                             </blockquote>
                         </div>
@@ -135,16 +195,38 @@
                     <div class="card">
                         <div class="card-body">
                             <div id="average-rating">
-                                <span class="fa fa-star user-rating checked"></span>
-                                <span class="fa fa-star user-rating checked"></span>
-                                <span class="fa fa-star user-rating checked"></span>
-                                <span class="fa fa-star user-rating checked"></span>
-                                <span class="fa fa-star user-rating"></span>
+         <!------------------------PHP------------------------------------------>                    
+                            <?php 
+                            for($x=0;$x<$bookRating[1];$x++){
+                                echo '<span class="fa fa-star user-rating checked"></span>';}
+                             for($x=$bookRating[1]+1;$x<=5;$x++){
+                                echo '<span class="fa fa-star user-rating"></span>';}
+                                ?>
+         <!------------------------PHP END------------------------------------------>                        
+                               
                             </div>
                             <blockquote class="blockquote mb-0">
-                            <p>Another customer's review.</p>
+                            <p>
+         <!------------------------PHP------------------------------------------>                    
+                            <?php 
+                            if(!empty($reviewContent[1]))
+                            echo $reviewContent[1];
+                            else
+                            echo "No Review" 
+                             ?>
+         <!------------------------PHP END------------------------------------------>                     
+                             </p>
                             <footer class="blockquote-footer">
-                                <cite title="username" id="username">Reviewer_username</cite>
+                                <cite title="username" id="username">
+         <!------------------------PHP------------------------------------------>                        
+                                <?php 
+                            if(!empty($reviewContent[1]))
+                            echo $reviewer[1];
+                            else
+                            echo "Reviewer_username" 
+                               ?>
+         <!------------------------PHP END------------------------------------------>                       
+                                </cite>
                             </footer>
                             </blockquote>
                         </div>

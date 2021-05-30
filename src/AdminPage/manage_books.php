@@ -32,7 +32,7 @@
                             <th scope="col">Pages</th>
                             <th scope="col">Price</th>
                             <th scope="col">Stock</th>
-                            <th scope="col">Feature</th>
+                
                            
                         </tr>
                     </thead>
@@ -44,7 +44,9 @@
                            /* $name_query = "SELECT author.author_first_name,author.author_last_name FROM author
                             INNER JOIN author_tag ON author.author_id=author_tag.author_id WHERE author_tag.book_id=4";
                             $result = mysqli_query($conn, $name_query); 
-                            $name = mysqli_fetch_assoc($result) ;*/
+                            $name = mysqli_fetch_assoc($result) ;
+                            JOIN feature_tag ON
+                             book.book_id=feature_tag.book_id JOIN book_feature ON feature_tag.feature_id=book_feature.feature_id*/
                             
                     
 
@@ -52,8 +54,7 @@
                              book.book_id=author_tag.book_id INNER JOIN author ON author_tag.author_id=author.author_id
                              JOIN category_tag ON
                              book.book_id=category_tag.book_id JOIN category ON category_tag.category_id=category.category_id
-                             JOIN feature_tag ON
-                             book.book_id=feature_tag.book_id JOIN book_feature ON feature_tag.feature_id=book_feature.feature_id
+                             
                              INNER JOIN publisher ON book.book_id=book.book_id
                              ";
                              
@@ -97,7 +98,7 @@
                             <td><?php echo $row['stock']; ?></td>
                 
                             <!-- TODO get publisher name -->
-                            <td> <?php echo $row['feature_name']; ?></td>
+                         
                             </td>
             
                         </tr>

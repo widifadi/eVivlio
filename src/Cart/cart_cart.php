@@ -1,6 +1,6 @@
 <?php
     //session_start();
-    require_once ('../database/database_functions.php');
+    require_once ('../../database/database_functions.php');
     db_connection();
 ?>
 
@@ -16,7 +16,7 @@
                         <ul class="list-unstyled mb-4">
                                 <?php
                                     // Fetching information from cart table based on guest ID or customer ID
-                                    require '../database/database_functions.php';
+                                    require_once '../../database/database_functions.php';
                                     $conn = db_connection();
                                     // Add WHERE customer or guest id to select the cart item 
                                     $stmt = $conn->prepare("SELECT * FROM cart 
@@ -58,7 +58,7 @@
                         <tbody >
                                 <?php
                                     // Fetching information from cart table 
-                                    require_once '../database/database_functions.php';
+                                    require_once '../../database/database_functions.php';
                                     $conn = db_connection();
                                     $stmt = $conn->prepare("SELECT * FROM cart");
                                     $stmt->execute();

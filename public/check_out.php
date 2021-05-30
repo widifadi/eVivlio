@@ -45,26 +45,6 @@ require_once("../templates/header.php"); ?>
     </table>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="col-lg-10 col-lg-offset-2">
               	<button type="submit" class="btn btn-primary">Confirm Details</button>
             </div>

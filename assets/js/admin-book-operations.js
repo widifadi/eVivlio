@@ -38,7 +38,7 @@ $('.update-book').click(function() {
     var update_book_id = $(this).attr('id').split("-")[1];
 
     var update_book_details = "../src/AdminPage/update_book_details.php";
-    var update_book_post = "../src/AdminPage/update_book_post.php"; 
+    // var update_book_post = "../src/AdminPage/update_book_post.php"; 
 
     // get book details
     $.ajax({
@@ -46,6 +46,8 @@ $('.update-book').click(function() {
         url: update_book_details,
         data: { "book_id": update_book_id },
         success: function(response) {
+            $('#update-book-id').val(update_book_id);
+            
             // fill out form values
             var details = jQuery.parseJSON(response);
 
@@ -55,7 +57,8 @@ $('.update-book').click(function() {
             $('#update-title').val(details.title);
 
             var cover_path = "../assets/img/book-covers/" + details.book_cover;
-            $("#update-cover").attr("src", cover_path);
+            $("#current-cover").attr("src", cover_path);
+            $("#current-book-cover").val(details.book_cover);
 
             details.authors_firstname.forEach(function (author_firstname, index) {
                 $('#update-author-firstname-' + index).val(author_firstname);
@@ -85,14 +88,14 @@ $('.update-book').click(function() {
     });
 
     // POST updated book details
-    $("#update-book-btn").click(function() {
-        $.ajax({
-            type: 'POST',
-            url: update_book_post,
-            data: { "book_id": update_book_id },
-            success: function(response) {
+    // $("#update-book-btn").click(function() {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: update_book_post,
+    //         data: { "book_id": update_book_id },
+    //         success: function(response) {
 
-            },
-        });
-    });
+    //         },
+    //     });
+    // });
 });

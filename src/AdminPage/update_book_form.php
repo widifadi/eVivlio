@@ -1,5 +1,7 @@
 <form action="../src/AdminPage/update_book_post.php" method="POST" id="update-book-form" 
     enctype="multipart/form-data">
+    <input type="number" id="update-book-id" name="book_id" hidden>
+
     <div class="form-group row">
         <label for="isbn" class="col-sm-3 col-form-label updatebook-label">ISBN</label>
         <div class="col-sm-9">
@@ -16,10 +18,11 @@
         </div>
     </div>
 
+    <input type="text" id="current-book-cover" name="current_book_cover" hidden>
     <div class="form-group row">
         <label for="update-cover" class="col-sm-3 col-form-label updatebook-label">Book Cover</label>
         <div class="col-sm-9">
-        <img class="" id="update-cover" src="" width="100px" alt="book cover"> <br>
+        <img class="" id="current-cover" src="" width="100px" alt="book cover"> <br>
         Choose new cover: <input type="file" name="cover" id="update-cover">
         </div>
     </div>
@@ -156,15 +159,15 @@
         <label for="feature" class="col-sm-3 col-form-label updatebook-label">Feature</label>
         <div class="col-sm-9 form-check">
             <input class="form-check-input update-feature" type="checkbox" name="feature[]" 
-                value="best_seller" id="update-feature-1"> 
+                value="Best Sellers" id="update-feature-1"> 
             <label class="form-check-label" for="update-feature-1">Best Seller of the Month</label><br>
 
             <input class="form-check-input update-feature" type="checkbox" name="feature[]" 
-                value="editors_pick" id="update-feature-2"> 
+                value="Editor Recommends" id="update-feature-2"> 
             <label class="form-check-label" for="update-feature-2">Editor's Pick</label><br>
 
             <input class="form-check-input update-feature" type="checkbox" name="feature[]" 
-                value="new_release" id="update-feature-3"> 
+                value="New Release" id="update-feature-3"> 
             <label class="form-check-label" for="update-feature-3">New Release</label><br>
         </div>
     </div>

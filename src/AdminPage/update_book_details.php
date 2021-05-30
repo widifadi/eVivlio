@@ -51,7 +51,7 @@
         $book_details = array('isbn' => $book_row['isbn'], 
                             'title' => $book_row['book_title'],
                             'book_cover' => $book_row['book_cover'],
-                            'authors_firstname' => $authors_firstname, // TODO multiple authors
+                            'authors_firstname' => $authors_firstname,
                             'authors_lastname' => $authors_lastname,
                             'publisher' => $publisher,
                             'publishing_year' => $book_row['publishing_year'],

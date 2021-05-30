@@ -56,7 +56,7 @@
     $conn->close();
 
 ?>
-
+<div id="message"></div>
 <div class="row book-details" style="padding: 5px; margin-top:10px;">
     <div class="col-4 book-detail-preview text-center">
         <img src="../assets/img/book-covers/<?php echo $book['cover'];?>" 
@@ -73,8 +73,9 @@
         <br>
         <br>
         <!-- Add to cart and and to wishlish functionality --> 
-        <form method="post" action="">
-            <input type="hidden" name="bookid" value="<?php echo $bookId ?>"
+        <form action="" class="form-submit">
+            <input type="hidden" class="bookId" value="<?php $bookId ?>">
+            <input type="hidden" class="customerId" value="<?php $customerId ?>">
             <em class="fas fa-cart-plus add-cart-btn"></em>
             <em class="fas fa-heart add-wlist-btn"></em>
         </form>
@@ -278,3 +279,23 @@
     </div>
 
 </div>
+
+    <!-- Ajax Code for cart -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".add-cart-btn").click(function(e){
+                e.preventDefault();
+                var $form = $(this).closest(".form-submit");
+                var pid = $form.find(".bookId").val();
+
+                $.ajax({
+                    url: '../src/Cart/add_cart.php',
+                    method: 'post',
+                    data: {pid:pid},
+                    success:function(response){
+                        $("#message").html(response);
+                    }
+                });
+            });
+        });
+    </script>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 04:15 PM
+-- Generation Time: May 30, 2021 at 04:56 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `evivlio`
 --
-CREATE DATABASE IF NOT EXISTS `eVivlio` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `eVivlio`;
 
 -- --------------------------------------------------------
 
@@ -177,8 +175,8 @@ INSERT INTO `author_tag` (`book_id`, `author_id`) VALUES
 (55, 59),
 (55, 60),
 (1, 1),
-(2, 2),
-(3, 2);
+(3, 2),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -205,7 +203,7 @@ CREATE TABLE `book` (
 
 INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover`, `publishing_year`, `pages`, `summary`, `price`, `stock`) VALUES
 (1, 18, '9798699634767', 'Self Love Poetry: For Thinkers and Feelers ', '9798699634767.jpg', 2020, 212, 'In Self Love Poetry for Thinkers & Feelers, Godfred explores concepts like authenticity, surrender, resilience, gratitude (including the 2020 poem above), believing in yourself, and of course, love, through 100 pairs of self love poems each dedicated to a central theme. On the left side of the book are poems that light up the analytical, literal, left side of the brain and on the right side are poems that bring your creative side to life. Combined, the poems electrify your mind, body and soul and inspire all of us to embrace all parts of ourselves.\r\n\r\nThis empowering book will not only engage you to think and feel, but will encourage self-reflection, make you feel seen, empower you to love yourself, and inspire you to seek out the hope and beauty in the world… and in yourself. It’s the perfect gift to yourself or someone you love. ', 13.69, 18),
-(2, 46, '1408855895', 'Harry Potter and the Philosopher\'s Stone', '1408855895.jpg', 2014, 352, 'Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry\'s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!\r\n\r\nThese editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able jackets by award-winning illustrator Jonny Duddle, and are the perfect starting point for anyone who\'s ready to lose themselves in the biggest children\'s books of all time.', 12.99, 32),
+(2, 46, '1408855895', 'Harry Potter and the Philosopher\'s Stone', '1408855895.jpg', 2014, 352, 'Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry\'s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!\r\n\r\nThese editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able jackets by award-winning illustrator Jonny Duddle, and are the perfect starting point for anyone who\'s ready to lose themselves in the biggest children\'s books of all time.', 12.99, 35),
 (3, 46, '1408845679', 'Harry Potter and the Goblet of Fire', '1408845679.jpg', 2019, 464, 'Dragons! Daring! Danger! The first fully illustrated edition of Harry Potter and the Goblet of Fire is an extraordinary creative achievement by two extraordinary talents. Jim Kay\'s inspired reimagining of J.K. Rowling\'s classic series has captured a devoted following worldwide, and the drama just gets bigger as the series progresses. With over 150 illustrations, Jim Kay\'s unique vision delivers breathtaking scenes and unforgettable characters - including fan favourites Cedric Diggory, Fleur Delacour and Viktor Krum illustrated by Jim Kay for the first time.\r\n\r\nFizzing with magic and brimming with humour, this full-colour edition will captivate fans and new readers alike as Harry, now in his fourth year at Hogwarts School of Witchcraft and Wizardry, finds himself competing in the legendary Triwizard Tournament and facing death-defying tasks, dragons and Dark wizards . Making magic in paint, pencil and pixels, this is the Wizarding World as we have never seen it before.', 25.74, 33),
 (4, 3, '1250214807', 'Lead from the Outside: How to Build Your Future and Make Real Change', '1250214807.jpg', 2019, 256, 'Leadership is hard. Convincing others--and often yourself--that you possess the answers and are capable of world-affecting change requires confidence, insight, and sheer bravado. Lead from the Outside is the handbook for outsiders, written with the awareness of the experiences and challenges that hinder anyone who exists beyond the structure of traditional white male power--women, people of color, members of the LGBTQ community, and millennials ready to make a difference.\r\n\r\nIn Lead from the Outside, Stacey Abrams argues that knowing your own passion is the key to success, regardless of the scale or target. From launching a company, to starting a day care center for homeless teen moms, to running a successful political campaign, finding what you want to fight for is as critical as knowing how to turn thought into action. Stacey uses her experience and hard-won insights to break down how ambition, fear, money, and failure function in leadership, while offering personal stories that illuminate practical strategies.\r\n\r\nStacey includes exercises to help you hone your skills and realize your aspirations. She discusses candidly what she has learned over the course of her impressive career: that differences in race, gender, and class are surmountable. With direction and dedication, being in the minority actually provides unique and vital strength, which we can employ to rise to the top and make real change.', 12.06, 10),
 (5, 4, '1497644895', 'Business Adventures: Twelve Classic Tales from the World of Wall Street', '1497644895.jpg', 2014, 464, 'What do the $350 million Ford Motor Company disaster known as the Edsel, the fast and incredible rise of Xerox, and the unbelievable scandals at General Electric and Texas Gulf Sulphur have in common? Each is an example of how an iconic company was defined by a particular moment of fame or notoriety; these notable and fascinating accounts are as relevant today to understanding the intricacies of corporate life as they were when the events happened.\r\nStories about Wall Street are infused with drama and adventure and reveal the machinations and volatile nature of the world of finance. Longtime New Yorker contributor John Brooks’s insightful reportage is so full of personality and critical detail that whether he is looking at the astounding market crash of 1962, the collapse of a well-known brokerage firm, or the bold attempt by American bankers to save the British pound, one gets the sense that history repeats itself.\r\nFive additional stories on equally fascinating subjects round out this wonderful collection that will both entertain and inform readers . . . Business Adventures is truly financial journalism at its liveliest and best.', 14.25, 21),
@@ -407,7 +405,9 @@ INSERT INTO `category_tag` (`book_id`, `category_id`) VALUES
 (55, 7),
 (1, 4),
 (3, 2),
-(3, 5);
+(3, 5),
+(2, 2),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -489,7 +489,8 @@ INSERT INTO `feature_tag` (`book_id`, `feature_id`) VALUES
 (53, 2),
 (55, 2),
 (1, 1),
-(3, 1);
+(3, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -759,7 +760,7 @@ ALTER TABLE `author`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `book_feature`

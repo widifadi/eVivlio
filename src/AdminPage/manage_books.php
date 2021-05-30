@@ -46,8 +46,9 @@
                             $result = mysqli_query($conn, $name_query); 
                             $name = mysqli_fetch_assoc($result) ;*/
                             
-                    
-
+                            // TODO select only the book table here
+                            // query for the author, publisher, categories and feature separately using one book_id
+                            // check below where to insert new query
                             $book_query = "SELECT * FROM book JOIN author_tag ON
                              book.book_id=author_tag.book_id INNER JOIN author ON author_tag.author_id=author.author_id
                              JOIN category_tag ON
@@ -82,11 +83,14 @@
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
                          
+                            <!-- TODO query the authors here using $book_id -->
                             <td><?php echo $row['author_first_name']; echo $row['author_last_name']  ; ?></td>
                             
                             <!-- TODO get publisher name -->
                             <td><?php echo $row['publisher']; ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
+                            
+                            <!-- TODO query the categories here using $book_id -->
                             <td>
                                 <?php 
                                     echo $row['category_name'];
@@ -96,7 +100,7 @@
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['stock']; ?></td>
                 
-                            <!-- TODO get publisher name -->
+                            <!-- TODO query the features here using $book_id -->
                             <td> <?php echo $row['feature_name']; ?></td>
                             </td>
             

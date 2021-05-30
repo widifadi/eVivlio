@@ -32,7 +32,12 @@
                             <th scope="col">Pages</th>
                             <th scope="col">Price</th>
                             <th scope="col">Stock</th>
+<<<<<<< HEAD
                             <th scope="col">Feature</th>
+=======
+                
+                           
+>>>>>>> 6033092f8f9868c11aad26e247dd489cfb7a8f75
                         </tr>
                     </thead>
                     <tbody>
@@ -40,6 +45,7 @@
                             require_once("../database/database_functions.php");
                             $conn = db_connection();
                             
+<<<<<<< HEAD
                             // TODO do sql connection only once for the whole app
                         /*    $servername = "localhost";
                             $username = "root";
@@ -53,6 +59,27 @@
                             }*/
 
                             $book_query = "SELECT * FROM book";
+=======
+                           /* $name_query = "SELECT author.author_first_name,author.author_last_name FROM author
+                            INNER JOIN author_tag ON author.author_id=author_tag.author_id WHERE author_tag.book_id=4";
+                            $result = mysqli_query($conn, $name_query); 
+                            $name = mysqli_fetch_assoc($result) ;
+                            JOIN feature_tag ON
+                             book.book_id=feature_tag.book_id JOIN book_feature ON feature_tag.feature_id=book_feature.feature_id*/
+                            
+                    
+
+                            $book_query = "SELECT * FROM book JOIN author_tag ON
+                             book.book_id=author_tag.book_id INNER JOIN author ON author_tag.author_id=author.author_id
+                             JOIN category_tag ON
+                             book.book_id=category_tag.book_id JOIN category ON category_tag.category_id=category.category_id
+                             
+                             INNER JOIN publisher ON book.book_id=book.book_id
+                             ";
+                             
+                             
+                
+>>>>>>> 6033092f8f9868c11aad26e247dd489cfb7a8f75
                             $result = mysqli_query($conn, $book_query); 
                             while($row = mysqli_fetch_assoc($result)) 
                             {
@@ -81,24 +108,40 @@
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
+<<<<<<< HEAD
                             <!-- TODO get author name -->
                              
                             <td><?php echo "TODO"; ?></td>
+=======
+                         
+                            <td><?php echo $row['author_first_name']; echo $row['author_last_name']  ; ?></td>
+                            
+>>>>>>> 6033092f8f9868c11aad26e247dd489cfb7a8f75
                             <!-- TODO get publisher name -->
                             <td><?php echo $row['publisher_id']; ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
                             <td>
                                 <?php 
+<<<<<<< HEAD
                                     echo "TODO"
+=======
+                                    echo $row['category_name'];
+>>>>>>> 6033092f8f9868c11aad26e247dd489cfb7a8f75
                                 ?>
                             </td>
                             <td><?php echo $row['pages']; ?></td>
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['stock']; ?></td>
+<<<<<<< HEAD
                             <td>
                                 <?php
                                     echo "TODO"
                                 ?>
+=======
+                
+                            <!-- TODO get publisher name -->
+                         
+>>>>>>> 6033092f8f9868c11aad26e247dd489cfb7a8f75
                             </td>
             
                         </tr>

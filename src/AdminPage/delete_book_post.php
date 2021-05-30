@@ -1,17 +1,7 @@
 <?php 
     // TODO do sql connection only once for the whole app
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "eVivlio";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require_once("../../database/database_functions.php");
+    $conn = db_connection();
 
     // Get POST data from AJAX
     $book_id = $_POST['book_id'];

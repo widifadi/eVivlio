@@ -60,9 +60,7 @@
                             $result = mysqli_query($conn, $book_query); 
                             while($row = mysqli_fetch_assoc($result)) 
                             {
-                                $book_id = $row['book_id'];
-
-                                
+                                $book_id = $row['book_id'];    
                         ?>
                         <tr id=<?php echo $book_id ?> >
                             <td>
@@ -74,7 +72,6 @@
                                     title='<?php echo $row['book_title'] ?>'
                                     data-toggle="modal" data-target=".delete-book-modal"></em>
                             </td>
-
 
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
@@ -175,7 +172,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <?php include('update_book_details.php') ?>
+            <?php include('update_book_form.php') ?>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

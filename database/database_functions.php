@@ -11,7 +11,7 @@
 			$password = "root";
 		}
 
-		$conn = mysqli_connect($servername, $username, $password, $dbname);
+		$conn = mysqli_connect($servername, $username, '', $dbname);
 
 		if(!$conn){
 			echo "Can't connect database " . mysqli_connect_error($conn);

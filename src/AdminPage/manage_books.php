@@ -23,7 +23,7 @@
                         <tr>
                             <th scope="col">Update</th>
                             <th scope="col">Book ID</th> 
-                            <th scope="col">ISBN</th> 
+                            <th scope="col">ISBN</th>
                             <th scope="col">Title</th>
                             <th scope="col">Author</th>
                             <th scope="col">Publisher</th>
@@ -31,37 +31,25 @@
                             <th scope="col">Category</th>
                             <th scope="col">Pages</th>
                             <th scope="col">Price</th>
+<<<<<<< HEAD
                             <th scope="col">Stock</th>                           
+=======
+                            <th scope="col">Stock</th>
+                            <th scope="col">Feature</th>
+>>>>>>> db2cf02ac8c038c283fa16509f5ab7683e5f07fe
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
                             require_once("../database/database_functions.php");
                             $conn = db_connection();
-                            
-                           /* $name_query = "SELECT author.author_first_name,author.author_last_name FROM author
-                            INNER JOIN author_tag ON author.author_id=author_tag.author_id WHERE author_tag.book_id=4";
-                            $result = mysqli_query($conn, $name_query); 
-                            $name = mysqli_fetch_assoc($result) ;
-                            JOIN feature_tag ON
-                             book.book_id=feature_tag.book_id JOIN book_feature ON feature_tag.feature_id=book_feature.feature_id*/
-                            
-                    
 
-                            $book_query = "SELECT * FROM book JOIN author_tag ON
-                             book.book_id=author_tag.book_id INNER JOIN author ON author_tag.author_id=author.author_id
-                             JOIN category_tag ON
-                             book.book_id=category_tag.book_id JOIN category ON category_tag.category_id=category.category_id
-                             
-                             INNER JOIN publisher ON book.book_id=book.book_id
-                             ";
-                             
-                             
-                
-                            $result = mysqli_query($conn, $book_query); 
-                            while($row = mysqli_fetch_assoc($result)) 
+                            $book_query = "SELECT * FROM book";
+                            $result = mysqli_query($conn, $book_query);
+
+                            while ($row = mysqli_fetch_assoc($result)) 
                             {
-                                $book_id = $row['book_id'];    
+                                $book_id = $row['book_id'];
                         ?>
                         <tr id=<?php echo $book_id ?> >
                             <td>
@@ -70,30 +58,72 @@
                                     data-toggle="modal" data-target=".update-book-modal"></em>
                                 <em class="fas fa-trash-alt delete-book"
                                     id="deletebook-<?php echo $book_id ?>" 
-                                    title='<?php echo $row['book_title'] ?>'
+                                    title='<?php echo $row['title'] ?>'
                                     data-toggle="modal" data-target=".delete-book-modal"></em>
                             </td>
 
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
-                         
-                            <td><?php echo $row['author_first_name']; echo $row['author_last_name']  ; ?></td>
-                            
-                            <!-- TODO get publisher name -->
-                            <td><?php echo $row['publisher']; ?></td>
+
+                            <td>
+                                <?php 
+                                    $authors = array();
+                                    $author_query = "SELECT author.author_first_name, author.author_last_name FROM author 
+                                                        INNER JOIN author_tag 
+                                                        ON author_tag.author_id = author.author_id 
+                                                        WHERE author_tag.book_id = $book_id;";
+                                    $author_result = mysqli_query($conn, $author_query); 
+                                    while($author_row = mysqli_fetch_assoc($author_result)) {
+                                        array_push($authors, $author_row['author_first_name'] . " " . $author_row['author_last_name']);
+                                    }
+                                    $authors_list = implode(", ", $authors);
+                                    echo $authors_list;
+                                ?>
+                            </td>
+
+                            <td>
+                                <?php 
+                                    $publisher_id = $row['publisher_id'];
+                                    $query_publisher = "SELECT * FROM publisher WHERE publisher_id=$publisher_id;";
+                                    $publisher_result = mysqli_query($conn, $query_publisher);
+                                    $publisher_row = mysqli_fetch_assoc($publisher_result);
+                                    echo $publisher_row['publisher'];
+                                ?>
+                            </td>
                             <td><?php echo $row['publishing_year']; ?></td>
                             <td>
                                 <?php 
-                                    echo $row['category_name'];
+                                    $categories = array();
+                                    $category_query = "SELECT category.category_name FROM category 
+                                                        INNER JOIN category_tag 
+                                                        ON category_tag.category_id = category.category_id 
+                                                        WHERE category_tag.book_id = $book_id; ";
+                                    $category_result = mysqli_query($conn, $category_query); 
+                                    while($category_row = mysqli_fetch_assoc($category_result)) {
+                                        array_push($categories, $category_row['category_name']);
+                                    }
+                                    $category_list = implode(", ", $categories);
+                                    echo $category_list;
                                 ?>
                             </td>
                             <td><?php echo $row['pages']; ?></td>
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['stock']; ?></td>
-                
-                            <!-- TODO get publisher name -->
-                         
+                            <td>
+                                <?php
+                                    $features = array();
+                                    $feature_query = "SELECT book_feature.feature_name FROM book_feature 
+                                                        INNER JOIN feature_tag 
+                                                        ON feature_tag.feature_id = book_feature.feature_id 
+                                                        WHERE feature_tag.book_id = $book_id; ";
+                                    $feature_result = mysqli_query($conn, $feature_query); 
+                                    while ($feature_row = mysqli_fetch_assoc($feature_result)) {
+                                        array_push($features, $feature_row['feature_name']);
+                                    }
+                                    $feature_list = implode(", ", $features);
+                                    echo $feature_list;
+                                ?>
                             </td>
             
                         </tr>
@@ -148,7 +178,7 @@
             </button>
         </div>
         <div class="modal-body">
-            <?php include('update_book_form.php') ?>
+            <?php include("update_book_form.php") ?>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

@@ -117,23 +117,3 @@
             </div>
         </div>
     </nav>
-
-<!-- Ajax Code for cart -->
-<script type="text/javascript">
-        $(document).ready(function(){
-
-            load_cart_item_number();
-
-            // function to display item number on cart icon badge
-            function load_cart_item_number(){
-                $.ajax({
-                    url: '../Cart/cart_action.php',
-                    method: 'get',
-                    data: {cartItem:"cart_item"},
-                    success: function(response){
-                        $("#cart-item").html(response);
-                    }
-                });
-            }
-        });
-</script>

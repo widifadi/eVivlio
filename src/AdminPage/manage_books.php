@@ -41,6 +41,7 @@
                             require_once("../database/database_functions.php");
                             $conn = db_connection();
                             
+<<<<<<< HEAD
                            /* $name_query = "SELECT author.author_first_name,author.author_last_name FROM author
                             INNER JOIN author_tag ON author.author_id=author_tag.author_id WHERE author_tag.book_id=4";
                             $result = mysqli_query($conn, $name_query); 
@@ -50,6 +51,12 @@
                             
                     
 
+=======
+                            // TODO select only the book table here
+                            // query for the author, publisher, categories and feature separately using one book_id
+                            // check below where to insert new query
+                            /*
+>>>>>>> c6cee0130d3927a726910fb55e367139b50b758c
                             $book_query = "SELECT * FROM book JOIN author_tag ON
                              book.book_id=author_tag.book_id INNER JOIN author ON author_tag.author_id=author.author_id
                              JOIN category_tag ON
@@ -57,9 +64,10 @@
                              
                              INNER JOIN publisher ON book.book_id=book.book_id
                              ";
-                             
-                             
-                
+                             */
+
+                            $book_query = "SELECT * FROM book";     
+ 
                             $result = mysqli_query($conn, $book_query); 
                             while($row = mysqli_fetch_assoc($result)) 
                             {
@@ -83,14 +91,39 @@
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
                          
-                            <td><?php echo $row['author_first_name']; echo $row['author_last_name']  ; ?></td>
+                            <td>
+                                <?php 
+                                    $authors = array();
+                                    $author_query = "SELECT author.author_first_name, author.author_last_name FROM author 
+                                                        INNER JOIN author_tag 
+                                                        ON author_tag.author_id = author.author_id 
+                                                        WHERE author_tag.book_id = $book_id;";
+                                    $author_result = mysqli_query($conn, $author_query); 
+                                    while($author_row = mysqli_fetch_assoc($author_result)) {
+                                        array_push($authors, $author_row['author_first_name'] . " " . $author_row['author_last_name']);
+                                    }
+                                    $authors_list = implode(", ", $authors);
+                                    echo $authors_list;
+                                ?>
+                            </td>
                             
                             <!-- TODO get publisher name -->
                             <td><?php echo $row['publisher']; ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
+                            
                             <td>
-                                <?php 
-                                    echo $row['category_name'];
+                                <?php
+                                    $categories = array();
+                                    $category_query = "SELECT category.category_name FROM category 
+                                                        INNER JOIN category_tag 
+                                                        ON category_tag.category_id = category.category_id 
+                                                        WHERE category_tag.book_id = $book_id; ";
+                                    $category_result = mysqli_query($conn, $category_query); 
+                                    while($category_row = mysqli_fetch_assoc($category_result)) {
+                                        array_push($categories, $category_row['category_name']);
+                                    }
+                                    $category_list = implode(", ", $categories);
+                                    echo $category_list;
                                 ?>
                             </td>
                             <td><?php echo $row['pages']; ?></td>

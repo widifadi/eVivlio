@@ -21,8 +21,9 @@
 		return $conn;
 	}
 
-	function GetAuthorName($conn, $author_id){
-		$conn = db_connection();
+	function GetAuthorName($conn, $author_id) {
+		$conn = db_connection();	// you dont need this declaration here since it's already your parameter
+
 		$query = "SELECT author_first_name FROM author WHERE author_id = '$author_id'";
 		$result = mysqli_query($conn, $query);
 		if(!$result){

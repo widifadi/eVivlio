@@ -21,6 +21,26 @@
 		return $conn;
 	}
 
+	function featured_books_list($conn, $feature_name) {
+        $feature_book_ids = array();
+
+        $feature_query= "SELECT book.book_id FROM book
+                          JOIN feature_tag ON feature_tag.book_id=book.book_id
+                          JOIN book_feature ON book_feature.feature_id=feature_tag.feature_id
+                          WHERE feature_name='$feature_name'; ";
+        $feature_result=mysqli_query($conn,$feature_query);
+        
+        if(mysqli_num_rows($feature_result) == 0) {
+            echo "No featured books.";
+        } else {
+            while ($book_item = mysqli_fetch_assoc($feature_result)) {
+                array_push($feature_book_ids, $book_item['book_id']);
+            }
+        }
+        return $feature_book_ids;
+    }
+
+
 	function GetAuthorName($conn, $author_id) {
 		$conn = db_connection();	// you dont need this declaration here since it's already your parameter
 

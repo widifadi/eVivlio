@@ -32,18 +32,20 @@
             // display stock number
         ?>
         <div class="row">
+            <div class="col"></div>
             <div class="col">
-                <em class="fas fa-cart-plus add-cart-btn float-right" id="cart-<?php echo $book_id?>"></em>
+                <em class="fas fa-cart-plus add-cart-btn" id="cart-<?php echo $book_id?>"></em>
             </div>
+            <?php 
+                if (isset($_SESSION['user'])) {
+            ?>
             <div class="col">
-                <?php 
-                    if (isset($_SESSION['user'])) {
-                ?>
-                    <em class="fas fa-heart add-wishlist-btn float-left" id="wishlist-<?php echo $book_id?>"></em>
-                <?php
-                    }
-                ?>
+                <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id?>"></em>
             </div>
+            <?php
+                }
+            ?>
+            <div class="col"></div>
         </div>
     </div>
 <?php

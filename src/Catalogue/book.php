@@ -40,7 +40,7 @@
            $reviewer=[];//Initialize Array to store customer name who review the book
            $bookRating=array(0,0);//Initialize Array to store book rating
            $reviewQuery= "SELECT book_review.content, book_review.rating, customer.first_name,
-           customer.last_name FROM book_review JOIN customer ON customer.customer_id=book_review.customer_id
+           customer.last_name FROM book_review LEFT JOIN customer ON customer.customer_id=book_review.customer_id
            where book_id='$bookId' ORDER BY RAND()*10 LIMIT 2";
            $reviewQuery_run= mysqli_query($conn,$reviewQuery);
            $checkReviewRow=mysqli_num_rows($reviewQuery_run) > 0;
@@ -175,8 +175,11 @@
                                 <cite title="username" id="username">
          <!------------------------PHP------------------------------------------>                        
                                 <?php 
-                            if(!empty($reviewContent[0]))
-                            echo $reviewer[0];
+                            if(!empty($reviewContent[0])){
+                                if($reviewer[0]=="NULL NULL")
+                                echo "Anonymous User";
+                                else
+                                echo $reviewer[0]; }
                             else
                             echo "Reviewer_username" 
                             
@@ -216,8 +219,11 @@
                                 <cite title="username" id="username">
          <!------------------------PHP------------------------------------------>                        
                                 <?php 
-                            if(!empty($reviewContent[1]))
-                            echo $reviewer[1];
+                            if(!empty($reviewContent[1])){
+                               if($reviewer=="NULL NULL")
+                               echo "Anonymous";
+                               else 
+                               echo $reviewer[1]; }
                             else
                             echo "Reviewer_username" 
                                ?>
@@ -236,19 +242,19 @@
                         Post a Review
                     </div>
                     <div class="card-body">
-                        <form action="" method="POST">
+                        <form action="../src/Catalogue/post_book_review.php?bookid=<?php echo $bookId?>" method="POST">
                             <div class="form-group row">
                                 <div class="rate mx-auto" id="book-rating">
-                                    <input type="radio" id="star5" name="rating" value="5" />
-                                    <label for="star5" title="text">5 stars</label>
-                                    <input type="radio" id="star4" name="rating" value="4" />
-                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star1" name="rating" value="5" />
+                                    <label for="star1" title="text">1 stars</label>
+                                    <input type="radio" id="star2" name="rating" value="4" />
+                                    <label for="star2" title="text">2 stars</label>
                                     <input type="radio" id="star3" name="rating" value="3" />
                                     <label for="star3" title="text">3 stars</label>
-                                    <input type="radio" id="star2" name="raratingte" value="2" />
-                                    <label for="star2" title="text">2 stars</label>
-                                    <input type="radio" id="star1" name="rating" value="1" />
-                                    <label for="star1" title="text">1 star</label>
+                                    <input type="radio" id="star4" name="rating" value="2" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star5" name="rating" value="1" />
+                                    <label for="star5" title="text">5 star</label>
                                 </div>
                             </div>
                             <div class="form-group">

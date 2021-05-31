@@ -1,86 +1,68 @@
 
 <?php
     require_once("../database/database_functions.php");
-    $conn = db_connection();
-    $bookId=$_GET["bookid"];
+    require_once("../src/Common/book_card.php");
 
-    $query= "SELECT * FROM book JOIN category_tag ON category_tag.book_id = book.book_id JOIN category ON 
-    category_tag.category_id = category.category_id JOIN publisher ON 
-    publisher.publisher_id = book.publisher_id 
-    JOIN author_tag ON author_tag.book_id = book.book_id 
-    JOIN author ON author.author_id = author_tag.author_id 
-    WHERE book.book_id='$bookId'";
+    $conn = db_connection();
+    $bookId = $_GET["bookid"];
+
+    $query= "SELECT * FROM book 
+        JOIN category_tag ON category_tag.book_id = book.book_id 
+        JOIN category ON category_tag.category_id = category.category_id 
+        JOIN publisher ON publisher.publisher_id = book.publisher_id 
+        JOIN author_tag ON author_tag.book_id = book.book_id 
+        JOIN author ON author.author_id = author_tag.author_id 
+        WHERE book.book_id='$bookId'";
     $query_run= mysqli_query($conn,$query);
     $check_books=mysqli_num_rows($query_run) > 0;
     
-    if($check_books){
+    if ($check_books) {
         $x=1;
-    while( $row=mysqli_fetch_assoc($query_run)){
-    $book["cover"]=$row['book_cover'];
-    $book["title"]=$row['book_title']; 
-    $book["isbn"]=$row['isbn']; 
-    $book["year"]=$row['publishing_year']; 
-    $book["pages"]=$row['pages']; 
-    $book["summary"]=$row['summary']; 
-    $book["price"]=$row['price']; 
-    $book["stock"]=$row['stock']; 
-    $book["publisher"]=$row['publisher']; 
-    $book_category[$x]=$row['category_name']; 
-    $book_author[$x]=$row['author_first_name']." ".$row['author_last_name']; 
-    $x++;
-    
-   }
+        while($row=mysqli_fetch_assoc($query_run)) {
+            // TODO clean author and category implementation
+            $book["isbn"]=$row['isbn']; 
+            $book["year"]=$row['publishing_year']; 
+            $book["pages"]=$row['pages']; 
+            $book["summary"]=$row['summary']; 
+            $book["stock"]=$row['stock']; 
+            $book["publisher"]=$row['publisher']; 
+            $book_category[$x]=$row['category_name']; 
+            $book_author[$x]=$row['author_first_name']." ".$row['author_last_name']; 
+            $x++;
+        }
+    } else {
+        echo "No book found";
     }
-        else{
-            echo "no book found";
-            }
-
-          
-           $reviewContent=[];//Initialize Array to store Book Review Content
-           $reviewer=[];//Initialize Array to store customer name who review the book
-           $bookRating=array(0,0);//Initialize Array to store book rating
-           $reviewQuery= "SELECT book_review.content, book_review.rating, customer.first_name,
-           customer.last_name FROM book_review LEFT JOIN customer ON customer.customer_id=book_review.customer_id
-           where book_id='$bookId' ORDER BY RAND()*10 LIMIT 2";
-           $reviewQuery_run= mysqli_query($conn,$reviewQuery);
-           $checkReviewRow=mysqli_num_rows($reviewQuery_run) > 0;
-           if($checkReviewRow){
-               $index=0;
-               while($reviewRow=mysqli_fetch_assoc($reviewQuery_run)){
-                   $reviewContent[$index]=$reviewRow['content'];
-                   $reviewer[$index]=$reviewRow['first_name']." ".$reviewRow['last_name'];
-                   $bookRating[$index]=$reviewRow['rating'];
-                   $index++;
-            } }
-          
+        $reviewContent=[];//Initialize Array to store Book Review Content
+        $reviewer=[];//Initialize Array to store customer name who review the book
+        $bookRating=array(0,0);//Initialize Array to store book rating
+        $reviewQuery= "SELECT book_review.content, book_review.rating, customer.first_name,
+        customer.last_name FROM book_review LEFT JOIN customer ON customer.customer_id=book_review.customer_id
+        where book_id='$bookId' ORDER BY RAND()*10 LIMIT 2";
+        $reviewQuery_run= mysqli_query($conn,$reviewQuery);
+        $checkReviewRow=mysqli_num_rows($reviewQuery_run) > 0;
+        if ($checkReviewRow) {
+            $index = 0;
+            while($reviewRow=mysqli_fetch_assoc($reviewQuery_run)){
+                $reviewContent[$index]=$reviewRow['content'];
+                $reviewer[$index]=$reviewRow['first_name']." ".$reviewRow['last_name'];
+                $bookRating[$index]=$reviewRow['rating'];
+                $index++;
+        } 
+    }
+            
     $conn->close();
 
 ?>
 <div id="message"></div>
 <div class="row book-details" style="padding: 5px; margin-top:10px;">
-    <div class="col-4 book-detail-preview text-center">
-        <img src="../assets/img/book-covers/<?php echo $book['cover'];?>" 
-        alt="Lord of the Rings" width="200">
-        <br>
-        <span class="book-title"><?php echo $book['title'];?></span> <br>
-        <!--<span class="book-author">J. R. R. Tolkien (1995)</span> <br>-->
-        <span class="badge badge-pill badge-secondary book-price">€<?php echo $book['price'];?></span>
-        <br>
-        <br>
-        <span style="color: #396273">
-        Stocks available:<span class="stock-detail"><?php echo $book['stock'];?></span>
-        </span>
-        <br>
-        <br>
-        <!-- Add to cart and and to wishlish functionality --> 
-        <form action="" class="form-submit">
-            <input type="hidden" class="bookId" value="<?php $bookId ?>">
-            <input type="hidden" class="customerId" value="<?php $customerId ?>">
-            <em class="fas fa-cart-plus add-cart-btn"></em>
-            <em class="fas fa-heart add-wlist-btn"></em>
-        </form>
+    <div class="col-4 book-detail-div">
+        <?php
+            $conn = db_connection();
+            book_item_card($conn, $bookId);
+        ?>
     </div>
-
+    
     <div class="col-8 book-detail-div">
         <!-- Tabs navs -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -106,43 +88,41 @@
         <div class="tab-content" id="myTabContent" style="border: solid 1px #F2F2F2;">
             <div class="tab-pane fade show active" id="summary" role="tabpanel" 
                 aria-labelledby="summary-tab" style="font-size: 14px; padding: 10px;">
-                <p><?php echo $book['summary'];?> </p>
+                <p><?php echo $book['summary']; ?> </p>
             </div>
             <div class="tab-pane fade" id="details" role="tabpanel" 
                 aria-labelledby="details-tab" style="padding: 10px;">
-                Publisher: <span class="publisher"><?php echo $book['publisher'];?></span>
+                Publisher: <?php echo $book['publisher']; ?>
                 <br>
-                Publication Year: <span class="publishing-year"><?php echo $book['year'];?></span>
+                Publication Year: <?php echo $book['year']; ?>
                 <br>
-                ISBN: <span class="isbn"><?php echo $book['isbn'];?></span>
+                ISBN: <?php echo $book['isbn'];?>
                 <br>
-                Number of Pages: <span class="pages"><?php echo $book['pages'];?></span>
+                Number of Pages: <?php echo $book['pages']; ?>
                 <br>
-                Author:<span class="pages">
+                Author:
             <!------------------------PHP------------------------------------------>     
                 <?php 
-                              $temp="null";   
-                              foreach($book_author as $val) {
-                                  if($val!==$temp){
-                                echo "$val, ";}
-                                $temp=$val;
-                                }
-                               ?>
+                    $temp="null";   
+                    foreach($book_author as $val) {
+                        if($val!==$temp){
+                    echo "$val, ";}
+                    $temp=$val;
+                    }
+                ?>
              <!------------------------PHP END------------------------------------------>                   
-                               </span>
                 <br>
-                Categories:<span class="pages">
+                Categories:
              <!------------------------PHP------------------------------------------>    
                 <?php 
-                              $temp="null";
-                              foreach($book_category as $val) {
-                                if($val!==$temp){
-                                    echo "$val, ";}
-                                    $temp=$val;
-                                }
-                               ?>
+                    $temp="null";
+                    foreach($book_category as $val) {
+                    if($val!==$temp){
+                        echo "$val, ";}
+                        $temp=$val;
+                    }
+                ?>
             <!------------------------PHP END------------------------------------------>                    
-                               </span>
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" 
                 aria-labelledby="reviews-tab" style="padding: 10px;">
@@ -152,11 +132,13 @@
                             <div id="average-rating">
         <!------------------------PHP------------------------------------------>                    
                             <?php 
-                            for($x=0;$x<$bookRating[0];$x++){
-                                echo '<span class="fa fa-star user-rating checked"></span>'; }
-                            for($x=$bookRating[0]+1;$x<=5;$x++){
-                                echo '<span class="fa fa-star user-rating"></span>'; }
-                                ?>
+                                for ($x=0;$x<$bookRating[0];$x++) {
+                                    echo '<span class="fa fa-star user-rating checked"></span>'; 
+                                }
+                                for ($x=$bookRating[0]+1;$x<=5;$x++) {
+                                    echo '<span class="fa fa-star user-rating"></span>'; 
+                                }
+                            ?>
         <!------------------------PHP END------------------------------------------>                 
                                 
                             </div>
@@ -164,10 +146,11 @@
                             <p>
         <!------------------------PHP------------------------------------------>  
                             <?php 
-                            if(!empty($reviewContent[0]))
-                            echo $reviewContent[0];
-                            else
-                            echo "No Review" 
+                                if (!empty($reviewContent[0])) {
+                                    echo $reviewContent[0];
+                                } else {
+                                    echo "No Review";
+                                }
                             ?>
          <!------------------------PHP END------------------------------------------>                    
                             </p>
@@ -175,15 +158,16 @@
                                 <cite title="username" id="username">
          <!------------------------PHP------------------------------------------>                        
                                 <?php 
-                            if(!empty($reviewContent[0])){
-                                if($reviewer[0]=="NULL NULL")
-                                echo "Anonymous User";
-                                else
-                                echo $reviewer[0]; }
-                            else
-                            echo "Reviewer_username" 
-                            
-                            ?>
+                                    if(!empty($reviewContent[0])) {
+                                        if($reviewer[0]=="NULL NULL") {
+                                            echo "Anonymous User";
+                                        } else {
+                                            echo $reviewer[0]; 
+                                        }
+                                    } else {
+                                        echo "Reviewer_username";
+                                    }
+                                ?>
          <!------------------------PHP END------------------------------------------>                    
                                 </cite>
                             </footer>
@@ -208,10 +192,11 @@
                             <p>
          <!------------------------PHP------------------------------------------>                    
                             <?php 
-                            if(!empty($reviewContent[1]))
-                            echo $reviewContent[1];
-                            else
-                            echo "No Review" 
+                                if (!empty($reviewContent[1])) {
+                                    echo $reviewContent[1];
+                                } else {
+                                    echo "No Review"; 
+                                }
                              ?>
          <!------------------------PHP END------------------------------------------>                     
                              </p>
@@ -287,6 +272,7 @@
 </div>
 
     <!-- Ajax Code for cart -->
+    <!-- TODO use cart.js -->
     <script type="text/javascript">
         $(document).ready(function(){
             $(".add-cart-btn").click(function(e){

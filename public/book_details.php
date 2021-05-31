@@ -1,4 +1,3 @@
-<!-- TODO temporary until ajax -->
 <?php
     require_once("../templates/header.php");
 ?>
@@ -8,9 +7,9 @@
         <div class="col-3">
             <?php require_once("../src/Catalogue/categories.php"); ?>
         </div>
-        <div class="col-8">
-            <div class="container catalog-breadcrumbs">
-                <a href="catalog.php?p=all_books"> Catalog </a> 
+        <div class="col-9">
+            <div class="catalog-breadcrumbs">
+                <a href="catalog.php?p=all_books">Catalog</a> 
                 <em class="fas fa-chevron-right" style="color: grey;"></em>
                 <?php
                     if (isset($_GET['bookid'])) {

@@ -24,20 +24,30 @@
                 <?php echo $author ?>
                 (<?php echo $book_item['publishing_year'] ?>)</span>
             <br>
-            <span class="badge badge-pill badge-secondary book-price">€<?php echo $book_item['price'] ?></span>
+            <span class="badge badge-pill badge-secondary book-price">€ <?php echo $book_item['price'] ?></span>
         </a>
         <br><br>
-        <em class="fas fa-cart-plus add-cart-btn" id="cart-<?php echo $book_id?>"></em>
-
         <?php 
-            if (isset($_SESSION['user'])) {
+            // TODO if page is book_details.php
+            // display stock number
         ?>
-            <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id?>"></em>
-        <?php
-            }
-        ?>
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <em class="fas fa-cart-plus add-cart-btn" id="cart-<?php echo $book_id?>"></em>
+            </div>
+            <?php 
+                if (isset($_SESSION['user'])) {
+            ?>
+            <div class="col">
+                <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id?>"></em>
+            </div>
+            <?php
+                }
+            ?>
+            <div class="col"></div>
+        </div>
     </div>
-        
 <?php
     }
 ?>  

@@ -37,7 +37,9 @@
     <?php        
             }
         }
-        $conn->close();
+        if (isset($conn)) { 
+            mysqli_close($conn);
+        }
     ?>
     </div>
 </div>

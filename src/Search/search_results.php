@@ -31,7 +31,9 @@
             while ($book_item = mysqli_fetch_assoc($result)) 
             {
                 $book_id = $book_item['book_id'];
-                book_item_card($conn, $book_id);
+                if ($book_id != NULL) {
+                    book_item_card($conn, $book_id);
+                }
     ?>
 
     <?php        

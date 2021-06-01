@@ -48,7 +48,6 @@
 
                         <div class="text-center">
                             <input type="submit" id="btn_feedback" name="btn_feedback"
-                            onclick='document.getElementById("fbText").innerHTML = "Hello JavaScript!"'
                              value="Send" class="btn  btn-block rounded-0 py-2" style="background: #F2C84B; color:white;">
                         </div>
                     </div>

@@ -1,4 +1,13 @@
 <?php require_once("../templates/header.php"); ?>
+<?php
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+?>
+<html>
+<body>
+
+
 <?php 
     require_once("../database/database_functions.php");
     $conn = db_connection();

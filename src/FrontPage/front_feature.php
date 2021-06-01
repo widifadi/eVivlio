@@ -9,7 +9,7 @@
           <div class="row">
               <?php
                   $conn = db_connection();
-                  $best_sellers = featured_books_list($conn, "Best Sellers");
+                  $best_sellers = get_featured_books_list($conn, "Best Sellers");
 
                   $counter = 0;
                   foreach($best_sellers as $key=>$best_seller_id) {

@@ -61,67 +61,14 @@
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
-
-                            <td>
-                                <?php 
-                                    $authors = array();
-                                    $author_query = "SELECT author.author_first_name, author.author_last_name FROM author 
-                                                        INNER JOIN author_tag 
-                                                        ON author_tag.author_id = author.author_id 
-                                                        WHERE author_tag.book_id = $book_id;";
-                                    $author_result = mysqli_query($conn, $author_query); 
-                                    while($author_row = mysqli_fetch_assoc($author_result)) {
-                                        array_push($authors, $author_row['author_first_name'] . " " . $author_row['author_last_name']);
-                                    }
-                                    $authors_list = implode(", ", $authors);
-                                    echo $authors_list;
-                                ?>
-                            </td>
-
-                            <td>
-                                <?php 
-                                    $publisher_id = $row['publisher_id'];
-                                    $query_publisher = "SELECT * FROM publisher WHERE publisher_id=$publisher_id;";
-                                    $publisher_result = mysqli_query($conn, $query_publisher);
-                                    $publisher_row = mysqli_fetch_assoc($publisher_result);
-                                    echo $publisher_row['publisher'];
-                                ?>
-                            </td>
+                            <td><?php echo get_book_authors($conn, $book_id); ?></td>
+                            <td><?php echo get_book_publisher($conn, $row['publisher_id']); ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
-                            <td>
-                                <?php 
-                                    $categories = array();
-                                    $category_query = "SELECT category.category_name FROM category 
-                                                        INNER JOIN category_tag 
-                                                        ON category_tag.category_id = category.category_id 
-                                                        WHERE category_tag.book_id = $book_id; ";
-                                    $category_result = mysqli_query($conn, $category_query); 
-                                    while($category_row = mysqli_fetch_assoc($category_result)) {
-                                        array_push($categories, $category_row['category_name']);
-                                    }
-                                    $category_list = implode(", ", $categories);
-                                    echo $category_list;
-                                ?>
-                            </td>
+                            <td><?php echo get_book_categories($conn, $book_id); ?></td>
                             <td><?php echo $row['pages']; ?></td>
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['stock']; ?></td>
-                            <td>
-                                <?php
-                                    $features = array();
-                                    $feature_query = "SELECT book_feature.feature_name FROM book_feature 
-                                                        INNER JOIN feature_tag 
-                                                        ON feature_tag.feature_id = book_feature.feature_id 
-                                                        WHERE feature_tag.book_id = $book_id; ";
-                                    $feature_result = mysqli_query($conn, $feature_query); 
-                                    while ($feature_row = mysqli_fetch_assoc($feature_result)) {
-                                        array_push($features, $feature_row['feature_name']);
-                                    }
-                                    $feature_list = implode(", ", $features);
-                                    echo $feature_list;
-                                ?>
-                            </td>
-            
+                            <td><?php echo get_book_features($conn, $book_id); ?></td>
                         </tr>
                         <?php
                             }

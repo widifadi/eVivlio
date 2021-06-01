@@ -1,7 +1,7 @@
 <div class="container catalog-breadcrumbs">
     <a href="contact.php"> Contact Us </a> 
     <i class="fas fa-chevron-right" style="color: grey;"></i>
-    <a href=""> FAQ </a> 
+    <a href="#"> FAQ </a> 
 </div> 
 <div class="container">
     <div class="faq-text"> You can browse the questions below to find what you are looking for. </div>
@@ -11,8 +11,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-title">
-                            <a role="button" data-toggle="collapse" data-parent="#accordion" 
-                                href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" 
+                                href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                 What kind of books can I by from eVivlio?
                             </a>
                         </h4>

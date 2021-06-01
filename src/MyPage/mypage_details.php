@@ -1,7 +1,7 @@
 <div class="container catalog-breadcrumbs">
     <a href="my_page.php"> My Page </a> 
     <i class="fas fa-chevron-right" style="color: grey;"></i>
-    <a href=""> Personal Details </a> 
+    <a href="#"> Personal Details </a> 
 </div>     
 <!---DETAILS TABS---->
 <ul class="nav nav-tabs" id="myPageTab" role="tablist">

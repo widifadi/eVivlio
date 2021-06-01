@@ -1,7 +1,7 @@
 <div class="container catalog-breadcrumbs">
     <a href="my_page.php"> My Page </a> 
     <i class="fas fa-chevron-right" style="color: grey;"></i>
-    <a href=""> My Wishlist </a> 
+    <a href="#"> My Wishlist </a> 
 </div> 
 <div class="col "> 
 <?php 

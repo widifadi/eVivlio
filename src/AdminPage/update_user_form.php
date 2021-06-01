@@ -38,5 +38,9 @@
         <button class="btn blue-theme-btn" type="submit" name="update-user-btn"
             id="update-user-btn">Update User Details</button>                                 
     </div>
+
+    <br>
+    <div class="alert update-user-response" role="alert" style="display: none;"></div>
+
 </form>
 

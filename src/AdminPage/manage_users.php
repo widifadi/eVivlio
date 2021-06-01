@@ -81,7 +81,7 @@
             Delete <span id="username"></span>? Deleting user will also delete customer data.
             <br>
             <br>
-            <div class="alert" id="deleteuser-response" role="alert"></div>
+            <div class="alert deleteuser-response" role="alert" style="display:none;"></div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

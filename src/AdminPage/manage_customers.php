@@ -78,7 +78,7 @@
             The customer's user account will also be deleted.
             <br>
             <br>
-            <div class="alert" id="deletecustomer-response" role="alert"></div>
+            <div class="alert deletecustomer-response" role="alert" style="display: none"></div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

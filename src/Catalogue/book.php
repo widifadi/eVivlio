@@ -119,7 +119,7 @@
                                 if (!empty($reviewContent[0])) {
                                     echo $reviewContent[0];
                                 } else {
-                                    echo "No Review";
+                                    echo "This book has no review yet";
                                 }
                             ?>
          <!------------------------PHP END------------------------------------------>                    
@@ -129,13 +129,13 @@
          <!------------------------PHP------------------------------------------>                        
                                 <?php 
                                     if(!empty($reviewContent[0])) {
-                                        if($reviewer[0]=="NULL NULL") {
-                                            echo "Anonymous User";
-                                        } else {
+                                        if(strlen($reviewer[0])<=1) {
+                                            echo "Anonymous User";}
+                                         else {
                                             echo $reviewer[0]; 
-                                        }
-                                    } else {
-                                        echo "Reviewer_username";
+                                        }}
+                                     else {
+                                        echo " ";
                                     }
                                 ?>
          <!------------------------PHP END------------------------------------------>                    
@@ -165,7 +165,7 @@
                                 if (!empty($reviewContent[1])) {
                                     echo $reviewContent[1];
                                 } else {
-                                    echo "No Review"; 
+                                    echo "This book has no review yet"; 
                                 }
                              ?>
          <!------------------------PHP END------------------------------------------>                     
@@ -175,12 +175,12 @@
          <!------------------------PHP------------------------------------------>                        
                                 <?php 
                             if(!empty($reviewContent[1])){
-                               if($reviewer=="NULL NULL")
-                               echo "Anonymous";
-                               else 
-                               echo $reviewer[1]; }
-                            else
-                            echo "Reviewer_username" 
+                               if(strlen($reviewer[1])<=1){
+                               echo "Anonymous User";}
+                               else {
+                               echo $reviewer[1]; }}
+                            else{
+                            echo " " ;}
                                ?>
          <!------------------------PHP END------------------------------------------>                       
                                 </cite>

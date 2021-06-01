@@ -1,4 +1,5 @@
 <?php require_once("../../database/database_functions.php");
+session_start();
 $conn=db_connection();
 $bookid=$_GET['bookid'];
 $bookid=mysqli_real_escape_string($conn,$bookid);

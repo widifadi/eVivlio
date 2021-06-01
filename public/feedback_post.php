@@ -26,7 +26,7 @@
         }
 
 
-        header("location:contact_fb_sbn.php");
+        header("location:contact.php#feedback");
     }
 
     if (isset($conn)) {

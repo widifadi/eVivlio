@@ -7,35 +7,41 @@
     <div class="row">
 
         <div class="col-3">
-            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a class="nav-link active mypage-tab" id="v-pills-contacts-tab" data-toggle="pill" 
-                    href="#v-pills-contacts" role="tab" aria-controls="v-pills-contacts" aria-selected="true">Contacts</a>
-                <a class="nav-link mypage-tab" id="v-pills-faq-tab" data-toggle="pill" 
-                    href="#v-pills-faq" role="tab" aria-controls="v-pills-profile" aria-selected="false">FAQ</a>
-                <a class="nav-link mypage-tab" id="v-pills-feedback-tab" data-toggle="pill" 
-                    href="#v-pills-feedback" role="tab" aria-controls="v-pills-feedback" aria-selected="false">Feedback</a>
-            </div>
+            <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link active mypage-tab" id="v-pills-contacts-tab" data-toggle="pill" 
+                    href="#contact_details" role="tab" aria-controls="v-pills-contacts" aria-selected="true">Contacts</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link mypage-tab" id="v-pills-faq-tab" data-toggle="pill" 
+                    href="#faq" role="tab" aria-controls="v-pills-profile" aria-selected="false">FAQ</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link mypage-tab" id="v-pills-feedback-tab" data-toggle="pill" 
+                    href="#feedback" role="tab" aria-controls="v-pills-feedback" aria-selected="false">Feedback</a>
+                </li>
+            </ul>
         </div>
 
         <div class="col-9">
 
             <div class="tab-content" id="v-pills-tabContent">
                 <div class="tab-pane fade show active" style="margin-left:100px" 
-                    id="v-pills-contacts" role="tabpanel" aria-labelledby="v-pills-contacts-tab">
+                    id="contact_details" role="tabpanel" aria-labelledby="v-pills-contacts-tab">
                     <?php include("../src/ContactUs/contact_details.php") ?>
                 </div>
 
 
 
                 <div class="tab-pane fade" style="margin-left:100px" 
-                    id="v-pills-faq" role="tabpanel" aria-labelledby="v-pills-faq-tab">
+                    id="faq" role="tabpanel" aria-labelledby="v-pills-faq-tab">
                     <?php include("../src/ContactUs/contact_faq.php") ?>
                 </div>
 
 
 
                 <div class="tab-pane fade" style="margin-left:100px" 
-                    id="v-pills-feedback" role="tabpanel" aria-labelledby="v-pills-feedback-tab">
+                    id="feedback" role="tabpanel" aria-labelledby="v-pills-feedback-tab">
                     <?php include("../src/ContactUs/contact_feedback.php") ?>
                 </div>
             </div>

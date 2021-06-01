@@ -12,6 +12,9 @@ $('.delete-book').click(function() {
             url: delete_post,
             data: { "book_id": book_id },
             success: function(response) {
+                $("#delete-response").removeClass("alert-success");
+                $("#delete-response").removeClass("alert-danger");
+
                 if (response == 0) {
                     $("#delete-response").html("Book deleted successfully. <br> Reloading the page.");
                     $("#delete-response").addClass("alert-success");
@@ -38,7 +41,6 @@ $('.update-book').click(function() {
     var update_book_id = $(this).attr('id').split("-")[1];
 
     var update_book_details = "../src/AdminPage/update_book_details.php";
-    // var update_book_post = "../src/AdminPage/update_book_post.php"; 
 
     // get book details
     $.ajax({
@@ -83,19 +85,6 @@ $('.update-book').click(function() {
             details.features.forEach(function (feature, index) {
                 $('.update-feature#update-feature-' + feature).prop('checked', true);
             });
-          
         },
     });
-
-    // POST updated book details
-    // $("#update-book-btn").click(function() {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: update_book_post,
-    //         data: { "book_id": update_book_id },
-    //         success: function(response) {
-
-    //         },
-    //     });
-    // });
 });

@@ -54,7 +54,7 @@
                                     data-toggle="modal" data-target=".update-book-modal"></em>
                                 <em class="fas fa-trash-alt delete-book"
                                     id="deletebook-<?php echo $book_id ?>" 
-                                    title='<?php echo $row['title'] ?>'
+                                    title='<?php echo $row['book_title'] ?>'
                                     data-toggle="modal" data-target=".delete-book-modal"></em>
                             </td>
 
@@ -104,7 +104,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" id="delete-book-btn">Delete Book</button>
+            <button type="button" class="btn btn-danger" id="delete-book-btn">Delete Book</button>
         </div>
         </div>
     </div>

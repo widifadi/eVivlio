@@ -85,7 +85,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" id="delete-user-btn">Delete User</button>
+            <button type="button" class="btn btn-danger" id="delete-user-btn">Delete User</button>
         </div>
         </div>
     </div>

@@ -1,8 +1,8 @@
-<?php require_once("../templates/header.php"); ?>
+<?php require_once("../../templates/header.php"); ?>
 
 
 <?php 
-    require_once("../database/database_functions.php");
+    require_once("../../database/database_functions.php");
     $conn = db_connection();
 
    
@@ -28,7 +28,7 @@
         }
 
 
-        header("location:contact.php#feedback");
+        header("location:../../public/contact.php#feedback");
     }
 
     if (isset($conn)) {

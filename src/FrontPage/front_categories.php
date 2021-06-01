@@ -8,10 +8,11 @@
             <div class="book-category-middle">History</div></a>
         </div>
         <div class="col book-category-div">
-        <a href="../public/catalog.php?p=Science Fiction">
-            <img src="../assets/img/category-images/science-fiction.png" alt="science fiction" width="100px"
-                class="book-category-image"> 
-            <div class="book-category-middle">Science Fiction</div></a>
+            <a href="../public/catalog.php?p=Science Fiction">
+                <img src="../assets/img/category-images/science-fiction.png" alt="science fiction" width="100px"
+                    class="book-category-image"> 
+                <div class="book-category-middle">Science Fiction</div>
+            </a>
         </div>
         <div class="col book-category-div">
         <a href="../public/catalog.php?p=Literature">

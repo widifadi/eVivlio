@@ -316,20 +316,36 @@ a:hover {
 /* Admin Page End */
 
 
-/* Book categories on front page start */
+/* Hover image on front page start */
 
-.book-category-div {
+.book-category-div, .featured-book-div {
     position: relative;
     padding: 20px;
 }
 
-.book-category-image {
+.featured-book-div {
+    position: relative;
+    padding: 10px;
+}
+
+.book-category-image, .featured-book-image {
     opacity: 1;
     display: block;
     width: 100%;
     height: auto;
     transition: .5s ease;
     backface-visibility: hidden;
+}
+
+.featured-book-image {
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border: 2px dashed grey;
+    border-radius: 10px;
+    height: 250px;
+    width: auto;
 }
 
 .book-category-middle {
@@ -344,16 +360,30 @@ a:hover {
     font-family: 'Luminari';
 }
 
-.book-category-div:hover .book-category-image {
+.featured-book-middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Luminari';
+    font-size: smaller;
+    color: black;
+}
+
+.book-category-div:hover .book-category-image, 
+.featured-book-div:hover .featured-book-image {
     opacity: 0.3;
 }
 
-.book-category-div:hover .book-category-middle {
+.book-category-div:hover .book-category-middle, 
+.featured-book-div:hover .featured-book-middle {
     opacity: 1;
 }
 
-
-/* TODO use common class!!! */
 
 .update-book,
 .update-user,
@@ -465,13 +495,13 @@ a:hover {
     font-size: 20px;
 }
 
-.add-wlist-btn {
+.add-wishlist-btn {
     color: lightcoral;
     font-size: 20px;
 }
 
 .add-cart-btn:hover,
-.add-wlist-btn:hover {
+.add-wishlist-btn:hover {
     font-size: 24px;
 }
 

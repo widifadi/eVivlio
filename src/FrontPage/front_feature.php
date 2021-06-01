@@ -1,63 +1,46 @@
 
-<?php require_once("../src/Feature/Book_Feature.php"); ?>
+<?php require_once("../database/database_functions.php"); ?>
+<?php require_once("../src/Common/book_card.php"); ?>
 
 <div class="container features-div">
 
-    <!--------------------------------------BestSeller--------------------------------->
-<?php   list($featureBook_id,$featureBookCover,$featureBookTitle) =feature("Best Sellers"); ?>
-<h1>Best Sellers</h1>
+    <div id="best-sellers">
+        <span class="subtitle">Best Sellers</span>
+          <div class="row">
+              <?php
+                  $conn = db_connection();
+                  $best_sellers = get_featured_books_list($conn, "Best Sellers");
 
-    <div class="feature-div">
+                  $counter = 0;
+                  foreach($best_sellers as $key=>$best_seller_id) {
+                    if (++$counter == 6) {
+                        break;
+                    }
+              ?>
+                  <div class="col-sm featured-book-div">
+                      <?php
+                          $book_query = "SELECT * FROM book WHERE book_id=$best_seller_id;";
+                          $book_result = mysqli_query($conn, $book_query);
+                          $book_item = mysqli_fetch_assoc($book_result);
+                          $book_cover = '../assets/img/book-covers/' . $book_item['book_cover'];
+                      ?>
+                      <a href="book_details.php?bookid=<?php echo $best_seller_id?>">
+                          <img class="feature-book-cover featured-book-image" src='<?php echo $book_cover ?>'
+                              alt='<?php echo $book_item['book_title'] ?>'>
+                          <div class="featured-book-middle"><?php echo $book_item['book_title'] ?></div>
+                      </a>
+                  </div>
+              <?php 
+                  }
+              ?>
+          </div>
+    </div>
 
-       <div id="best-sellers" class="carousel slide" data-ride="carousel">
-             <div class="carousel-inner">
-        <!-----------------------PHP---------------------------------------------->
-             <?php
-                    $i=0; 
-                    $j=3; 
-             for($x=0;$x<=count($featureBookCover);$x+=4){
-                 if($x<=3){
-               echo '<div class="carousel-item  active">';
-                       }
-               else{ 
-                    echo '<div class="carousel-item ">';
-                }
-                 ?>
-                   <div class="row">
-       <!-----------------------PHP---------------------------------------------->
-                <?php for($i;$i<=$j;$i++){ ?>
-                      <div class="col-sm-3">
-                       <a href="book_details.php?bookid=<?php echo $featureBook_id[$i];?>">
-                           <img src="../assets/img/book-covers/<?php echo $featureBookCover[$i];?>" 
-                           alt="<?php echo $featureBookTitle[$i];?>" width=100px hight=50px >
-                       </a>
-                         </div>
-                         <?php }
-                        $i+=4;
-                        $j+=4;
-                        } ?>
-        <!-----------------------PHP END---------------------------------------------->
-                       </div>
-                    </div>
-                </div>
-             </div>
-  
-                     <!-- Left and right controls -->
-  <a class="carousel-control-prev" href="#best-sellers" data-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </a>
-  <a class="carousel-control-next" href="#best-sellers" data-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </a>
-</div>
-
-
-<!--
     <div id="new-release" class="feature-div">
         <span class="subtitle">New Release</span>
     </div>
     <div id="editors-pick" class="feature-div">
         <span class="subtitle">Editor's Pick</span>
     </div>
--->
+
 </div>

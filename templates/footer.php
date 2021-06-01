@@ -38,7 +38,8 @@
     <script src="../assets/js/tabs-link.js"></script>    
     <script src="../assets/js/search-bar-visibility.js"></script>
     <script src="../assets/js/search.js"></script>
-
+    <script src="../assets/js/wishlist.js"></script>    
+    <script src="../assets/js/cart.js"></script>  
 
 </body>
 </html>

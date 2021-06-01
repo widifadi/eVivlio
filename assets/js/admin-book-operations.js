@@ -38,7 +38,7 @@ $('.update-book').click(function() {
     var update_book_id = $(this).attr('id').split("-")[1];
 
     var update_book_details = "../src/AdminPage/update_book_details.php";
-    var update_book_post = "../src/AdminPage/update_book_post.php"; 
+    // var update_book_post = "../src/AdminPage/update_book_post.php"; 
 
     // get book details
     $.ajax({
@@ -46,27 +46,33 @@ $('.update-book').click(function() {
         url: update_book_details,
         data: { "book_id": update_book_id },
         success: function(response) {
+            $('#update-book-id').val(update_book_id);
+            
             // fill out form values
             var details = jQuery.parseJSON(response);
+
             $('input:checkbox').prop('checked', false);
 
             $('#update-isbn').val(details.isbn);
             $('#update-title').val(details.title);
 
-            // TODO cover
             var cover_path = "../assets/img/book-covers/" + details.book_cover;
-            $("#update-cover").attr("src", cover_path);
-            console.log(cover_path);
+            $("#current-cover").attr("src", cover_path);
+            $("#current-book-cover").val(details.book_cover);
 
-            // TODO author
-            $('#update-author1-firstname').val(details.author_first_name);
-            $('#update-author1-lastname').val(details.author_last_name);
+            details.authors_firstname.forEach(function (author_firstname, index) {
+                $('#update-author-firstname-' + index).val(author_firstname);
+            });
+
+            details.authors_lastname.forEach(function (author_lastname, index) {
+                $('#update-author-lastname-' + index).val(author_lastname);
+            });
+
             $('#update-publisher').val(details.publisher);
             $('#update-year').val(details.publishing_year);
             
-            // categories
-            details.category.forEach(function (category, index) {
-                $('.update-category#' + category).prop('checked', true);
+            details.categories.forEach(function (category, index) {
+                $('.update-category#update-category-' + category).prop('checked', true);
             });
 
             $('#update-pages').val(details.pages);
@@ -74,23 +80,22 @@ $('.update-book').click(function() {
             $('#update-price').val(details.price);
             $('#update-stocks').val(details.stock);
 
-            // feature  
             details.features.forEach(function (feature, index) {
-                $('.update-features#' + feature).prop('checked', true);
+                $('.update-feature#update-feature-' + feature).prop('checked', true);
             });
           
         },
     });
 
     // POST updated book details
-    $("#update-book-btn").click(function() {
-        $.ajax({
-            type: 'POST',
-            url: update_book_post,
-            data: { "book_id": update_book_id },
-            success: function(response) {
+    // $("#update-book-btn").click(function() {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: update_book_post,
+    //         data: { "book_id": update_book_id },
+    //         success: function(response) {
 
-            },
-        });
-    });
+    //         },
+    //     });
+    // });
 });

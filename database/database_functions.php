@@ -29,7 +29,7 @@
         $feature_query= "SELECT book.book_id FROM book
                           JOIN feature_tag ON feature_tag.book_id=book.book_id
                           JOIN book_feature ON book_feature.feature_id=feature_tag.feature_id
-                          WHERE feature_name='$feature_name'; ";
+                          WHERE feature_name='$feature_name' ORDER BY RAND()*1000 ";
         $feature_result=mysqli_query($conn,$feature_query);
         
         if(mysqli_num_rows($feature_result) == 0) {

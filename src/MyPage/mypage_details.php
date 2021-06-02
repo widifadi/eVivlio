@@ -26,21 +26,7 @@
             require_once ("../database/database_functions.php");
             $conn=db_connection();
 
-        /*
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbname = "eVivlio";
 
-            // Create connection
-            $conn = new mysqli($servername, $username, $password, $dbname);
-
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            } */
-
-            // TODO get username from session
             $user_name = $_SESSION['user'];
             
             // TODO select customer table WHERE username = username
@@ -123,8 +109,8 @@
         <form action="../src/MyPage/update_customer_post.php" method="POST">
                
             <div class="form-group row">
-                <label for="first_name" class="col-sm-2 col-form-label">First Name</label>
-                <div class="col-sm-6">
+                <label for="first_name" class="col-sm-4 col-form-label">First Name</label>
+                <div class="col-sm-5">
                 <input type="text" class="form-control" id="first_name" name="first_name" 
                     value="<?php 
                                 echo  $customer_details['first_name'];
@@ -134,8 +120,8 @@
             </div>
 
             <div class="form-group row">
-                <label for="last_name" class="col-sm-2 col-form-label">Last Name</label>
-                <div class="col-sm-6">
+                <label for="last_name" class="col-sm-4 col-form-label">Last Name</label>
+                <div class="col-sm-5">
                 <input type="text" class="form-control" id="last_name" name="last_name" 
                     value="<?php 
                                 echo  $customer_details['last_name'];
@@ -145,8 +131,8 @@
             </div>
 
             <div class="form-group row">
-                <label for="email" class="col-sm-2 col-form-label">E-mail</label>
-                <div class="col-sm-6">
+                <label for="email" class="col-sm-4 col-form-label">E-mail</label>
+                <div class="col-sm-5">
                 <input type="text" class="form-control" id="email" name="email" 
                 value="<?php 
                                 echo  $customer_details['email'];
@@ -156,8 +142,8 @@
             </div>
 
             <div class="form-group row">
-                <label for="birthday" class="col-sm-2 col-form-label">Date of Birth</label>
-                <div class="col-sm-6">
+                <label for="birthday" class="col-sm-4 col-form-label">Date of Birth</label>
+                <div class="col-sm-5">
                 <input type="date" class="form-control" id="birthday" name="birthday" 
                 value="<?php 
                                 echo  $customer_details['birthday'];
@@ -167,8 +153,8 @@
             </div>
 
             <div class="form-group row">
-                <label for="phone" class="col-sm-2 col-form-label">Contact Number</label>
-                <div class="col-sm-6">
+                <label for="phone" class="col-sm-4 col-form-label">Contact Number</label>
+                <div class="col-sm-5">
                 <input type="text" class="form-control" id="phone" name="phone" 
                 value="<?php 
                                 echo  $customer_details['phone'];
@@ -178,8 +164,8 @@
             </div>
 
             <div class="form-group row">
-                <label for="address" class="col-sm-2 col-form-label">Street Address</label>
-                <div class="col-sm-6">
+                <label for="address" class="col-sm-4 col-form-label">Street Address</label>
+                <div class="col-sm-5">
                 <input type="text" class="form-control" id="address" name="address" 
                 value="<?php 
                                 echo  $customer_details['address'];
@@ -189,8 +175,8 @@
             </div>
 
             <div class="form-group row">
-                <label for="city" class="col-sm-2 col-form-label">City</label>
-                <div class="col-sm-6">
+                <label for="city" class="col-sm-4 col-form-label">City</label>
+                <div class="col-sm-5">
                 <input type="text" class="form-control" id="city" name="city" 
                 value="<?php 
                                 echo  $customer_details['city'];
@@ -200,8 +186,8 @@
             </div>
 
             <div class="form-group row">
-                <label for="state" class="col-sm-2 col-form-label">State</label>
-                <div class="col-sm-6">
+                <label for="state" class="col-sm-4 col-form-label">State</label>
+                <div class="col-sm-5">
                 <input type="text" class="form-control" id="state" name="state" 
                 value="<?php 
                                 echo  $customer_details['state'];
@@ -211,11 +197,9 @@
             </div>
             
                     
-            <div class="text-center">
-                 
-                <div class="mt-5 text-center"><button class="btn  btn-outline-warning" 
-                    type="submit" name="pd_edit"  id="pd_edit" >Save</button></div>
-            </div>   
+            <div class="mt-5 text-center"><button class="btn  btn-warning" 
+                type="submit" name="pd_edit"  id="pd_edit" >Save</button>
+            </div>
                
 
         

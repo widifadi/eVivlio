@@ -72,11 +72,34 @@
         }
     } else {
 
+        // If the user not logged in
+
         // Bootstrap alert
         echo'<div class="alert alert-danger alert-dismissible mt-2">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>You are a guest, please log-in!</strong>
             </div>';
+            
+        // Storing book id in session    
+        $_SESSION['book_id']=$_POST['book_id'];
+        $_SESSION['book_qty']=1;
+
+        /*foreach ($_SESSION['book_id'] as $value) {
+
+            echo "$value <br>";
+
+        }*/
+
+        $sql = "SELECT price FROM book WHERE book_id = '$bid'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()){
+                $bprice = $row['price'];
+            }
+        } else {
+            echo "Error in getting book price!";
+        }
+
 
     } 
 ?>

@@ -240,24 +240,3 @@
     </div>
 
 </div>
-
-    <!-- Ajax Code for cart -->
-    <!-- TODO use cart.js -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".add-cart-btn").click(function(e){
-                e.preventDefault();
-                var $form = $(this).closest(".form-submit");
-                var pid = $form.find(".bookId").val();
-
-                $.ajax({
-                    url: '../src/Cart/add_cart.php',
-                    method: 'post',
-                    data: {pid:pid},
-                    success:function(response){
-                        $("#message").html(response);
-                    }
-                });
-            });
-        });
-    </script>

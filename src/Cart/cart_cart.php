@@ -67,6 +67,13 @@
                         <?php
                             }
                         ?>
+                        <?php 
+                            if (!isset($_SESSION['user'])) {
+                        ?>
+                        </ul><a href="#" class="btn btn-warning rounded-pill py-2 btn-block">Login or Register</a>
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>

@@ -8,7 +8,7 @@ $(".add-cart-btn").click(function(e) {
         data: { "book_id": book_id },
         success: function(response) {
             $("#message").html(response);
-            //console.log(response)
+            console.log(response)
         }
     });
 });

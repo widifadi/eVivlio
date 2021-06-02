@@ -9,7 +9,7 @@
       You can use the form below and we will get to you shortly! </div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-12 pb-8">
-            <form action="../src/ContactUs/feedback_post.php" method="POST">
+            <form id="feedback-form" action="../src/ContactUs/feedback_post.php" method="POST">
                 <div class="card border-primary rounded-0" style="border-color: #F2C84B !important;">
                     <div class="card-header p-0">
                         <div class="bg text-white text-center py-2" style="background: #F2C84B;">
@@ -47,12 +47,14 @@
                         </div>
 
                         <div class="text-center">
-                            <input type="submit" id="btn_feedback" name="btn_feedback"
-                             value="Send" class="btn  btn-block rounded-0 py-2" style="background: #F2C84B; color:white;">
+                            <button type="submit" id="btn_feedback" name="btn_feedback"
+                              class="btn  btn-block rounded-0 py-2" 
+                              style="background: #F2C84B; color:white;">Send</button>  
                         </div>
                     </div>
 
                 </div>
+                <div class="alert feedback-response" role="alert" style="display: none;"></div>
             </form>
             
 

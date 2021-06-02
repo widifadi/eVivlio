@@ -23,10 +23,10 @@ else{
 $insertReviewQuery="INSERT INTO book_review (book_id, rating, content)
 VALUES ('$bookid','$bookRating', '$bookReview')";
 }
-$insertReviewQuery_run=mysqli_query($conn,$insertReviewQuery);
+mysqli_query($conn,$insertReviewQuery);
 
 }
 mysqli_close($conn);
-//header("location:book.php?bookid=$bookid");
+header("location: ../../public/book_details.php?bookid=$bookid#reviews");
 
 ?>

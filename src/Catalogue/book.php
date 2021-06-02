@@ -97,15 +97,16 @@
             <div class="tab-pane fade" id="reviews" role="tabpanel" 
                 aria-labelledby="reviews-tab" style="padding: 10px;">
                 <div class="book-reviews">
+                <?php for($index=0;$index<count($reviewContent);$index++){?>
                     <div class="card">
                         <div class="card-body">
                             <div id="average-rating">
         <!------------------------PHP------------------------------------------>                    
                             <?php 
-                                for ($x=0;$x<$bookRating[0];$x++) {
+                                for ($x=0;$x<$bookRating[$index];$x++) {
                                     echo '<span class="fa fa-star user-rating checked"></span>'; 
                                 }
-                                for ($x=$bookRating[0]+1;$x<=5;$x++) {
+                                for ($x=$bookRating[$index]+1;$x<=5;$x++) {
                                     echo '<span class="fa fa-star user-rating"></span>'; 
                                 }
                             ?>
@@ -116,11 +117,7 @@
                             <p>
         <!------------------------PHP------------------------------------------>  
                             <?php 
-                                if (!empty($reviewContent[0])) {
-                                    echo $reviewContent[0];
-                                } else {
-                                    echo "This book has no review yet";
-                                }
+                                    echo $reviewContent[$index]; 
                             ?>
          <!------------------------PHP END------------------------------------------>                    
                             </p>
@@ -128,15 +125,13 @@
                                 <cite title="username" id="username">
          <!------------------------PHP------------------------------------------>                        
                                 <?php 
-                                    if(!empty($reviewContent[0])) {
-                                        if(strlen($reviewer[0])<=1) {
+                                   
+                                        if(strlen($reviewer[$index])<=1) {
                                             echo "Anonymous User";}
                                          else {
-                                            echo $reviewer[0]; 
-                                        }}
-                                     else {
-                                        echo " ";
-                                    }
+                                            echo $reviewer[$index]; 
+                                        }
+                                     
                                 ?>
          <!------------------------PHP END------------------------------------------>                    
                                 </cite>
@@ -145,52 +140,10 @@
                         </div>
                     </div>
                     <br>
-                    <div class="card">
-                        <div class="card-body">
-                            <div id="average-rating">
-         <!------------------------PHP------------------------------------------>                    
-                            <?php 
-                            for($x=0;$x<$bookRating[1];$x++){
-                                echo '<span class="fa fa-star user-rating checked"></span>';}
-                             for($x=$bookRating[1]+1;$x<=5;$x++){
-                                echo '<span class="fa fa-star user-rating"></span>';}
-                                ?>
-         <!------------------------PHP END------------------------------------------>                        
-                               
-                            </div>
-                            <blockquote class="blockquote mb-0">
-                            <p>
-         <!------------------------PHP------------------------------------------>                    
-                            <?php 
-                                if (!empty($reviewContent[1])) {
-                                    echo $reviewContent[1];
-                                } else {
-                                    echo "This book has no review yet"; 
-                                }
-                             ?>
-         <!------------------------PHP END------------------------------------------>                     
-                             </p>
-                            <footer class="blockquote-footer">
-                                <cite title="username" id="username">
-         <!------------------------PHP------------------------------------------>                        
-                                <?php 
-                            if(!empty($reviewContent[1])){
-                               if(strlen($reviewer[1])<=1){
-                               echo "Anonymous User";}
-                               else {
-                               echo $reviewer[1]; }}
-                            else{
-                            echo " " ;}
-                               ?>
-         <!------------------------PHP END------------------------------------------>                       
-                                </cite>
-                            </footer>
-                            </blockquote>
-                        </div>
-                    </div>
+                     <?php } ?>
+                   
                 </div>
-
-                <br> 
+  
                 <br>
                 <div class="card text-center">
                     <div class="card-header" style="color:#396273;">

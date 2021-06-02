@@ -1,5 +1,6 @@
 <?php require_once("../../database/database_functions.php");
 $conn=db_connection();
+session_start();
 $bookid=$_GET['bookid'];
 $bookid=mysqli_real_escape_string($conn,$bookid);
 $bookReview=mysqli_real_escape_string($conn,$_POST['review']);
@@ -26,6 +27,6 @@ $insertReviewQuery_run=mysqli_query($conn,$insertReviewQuery);
 
 }
 mysqli_close($conn);
-//header("location:book.php?bookid=$bookid");
+header("location:book.php?bookid=$bookid");
 
 ?>

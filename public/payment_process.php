@@ -1,6 +1,6 @@
 <?php
 require_once("../templates/header.php"); ?>
-<div class="container " style="margin-top: 100px; margin-bottom: 100px; width: 50%;">
+<div class="container " style="margin-top: 100px; margin-bottom: 100px; width: 40%;">
 	<p> <b> Please Proceed to Payment </b> <p>
         <form action="order_confirmation.php" method="post" id="login-form">
         <div class="form-group">

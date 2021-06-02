@@ -31,12 +31,8 @@
                             <th scope="col">Category</th>
                             <th scope="col">Pages</th>
                             <th scope="col">Price</th>
-<<<<<<< HEAD
-                            <th scope="col">Stock</th>                           
-=======
-                            <th scope="col">Stock</th>
-                            <th scope="col">Feature</th>
->>>>>>> db2cf02ac8c038c283fa16509f5ab7683e5f07fe
+                            <th scope="col">Stock</th>       
+                            <th scope="col">Feature</th>                      
                         </tr>
                     </thead>
                     <tbody>

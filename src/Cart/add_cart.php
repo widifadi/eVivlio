@@ -70,5 +70,13 @@
 
             }
         }
+    } else {
+
+        // Bootstrap alert
+        echo'<div class="alert alert-danger alert-dismissible mt-2">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>You are a guest, please log-in!</strong>
+            </div>';
+
     } 
 ?>

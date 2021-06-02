@@ -16,30 +16,34 @@
             } else {
                 echo "Error in getting customer id!";
             }
-    }
 
-    // Fetching information from cart table based on guest ID or customer ID
-    // Add WHERE customer or guest id to select the cart item 
-    // For order summary
-    $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
-                            JOIN author_tag ON author_tag.book_id = book.book_id 
-                            JOIN author ON author.author_id = author_tag.author_id 
-                            WHERE customer_id = $customer");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $grand_total = 0;
-    $num_items = 0;
-    while ($row = $result->fetch_assoc()):
-        $grand_total += $row['price'];
-        $num_items += 1;
-    endwhile; 
-    // For cart section
-    $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
-                            JOIN author_tag ON author_tag.book_id = book.book_id 
-                            JOIN author ON author.author_id = author_tag.author_id 
-                            WHERE customer_id = $customer");
-    $stmt->execute();
-    $result = $stmt->get_result();
+            // For order summary
+            $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
+                                    JOIN author_tag ON author_tag.book_id = book.book_id 
+                                    JOIN author ON author.author_id = author_tag.author_id 
+                                    WHERE customer_id = $customer");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $grand_total = 0;
+            $num_items = 0;
+            while ($row = $result->fetch_assoc()):
+                $grand_total += $row['price'];
+                $num_items += 1;
+            endwhile; 
+            // For cart section
+            $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
+                                    JOIN author_tag ON author_tag.book_id = book.book_id 
+                                    JOIN author ON author.author_id = author_tag.author_id 
+                                    WHERE customer_id = $customer");
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+    } else {
+
+        echo 'You have not log in';
+        // querry information from session!
+
+    }
 ?>
 
 <div class="container" style="margin-top:100px; margin-left: 10px;">
@@ -88,7 +92,7 @@
                 <div class="table-responsive">
                     <table class="table" >
                         <tbody >
-                                <?php while ($row = $result->fetch_assoc()): ?> <!-- ../assets/img/book-covers/Book Cover/bestseller/Amara The Brave.jpg -->
+                                <?php while ($row = $result->fetch_assoc()): ?> <!-- for fetching the session array this should be consider to change! -->
                             <tr>
                             <th scope="row" class="border-0" >
                                 <div class="p-2">

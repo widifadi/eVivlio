@@ -4,6 +4,7 @@
     <a href="#"> My Wishlist </a> 
 </div> 
 <div class="col "> 
+<div id="message"></div>
 <?php 
     // Need to query based on customer id or guest id 
     if (isset($_SESSION['user'])) {
@@ -38,7 +39,7 @@
                 <div id="book-title"> <a href="#" class="text-dark">"<?= $row['book_title'] ?>", <?= $row['author_first_name'], $row['author_last_name'] ?> (<?= $row['publishing_year'] ?>)</a></div>
             </div>
             <div class="row mt-3 ml-3">
-                <a href="#" class="text-dark"><i class="fa fa-shopping-cart"></i></a>
+                <em class="text-dark fas fa-cart-plus add-cart-btn" id="cart-<?php $row['book_id']?>"></em> <!-- error getting the correct book id -->
                 <a href="#" class="text-dark ml-5"><i class="fa fa-trash"></i></a>
             </div>
         </div>

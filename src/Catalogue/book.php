@@ -6,28 +6,19 @@
     $conn = db_connection();
     $bookId = $_GET["bookid"];
 
-    $query= "SELECT * FROM book 
-        JOIN category_tag ON category_tag.book_id = book.book_id 
-        JOIN category ON category_tag.category_id = category.category_id 
-        JOIN publisher ON publisher.publisher_id = book.publisher_id 
-        JOIN author_tag ON author_tag.book_id = book.book_id 
-        JOIN author ON author.author_id = author_tag.author_id 
-        WHERE book.book_id='$bookId'";
+    $query= "SELECT * FROM book WHERE book_id='$bookId';";
     $query_run= mysqli_query($conn,$query);
     $check_books=mysqli_num_rows($query_run) > 0;
     
     if ($check_books) {
         $x=1;
         while($row=mysqli_fetch_assoc($query_run)) {
-            // TODO clean author and category implementation
-            $book["isbn"]=$row['isbn']; 
-            $book["year"]=$row['publishing_year']; 
-            $book["pages"]=$row['pages']; 
-            $book["summary"]=$row['summary']; 
-            $book["stock"]=$row['stock']; 
-            $book["publisher"]=$row['publisher']; 
-            $book_category[$x]=$row['category_name']; 
-            $book_author[$x]=$row['author_first_name']." ".$row['author_last_name']; 
+            $isbn = $row['isbn']; 
+            $publishing_year = $row['publishing_year']; 
+            $pages = $row['pages']; 
+            $book["summary"] = $row['summary']; 
+            $stock = $row['stock']; 
+            $publisher_id = $row['publisher_id']; 
             $x++;
         }
     } else {
@@ -56,11 +47,15 @@
 ?>
 <div id="message"></div>
 <div class="row book-details" style="padding: 5px; margin-top:10px;">
-    <div class="col-4 book-detail-div">
+    <div class="col-4 book-detail-div text-center">
         <?php
             $conn = db_connection();
             book_item_card($conn, $bookId);
         ?>
+        <br>
+        Stock Available: <?php echo $stock ?>
+        <br>
+        <br>
     </div>
     
     <div class="col-8 book-detail-div">
@@ -92,37 +87,12 @@
             </div>
             <div class="tab-pane fade" id="details" role="tabpanel" 
                 aria-labelledby="details-tab" style="padding: 10px;">
-                Publisher: <?php echo $book['publisher']; ?>
-                <br>
-                Publication Year: <?php echo $book['year']; ?>
-                <br>
-                ISBN: <?php echo $book['isbn'];?>
-                <br>
-                Number of Pages: <?php echo $book['pages']; ?>
-                <br>
-                Author:
-            <!------------------------PHP------------------------------------------>     
-                <?php 
-                    $temp="null";   
-                    foreach($book_author as $val) {
-                        if($val!==$temp){
-                    echo "$val, ";}
-                    $temp=$val;
-                    }
-                ?>
-             <!------------------------PHP END------------------------------------------>                   
-                <br>
-                Categories:
-             <!------------------------PHP------------------------------------------>    
-                <?php 
-                    $temp="null";
-                    foreach($book_category as $val) {
-                    if($val!==$temp){
-                        echo "$val, ";}
-                        $temp=$val;
-                    }
-                ?>
-            <!------------------------PHP END------------------------------------------>                    
+                <strong>ISBN:</strong> <?php echo $isbn; ?><br>
+                <strong>Author(s):</strong> <?php echo get_book_authors($conn, $bookId) ?> <br>
+                <strong>Publisher:</strong> <?php echo get_book_publisher($conn, $publisher_id) ?> <br>
+                <strong>Publication Year:</strong> <?php echo $publishing_year; ?> <br>
+                <strong>Number of Pages:</strong> <?php echo $pages; ?> <br>
+                <strong>Categories:</strong> <?php echo get_book_categories($conn, $bookId) ?>
             </div>
             <div class="tab-pane fade" id="reviews" role="tabpanel" 
                 aria-labelledby="reviews-tab" style="padding: 10px;">
@@ -149,7 +119,7 @@
                                 if (!empty($reviewContent[0])) {
                                     echo $reviewContent[0];
                                 } else {
-                                    echo "No Review";
+                                    echo "This book has no review yet";
                                 }
                             ?>
          <!------------------------PHP END------------------------------------------>                    
@@ -159,13 +129,13 @@
          <!------------------------PHP------------------------------------------>                        
                                 <?php 
                                     if(!empty($reviewContent[0])) {
-                                        if($reviewer[0]=="NULL NULL") {
-                                            echo "Anonymous User";
-                                        } else {
+                                        if(strlen($reviewer[0])<=1) {
+                                            echo "Anonymous User";}
+                                         else {
                                             echo $reviewer[0]; 
-                                        }
-                                    } else {
-                                        echo "Reviewer_username";
+                                        }}
+                                     else {
+                                        echo " ";
                                     }
                                 ?>
          <!------------------------PHP END------------------------------------------>                    
@@ -195,7 +165,7 @@
                                 if (!empty($reviewContent[1])) {
                                     echo $reviewContent[1];
                                 } else {
-                                    echo "No Review"; 
+                                    echo "This book has no review yet"; 
                                 }
                              ?>
          <!------------------------PHP END------------------------------------------>                     
@@ -205,12 +175,12 @@
          <!------------------------PHP------------------------------------------>                        
                                 <?php 
                             if(!empty($reviewContent[1])){
-                               if($reviewer=="NULL NULL")
-                               echo "Anonymous";
-                               else 
-                               echo $reviewer[1]; }
-                            else
-                            echo "Reviewer_username" 
+                               if(strlen($reviewer[1])<=1){
+                               echo "Anonymous User";}
+                               else {
+                               echo $reviewer[1]; }}
+                            else{
+                            echo " " ;}
                                ?>
          <!------------------------PHP END------------------------------------------>                       
                                 </cite>
@@ -270,24 +240,3 @@
     </div>
 
 </div>
-
-    <!-- Ajax Code for cart -->
-    <!-- TODO use cart.js -->
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $(".add-cart-btn").click(function(e){
-                e.preventDefault();
-                var $form = $(this).closest(".form-submit");
-                var pid = $form.find(".bookId").val();
-
-                $.ajax({
-                    url: '../src/Cart/add_cart.php',
-                    method: 'post',
-                    data: {pid:pid},
-                    success:function(response){
-                        $("#message").html(response);
-                    }
-                });
-            });
-        });
-    </script>

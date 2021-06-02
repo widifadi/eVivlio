@@ -1,15 +1,9 @@
-<?php require_once("../templates/header.php"); ?>
-<?php 
-    // TODO do sql connection only once for the whole app
-    // TODO use database_functions file
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "evivlio";
+<?php require_once("../../templates/header.php"); ?>
 
-    
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
+
+<?php 
+    require_once("../../database/database_functions.php");
+    $conn = db_connection();
 
    
 
@@ -34,7 +28,7 @@
         }
 
 
-        header("location:contact_fb_sbn.php");
+        header("location:../../public/contact.php#feedback");
     }
 
     if (isset($conn)) {

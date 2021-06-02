@@ -1,3 +1,23 @@
+$("#add-book-btn").click(function(e) {
+    e.preventDefault();
+
+    $.ajax({
+        type: 'POST',
+        url: '../src/AdminPage/add_book_post.php',
+        data: $('#add-book-form').serialize(),
+        success: function(response) {
+            $('.add-book-response').html("Book added successfully. Page reloading.");
+            $('.add-book-response').addClass("alert-success");
+            $('.add-book-response').show(); 
+
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
+        }
+    })
+});
+
+
 $('.delete-book').click(function() {
     var book_id = $(this).attr('id').split("-")[1];
     var book_title = $(this).attr('title');
@@ -13,16 +33,18 @@ $('.delete-book').click(function() {
             data: { "book_id": book_id },
             success: function(response) {
                 if (response == 0) {
-                    $("#delete-response").html("Book deleted successfully. <br> Reloading the page.");
-                    $("#delete-response").addClass("alert-success");
+                    $(".delete-response").html("Book deleted successfully. <br> Reloading the page.");
+                    $(".delete-response").addClass("alert-success");
+                    $(".delete-response").show();
 
                     setTimeout(function() {
                         location.reload();
                     }, 2000);
 
                 } else {
-                    $("#delete-response").html(response + "<br> Reloading the page.");
-                    $("#delete-response").addClass("alert-danger");
+                    $(".delete-response").html(response + "<br> Reloading the page.");
+                    $(".delete-response").addClass("alert-danger");
+                    $(".delete-response").show();
 
                     setTimeout(function() {
                         location.reload();
@@ -38,7 +60,6 @@ $('.update-book').click(function() {
     var update_book_id = $(this).attr('id').split("-")[1];
 
     var update_book_details = "../src/AdminPage/update_book_details.php";
-    // var update_book_post = "../src/AdminPage/update_book_post.php"; 
 
     // get book details
     $.ajax({
@@ -83,19 +104,26 @@ $('.update-book').click(function() {
             details.features.forEach(function (feature, index) {
                 $('.update-feature#update-feature-' + feature).prop('checked', true);
             });
-          
         },
     });
+});
 
-    // POST updated book details
-    // $("#update-book-btn").click(function() {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: update_book_post,
-    //         data: { "book_id": update_book_id },
-    //         success: function(response) {
 
-    //         },
-    //     });
-    // });
+$("#update-book-btn").click(function(e) {
+    e.preventDefault();
+
+    $.ajax({
+        type: 'POST',
+        url: '../src/AdminPage/update_book_post.php',
+        data: $('#update-book-form').serialize(),
+        success: function(response) {
+            $('.manage-book-response').html("Book updated successfully. Page reloading.");
+            $('.manage-book-response').addClass("alert-success");
+            $('.manage-book-response').show(); 
+
+            setTimeout(function() {
+                location.reload();
+            }, 1000);
+        }
+    })
 });

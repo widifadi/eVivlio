@@ -14,19 +14,20 @@ $('.delete-customer').click(function() {
             url: delete_post,
             data: { "customer_id": customer_id },
             success: function(response) {
-                console.log(response);
                 
                 if (response == "0") {
-                    $("#deletecustomer-response").html("User deleted successfully. <br> Reloading the page.");
-                    $("#deletecustomer-response").addClass("alert-success");
+                    $(".deletecustomer-response").html("User deleted successfully. <br> Reloading the page.");
+                    $(".deletecustomer-response").addClass("alert-success");
+                    $(".deletecustomer-response").show();
 
                     setTimeout(function() {
                         location.reload();
                     }, 2000);
 
                 } else {
-                    $("#deletecustomer-response").html(response + "<br> Reloading the page.");
-                    $("#deletecustomer-response").addClass("alert-danger");
+                    $(".deletecustomer-response").html(response + "<br> Reloading the page.");
+                    $(".deletecustomer-response").addClass("alert-danger");
+                    $(".deletecustomer-response").show();
 
                     setTimeout(function() {
                         location.reload();

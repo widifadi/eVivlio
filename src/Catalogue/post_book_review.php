@@ -1,4 +1,5 @@
 <?php require_once("../../database/database_functions.php");
+session_start();
 $conn=db_connection();
 session_start();
 $bookid=$_GET['bookid'];

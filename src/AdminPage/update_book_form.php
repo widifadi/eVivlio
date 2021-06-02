@@ -1,7 +1,7 @@
-<form action="../src/AdminPage/update_book_post.php" method="POST" id="update-book-form" 
-    enctype="multipart/form-data">
+<form id="update-book-form" enctype="multipart/form-data">
+    
     <input type="number" id="update-book-id" name="book_id" hidden>
-
+    
     <div class="form-group row">
         <label for="isbn" class="col-sm-3 col-form-label updatebook-label">ISBN</label>
         <div class="col-sm-9">
@@ -176,5 +176,9 @@
         <button class="btn blue-theme-btn" type="submit" name="update-book-btn"
             id="update-book-btn">Update Book Details</button>                                 
     </div>
+    
+    <br> 
+    <div class="alert manage-book-response" role="alert" style="display: none;"></div>
+
 </form>
 

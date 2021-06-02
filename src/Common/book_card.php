@@ -12,7 +12,7 @@
                             WHERE author_tag.book_id=$book_id);";
         $author_result = mysqli_query($conn, $author_query);
         $author_row = mysqli_fetch_assoc($author_result);
-        $author = $author_row['author_first_name'] . $author_row['author_last_name'];
+        $author = $author_row['author_first_name'] . " " . $author_row['author_last_name'];
 ?>
     <div class="card text-center p-1 book">
         <a href="book_details.php?bookid=<?php echo $book_id?>">

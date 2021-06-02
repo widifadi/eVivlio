@@ -13,16 +13,18 @@ $('.delete-order').click(function() {
             success: function(response) {
                 
                 if (response == "0") {
-                    $("#delete-order-response").html("Order deleted successfully. <br> Reloading the page.");
-                    $("#delete-order-response").addClass("alert-success");
+                    $(".delete-order-response").html("Order deleted successfully. <br> Reloading the page.");
+                    $(".delete-order-response").addClass("alert-success");
+                    $(".delete-order-response").show();
 
                     setTimeout(function() {
                         location.reload();
                     }, 2000);
 
                 } else {
-                    $("#delete-order-response").html(response + "<br> Reloading the page.");
-                    $("#delete-order-response").addClass("alert-danger");
+                    $(".delete-order-response").html(response + "<br> Reloading the page.");
+                    $(".delete-order-response").addClass("alert-danger");
+                    $(".delete-order-response").show();
 
                     setTimeout(function() {
                         location.reload();

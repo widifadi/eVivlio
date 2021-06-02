@@ -91,6 +91,7 @@
 
                     // IF a user is not logged in
                     if(!isset($_SESSION['user'])) {
+
                 ?>
                 <a href="signup_login.php">
                     <button class="btn menu-btn" id="loginpage-btn">

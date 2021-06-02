@@ -3,6 +3,17 @@
     require_once ('../database/database_functions.php');
     $conn  = db_connection();
 
+    // declaring global variables
+    $book_title = array();
+    $book_cover = array();
+    $author_fn = array();
+    $author_ln = array();
+    $book_year = array();
+    $book_price = array();
+    $book_qty = array();
+    $grand_total = 0;
+    $num_items = 0;
+
     if (isset($_SESSION['user'])) {
         $userName = $_SESSION['user'];
 
@@ -24,24 +35,64 @@
                                     WHERE customer_id = $customer");
             $stmt->execute();
             $result = $stmt->get_result();
-            $grand_total = 0;
-            $num_items = 0;
             while ($row = $result->fetch_assoc()):
-                $grand_total += $row['price'];
+                array_push($book_title,$row['book_title']);
+                array_push($book_cover,$row['book_cover']);
+                array_push($author_fn,$row['author_first_name']);
+                array_push($author_ln,$row['author_last_name']);
+                array_push($book_year,$row['publishing_year']);
+                array_push($book_price,$row['price']);
+                array_push($book_qty,$row['quantity']);
+
+                $grand_total += $row['total_price'];
                 $num_items += 1;
+
             endwhile; 
-            // For cart section
+            /*// For cart section
             $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
                                     JOIN author_tag ON author_tag.book_id = book.book_id 
                                     JOIN author ON author.author_id = author_tag.author_id 
                                     WHERE customer_id = $customer");
             $stmt->execute();
-            $result = $stmt->get_result();
+            $result = $stmt->get_result();*/
 
-    } else {
+    } 
+    else {
 
         echo 'You have not log in';
         // querry information from session!
+        $max = sizeof($_SESSION['book_id']);
+
+        if ($max > 0) {
+            for ($x=0;$x<1;$x++) {
+
+                $guest_bookID = $_SESSION['book_id'][$x];
+                $guest_bookQTY = $_SESSION['book_qty'][$x];
+            
+                $stmt = $conn->prepare("SELECT * FROM book 
+                                        JOIN author_tag ON author_tag.book_id = book.book_id 
+                                        JOIN author ON author.author_id = author_tag.author_id 
+                                        WHERE book.book_id = $guest_bookID");
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+
+
+                array_push($book_title,$row['book_id']);
+                array_push($book_cover,$row['book_cover']);
+                array_push($author_fn,$row['author_first_name']);
+                array_push($author_ln,$row['author_last_name']);
+                array_push($book_year,$row['publishing_year']);
+                array_push($book_price,$row['price']);
+                array_push($book_qty,$guest_bookQTY);
+
+                $grand_total += $row['price'];
+                $num_items += 1;
+            }
+        } else {
+            echo "Nothing in cart!";
+        }
+            
 
     }
 ?>
@@ -92,27 +143,27 @@
                 <div class="table-responsive">
                     <table class="table" >
                         <tbody >
-                                <?php while ($row = $result->fetch_assoc()): ?> <!-- for fetching the session array this should be consider to change! -->
+                                <?php for ($x = 0; $x < count($book_title); $x++) { ?> <!-- for fetching the session array this should be consider to change! -->
                             <tr>
                             <th scope="row" class="border-0" >
                                 <div class="p-2">
-                                <img src="../assets/img/book-covers/<?= $row['book_cover'] ?>" alt="book" width="100px" id="book-cover">
+                                <img src="../assets/img/book-covers/<?= $book_cover[$x] ?>" alt="book" width="100px" id="book-cover">
                                 <div class="ml-3 d-inline-block align-middle">
-                                    <a href="#" class="text-dark"><div class="book-title" id="book-title">"<?= $row['book_title'] ?>", <?= $row['author_first_name'], $row['author_last_name'] ?> (<?= $row['publishing_year'] ?>)</div></a>
+                                    <a href="#" class="text-dark"><div class="book-title" id="book-title">"<?= $book_title[$x] ?>", <?= $author_fn[$x], $author_ln[$x] ?> (<?= $book_year[$x] ?>)</div></a>
                                 </div>
                                 </div>
                             </th>
                             <td class="border-0 align-middle book-price bg-transparent"  
-                                id="book-price"><strong><i class="fas fa-euro-sign">&nbsp;<?= $row['price'] ?></i></strong></td>
+                                id="book-price"><strong><i class="fas fa-euro-sign">&nbsp;<?= $book_price[$x] ?></i></strong></td>
                             <td class="border-0 align-middle book-price bg-transparent"  
-                                id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $row['quantity'] ?>" style="width:75px;"><strong></strong></td>
+                                id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
                                 <a href="#"> <em class="fa fa-trash dlt-cart-btn"></em></a></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
                                 <a href="#"> <em class="fas fa-heart add-wishlist-btn"></em></a></td>
 
                             </tr>
-                                <?php endwhile; $conn->close(); ?>
+                                <?php } $conn->close(); ?>
                             
                         </tbody>
                     </table>

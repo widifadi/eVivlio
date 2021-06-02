@@ -80,26 +80,18 @@
                 <strong>You are a guest, please log-in!</strong>
             </div>';
             
-        // Storing book id in session    
-        $_SESSION['book_id']=$_POST['book_id'];
-        $_SESSION['book_qty']=1;
+        // Storing book id in session 
+        if (!isset($_SESSION['book_id'])) {
 
-        /*foreach ($_SESSION['book_id'] as $value) {
-
-            echo "$value <br>";
-
-        }*/
-
-        $sql = "SELECT price FROM book WHERE book_id = '$bid'";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()){
-                $bprice = $row['price'];
+            if (isset($_POST['book_id'])) {
+            
+                $bid = $_POST['book_id'];
+               $_SESSION['book_id'][]=$bid;
+               $_SESSION['book_qty'][]=1;
+               
             }
-        } else {
-            echo "Error in getting book price!";
-        }
-
+        } 
+        
 
     } 
 ?>

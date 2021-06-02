@@ -504,8 +504,13 @@ a:hover {
     font-size: 20px;
 }
 
+.dlt-cart-btn {
+    color: var(--blue-theme);
+    font-size: 20px;
+}
+
 .add-cart-btn:hover,
-.add-wishlist-btn:hover {
+.add-wishlist-btn:hover, .dlt-cart-btn:hover {
     font-size: 24px;
 }
 
@@ -608,7 +613,6 @@ a:hover {
     color: var(--light-grey) !important;
 }
 
-
 /* MY PAGE end*/
 
 
@@ -686,4 +690,8 @@ a:hover {
     margin-bottom: 40px;
     color: var(--blue-theme);
     font-size: 18px;
+}
+.cart-price {
+    font-family: Helvetica;
+    font-size: 12px;
 }

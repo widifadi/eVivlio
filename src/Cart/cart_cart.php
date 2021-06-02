@@ -42,7 +42,7 @@
     $result = $stmt->get_result();
 ?>
 
-<div class="container" style="margin-top:100px; margin-left: 10px;">
+<div class="container" style="margin-top:100px;">
 
     <!-- Order Summary Section -->
     <div class="row">
@@ -98,14 +98,15 @@
                                 </div>
                                 </div>
                             </th>
-                            <td class="border-0 align-middle book-price" style="background:white;" 
-                                id="book-price"><strong><i class="fas fa-euro-sign"></i>&nbsp;<?= $row['price'] ?></strong></td>
-                            <td class="border-0 align-middle book-price" style="background:white;" 
+                            <td class="border-0 align-middle book-price bg-transparent"  
+                                id="book-price"><strong><i class="fas fa-euro-sign">&nbsp;<?= $row['price'] ?></i></strong></td>
+                            <td class="border-0 align-middle book-price bg-transparent"  
                                 id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $row['quantity'] ?>" style="width:75px;"><strong></strong></td>
-                            <td class="border-0 align-middle book-price" style="background:white;">
-                                <a href="#" class="text-dark"><i class="fa fa-trash"></i></a></td>
-                            <td class="border-0 align-middle book-price" style="background:white;">
-                                <a href="#" class="text-dark"><i class="fa fa-heart"></i></a></td>
+                            <td class="border-0 align-middle book-price book-price bg-transparent" >
+                                <a href="#"> <em class="fa fa-trash dlt-cart-btn"></em></a></td>
+                            <td class="border-0 align-middle book-price book-price bg-transparent" >
+                                <a href="#"> <em class="fas fa-heart add-wishlist-btn"></em></a></td>
+
                             </tr>
                                 <?php endwhile; $conn->close(); ?>
                             

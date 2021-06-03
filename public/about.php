@@ -1,5 +1,5 @@
 <?php require_once("../templates/header.php"); ?>
-<div class="container" style="margin-top: 100px; margin-bottom: 20px; margin-left: 10px;">
+<div class="container" style="margin-top: 100px; margin-bottom: 20px; ">
 
     <div class="row">
 

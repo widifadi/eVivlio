@@ -19,7 +19,7 @@ require_once("../templates/header.php");
     $PID = mysqli_real_escape_string($conn, $PID);
 
 
-    $order_date= $_POST['card_expire'];
+    $order_date= $_POST['date'];
     $order_date = mysqli_real_escape_string($conn, $order_date);
 
 
@@ -111,49 +111,50 @@ require_once("../templates/header.php");
 ?>
 
 
-<div class="container " style="margin-top: 100px; margin-bottom: 100px; width: 40%;">
-	<p> <b> Please Proceed to Payment </b> <p>
+<div class="container" class="nav nav-pills mb-3 justify-content-center" style="margin-top: 100px; margin-bottom: 100px; margin: left 100px; width:40%;">
+	
         <form action="payment_process.php" method="post" id="login-form">
-        <div class="form-group">
-                <label for="card_type" class="col-lg-2 control-label">Type</label>
-                <div class="col-lg-10">
-                    <select class="form-control" name="card_type">
+        <p style="text-align: center"> <b> Please Proceed to Payment </b> <p>
+      
+
+
+        <div class="form-group row">
+                <label for="card_type" class="col-sm-3 col-form-label signup-label">Type</label>
+                <div class="col-sm-9">
+                <select class="form-control" name="card_type">
                         <option value="VISA">VISA</option>
                         <option value="MasterCard">MasterCard</option>
                         <option value="American Express">American Express</option>
-                    </select>   
-                </div>
-            <div    class="form-group"> 
-            <label for="card_number" class="col-lg-2 control-label">Number</label>
-            <div class="col-lg-10">
+                    </select>  
+                 </div>
+         </div>
+        <div class="form-group row"> 
+            <label for="card_number" class="col-sm-3 col-form-label signup-label">Number</label>
+             <div class="col-sm-9">
               	<input type="text"  class="form-control" name="card_number">
             </div>
         </div>
-        <div class="form-group">
-            <label for="card_PID" class="col-lg-2 control-label">PID</label>
-            <div class="col-lg-10">
+        <div class="form-group row">
+            <label for="card_PID" class="col-sm-3 col-form-label signup-label">PID</label>
+            <div class="col-sm-9">
               	<input type="text" class="form-control" name="card_PID">
+            </div>
+        </div>
 
-          
+        <div class="form-group row">
+            <label for="date" class="col-sm-3 col-form-label signup-label">Date</label>
+            <div class="col-sm-9">
+              	<input type="date"  class="form-control" name="date">
             </div>
         </div>
-        <div class="form-group">
-            <label for="card_expire" class="col-lg-2 control-label">Date</label>
-            <div class="col-lg-10">
-              	<input type="date" name="card_expire" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="card_owner" class="col-lg-2 control-label">Name</label>
-            <div class="col-lg-10">
+        <div class="form-group row">
+            <label for="card_owner" class="col-sm-3 col-form-label signup-label">Name</label>
+            <div class="col-sm-9">
               	<input type="text" class="form-control" name="card_owner">
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-lg-10 col-lg-offset-2">
-              	<button type="reset" class="btn btn-default">Cancel</button>
-              	<button type="submit" class="btn btn-primary" name="save-order">Purchase</button>
-            </div>
+        </div>  <div class="text-center">
+              	<button type="reset" class="btn btn-primary">Cancel</button>
+              	<button type="submit" style="align-items:center; "  class="btn btn-primary" name="save-order"  >Purchase</button>
         </div>
         </div>
             </div>

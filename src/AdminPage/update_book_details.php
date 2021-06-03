@@ -68,9 +68,5 @@
     }
       
     mysqli_close($conn);
-<<<<<<< HEAD
-    
-=======
->>>>>>> db2cf02ac8c038c283fa16509f5ab7683e5f07fe
 
 ?>

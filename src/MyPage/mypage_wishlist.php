@@ -1,9 +1,12 @@
 <div class="container catalog-breadcrumbs">
     <a href="my_page.php"> My Page </a> 
-    <i class="fas fa-chevron-right" style="color: grey;"></i>
+    <em class="fas fa-chevron-right" style="color: grey;"></em>
     <a href="#"> My Wishlist </a> 
 </div> 
-<div class="col "> 
+<div style="display:<?php if(isset($_SESSION['showAlert'])){echo $_SESSION['showAlert'];} else {echo 'none';} unset($_SESSION['showAlert']); ?>" class="alert alert-success alert-dismissible mt-3">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong> <?php if(isset($_SESSION['message'])){echo $_SESSION['message'];} unset($_SESSION['showAlert']); ?></strong>
+</div>
 <?php 
 
     // declaring global variables
@@ -46,8 +49,6 @@
         foreach ($book_id as $val_check) {
             if ($val_check == $check) {
                 $num_bid += 1;
-            } else {
-                continue;
             }
         }
 
@@ -58,28 +59,36 @@
             array_push($author_fn,$row['author_first_name']);
             array_push($author_ln,$row['author_last_name']);
             array_push($book_year,$row['publishing_year']);
-        } else {
-            continue;
         }
 
     endwhile;
     
     for ($x = 0; $x < count($book_title); $x++) {?> 
-    <div class="row wl-book">
+    <div class="row p-2 wl-book">
         <div class="col-2">
-            <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark"><img src="../assets/img/book-covers/<?= $book_cover[$x]?>" alt="book" width="100px" id="book-cover"></a>
+            <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>">
+                <img src="../assets/img/book-covers/<?= $book_cover[$x]?>" alt="book" width="100px" id="book-cover">
+            </a>
         </div>
-        <div class="col-6">
-            <div class="row mt-3 ml-3">
-                <div id="book-title"><a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark">"<?= $book_title[$x]?>", <?= $author_fn[$x]?>,<?= $author_ln[$x] ?> (<?= $book_year[$x] ?>)</a></div>
-            </div>
+        <div class="col-7">
+            <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>">
+                <span class="book-title">"<?= $book_title[$x]?>"</span>
+                <br>
+                <span class="book-author"><?= $author_fn[$x]?> <?= $author_ln[$x] ?> (<?= $book_year[$x] ?>)</span>
+            </a>
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <div class="row mt-3 ml-3">
-                <em class="text-dark fas fa-cart-plus add-cart-btn" id="cart-<?= $book_id[$x]?>"></em>&nbsp;&nbsp;&nbsp; <!-- error getting the correct book id -->
-                <a href="wishlist_button.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"><em class="fa fa-trash dlt-cart-btn"></em></a>
+                <div class="col">
+                    <em class="fas fa-cart-plus add-cart-btn" id="cart-<?= $book_id[$x]?>"></em><!-- error getting the correct book id -->
+                </div>
+                <div class="col">
+                    <a href="../src/MyPage/wishlist_button.php?remove=<?=$book_id[$x]?>" class="text-danger" 
+                        onclick="return confirm('Are you sure you want to remove this item?');">
+                        <em class="fa fa-trash dlt-cart-btn"></em>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-<?php } $conn->close(); ?>
-</div>
+<?php } ?>

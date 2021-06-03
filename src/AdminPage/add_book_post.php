@@ -38,10 +38,10 @@
                             author_last_name = '$author_lastname' ";
             $author_result = mysqli_query($conn, $query_author);
             if (!mysqli_num_rows($author_result)) {
-            // insert into author table and return id
-            $insert_author = "INSERT INTO author (author_first_name, author_last_name) 
-                        VALUES ('$author_firstname', '$author_lastname') ";
-            $insert_author_result = mysqli_query($conn, $insert_author);
+                // insert into author table and return id
+                $insert_author = "INSERT INTO author (author_first_name, author_last_name) 
+                            VALUES ('$author_firstname', '$author_lastname') ";
+                $insert_author_result = mysqli_query($conn, $insert_author);
             if (!$insert_author_result) {
                 echo "Can't add new author " . mysqli_error($conn);
                 exit;

@@ -323,8 +323,12 @@ a:hover {
 
 /* Hover image on front page start */
 
+<<<<<<< HEAD
 .book-category-div,
 .featured-book-div {
+=======
+.book-category-div {
+>>>>>>> 49d572a11de318c7bd5ef0af16146cc9c296d8ff
     position: relative;
     padding: 20px;
 }
@@ -334,8 +338,12 @@ a:hover {
     padding: 10px;
 }
 
+<<<<<<< HEAD
 .book-category-image,
 .featured-book-image {
+=======
+.book-category-image {
+>>>>>>> 49d572a11de318c7bd5ef0af16146cc9c296d8ff
     opacity: 1;
     display: block;
     width: 100%;
@@ -507,7 +515,7 @@ a:hover {
 }
 
 .dlt-cart-btn {
-    color: var(--blue-theme);
+    color: maroon;
     font-size: 20px;
 }
 
@@ -594,9 +602,8 @@ a:hover {
 }
 
 .wl-book {
-    font-family: 'AmericanTypewriter';
     font-size: 14px;
-    margin: 2px 2px 2px 2px;
+    margin: 2px;
 }
 
 .btn-mypage-menu {

@@ -73,23 +73,34 @@
     } else {
 
         // If the user not logged in
-
-        // Bootstrap alert
-        echo '<div class="alert alert-warning alert-dismissible mt-2">
-                Book added to cart. please register or login to proceed with purchase.
-             </div>';
             
-        // Storing book id in session guest_cart
+       // Initialize variable if not yet set
+        if (!isset($_SESSION['guest_cart'])) {
+            $_SESSION['guest_cart'] = array();
+        }
+
+         // Storing book id in session guest_cart
         if (isset($_POST['book_id'])) {
             // if book_id already exists
-            if ($_SESSION['guest_cart'][$_POST['book_id']]) {
+            if (isset($_SESSION['guest_cart'][$_POST['book_id']])) {
                 // increment book quantity
                 $_SESSION['guest_cart'][$_POST['book_id']]++;
+
+                // Bootstrap alert
+                echo'<div class="alert alert-warning alert-dismissible mt-2" id="success-alert">
+                        Book already added to cart. Please register or login to proceed with purchase.
+                    </div>';
             } else {
                 // add new book 
                 $_SESSION['guest_cart'][$_POST['book_id']] = 1;
+
+                // Bootstrap alert
+                echo'<div class="alert alert-warning alert-dismissible mt-2" id="success-alert">
+                        Book added to cart. Please register or login to proceed with purchase.
+                    </div>';
             }
         }
+        
     } 
 
     // For removing item from cart

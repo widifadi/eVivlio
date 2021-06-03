@@ -61,17 +61,33 @@
         }
     }
     
-    // For removing item from cart
+    // For removing item from wishlist
+    $conn = db_connection();
 
-    if(isset($_GET['remove'])){
-        $id = $_GET['remove'];
+    if (isset($_SESSION['user'])) {
+        $userName = $_SESSION['user'];
 
-        $stmt = $conn->prepare("DELETE FROM wishlist WHERE book_id = ?");
-        $stmt->bind_param("i",$id);
-        $stmt->execute();
+        // getting customer id
+        $sql = "SELECT customer_id FROM user WHERE username = '$userName'";
+        $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()){
+                    $customer = $row['customer_id'];
+                }
+            } else {
+                echo "Error in getting customer id!";
+            }
 
-        $_SESSION['showAlert'] ='block';
-        $_SESSION['message'] = 'Item removed from the wishlist';
-        header('location:cart_cart.php');
+        if(isset($_GET['remove'])){
+            $id = $_GET['remove'];
+
+            $stmt = $conn->prepare("DELETE FROM wishlist WHERE book_id = ? AND customer_id = $customer");
+            $stmt->bind_param("i",$id);
+            $stmt->execute();
+
+            $_SESSION['showAlert'] ='block';
+            $_SESSION['message'] = 'Item removed from the wishlist';
+            header('location: ../../public/my_page.php#wishlist');
+        }
     }
 ?>

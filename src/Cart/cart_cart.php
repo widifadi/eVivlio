@@ -63,27 +63,31 @@
     } 
     else {
         // for guests
-        foreach ($_SESSION['guest_cart'] as $book_item_id => $guest_book_qty) {
+        if (isset($_SESSION['guest_cart'])) {
+
+            foreach ($_SESSION['guest_cart'] as $book_item_id => $guest_book_qty) {
             
-            // query book and get only first author
-            $query_book = "SELECT * FROM book 
-                            JOIN author_tag ON author_tag.book_id = book.book_id 
-                            JOIN author ON author.author_id = author_tag.author_id 
-                            WHERE book.book_id = $book_item_id;";
-            $book_result = mysqli_query($conn, $query_book);
-            $book_row = mysqli_fetch_assoc($book_result);
+                // query book and get only first author
+                $query_book = "SELECT * FROM book 
+                                JOIN author_tag ON author_tag.book_id = book.book_id 
+                                JOIN author ON author.author_id = author_tag.author_id 
+                                WHERE book.book_id = $book_item_id;";
+                $book_result = mysqli_query($conn, $query_book);
+                $book_row = mysqli_fetch_assoc($book_result);
+    
+                array_push($book_title, $book_row['book_title']);
+                array_push($book_cover, $book_row['book_cover']);
+                array_push($author_fn, $book_row['author_first_name']);
+                array_push($author_ln, $book_row['author_last_name']);
+                array_push($book_year, $book_row['publishing_year']);
+                array_push($book_price, $book_row['price']);
+                array_push($book_qty, $guest_book_qty);
+    
+                $grand_total += ($book_row['price'] * $guest_book_qty);
+                $num_items += 1;
+            }
 
-            array_push($book_title, $book_row['book_title']);
-            array_push($book_cover, $book_row['book_cover']);
-            array_push($author_fn, $book_row['author_first_name']);
-            array_push($author_ln, $book_row['author_last_name']);
-            array_push($book_year, $book_row['publishing_year']);
-            array_push($book_price, $book_row['price']);
-            array_push($book_qty, $guest_book_qty);
-
-            $grand_total += ($book_row['price'] * $guest_book_qty);
-            $num_items += 1;
-        }
+        } 
     }
 
 ?>
@@ -139,7 +143,8 @@
             </div>
             <div id="message"></div>
             <?php
-                for ($x = 0; $x < count($book_title); $x++) {
+                if (count($book_title) > 0) {
+                    for ($x = 0; $x < count($book_title); $x++) {
             ?>
             <div class="row p-2 my-1">
                 <div class="col-2">
@@ -172,7 +177,11 @@
                 </div>
             </div>
             <?php 
-                } $conn->close(); 
+                    }
+                } else {
+                    echo "Your Cart is Empty!";
+                }  
+                $conn->close(); 
             ?>
                             
         </div>

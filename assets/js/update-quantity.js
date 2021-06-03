@@ -1,7 +1,6 @@
-$(".itemQty").click(function(e) {
-    e.preventDefault();
+$(".itemQty").on('change',function() {
     var quantity = $(this).attr('value').split("-")[1];
-    location.reload(true);
+    //location.reload(true); the code below will not executed
 
     $.ajax({
         type: 'POST',

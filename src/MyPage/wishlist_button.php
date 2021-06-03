@@ -72,6 +72,6 @@
 
         $_SESSION['showAlert'] ='block';
         $_SESSION['message'] = 'Item removed from the wishlist';
-        header('location:cart_cart.php');
+        header('location:cart_details.php');
     }
 ?>

@@ -76,12 +76,7 @@
         </div>
         <div class="col-2">
             <div class="row mt-3 ml-3">
-                <em class="fas fa-cart-plus add-cart-btn" id="cart-<?php $row['book_id']?>"></em> <!-- error getting the correct book id -->
-            </div>
-        </div>
-        <div class="col-2">
-            <div class="row mt-3 ml-3">
-                <em class="text-dark fas fa-cart-plus add-cart-btn" id="cart-<?= $book_id[$x]?>"></em>&nbsp;&nbsp; <!-- error getting the correct book id -->
+                <em class="text-dark fas fa-cart-plus add-cart-btn" id="cart-<?= $book_id[$x]?>"></em>&nbsp;&nbsp;&nbsp; <!-- error getting the correct book id -->
                 <a href="wishlist_button.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"><em class="fa fa-trash dlt-cart-btn"></em></a>
             </div>
         </div>

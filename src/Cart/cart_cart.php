@@ -1,9 +1,5 @@
 <?php
     //session_start();
-<<<<<<< HEAD
-    require_once ('../../database/database_functions.php');
-    db_connection();
-=======
     require_once ('../database/database_functions.php');
     $conn  = db_connection();
 
@@ -33,31 +29,6 @@
                 echo "Error in getting customer id!";
             }
 
-<<<<<<< HEAD
-    // Fetching information from cart table based on guest ID or customer ID
-    // Add WHERE customer or guest id to select the cart item 
-    // For order summary
-    $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
-                            JOIN author_tag ON author_tag.book_id = book.book_id 
-                            JOIN author ON author.author_id = author_tag.author_id 
-                            WHERE customer_id = $customer");
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $grand_total = 0;
-    $num_items = 0;
-    while ($row = $result->fetch_assoc()):
-        $grand_total += $row['price'];
-        $num_items += 1;
-    endwhile; 
-    // For cart section
-    $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
-                            JOIN author_tag ON author_tag.book_id = book.book_id 
-                            JOIN author ON author.author_id = author_tag.author_id 
-                            WHERE customer_id = $customer");
-    $stmt->execute();
-    $result = $stmt->get_result();
->>>>>>> 8664fbcf48f6050765beefb90493ce7c794337f1
-=======
             // For order summary
             $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
                                     JOIN author_tag ON author_tag.book_id = book.book_id 
@@ -126,7 +97,6 @@
             
 
     }
->>>>>>> c5fae8f1d2c16caedbf4053dd76f11e60810ff66
 ?>
 
 <div class="container" style="margin-top:100px;">
@@ -139,25 +109,6 @@
                 <div class="bg-light rounded-pill px-4 py-3 font-weight-bold">Order summary </div>
                     <div class="p-4">
                         <ul class="list-unstyled mb-4">
-                                <?php
-                                    // Fetching information from cart table based on guest ID or customer ID
-                                    require_once '../../database/database_functions.php';
-                                    $conn = db_connection();
-                                    // Add WHERE customer or guest id to select the cart item 
-                                    $stmt = $conn->prepare("SELECT * FROM cart 
-                                            JOIN book ON book.book_id = cart.book_id 
-                                            JOIN author_tag ON author_tag.book_id = book.book_id 
-                                            JOIN author ON author.author_id = author_tag.author_id 
-                                            WHERE customer_id = 1");
-                                    $stmt->execute();
-                                    $result = $stmt->get_result();
-                                    $grand_total = 0;
-                                    $num_items = 0;
-                                    while ($row = $result->fetch_assoc()):
-                                        $grand_total += $row['price'];
-                                        $num_items += 1;
-                                    endwhile; 
-                                ?>
                         <li class="d-flex justify-content-between py-3 border-bottom">
                             <strong class="text-muted" id="cart-number">Number of positions </strong>
                             <strong><?= number_format($num_items,0) ?></strong></li>
@@ -166,9 +117,6 @@
                             <h5 class="font-weight-bold"><b><i class="fas fa-euro-sign"></i>
                             &nbsp; <?= number_format($grand_total,2) ?></b></h5>
                         </li>
-<<<<<<< HEAD
-                        </ul><a href="../../public/check_out.php" class="btn btn-warning rounded-pill py-2 btn-block">Procceed to checkout</a>
-=======
                         <?php 
                             if (isset($_SESSION['user'])) {
                         ?>
@@ -183,7 +131,6 @@
                         <?php
                             }
                         ?>
->>>>>>> 8664fbcf48f6050765beefb90493ce7c794337f1
                     </div>
                 </div>
             </div>
@@ -199,22 +146,8 @@
                 <div class="table-responsive">
                     <table class="table" >
                         <tbody >
-<<<<<<< HEAD
-                                <?php
-                                    // Fetching information from cart table 
-                                    require_once '../../database/database_functions.php';
-                                    $conn = db_connection();
-                                    $stmt = $conn->prepare("SELECT * FROM cart");
-                                    $stmt->execute();
-                                    $result = $stmt->get_result();
-                                    $grand_total = 0;
-                                    while ($row = $result->fetch_assoc()):
-                                ?>
-                            <tr >
-=======
                                 <?php for ($x = 0; $x < count($book_title); $x++) { ?> <!-- for fetching the session array this should be consider to change! -->
                             <tr>
->>>>>>> c5fae8f1d2c16caedbf4053dd76f11e60810ff66
                             <th scope="row" class="border-0" >
                                 <div class="p-2">
                                 <img src="../assets/img/book-covers/<?= $book_cover[$x] ?>" alt="book" width="100px" id="book-cover">

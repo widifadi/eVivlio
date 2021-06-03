@@ -505,7 +505,7 @@ a:hover {
 }
 
 .dlt-cart-btn {
-    color: var(--yellow-theme);
+    color: maroon;
     font-size: 20px;
 }
 
@@ -591,9 +591,8 @@ a:hover {
 }
 
 .wl-book {
-    font-family: 'AmericanTypewriter';
     font-size: 14px;
-    margin: 2px 2px 2px 2px;
+    margin: 2px;
 }
 
 .btn-mypage-menu {

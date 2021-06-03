@@ -43,11 +43,12 @@
     if(isset($_POST['quantity'])){
         $qty = $_POST['quantity'];
         $bid = $_POST['book_id'];
+        $bprice = $_POST['price'];
 
-        $tprice = $qty*$pprice;
+        $bprice = $qty*$pprice;
 
-        $stmt = $conn->prepare("UPDATE cart SET qty=?, total_price=? WHERE id=? AND customer_id = $customer");
-        $stmt->bind_param("isi",$qty,$tprice,$pid);
+        $stmt = $conn->prepare("UPDATE cart SET quantity=?, total_price=? WHERE book_id=? AND customer_id = $customer");
+        $stmt->bind_param("isi",$qty,$bprice,$bid);
         $stmt->execute();
     }
 ?>

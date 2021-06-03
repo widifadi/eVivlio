@@ -64,7 +64,7 @@ $user_name = $_SESSION['user'];
     </div>
     <div class="text-center">
         <button class="btn yellow-theme-btn" type="submit" name="save-customer-shipping-btn"
-            id="save-customer-shipping-btn">Save Details and start Payment</button>                                 
+            id="save-customer-shipping-btn">Save Details and Start Payment Process</button>                                 
     </div>
     </form>
 </div>

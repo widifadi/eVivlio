@@ -97,7 +97,7 @@
 
     <!-- Order Summary Section -->
     <div class="row">
-        <div class="col-4" style="">
+        <div class="col-4">
             <div class="row">
                 <div class="col">
                 <div class="bg-light rounded-pill px-4 py-3 font-weight-bold">Order summary </div>
@@ -108,7 +108,7 @@
                             <strong><?= number_format($num_items,0) ?></strong></li>
                         <li class="d-flex justify-content-between py-3 border-bottom">
                             <strong class="text-muted" id="cart-total">Total</strong>
-                            <h5 class="font-weight-bold"><b>€ <?php echo $grand_total ?></b></h5>
+                            <h5 class="font-weight-bold"><strong>€ <?php echo $grand_total ?></strong></h5>
                         </li>
                         <?php 
                             if (isset($_SESSION['user'])) {
@@ -149,27 +149,28 @@
             ?>
             <div class="row p-2 my-1">
                 <div class="col-2">
-                    <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark">
+                    <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark bid">
                         <img src="../assets/img/book-covers/<?= $book_cover[$x] ?>" alt="book" width="100px" id="book-cover">
                     </a>  
                 </div>
                 <div class="col-4">
-                    <div class="ml-3 d-inline-block align-middle">
-                        <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark">
-                            <div class="book-title">
-                                "<?= $book_title[$x] ?>", <?= $author_fn[$x], $author_ln[$x] ?> (<?= $book_year[$x] ?>)
-                            </div>
-                        </a>
-                    </div>
+                    <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>">
+                        <span class="book-title">"<?= $book_title[$x] ?>"</span>
+                        <br>
+                        <span class="book-author">
+                            <?= $author_fn[$x], $author_ln[$x] ?> (<?= $book_year[$x] ?>)
+                        </span>
+                    </a>
                 </div>
-                <div class="col-2">
+                <div class="col-2 bprice">
                     <strong>€ <?php echo $book_price[$x] ?></strong>
                 </div>
                 <div class="col-2">
-                    <input type="number" class="form-control itemQty" value="quantity-<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong>
+                    <input type="number" class="form-control itemQty" 
+                        value="<?= $book_qty[$x] ?>" style="width:75px;">
                 </div>
                 <div class="col-2">
-                    <a href="add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" 
+                    <a href="../src/Cart/update_cart.php/" class="text-danger" 
                         onclick="return confirm('Are you sure you want to remove this item?');">
                         <em class="fa fa-trash dlt-cart-btn"></em>
                     </a>

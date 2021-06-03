@@ -75,44 +75,21 @@
         // If the user not logged in
 
         // Bootstrap alert
-        echo'<div class="alert alert-danger alert-dismissible mt-2" id="success-alert">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>You are a guest, please log-in!</strong>
-            </div>';
+        echo '<div class="alert alert-warning alert-dismissible mt-2">
+                Book added to cart. please register or login to proceed with purchase.
+             </div>';
             
-        // Storing book id in session
+        // Storing book id in session guest_cart
         if (isset($_POST['book_id'])) {
-
-            if (!empty($_SESSION['book_id'])) {
-                $acol = array_column($_SESSION['book_id'], 'guest_bookID');
-                if(in_array($_POST['book_id'], $acol)) {
-    
-                    echo "<script>alert('Book already added!')</script>";
-                    
-                }
+            // if book_id already exists
+            if ($_SESSION['guest_cart'][$_POST['book_id']]) {
+                // increment book quantity
+                $_SESSION['guest_cart'][$_POST['book_id']]++;
             } else {
-                $bookarray = array('guest_bookID' => $_POST['book_id']);
-                $_SESSION['book_id'][] = $bookarray;
+                // add new book 
+                $_SESSION['guest_cart'][$_POST['book_id']] = 1;
             }
-
         }
-
-        //$_SESSION['book_id'][]=$bid;
-        //$_SESSION['book_qty'][]=1;
-
-        // Plan B: Creating random guest session
-        /* if($_SESSION['guestID']==0){
-                $_SESSION['guestID']=rand()*1000;
-                $sql = "SELECT guest_id FROM cart ";
-                $result = $conn->query($sql);
-                if ($result) {
-                    while ($row = $result->fetch_assoc()):
-                        
-                    endwhile;
-                } else {
-                    
-                } 
-            }*/
     } 
 
     // For removing item from cart

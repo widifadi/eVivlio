@@ -101,9 +101,6 @@
                 </a>
 
                 <?php
-                        $_SESSION['book_id'] = array();
-                        $_SESSION['book_qty'] = array();
-                        //$_SESSION['guestID']=0;
                     }
 
                     // IF a user is logged in

@@ -4,6 +4,7 @@
     $conn  = db_connection();
 
     // declaring global variables
+    $book_id = array();
     $book_title = array();
     $book_cover = array();
     $author_fn = array();
@@ -36,6 +37,7 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()):
+                array_push($book_id,$row['book_id']);
                 array_push($book_title,$row['book_title']);
                 array_push($book_cover,$row['book_cover']);
                 array_push($author_fn,$row['author_first_name']);
@@ -64,7 +66,7 @@
         $max = sizeof($_SESSION['book_id']);
 
         if ($max > 0) {
-            for ($x=0;$x<1;$x++) {
+            for ($x=0;$x<$max;$x++) {
 
                 $guest_bookID = $_SESSION['book_id'][$x];
                 $guest_bookQTY = $_SESSION['book_qty'][$x];
@@ -78,7 +80,7 @@
                 $row = $result->fetch_assoc();
 
 
-                array_push($book_title,$row['book_id']);
+                array_push($book_title,$row['book_title']);
                 array_push($book_cover,$row['book_cover']);
                 array_push($author_fn,$row['author_first_name']);
                 array_push($author_ln,$row['author_last_name']);
@@ -118,14 +120,14 @@
                         <?php 
                             if (isset($_SESSION['user'])) {
                         ?>
-                        </ul><a href="#" class="btn btn-warning rounded-pill py-2 btn-block">Procceed to checkout</a>
+                        </ul><a href="check_out.php" class="btn btn-warning rounded-pill py-2 btn-block">Procceed to checkout</a>
                         <?php
                             }
                         ?>
                         <?php 
                             if (!isset($_SESSION['user'])) {
                         ?>
-                        </ul><a href="#" class="btn btn-warning rounded-pill py-2 btn-block">Login or Register</a>
+                        </ul><a href="signup_login.php" class="btn btn-warning rounded-pill py-2 btn-block">Login or Register</a>
                         <?php
                             }
                         ?>
@@ -139,6 +141,7 @@
             <div class="container catalog-breadcrumbs">
                 <a href="cart.php"> My Cart </a> 
             </div>
+            <div id="message"></div>
             <div class="row">
                 <div class="table-responsive">
                     <table class="table" >
@@ -158,9 +161,10 @@
                             <td class="border-0 align-middle book-price bg-transparent"  
                                 id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
-                                <a href="#"> <em class="fa fa-trash dlt-cart-btn"></em></a></td>
+                                <a href="add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"> <em class="fa fa-trash dlt-cart-btn"></em></a></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
-                                <a href="#"> <em class="fas fa-heart add-wishlist-btn"></em></a></td>
+                                <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id[$x]?>"></em>
+                            </td>
 
                             </tr>
                                 <?php } $conn->close(); ?>

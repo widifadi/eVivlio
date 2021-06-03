@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-<?php endwhile; $conn->close(); ?>
+<?php endwhile; ?>
 </div>
 
 <!-- Need to add button functionality to add to cart from wishlist and to delete item from wishlist -->

@@ -5,16 +5,6 @@
 </div> 
 <?php 
 
-    /*if(session_id() == ''){
-        //session has not started
-        session_start();
-
-        // This file is used for storing data coming from client to db
-        require "../../database/database_functions.php";
-        $conn = db_connection();
-
-    }*/
-
     // declaring global variables
     $book_id = array();
     $book_title = array();

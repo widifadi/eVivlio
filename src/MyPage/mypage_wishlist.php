@@ -30,17 +30,23 @@
     $stmt->execute();
     $result = $stmt->get_result();
     while ($row = $result->fetch_assoc()): ?> 
-    <div class="row wl-book">
+    <div class="row wl-book mt-4">
         <div class="col-2">
             <img src="../assets/img/book-covers/<?= $row['book_cover'] ?>" alt="book" width="100px" id="book-cover">
         </div>
-        <div class="col-4">
+        <div class="col-6">
             <div class="row mt-3 ml-3">
                 <div id="book-title"> <a href="#" class="text-dark">"<?= $row['book_title'] ?>", <?= $row['author_first_name'], $row['author_last_name'] ?> (<?= $row['publishing_year'] ?>)</a></div>
             </div>
+        </div>
+        <div class="col-2">
             <div class="row mt-3 ml-3">
-                <em class="text-dark fas fa-cart-plus add-cart-btn" id="cart-<?php $row['book_id']?>"></em> <!-- error getting the correct book id -->
-                <a href="#" class="text-dark ml-5"><i class="fa fa-trash"></i></a>
+                <em class="fas fa-cart-plus add-cart-btn" id="cart-<?php $row['book_id']?>"></em> <!-- error getting the correct book id -->
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="row mt-3 ml-3">
+                <em class="fa fa-trash dlt-cart-btn"></em>
             </div>
         </div>
     </div>

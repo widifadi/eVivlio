@@ -40,6 +40,7 @@
     <script src="../assets/js/search.js"></script>
     <script src="../assets/js/wishlist.js"></script>    
     <script src="../assets/js/cart.js"></script>  
+    <script src="../assets/js/feedback.js"></script> 
 
 </body>
 </html>

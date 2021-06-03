@@ -4,12 +4,12 @@
     <a href="#"> Feedback </a> 
 </div> 
 <div class="container mt-3">
-    <div class="faq-text" id="fbText"> Did not find an answer for your question?
+    <div class="faq-text" id="fb-text"> Did not find an answer for your question?
      Or want to send some feedback on your eVivlio experience?
       You can use the form below and we will get to you shortly! </div>
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-12 pb-8">
-            <form id="feedback-form" action="../src/ContactUs/feedback_post.php" method="POST">
+            <form id="feedback-form" >
                 <div class="card border-primary rounded-0" style="border-color: #F2C84B !important;">
                     <div class="card-header p-0">
                         <div class="bg text-white text-center py-2" style="background: #F2C84B;">
@@ -54,7 +54,6 @@
                     </div>
 
                 </div>
-                <div class="alert feedback-response" role="alert" style="display: none;"></div>
             </form>
             
 

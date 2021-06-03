@@ -173,8 +173,13 @@
                         onclick="return confirm('Are you sure you want to remove this item?');">
                         <em class="fa fa-trash dlt-cart-btn"></em>
                     </a>
-
+                    <?php 
+                        if (isset($_SESSION['user'])) {
+                    ?>
                     <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id[$x]?>"></em>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
             <?php 

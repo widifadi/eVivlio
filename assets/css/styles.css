@@ -322,7 +322,7 @@ a:hover {
 
 /* Hover image on front page start */
 
-.book-category-div, .featured-book-div {
+.book-category-div {
     position: relative;
     padding: 20px;
 }
@@ -332,7 +332,7 @@ a:hover {
     padding: 10px;
 }
 
-.book-category-image, .featured-book-image {
+.book-category-image {
     opacity: 1;
     display: block;
     width: 100%;
@@ -505,7 +505,7 @@ a:hover {
 }
 
 .dlt-cart-btn {
-    color: var(--blue-theme);
+    color: var(--yellow-theme);
     font-size: 20px;
 }
 

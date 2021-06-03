@@ -3,27 +3,6 @@ require_once("../templates/header.php");
 
 if (isset($_SESSION['user'])|| $_SESSION['admin_permission'] == 0)
     {?>
-
-     <!--   <div class="container " style="margin-top: 100px; margin-bottom: -100px; width: 60%;">
-
-		<p> <b> Please check the order details </b></p>
- 
-        <div class="tab-content" id="managebook-content" style="border: solid 1px #F2F2F2;">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead class="thead-light">
-                            <tr>
-                                <th scope="col">Item ID</th>
-                                <th scope="col">Book Title</th>  
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Item Price</th>
-                                <th scope="col">Total Price</th>
-                                                             
-                        </tr>
-                    </thead>
-                    <tbody>
-                </div>      
-            </div> -->
             <?php
     }
                 require_once("../database/database_functions.php");
@@ -58,11 +37,6 @@ if (isset($_SESSION['user'])|| $_SESSION['admin_permission'] == 0)
          
         </div>   
          
-     
-<div class="text-right">
-        <button class="btn blue-theme-btn" type="submit" name="save-order"
-            id="update-customer-btn">Save Order</button>                                 
-    </div>
     </div>
 <!-- The Customer Shipment Details Start from here ! -->
 

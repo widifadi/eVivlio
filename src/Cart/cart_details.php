@@ -142,7 +142,10 @@
             <div class="container catalog-breadcrumbs">
                 <a href="cart.php"> My Cart </a> 
             </div>
-            <div id="message"></div>
+            <div style="display:<?php if(isset($_SESSION['showAlert'])){echo $_SESSION['showAlert'];} else {echo 'none';} unset($_SESSION['showAlert']); ?>" class="alert alert-success alert-dismissible mt-3">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong> <?php if(isset($_SESSION['message'])){echo $_SESSION['message'];} unset($_SESSION['showAlert']); ?></strong>
+            </div>
             <?php
                 if (count($book_title) > 0) {
                     for ($x = 0; $x < count($book_title); $x++) {

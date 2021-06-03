@@ -38,6 +38,11 @@
         // if you are guest
         if(isset($_GET['remove'])){
             $id = $_GET['remove'];
+
+            unset($_SESSION['guest_cart'][$id]);
+            $_SESSION['showAlert'] ='block';
+            $_SESSION['message'] = 'Item removed from the cart';
+            header('location:../../public/cart.php');
         }
 
     }

@@ -174,9 +174,9 @@
                             <td class="border-0 align-middle book-price bg-transparent"  
                                 id="book-price"><strong><i class="fas fa-euro-sign">&nbsp;<?= $book_price[$x] ?></i></strong></td>
                             <td class="border-0 align-middle book-price bg-transparent"  
-                                id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong></td>
+                                id="book-quantity"><input type="number" class="form-control itemQty" value="quantity-<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
-                                <a href="../src/Cart/add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"><em class="fa fa-trash dlt-cart-btn"></em></a></td>
+                                <a href="./src/Cart/update_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"><em class="fa fa-trash dlt-cart-btn"></em></a></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
                                 <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id[$x]?>"></em>
                             </td>

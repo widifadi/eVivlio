@@ -7,9 +7,14 @@ $(".add-cart-btn").click(function(e) {
         url: '../src/Cart/add_cart.php',
         data: { "book_id": book_id },
         success: function(response) {
-            $("#message").html(response).delay(4000).slideUp(200, function() {
-                $(this).alert('close');
+            $("#message").html(response);
+            $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                $("#success-alert").slideUp(500);
             });
+            
+            /*window.setTimeout(function(){
+                $("#success-alert").alert('close');
+            },2000);*/
             console.log(response)
         }
     });

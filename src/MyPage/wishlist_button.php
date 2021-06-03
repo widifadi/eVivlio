@@ -42,7 +42,7 @@
                 if ($conn->query($sql) === TRUE) {
 
                     // Bootsrap alert
-                    echo'<div class="alert alert-success alert-dismissible mt-2">
+                    echo'<div class="alert alert-success alert-dismissible mt-2" id="success-alert">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <strong>Book added to your wishlist!</strong>
                         </div>';
@@ -52,12 +52,26 @@
             } else {
 
                 // Bootstrap alert
-                echo'<div class="alert alert-danger alert-dismissible mt-2">
+                echo'<div class="alert alert-danger alert-dismissible mt-2" id="success-alert">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Book already added to your wishlist!</strong>
                     </div>';
 
             }
         }
-    } 
+    }
+    
+    // For removing item from cart
+
+    if(isset($_GET['remove'])){
+        $id = $_GET['remove'];
+
+        $stmt = $conn->prepare("DELETE FROM wishlist WHERE book_id = ?");
+        $stmt->bind_param("i",$id);
+        $stmt->execute();
+
+        $_SESSION['showAlert'] ='block';
+        $_SESSION['message'] = 'Item removed from the wishlist';
+        header('location:cart_cart.php');
+    }
 ?>

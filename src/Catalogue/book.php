@@ -45,7 +45,6 @@
     $conn->close();
 
 ?>
-<div id="message"></div>
 <div class="row book-details" style="padding: 5px; margin-top:10px;">
     <div class="col-4 book-detail-div text-center">
         <?php

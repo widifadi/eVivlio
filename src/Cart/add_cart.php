@@ -53,7 +53,7 @@
                 if ($conn->query($sql) === TRUE) {
                 
                     // Bootsrap alert
-                    echo'<div class="alert alert-success alert-dismissible mt-2">
+                    echo'<div class="alert alert-success alert-dismissible mt-2" id="success-alert">
                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                             <strong>Book added to your cart!</strong>
                         </div>';
@@ -63,7 +63,7 @@
             } else {
 
                 // Bootstrap alert
-                echo'<div class="alert alert-danger alert-dismissible mt-2">
+                echo'<div class="alert alert-danger alert-dismissible mt-2" id="success-alert">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Book already added to your cart!</strong>
                     </div>';
@@ -75,7 +75,7 @@
         // If the user not logged in
 
         // Bootstrap alert
-        echo'<div class="alert alert-danger alert-dismissible mt-2">
+        echo'<div class="alert alert-danger alert-dismissible mt-2" id="success-alert">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>You are a guest, please log-in!</strong>
             </div>';
@@ -97,12 +97,11 @@
 
         }
 
-        
-        
-
         //$_SESSION['book_id'][]=$bid;
         //$_SESSION['book_qty'][]=1;
-            /* if($_SESSION['guestID']==0){
+
+        // Plan B: Creating random guest session
+        /* if($_SESSION['guestID']==0){
                 $_SESSION['guestID']=rand()*1000;
                 $sql = "SELECT guest_id FROM cart ";
                 $result = $conn->query($sql);
@@ -130,5 +129,18 @@
         header('location:cart_cart.php');
     }
 
+    // For updating the quantity
+
+    if(isset($_POST['qty'])){
+        $qty = $_POST['qty'];
+        $pid = $_POST['pid'];
+        $pprice = $_POST['pprice'];
+
+        $tprice = $qty*$pprice;
+
+        $stmt = $conn->prepare("UPDATE cart SET qty=?, total_price=? WHERE id=?");
+        $stmt->bind_param("isi",$qty,$tprice,$pid);
+        $stmt->execute();
+    }
     
 ?>

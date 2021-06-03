@@ -3,7 +3,6 @@
 ?>
 
 <div class="container" style="margin-top: 100px">
-<div id="message"></div>
     <div class="row">
         <div class="col-3">
             <?php require_once("../src/Catalogue/categories.php"); ?>

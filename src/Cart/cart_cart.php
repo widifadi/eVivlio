@@ -165,9 +165,9 @@
                             <tr>
                             <th scope="row" class="border-0" >
                                 <div class="p-2">
-                                <img src="../assets/img/book-covers/<?= $book_cover[$x] ?>" alt="book" width="100px" id="book-cover">
+                                    <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark"><img src="../assets/img/book-covers/<?= $book_cover[$x] ?>" alt="book" width="100px" id="book-cover"></a>
                                 <div class="ml-3 d-inline-block align-middle">
-                                    <a href="#" class="text-dark"><div class="book-title" id="book-title">"<?= $book_title[$x] ?>", <?= $author_fn[$x], $author_ln[$x] ?> (<?= $book_year[$x] ?>)</div></a>
+                                    <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark"><div class="book-title" id="book-title">"<?= $book_title[$x] ?>", <?= $author_fn[$x], $author_ln[$x] ?> (<?= $book_year[$x] ?>)</div></a>
                                 </div>
                                 </div>
                             </th>
@@ -176,7 +176,7 @@
                             <td class="border-0 align-middle book-price bg-transparent"  
                                 id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
-                                <a href="add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"><em class="fa fa-trash dlt-cart-btn"></em></a></td>
+                                <a href="../src/Cart/add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"><em class="fa fa-trash dlt-cart-btn"></em></a></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
                                 <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id[$x]?>"></em>
                             </td>

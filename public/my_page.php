@@ -21,17 +21,16 @@
         <div class="col-9">
 
             <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" style="margin-left:100px" id="personal_details" role="tabpanel" aria-labelledby="v-pills-personal-tab">
+                <div class="tab-pane fade show active" id="personal_details" role="tabpanel" aria-labelledby="v-pills-personal-tab">
                     <?php include("../src/MyPage/mypage_details.php") ?>
                 </div>
 
 
-                <div class="tab-pane fade" style="margin-left:100px" id="wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
+                <div class="tab-pane fade" id="wishlist" role="tabpanel" aria-labelledby="v-pills-wishlist-tab">
                     <?php include("../src/MyPage/mypage_wishlist.php") ?>
                 </div>
 
-
-                <div class="tab-pane fade" style="margin-left:100px" id="orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
+                <div class="tab-pane fade" id="orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
                     <?php include("../src/MyPage/mypage_order_history.php") ?>
                 </div>
             </div>

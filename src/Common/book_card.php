@@ -22,7 +22,8 @@
             <span class="book-title"><?php echo $book_item['book_title'] ?></span> <br>
             <span class="book-author">
                 <?php echo $author ?>
-                (<?php echo $book_item['publishing_year'] ?>)</span>
+                (<?php echo $book_item['publishing_year'] ?>)
+            </span>
             <br>
             <span class="badge badge-pill badge-secondary book-price">€ <?php echo $book_item['price'] ?></span>
         </a>

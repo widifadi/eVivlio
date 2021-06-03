@@ -1,8 +1,9 @@
 <div class="container catalog-breadcrumbs">
     <a href="my_page.php"> My Page </a> 
-    <i class="fas fa-chevron-right" style="color: grey;"></i>
+    <em class="fas fa-chevron-right" style="color: grey;"></em>
     <a href="#"> Personal Details </a> 
-</div>     
+</div>
+
 <!---DETAILS TABS---->
 <ul class="nav nav-tabs" id="myPageTab" role="tablist">
     <li class="nav-item">
@@ -16,28 +17,25 @@
         aria-controls="edit" aria-selected="false">Edit</a>
     </li>
 </ul>
+
 <!--- DETAILS TABS CONTENT---->
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="preview" role="tabpanel" 
         aria-labelledby="preview-tab" style="font-size: 14px; padding: 10px;">
         <!-- PHP database connection -->
         <?php
-
             require_once ("../database/database_functions.php");
             $conn=db_connection();
 
-
             $user_name = $_SESSION['user'];
             
-            // TODO select customer table WHERE username = username
+            // select customer table WHERE username = username
             $customer_query = "SELECT * FROM customer 
-            INNER JOIN user 
-            ON customer.customer_id=user.customer_id
-             WHERE username='$user_name'"; 
+                                INNER JOIN user 
+                                ON customer.customer_id=user.customer_id
+                                WHERE username='$user_name'"; 
             $customer_result = mysqli_query($conn, $customer_query);
             $customer_details = mysqli_fetch_assoc($customer_result);
-            
-            
 
         ?>
         <div class="row mt-3">

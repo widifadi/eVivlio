@@ -1,11 +1,11 @@
-<?php require_once("../../database/database_functions.php");
-session_start();
-$conn=db_connection();
-session_start();
-$bookid=$_GET['bookid'];
-$bookid=mysqli_real_escape_string($conn,$bookid);
-$bookReview=mysqli_real_escape_string($conn,$_POST['review']);
-$bookRating=mysqli_real_escape_string($conn,$_POST['rating']);
+<?php 
+    require_once("../../database/database_functions.php");
+    session_start();
+    $conn=db_connection();
+    $bookid=$_GET['bookid'];
+    $bookid=mysqli_real_escape_string($conn,$bookid);
+    $bookReview=mysqli_real_escape_string($conn,$_POST['review']);
+    $bookRating=mysqli_real_escape_string($conn,$_POST['rating']);
 
     if(isset($_POST['submit-review-btn'])){
         if(isset($_SESSION['user'])){
@@ -24,8 +24,12 @@ $bookRating=mysqli_real_escape_string($conn,$_POST['rating']);
         VALUES ('$bookid','$bookRating', '$bookReview')";
     }
 
-}
-mysqli_close($conn);
-header("location:book.php?bookid=$bookid");
+    mysqli_query($conn,$insertReviewQuery);
+
+    }
+
+    mysqli_close($conn);
+
+    header("location: ../../public/book_details.php?bookid=$bookid#reviews");
 
 ?>

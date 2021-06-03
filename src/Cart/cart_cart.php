@@ -1,5 +1,4 @@
 <?php
-    session_start();
     require_once ('../database/database_functions.php');
     $conn  = db_connection();
 
@@ -144,11 +143,13 @@
             ?>
             <div class="row p-2 my-1">
                 <div class="col-2">
-                    <img src="../assets/img/book-covers/<?= $book_cover[$x] ?>" alt="book" width="100px" id="book-cover">                </div>
+                    <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark">
+                        <img src="../assets/img/book-covers/<?= $book_cover[$x] ?>" alt="book" width="100px" id="book-cover">
+                    </a>  
+                </div>
                 <div class="col-4">
                     <div class="ml-3 d-inline-block align-middle">
-                        <!-- LINK??? -->
-                        <a href="#" class="text-dark">
+                        <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark">
                             <div class="book-title">
                                 "<?= $book_title[$x] ?>", <?= $author_fn[$x], $author_ln[$x] ?> (<?= $book_year[$x] ?>)
                             </div>
@@ -159,7 +160,7 @@
                     <strong>€ <?php echo $book_price[$x] ?></strong>
                 </div>
                 <div class="col-2">
-                    <input type="number" class="form-control itemQty" value="<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong>
+                    <input type="number" class="form-control itemQty" value="quantity-<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong>
                 </div>
                 <div class="col-2">
                     <a href="add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" 

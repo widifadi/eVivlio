@@ -37,27 +37,36 @@
             $stmt->execute();
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()):
-                array_push($book_id,$row['book_id']);
-                array_push($book_title,$row['book_title']);
-                array_push($book_cover,$row['book_cover']);
-                array_push($author_fn,$row['author_first_name']);
-                array_push($author_ln,$row['author_last_name']);
-                array_push($book_year,$row['publishing_year']);
-                array_push($book_price,$row['price']);
-                array_push($book_qty,$row['quantity']);
 
-                $grand_total += $row['total_price'];
-                $num_items += 1;
+                // Initialize book id check
+                $check = $row['book_id'];
+                // Check if the book id with customer id already exist in the wishlist
+                $num_bid = 0;
+                foreach ($book_id as $val_check) {
+                    if ($val_check == $check) {
+                        $num_bid += 1;
+                    } else {
+                        continue;
+                    }
+                } 
+
+                if ($num_bid <= 0) {
+                    array_push($book_id,$row['book_id']);
+                    array_push($book_title,$row['book_title']);
+                    array_push($book_cover,$row['book_cover']);
+                    array_push($author_fn,$row['author_first_name']);
+                    array_push($author_ln,$row['author_last_name']);
+                    array_push($book_year,$row['publishing_year']);
+                    array_push($book_price,$row['price']);
+                    array_push($book_qty,$row['quantity']);
+
+                    $grand_total += $row['total_price'];
+                    $num_items += 1;
+                } else {
+                    continue;
+                }
 
             endwhile; 
-            /*// For cart section
-            $stmt = $conn->prepare("SELECT * FROM cart JOIN book ON book.book_id = cart.book_id 
-                                    JOIN author_tag ON author_tag.book_id = book.book_id 
-                                    JOIN author ON author.author_id = author_tag.author_id 
-                                    WHERE customer_id = $customer");
-            $stmt->execute();
-            $result = $stmt->get_result();*/
-
     } 
     else {
 
@@ -79,17 +88,23 @@
                 $result = $stmt->get_result();
                 $row = $result->fetch_assoc();
 
+                // Check if there is any repeating id 
+                if (!$row['book_id']) {
 
-                array_push($book_title,$row['book_title']);
-                array_push($book_cover,$row['book_cover']);
-                array_push($author_fn,$row['author_first_name']);
-                array_push($author_ln,$row['author_last_name']);
-                array_push($book_year,$row['publishing_year']);
-                array_push($book_price,$row['price']);
-                array_push($book_qty,$guest_bookQTY);
+                    array_push($book_title,$row['book_title']);
+                    array_push($book_cover,$row['book_cover']);
+                    array_push($author_fn,$row['author_first_name']);
+                    array_push($author_ln,$row['author_last_name']);
+                    array_push($book_year,$row['publishing_year']);
+                    array_push($book_price,$row['price']);
+                    array_push($book_qty,$guest_bookQTY);
 
-                $grand_total += $row['price'];
-                $num_items += 1;
+                    $grand_total += $row['price'];
+                    $num_items += 1;
+
+                } else {
+                    continue;
+                }
             }
         } else {
             echo "Nothing in cart!";
@@ -161,7 +176,7 @@
                             <td class="border-0 align-middle book-price bg-transparent"  
                                 id="book-quantity"><input type="number" class="form-control itemQty" value="<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
-                                <a href="add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"> <em class="fa fa-trash dlt-cart-btn"></em></a></td>
+                                <a href="add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"><em class="fa fa-trash dlt-cart-btn"></em></a></td>
                             <td class="border-0 align-middle book-price book-price bg-transparent" >
                                 <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id[$x]?>"></em>
                             </td>

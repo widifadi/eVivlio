@@ -49,6 +49,7 @@
                     </div>
                 </div>
             </div>
+            <div id="message" class="d-flex justify-content-center"></div>
 
             <div class="navbar-nav ml-auto">
                 <!-- IF a user that is not admin is logged in -->

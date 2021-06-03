@@ -214,6 +214,7 @@ a:hover {
     /* border: 1px solid salmon; */
 }
 
+
 /* Front page end */
 
 
@@ -322,7 +323,8 @@ a:hover {
 
 /* Hover image on front page start */
 
-.book-category-div, .featured-book-div {
+.book-category-div,
+.featured-book-div {
     position: relative;
     padding: 20px;
 }
@@ -332,7 +334,8 @@ a:hover {
     padding: 10px;
 }
 
-.book-category-image, .featured-book-image {
+.book-category-image,
+.featured-book-image {
     opacity: 1;
     display: block;
     width: 100%;
@@ -378,16 +381,15 @@ a:hover {
     color: black;
 }
 
-.book-category-div:hover .book-category-image, 
+.book-category-div:hover .book-category-image,
 .featured-book-div:hover .featured-book-image {
     opacity: 0.3;
 }
 
-.book-category-div:hover .book-category-middle, 
+.book-category-div:hover .book-category-middle,
 .featured-book-div:hover .featured-book-middle {
     opacity: 1;
 }
-
 
 .update-book,
 .update-user,
@@ -510,7 +512,8 @@ a:hover {
 }
 
 .add-cart-btn:hover,
-.add-wishlist-btn:hover, .dlt-cart-btn:hover {
+.add-wishlist-btn:hover,
+.dlt-cart-btn:hover {
     font-size: 24px;
 }
 
@@ -613,6 +616,7 @@ a:hover {
     color: var(--light-grey) !important;
 }
 
+
 /* MY PAGE end*/
 
 
@@ -691,6 +695,7 @@ a:hover {
     color: var(--blue-theme);
     font-size: 18px;
 }
+
 .cart-price {
     font-family: Helvetica;
     font-size: 12px;

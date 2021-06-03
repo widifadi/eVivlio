@@ -8,7 +8,7 @@ $user_name = $_SESSION['user'];
         ?>
       	
 	<?php
-	$customer_query = "SELECT customer.first_name, customer.last_name, customer.customer_id
+	$customer_query = "SELECT customer.email, customer.first_name, customer.last_name, customer.customer_id
 					    FROM user
 						JOIN
 						customer ON customer.customer_id=user.customer_id 
@@ -19,6 +19,7 @@ $user_name = $_SESSION['user'];
 
 			$customerID= $result['customer_id']; 
 			$CustomerName= $result['first_name']. " ". $result['last_name'];
+			$customerEmail= $result['email']; 
 
 						
 	 $order_query= "SELECT	customer_order.order_id, customer_order.order_date
@@ -60,6 +61,10 @@ $user_name = $_SESSION['user'];
 					$bookTitles[$index]  = $orderBookitem['book_title'];	
 					$index++;				 
 			 }
+
+
+			 require_once("../public/email.php"); 
+			
 ?>
 
 <div class="container " style="margin-top: 100px; margin-bottom: 200px; width: 70%;">

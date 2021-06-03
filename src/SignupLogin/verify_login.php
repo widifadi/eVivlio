@@ -2,6 +2,7 @@
 
     require_once("../../database/database_functions.php");
     $conn = db_connection();
+    
 
     if (isset($_POST['login_btn'])) {
         $username       =   $_POST['username'];
@@ -23,6 +24,8 @@
             $_SESSION = array();
             // Save user session
             $_SESSION['user'] = $username;
+
+            
 
             // get the permission
             $user_row = mysqli_fetch_array($result);

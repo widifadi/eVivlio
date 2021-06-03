@@ -48,13 +48,17 @@
 
             // Inserting book to the cart
             $sql = "INSERT INTO cart (book_id,customer_id,quantity,total_price) VALUE ($bid,$customer,$bqty,$bprice)";
-            if ($conn->query($sql) === TRUE) {
+            if ($num_bid <= 0) {
+
+                if ($conn->query($sql) === TRUE) {
                 
-                // Bootsrap alert
-                echo'<div class="alert alert-success alert-dismissible mt-2">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Book added to your cart!</strong>
-                    </div>';
+                    // Bootsrap alert
+                    echo'<div class="alert alert-success alert-dismissible mt-2">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong>Book added to your cart!</strong>
+                        </div>';
+
+                }
 
             } else {
 
@@ -66,5 +70,65 @@
 
             }
         }
+    } else {
+
+        // If the user not logged in
+
+        // Bootstrap alert
+        echo'<div class="alert alert-danger alert-dismissible mt-2">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>You are a guest, please log-in!</strong>
+            </div>';
+            
+        // Storing book id in session
+        if (isset($_POST['book_id'])) {
+
+            if (!empty($_SESSION['book_id'])) {
+                $acol = array_column($_SESSION['book_id'], 'guest_bookID');
+                if(in_array($_POST['book_id'], $acol)) {
+    
+                    echo "<script>alert('Book already added!')</script>";
+                    
+                }
+            } else {
+                $bookarray = array('guest_bookID' => $_POST['book_id']);
+                $_SESSION['book_id'][] = $bookarray;
+            }
+
+        }
+
+        
+        
+
+        //$_SESSION['book_id'][]=$bid;
+        //$_SESSION['book_qty'][]=1;
+            /* if($_SESSION['guestID']==0){
+                $_SESSION['guestID']=rand()*1000;
+                $sql = "SELECT guest_id FROM cart ";
+                $result = $conn->query($sql);
+                if ($result) {
+                    while ($row = $result->fetch_assoc()):
+                        
+                    endwhile;
+                } else {
+                    
+                } 
+            }*/
     } 
+
+    // For removing item from cart
+
+    if(isset($_GET['remove'])){
+        $id = $_GET['remove'];
+
+        $stmt = $conn->prepare("DELETE FROM cart WHERE book_id = ?");
+        $stmt->bind_param("i",$id);
+        $stmt->execute();
+
+        $_SESSION['showAlert'] ='block';
+        $_SESSION['message'] = 'Item removed from the cart';
+        header('location:cart_cart.php');
+    }
+
+    
 ?>

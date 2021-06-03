@@ -91,6 +91,7 @@
 
                     // IF a user is not logged in
                     if(!isset($_SESSION['user'])) {
+
                 ?>
                 <a href="signup_login.php">
                     <button class="btn menu-btn" id="loginpage-btn">
@@ -99,6 +100,9 @@
                 </a>
 
                 <?php
+                        $_SESSION['book_id'] = array();
+                        $_SESSION['book_qty'] = array();
+                        //$_SESSION['guestID']=0;
                     }
 
                     // IF a user is logged in

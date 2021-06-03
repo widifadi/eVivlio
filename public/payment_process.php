@@ -19,7 +19,7 @@ require_once("../templates/header.php");
     $PID = mysqli_real_escape_string($conn, $PID);
 
 
-    $order_date= $_POST['card_expire'];
+    $order_date= $_POST['date'];
     $order_date = mysqli_real_escape_string($conn, $order_date);
 
 
@@ -142,9 +142,9 @@ require_once("../templates/header.php");
         </div>
 
         <div class="form-group row">
-            <label for="pay_date" class="col-sm-3 col-form-label signup-label">Date</label>
+            <label for="date" class="col-sm-3 col-form-label signup-label">Date</label>
             <div class="col-sm-9">
-              	<input type="date"  class="form-control" name="pay_date">
+              	<input type="date"  class="form-control" name="date">
             </div>
         </div>
         <div class="form-group row">

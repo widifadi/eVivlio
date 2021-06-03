@@ -170,7 +170,7 @@
                         value="<?= $book_qty[$x] ?>" style="width:75px;">
                 </div>
                 <div class="col-2">
-                    <a href="../src/Cart/update_cart.php/" class="text-danger" 
+                    <a href="../src/Cart/update_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" 
                         onclick="return confirm('Are you sure you want to remove this item?');">
                         <em class="fa fa-trash dlt-cart-btn"></em>
                     </a>

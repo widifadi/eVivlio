@@ -31,11 +31,14 @@
 
             $_SESSION['showAlert'] ='block';
             $_SESSION['message'] = 'Item removed from the cart';
-            header('location:cart.php');
+            header('location:../../public/cart.php');
         }
     } else {
 
         // if you are guest
+        if(isset($_GET['remove'])){
+            $id = $_GET['remove'];
+        }
 
     }
 

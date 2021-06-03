@@ -12,30 +12,31 @@
         // getting customer id
         $sql = "SELECT customer_id FROM user WHERE username = '$userName'";
         $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()){
-                    $customer = $row['customer_id'];
-                }
-            } else {
-                echo "Error in getting customer id!";
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()){
+                $customer = $row['customer_id'];
             }
+        } else {
+            echo "Error in getting customer id!";
+        }
+
+        // For removing item from cart
+
+        if(isset($_GET['remove'])){
+            $id = $_GET['remove'];
+
+            $stmt = $conn->prepare("DELETE FROM cart WHERE book_id = ? AND customer_id = $customer");
+            $stmt->bind_param("i",$id);
+            $stmt->execute();
+
+            $_SESSION['showAlert'] ='block';
+            $_SESSION['message'] = 'Item removed from the cart';
+            header('location:cart.php');
+        }
     } else {
 
         // if you are guest
 
-    }
-    // For removing item from cart
-
-    if(isset($_GET['remove'])){
-        $id = $_GET['remove'];
-
-        $stmt = $conn->prepare("DELETE FROM cart WHERE book_id = ? AND customer_id = $customer");
-        $stmt->bind_param("i",$id);
-        $stmt->execute();
-
-        $_SESSION['showAlert'] ='block';
-        $_SESSION['message'] = 'Item removed from the cart';
-        header('location:cart.php');
     }
 
     // For updating the quantity

@@ -5,6 +5,16 @@
 </div> 
 <?php 
 
+    /*if(session_id() == ''){
+        //session has not started
+        session_start();
+
+        // This file is used for storing data coming from client to db
+        require "../../database/database_functions.php";
+        $conn = db_connection();
+
+    }*/
+
     // declaring global variables
     $book_id = array();
     $book_title = array();
@@ -79,7 +89,7 @@
                     <em class="fas fa-cart-plus add-cart-btn" id="cart-<?= $book_id[$x]?>"></em><!-- error getting the correct book id -->
                 </div>
                 <div class="col">
-                    <a href="wishlist_button.php?remove=<?=$book_id[$x]?>" class="text-danger" 
+                    <a href="../src/MyPage/wishlist_button.php?remove=<?=$book_id[$x]?>" class="text-danger" 
                         onclick="return confirm('Are you sure you want to remove this item?');">
                         <em class="fa fa-trash dlt-cart-btn"></em>
                     </a>
@@ -87,4 +97,4 @@
             </div>
         </div>
     </div>
-<?php } $conn->close(); ?>
+<?php } ?>

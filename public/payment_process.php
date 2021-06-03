@@ -75,9 +75,11 @@ require_once("../templates/header.php");
           
        }
 
+
+            $shipping= $_SESSION['shipping_address'];
         
-            $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status) 
-                            VALUES( '$customer_ID', '$order_date', 'PLACED')";
+            $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status, shipping_adress) 
+                            VALUES( '$customer_ID', '$order_date', 'PLACED', '$shipping')";
                      mysqli_query($conn, $custOrder_query);
 
 

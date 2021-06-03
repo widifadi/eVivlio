@@ -19,14 +19,13 @@
         $phone = $_POST['phone'];
         $phone = mysqli_real_escape_string($conn, $phone);
 
-        $address = $_POST['address'];
+        $address = $_POST['shipAddress'];
         $address = mysqli_real_escape_string($conn, $address);
 
-        $city = $_POST['city'];
-        $city = mysqli_real_escape_string($conn, $city);
+        session_start();
+        $_SESSION['shipping_address']=$address;
 
-        $state = $_POST['state'];
-        $state = mysqli_real_escape_string($conn, $state);
+
 
         $update_customer_query = "UPDATE customer INNER JOIN user 
                                     ON customer.customer_id=user.customer_id
@@ -34,9 +33,6 @@
                                         last_name = '$last_name',
                                         email = '$email',                  
                                         phone = '$phone',
-                                        address = ' $address',
-                                        city = '$city',
-                                        state = '$state'
                                        WHERE username='$user_name' ";       
 
         if ($conn->query($update_customer_query) === TRUE) {

@@ -69,10 +69,17 @@
         <div class="col-2">
             <img src="../assets/img/book-covers/<?= $book_cover[$x]?>" alt="book" width="100px" id="book-cover">
         </div>
-        <div class="col-4">
+        <div class="col-6">
             <div class="row mt-3 ml-3">
                 <div id="book-title"> <a href="#" class="text-dark">"<?= $book_title[$x]?>", <?= $author_fn[$x]?>,<?= $author_ln[$x] ?> (<?= $book_year[$x] ?>)</a></div>
             </div>
+        </div>
+        <div class="col-2">
+            <div class="row mt-3 ml-3">
+                <em class="fas fa-cart-plus add-cart-btn" id="cart-<?php $row['book_id']?>"></em> <!-- error getting the correct book id -->
+            </div>
+        </div>
+        <div class="col-2">
             <div class="row mt-3 ml-3">
                 <em class="text-dark fas fa-cart-plus add-cart-btn" id="cart-<?= $book_id[$x]?>"></em>&nbsp;&nbsp; <!-- error getting the correct book id -->
                 <a href="wishlist_button.php?remove=<?=$book_id[$x]?>" class="text-danger" onclick="return confirm('Are you sure you want to remove this item?');"><em class="fa fa-trash dlt-cart-btn"></em></a>

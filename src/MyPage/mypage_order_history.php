@@ -49,7 +49,7 @@
             <tr>
                 <td><?php echo $order_id; ?></td>
                 <td><?php echo $order_date; ?></td>
-                <td><?php echo $order_books ." ". $order_number; ?></td>
+                <td><?php echo $order_books .", ". $order_number ." pc"; ?></td>
                 <td><?php echo $order_value; ?></td>
                 <td><?php echo $order_status; ?></td>
 

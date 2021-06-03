@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2021 at 05:26 PM
+-- Generation Time: Jun 03, 2021 at 03:56 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -269,7 +269,7 @@ INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover
 
 CREATE TABLE `book_feature` (
   `feature_id` int(11) NOT NULL,
-  `feature_name` varchar(50) NOT NULL
+  `feature_name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -289,10 +289,48 @@ INSERT INTO `book_feature` (`feature_id`, `feature_name`) VALUES
 
 CREATE TABLE `book_review` (
   `book_id` int(11) NOT NULL,
-  `customer_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) NOT NULL,
   `rating` int(11) NOT NULL,
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `book_review`
+--
+
+INSERT INTO `book_review` (`book_id`, `customer_id`, `rating`, `content`) VALUES
+(2, 1, 0, 'This book far EXCEEDS every expectation I had of it. The illustrations in general are breathtaking, add to those the several \"interactive\" illustrations that reveal even more beautiful detail and you have the recipe for a story that captures both the imagination and senses. This is a true collector\'s edition and I will definitely be purchasing the rest of the books as they are released. '),
+(2, 1, 0, 'This book far EXCEEDS every expectation I had of it. The illustrations in general are breathtaking, add to those the several \"interactive\" illustrations that reveal even more beautiful detail and you have the recipe for a story that captures both the imagination and senses. This is a true collector\'s edition and I will definitely be purchasing the rest of the books as they are released. '),
+(1, 1, 4, 'This book came to me at a time when I really needed it - learning to love myself through a mental health disorder. It proved encouraging to me in remembering to love my self and that I amethyst of loving (even with my perceived faults). I have several of the poems bookmarked and revisit them when I need some encouragement and to be reminded of loving myself.\r\nHighly highly recommend this wonderful work of art '),
+(14, 1, 2, 'I bought this book as a gift for my daughter and new grand baby. I was shocked when it arrived. It is so cheaply made...the quality of the pages are like newspaper print and were defective as well. I would NEVER consider giving this as a gift, I don\'t care how sweet the story is. 14 euros is insane for this book. It should be sold in the 99 Cent Store! '),
+(28, 1, 2, 'I don\'t know how anyone could screw something up this bad. The book has no page numbers, an incomplete ending, and is full of absolute nonsense words. I am now dumber for having read only one page of this \"book\" and have polluted my mind with incomprehensible word like \"vues - tra\", \"wom - ra sa\", and \"pregu n Tarle\". Anyone who gives this fives stars is either being paid or an illiterate fool. '),
+(42, 1, 5, 'This is a fantastic re-issue from Red Jacket Press. It really is just like getting the original Gnome press edition--but better, thanks to the slipcase. Great job. '),
+(15, 1, 2, 'The colors were bright. I didn’t like the pages being slippery and the story line seems choppy. I know it’s not high literature but it’s annoying when it doesn’t flow and the kid asks to read it repeatedly. '),
+(43, 1, 4, 'As a big fan of post-ap games I\'ve been waiting eagerly for this to arrive and the wait has been 100% worthwhile! For those that love the journeys into the exclusion zone genre and want to replicate this in tabletop game form ZONA ALFA will be worth every penny. Like the majority of the Osprey Games books it\'s beautifully, and in this case completely logically presented, and these deceptively simple yet comprehensive rules (with a really great backstory full of amazing characters!) will let you \"get your miniatures game on\" immediately. If you like STALKER and the \"Metro\" books then this is a \"must have\"... \"Everything else is for chickens to laugh at\"! '),
+(4, 1, 5, 'Informative\r\nInfuriatingly Relatable\r\nNecessary\r\nMotivational\r\nResourceful\r\nThought Provoking\r\nTransparent\r\nExcellent\r\n\r\nAt times I listened while preparing dinner with my 11yr old one room over, in the dining room. After over hearing 5-10 minutes, he asked me who she was & if he could also listen with me. That made my heart smile. '),
+(12, 1, 5, 'I read this book - looking for how it would affect my 4-year-old\' grandson\'s understanding of feelings and prejudiceness. As a preschool teacher, I am very picky. This book wonderfully captured emotions and differences on each page. A perfect book for parent and child conversations. A great segway into the issues of today\'s world. '),
+(17, 1, 5, 'This book was recommended by my child\'s psychologist and I am more than pleased with this book! As a parent I am struggling with my dragon and sometimes so feel like I\'m all alone in not knowing how to best help him. My dragon is highly anxious and has meltdowns daily however he was able to connect that Diggory Doo the dragon is just like him. When we read the book together for the first time I cried because it hit home in so many ways'),
+(3, 1, 5, 'Great book, good quality hard cover. '),
+(18, 1, 5, 'Menand’s material is fascinating throughout, even if you are too young for the Cold War to seem like the “formative” years of your life. The book lies somewhere between journalism and scholarship, with satisfactions found throughout that range—and you won’t find too many books that try to fit Elvis Presley and Claude Levi-Strauss into the same framework.\r\n\r\nFor readers with other books on the go, don’t be intimidated by the length of this one. I was determined to read it quickly and did so, but taking it a section at a time should be equally satisfying.'),
+(20, 1, 4, 'This meticulously researched book is now the gold standard, and quite possibly the last word, on the remarkable life if the greatest firearms inventor who ever lived. Yet, it is also a very enjoyable book to read, with enough \" human interest\" antidotes and heretofore unknown stories to excite and keep a reader\'s interests. For all it\'s readability, though, this is first and foremost the definitive telling of the John Moses Brown story. Well done, Sir, well done! '),
+(22, 1, 5, 'Stacey Lee writes absolutely wonderful historical fiction that utilizes settings to their medium potential while providing a perspective that many of most kids haven\'t seen before. The Titanic is a fantastic backdrop to a story about family, class, and different sorts of love. This book broke my heart and then stitched it back together.'),
+(23, 1, 4, 'An excellent overview of history from the earliest times. For fairly obvious reasons it\'s a Dates And Names book but weaves together the various kingdom and empires and it gave me a better understanding of which of them co-existed and when..\r\nA great read for the casual student of history. '),
+(46, 1, 4, 'This book reads like a novel but is a well documented history of our nation’s trade policies. Mr. Johnson hasn’t just put facts together he has told a fascinating story. Never dull.'),
+(48, 1, 5, 'Crammed with weird and wonderful, beautiful and macabre, a great book to dip into. Well presented with fantastic illustrations. A treasure for any book lover.'),
+(47, 1, 4, 'The length of the book might be a set back for some people like it was for me, but once you get into it you will find yourself pleased with the depth of understanding that Marx presents.'),
+(50, 1, 4, 'This is an excellent book for what it is - an overview and short synopsis of 109 pieces of literature. The books are separated into major categories (legends, romanticism, contemporary, etc). I recommend this book. Please mark if you find my review helpful. Thank you so much! '),
+(24, 1, 5, 'This is my first book by Barbara O Neal. I instantly connected to her writing style, her storytelling, her characters. It doesn’t hurt that I’m a fan of mermaids. I’m at a loss for words to convey how much I loved this book, how sad I was to finish it. When you feel as though you’re losing friends, well that says something. The story weaves between settings, the past and present...there are many opportunities to feel lost. I wasn’t. This is poignant, horrifying, happy, yet confusingly always amazing. My heart for those sisters, their connection. Read this book. I’m trying to decide what my next from this author will be... '),
+(29, 1, 4, 'A really great romantic adventure! The characters test are old friends that you wish were real!\r\nThe HEA is wonderful. All loose ends are tied up and the bad guys caught! Great fun! '),
+(30, 1, 5, 'I loved this story. I even liked the characters from past and present stories. And I also loved the whole story line. However; I didn\'t like the way that Maggie jumped to conclusions, after overhearing a partial conversation. So instead of sticking around and talking about what she overheard, she leaves. Then she automatically let\'s her mind take over, and the next thing we know, she making the worst assumptions of her life, which leads to a huge misunderstanding. That didn\'t quite ring true of the strong woman, we all came to love and admire. Jake was a saint, and a dream come true. And Alex was the sweetest little kid, who had a bit of a stubborn side himself.\r\n\r\nI love this small town vibe, and the citizens who dwell there. This story was so, so good. '),
+(39, 1, 1, 'Despite the misleading title, which touts some of the Science Fiction Greats, (only a few and their minor works), this book is really a frenetic feminist rant! I must admit, that I did find one or two \"gems\" in there, but to have to go though over 1000 of page to find them is simply not worth the effort!\r\nDon\'t waste your money! '),
+(41, 1, 2, 'It took about 125 pages before it actually got a little bit interesting, but the excitement was short lived and soon I was back to reading about the mundane doings of husband and wife journalists, Mike and Phyllis. Wyndham\'s style is not for everyone. He spends a lot of time on the small, often mundane details, which I ordinarily don\'t mind but in Kraken they were tedious. I found myself skipping entire paragraphs/pages looking for the next bit of dialogue that would push the story forward, but after 145 pages I just dropped it.'),
+(51, 1, 4, 'My nephew loves to read and learn. Sometimes the books he wants are out of stock and not available in the store. Lately, Amazon has been my go-to place for all books. The books are fairly priced and delivered quickly. This book gave us the information we need and was very informative. A great read at a great value.'),
+(53, 1, 4, 'The book provides an excellent overview of world science and technology for readers at any level...highly recommended.'),
+(55, 1, 3, 'Purchased this book for class, did not much care for it. I was expecting something a little different based on the cover but the book fell short. I wish the book provided more details on the technological side instead of heavily on the societal side. Provides some interesting approaches for thinking in a sociological manner. '),
+(31, 1, 3, 'Having read Sutherland\'s Lives of the Novelists, and listened to his marvelous lecture series on British Literature (via Audible) I knew I was in for a treat. And this new book did not disappoint, being (as it was) written in Professor Sutherland\'s distinctive style.\r\nI was never bored; rather, I was inspired to read MORE. I can genuinely recommend this book to anyone who needs a good reason to return to Literature. And for those who never left it, Sutherland will help you to get even more out of reading. '),
+(32, 1, 4, 'I purchased this book because I want to underline and write in the margins. It’s the typical quality of a signer classic. Might endure a few read through a but will fall apart if handled too roughly or too long. The compilation of texts is a great starting point for reading Aristotle. '),
+(34, 1, 5, 'I have home schooled for 20+ years and this series looks great. Based on this first book, I decided to purchase the entire set. It has great information and is written well. I would recommend it for learning or schooling, whichever you choose. '),
+(19, 2, 5, 'This is an amazing book.');
 
 -- --------------------------------------------------------
 
@@ -303,10 +341,18 @@ CREATE TABLE `book_review` (
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `total_price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `book_id`, `customer_id`, `quantity`, `total_price`) VALUES
+(1, 26, 2, 1, 13.48),
+(2, 18, 2, 1, 27.49);
 
 -- --------------------------------------------------------
 
@@ -429,6 +475,14 @@ CREATE TABLE `customer` (
   `state` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `email`, `birthday`, `phone`, `address`, `city`, `state`) VALUES
+(1, 'kom', 'ar', 'kj2006@hw.edu.uk', '2021-06-16', '5552', 'df', 'df', 'df'),
+(2, 'kom', 'javan', 'ahah@komar.com', '2021-06-09', '5555', 'iejrier', 'ijier', 'iejri');
+
 -- --------------------------------------------------------
 
 --
@@ -437,9 +491,10 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `customer_order` (
   `order_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `order_date` date NOT NULL,
-  `shipping_status` varchar(50) NOT NULL
+  `shipping_status` varchar(50) NOT NULL,
+  `shipping_adress` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -528,7 +583,7 @@ CREATE TABLE `order_items` (
 
 CREATE TABLE `payment` (
   `payment_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `payment_date` date NOT NULL,
   `payment_method` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -615,7 +670,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_permission`) VALUES
-(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 1, 'javan123', 'bda587389ad3548623073312d7119d05', 0),
+(3, 2, 'kj', '202cb962ac59075b964b07152d234b70', 0);
 
 -- --------------------------------------------------------
 
@@ -625,7 +682,7 @@ INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_per
 
 CREATE TABLE `wishlist` (
   `book_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL
+  `customer_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -774,7 +831,7 @@ ALTER TABLE `book_feature`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -786,7 +843,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `customer_order`
@@ -816,7 +873,7 @@ ALTER TABLE `publisher`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

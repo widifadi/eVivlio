@@ -27,12 +27,12 @@
             Shipping Status</label>
         <div class="col-sm-9">
             <select class="form-control" id="update-shipping" name="shipping_status">
-                <option value="orderReceived">Order Received</option>
-                <option value="inDepot">In Depot</option>
-                <option value="packing">Packing</option>
-                <option value="inTransit">In Transit</option>
-                <option value="forDelivery">Out for Delivery</option>
-                <option value="delivered">Delivered</option>
+                <option value="Order Received">Order Received</option>
+                <option value="In Depot">In Depot</option>
+                <option value="Packing">Packing</option>
+                <option value="In Transit">In Transit</option>
+                <option value="Out for Delivery">Out for Delivery</option>
+                <option value="Delivered">Delivered</option>
             </select>
         </div>
     </div>

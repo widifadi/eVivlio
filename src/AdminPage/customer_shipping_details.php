@@ -17,14 +17,27 @@ $user_name = $_SESSION['user'];
 <div class="container " style="margin-top: 0px; margin-bottom: 200px; width: 100%;">
 <p> <b> Enter your shipping details </b> </p>
 <form action="../src/AdminPage/customer_shipping_post.php" method="POST" id="login-form">
+
+<div class="form-group row">
+        <label for="firstName" class="col-sm-3 col-form-label signup-label">Customer ID</label>
+        <div class="col-sm-9">
+        <input type="text" class="form-control" id="update-firstName" name="firstName"  placeholder="First Name"  
+        readonly
+                  
+            value="<?php echo     $customer_details['customer_id'];?>"
+                            
+                               
+            >                
+        </div>
+    </div>
       
     <div class="form-group row">
         <label for="firstName" class="col-sm-3 col-form-label signup-label">First Name</label>
         <div class="col-sm-9">
         <input type="text" class="form-control" id="update-firstName" name="firstName"  placeholder="First Name"  
-        required
+        readonly
                   
-            value="<?php // echo     $customer_details['first_name'];?>"
+            value="<?php echo     $customer_details['first_name'];?>"
                             
                                
             >                
@@ -34,8 +47,8 @@ $user_name = $_SESSION['user'];
         <label for="lastName" class="col-sm-3 col-form-label signup-label">Last Name</label>
         <div class="col-sm-9">
         <input type="text" class="form-control" id="update-lastName" name="lastName" 
-            placeholder="Last Name" 
-            value="<?php // echo     $customer_details['last_name'];  ?>"
+            placeholder="Last Name" readonly
+            value="<?php echo     $customer_details['last_name'];  ?>"
                                
                             
             > 

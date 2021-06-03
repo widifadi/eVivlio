@@ -1,6 +1,7 @@
 <?php
 require_once("../templates/header.php"); 
-/*if (isset($_SESSION['user'])|| $_SESSION['admin_permission'] == 0)
+
+if (isset($_SESSION['user'])|| $_SESSION['admin_permission'] == 0)
     {?>
 
         <div class="container " style="margin-top: 100px; margin-bottom: -100px; width: 60%;">
@@ -24,11 +25,16 @@ require_once("../templates/header.php");
                 </div>      
             </div>
             <?php
-               */ 
+    }
                 require_once("../database/database_functions.php");
                 $conn = db_connection();
+                $user_name=$_SESSION['user'];
 
-                $order_query = "SELECT * FROM cart INNER JOIN book ON cart.cart_id=book.book_id"; 
+                $order_query = "SELECT * FROM cart
+                 INNER JOIN user ON cart.customer_id= user.customer_id  
+                 INNER JOIN book ON cart.cart_id=book.book_id 
+                 WHERE username= '$user_name'
+                "; 
                 $result = mysqli_query($conn, $order_query); 
 
                 while ($row = mysqli_fetch_assoc($result)) 
@@ -59,6 +65,19 @@ require_once("../templates/header.php");
     </div>
     </div>
 <!-- The Customer Shipment Details Start from here ! -->
+
+
+
+<?php 
+
+if(isset($_POST['save-order'])){
+
+
+
+
+}
+
+?>
 
 <div class="container " style="margin-top: 100px; margin-bottom: -100px; width: 60%;">
     <?php 

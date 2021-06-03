@@ -32,15 +32,12 @@
                                     ON customer.customer_id=user.customer_id
                                     SET first_name = '$first_name', 
                                         last_name = '$last_name',
-                                        email = '$email',
-                        
+                                        email = '$email',                  
                                         phone = '$phone',
                                         address = ' $address',
                                         city = '$city',
                                         state = '$state'
-                                       WHERE username='$user_name' ";
-
-        
+                                       WHERE username='$user_name' ";       
 
         if ($conn->query($update_customer_query) === TRUE) {
             echo "Customer updated successfully. <br>";

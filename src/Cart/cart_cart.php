@@ -149,7 +149,7 @@
             ?>
             <div class="row p-2 my-1">
                 <div class="col-2">
-                    <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark">
+                    <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark bid">
                         <img src="../assets/img/book-covers/<?= $book_cover[$x] ?>" alt="book" width="100px" id="book-cover">
                     </a>  
                 </div>
@@ -162,14 +162,14 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-2 bprice">
                     <strong>€ <?php echo $book_price[$x] ?></strong>
                 </div>
                 <div class="col-2">
                     <input type="number" class="form-control itemQty" value="quantity-<?= $book_qty[$x] ?>" style="width:75px;"><strong></strong>
                 </div>
                 <div class="col-2">
-                    <a href="add_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" 
+                    <a href="../src/Cart/update_cart.php/" class="text-danger" 
                         onclick="return confirm('Are you sure you want to remove this item?');">
                         <em class="fa fa-trash dlt-cart-btn"></em>
                     </a>

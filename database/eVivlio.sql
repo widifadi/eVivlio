@@ -1,21 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 03, 2021 at 03:56 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Host: localhost:8889
+-- Generation Time: Jun 03, 2021 at 10:04 PM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `evivlio`
@@ -73,10 +66,10 @@ INSERT INTO `author` (`author_id`, `author_first_name`, `author_last_name`) VALU
 (31, 'Janet', ' Chapman'),
 (32, 'Susan ', 'Mallery '),
 (33, ' Nigel ', 'Warburton '),
-(34, ' Aristotle ', 'A'),
-(35, 'Plato', 'A'),
+(34, ' Aristotle ', ''),
+(35, 'Plato', ''),
 (36, ' Phillip ', 'Campbell '),
-(37, 'Epictetus', 'A'),
+(37, 'Epictetus', ''),
 (38, 'Marcus ', 'Aurelius'),
 (39, 'Orson ', 'Scott Card'),
 (40, 'John', ' Wyndham'),
@@ -213,7 +206,7 @@ INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover
 (7, 6, '1633691780', 'The Innovator\'s Dilemma: When New Technologies Cause Great Firms to Fail (Management of Innovation a', '1633691780.jpg', 2016, 288, 'A Wall Street Journal and Businessweek bestseller. Named by Fast Company as one of the most influential leadership books in its Leadership Hall of Fame. An innovation classic. From Steve Jobs to Jeff Bezos, Clay Christensen’s work continues to underpin today’s most innovative leaders and organizations.\r\nThe bestselling classic on disruptive innovation, by renowned author Clayton M. Christensen.\r\nHis work is cited by the world’s best-known thought leaders, from Steve Jobs to Malcolm Gladwell. In this classic bestseller—one of the most influential business books of all time—innovation expert Clayton Christensen shows how even the most outstanding companies can do everything right—yet still lose market leadership.\r\nChristensen explains why most companies miss out on new waves of innovation. No matter the industry, he says, a successful company with established products will get pushed aside unless managers know how and when to abandon traditional business practices.\r\n\r\nOffering both successes and failures from leading companies as a guide, The Innovator’s Dilemma gives you a set of rules for capitalizing on the phenomenon of disruptive innovation.\r\n\r\nSharp, cogent, and provocative—and consistently noted as one of the most valuable business ideas of all time—The Innovator’s Dilemma is the book no manager, leader, or entrepreneur should be without.', 15.99, 17),
 (8, 7, '1501111108', 'Grit: The Power of Passion and Perseverance ', '1501111108.jpg', 2016, 352, 'In this instant New York Times bestseller, pioneering psychologist Angela Duckworth shows anyone striving to succeed--be it parents, students, educators, athletes, or business people--that the secret to outstanding achievement is not talent but a special blend of passion and persistence she calls \"grit.\"\r\n\r\nDrawing on her own powerful story as the daughter of a scientist who frequently noted her lack of \"genius,\" Duckworth, now a celebrated researcher and professor, describes her early eye-opening stints in teaching, business consulting, and neuroscience, which led to the hypothesis that what really drives success is not \"genius\" but a unique combination of passion and long-term perseverance.\r\n\r\nIn Grit, she takes readers into the field to visit cadets struggling through their first days at West Point, teachers working in some of the toughest schools, and young finalists in the National Spelling Bee. She also mines fascinating insights from history and shows what can be gleaned from modern experiments in peak performance. Finally, she shares what she\'s learned from interviewing dozens of high achievers--from JP Morgan CEO Jamie Dimon to New Yorker cartoon editor Bob Mankoff to Seattle Seahawks Coach Pete Carroll.\r\nAmong Grit\'s most valuable insights:\r\n*Why any effort you make ultimately counts twice toward your goal\r\n*How grit can be learned, regardless of I.Q. or circumstances\r\n*How lifelong interest is triggered\r\n*How much of optimal practice is suffering and how much ecstasy\r\n*Which is better for your child--a warm embrace or high standards\r\n*The magic of the Hard Thing Rule\r\n\r\nWinningly personal, insightful, and even life-changing, Grit is a book about what goes through your head when you fall down, and how that--not talent or luck--makes all the difference.', 14.95, 10),
 (9, 8, '1250235375', 'Radical Candor: Be a Kick-Ass Boss Without Losing Your Humanity ', '1250235375.jpg', 2019, 336, 'The idea is simple: You don\'t have to choose between being a pushover and a jerk. Using Radical Candor--avoiding the perils of Obnoxious Aggression, Manipulative Insincerity, and Ruinous Empathy--you can be kind and clear at the same time.\r\nKim Scott was a highly successful leader at Google before decamping to Apple, where she developed and taught a management class. Since the original publication of Radical Candor in 2017, Scott has earned international fame with her vital approach to effective leadership and co-founded the Radical Candor executive education company, which helps companies put the book\'s philosophy into practice.\r\nRadical Candor is about caring personally and challenging directly, about soliciting criticism to improve your leadership and also providing guidance that helps others grow. It focuses on praise but doesn\'t shy away from criticism--to help you love your work and the people you work with.\r\nRadically Candid relationships with team members enable bosses to fulfill their three core responsibilities:\r\n1. Create a culture of Compassionate Candor\r\n2. Build a cohesive team\r\n3. Achieve results collaboratively\r\nRequired reading for the most successful organizations, Radical Candor has raised the bar for management practices worldwide.', 13.79, 18),
-(10, 9, '9780553383713', '\"Emotional Intelligence: Why It Can Matter More Than IQ\" by Daniel Goleman', '9780553383713.jpg', 2005, 352, 'Everyone knows that high IQ is no guarantee of success, happiness, or virtue, but until Emotional Intelligence, we could only guess why. Daniel Goleman\'s brilliant report from the frontiers of psychology and neuroscience offers startling new insight into our “two minds”—the rational and the emotional—and how they together shape our destiny.\r\n\r\nDrawing on groundbreaking brain and behavioral research, Goleman shows the factors at work when people of high IQ flounder and those of modest IQ do surprisingly well. These factors, which include self-awareness, self-discipline, and empathy, add up to a different way of being smart—and they aren’t fixed at birth. Although shaped by childhood experiences, emotional intelligence can be nurtured and strengthened throughout our adulthood—with immediate benefits to our health, our relationships, and our work. \r\n \r\nThe twenty-fifth-anniversary edition of Emotional Intelligence could not come at a better time—we spend so much of our time online, more and more jobs are becoming automated and digitized, and our children are picking up new technology faster than we ever imagined. With a new introduction from the author, the twenty-fifth-anniversary edition prepares readers, now more than ever, to reach their fullest potential and stand out from the pack with the help of EI.', 12, 22),
+(10, 9, '9780553383713', 'Emotional Intelligence: Why It Can Matter More Than IQ', '9780553383713.jpg', 2005, 352, 'Everyone knows that high IQ is no guarantee of success, happiness, or virtue, but until Emotional Intelligence, we could only guess why. Daniel Goleman\'s brilliant report from the frontiers of psychology and neuroscience offers startling new insight into our “two minds”—the rational and the emotional—and how they together shape our destiny.\r\n\r\nDrawing on groundbreaking brain and behavioral research, Goleman shows the factors at work when people of high IQ flounder and those of modest IQ do surprisingly well. These factors, which include self-awareness, self-discipline, and empathy, add up to a different way of being smart—and they aren’t fixed at birth. Although shaped by childhood experiences, emotional intelligence can be nurtured and strengthened throughout our adulthood—with immediate benefits to our health, our relationships, and our work. \r\n \r\nThe twenty-fifth-anniversary edition of Emotional Intelligence could not come at a better time—we spend so much of our time online, more and more jobs are becoming automated and digitized, and our children are picking up new technology faster than we ever imagined. With a new introduction from the author, the twenty-fifth-anniversary edition prepares readers, now more than ever, to reach their fullest potential and stand out from the pack with the help of EI.', 12, 22),
 (11, 10, '1409341267', 'The Business Book : Big Ideas Simply Explained', '1409341267.jpg', 2015, 352, 'You can achieve your business dream. Beat the odds as you learn from the best - including Henry Ford, Steve Jobs, and Bill Gates - and turn your idea into an amazing and profitable enterprise.\r\n\r\nThe Business Book helps you over the hurdles facing every new business, such as finding a gap in the market, securing finance, employing people, and creating an eye-catching brand. It is a plain-speaking visual guide to 80 of the most important commerce theories including chaos theory, critical path analysis, market mapping, and the MABA matrix.\r\n\r\nIts graphics and flow diagrams demystify complicated concepts and explain the ideas of seminal business thinkers, such as Malcolm Gladwell\'s \"tipping point\", Michael Porter\'s \"five forces\", and Meredith Belbin\'s theories on effective teamwork. It shows that you can succeed with stories of rags-to-riches entrepreneurs, including the founders of Hewlett-Packard, who began their global enterprise from their garage.\r\n\r\nWhether you are a student, a CEO, or a would-be entrepreneur, The Business Book will inspire you and put you on the inside track to making your goal a reality.', 18.45, 17),
 (12, 11, '1949474496', 'Fiona Flamingo', '1949474496.jpg', 2019, 56, 'Follow Fiona through her color-changing, feather-filled day as she learns to accept not only being a different color from the rest of her flamingo flock, but also that it\'s okay to be scared, angry, and sad at times. ', 14.95, 10),
 (13, 10, '1949474852', 'A Friend is Someone Who... ', '1949474852.jpg', 2020, 50, 'Do you remember your first friend? Your friends always find a way to double your joys and halve your sorrows. This fun, rhyming book helps children understand the value of having friends and of being a friend to others.', 14.95, 17),
@@ -247,7 +240,7 @@ INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover
 (41, 33, '9780141032993', 'The Kraken Wakes ', '9780141032993.jpg', 2008, 240, 'It started with fireballs raining down from the sky and crashing into the oceans\' deeps. Then ships began sinking mysteriously and later \'sea tanks\' emerged from the deeps to claim people . . .\r\n\r\nFor journalists Mike and Phyllis Watson, what at first appears to be a curiosity becomes a global calamity. Helpless, they watch as humanity struggles to survive now that water - one of the compounds upon which life depends - is turned against them. Finally, sea levels begin their inexorable rise . . .\r\n\r\nThe Kraken Wakes is a brilliant novel of how humankind responds to the threat of its own extinction and, ultimately, asks what we are prepared to do in order to survive.', 11.18, 15);
 INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover`, `publishing_year`, `pages`, `summary`, `price`, `stock`) VALUES
 (42, 35, '1473222532', 'Judgment Night', '1473222532.jpg', 2019, 352, 'Released in 1952, Judgment Night collects five Moore novellas from the pages of editor John W. Campbell, Jr.\'s Astounding Science Fiction magazine:\r\n\r\n\'\'Judgment Night\'\' (first published in August and September, 1943) balances a lush rendering of a future galactic empire with a sober meditation on the nature of power and its inevitable loss;\r\n\r\n\'\'The Code\'\' (July, 1945) pays homage to the classic Faust with modern theories and Lovecraftian dread;\r\n\r\n\'\'Promised Land\'\' (February, 1950) and \'\'Heir Apparent\'\' (July, 1950) both document the grim twisting that mankind must undergo in order to spread into the solar system;\r\n\r\n\'\'Paradise Street\'\' (September, 1950) shows a futuristic take on the old western conflict between lone hunter and wilderness-taming settlers.\r\n\r\nChosen by the author herself as the best of her longer-form writing, these stories show a gifted wordsmith working at the height of her talents.', 10.43, 15),
-(43, 2, '1472835697', 'Zona Alfa : Salvage and Survival in the Exclusion Zone', '1472835697.jpg', 2020, 64, 'Zona Alfa is a set of simple, fast-play skirmish rules for scavenging, exploring, and surviving in a near-future, post-apocalyptic Eastern European setting. Players take on the role of bandits, mercenaries, and military units fighting over the blasted Exclusion Zone and its abandoned artefacts. Customise your fighters with a variety of weapons and specialisms to create your ideal warband. With extended rules for campaigns, character progression, terrain, and environmental hazards, Zona Alfa contains all the tools required to engage in blistering firefights within the Exclusion Zone.', 14.89, 14),
+(43, 2, '1472835697', 'Zona Alfa: Salvage and Survival in the Exclusion Zone', '1472835697.jpg', 2020, 64, 'Zona Alfa is a set of simple, fast-play skirmish rules for scavenging, exploring, and surviving in a near-future, post-apocalyptic Eastern European setting. Players take on the role of bandits, mercenaries, and military units fighting over the blasted Exclusion Zone and its abandoned artefacts. Customise your fighters with a variety of weapons and specialisms to create your ideal warband. With extended rules for campaigns, character progression, terrain, and environmental hazards, Zona Alfa contains all the tools required to engage in blistering firefights within the Exclusion Zone.', 14.89, 14),
 (44, 10, '194947450X', 'I Can Yell Louder', '194947450X.jpg', 2020, 48, 'Michelle loves to yell and scream as loudly as she can. The word \"quiet\" isn\'t even in her vocabulary...until one of Michelle\'s classmates comes up with a plan to beat her at her own game.', 14.95, 19),
 (45, 36, '1840221666', 'The Divine Comedy', '1840221666.jpg', 2019, 592, 'Dante Alighieri (1265-1321) is one of the most important and innovative figures of the European Middle Ages. Writing his Comedy (the epithet Divine was added by later admirers) in exile from his native Florence, he aimed to address a world gone astray both morally and politically. At the same time, he sought to push back the restrictive rules which traditionally governed writing in the Italian vernacular, to produce a radically new and all-encompassing work.\r\n\r\n\r\nThe Comedy tells of the journey of a character who is at one and the same time both Dante himself and Everyman through the three realms of the Christian afterlife: Hell, Purgatory and Heaven. He presents a vision of the afterlife which is strikingly original in its conception, with a complex architecture and a coherent structure. On this journey Dante\'s protagonist - and his reader - meet characters who are variously noble, grotesque, beguiling, fearful, ridiculous, admirable, horrific and tender, and through them he is shown the consequences of sin, repentance and virtue, as he learns to avoid Hell and, through cleansing in Purgatory, to taste the joys of Heaven.', 7.94, 7),
 (46, 37, '1840226889', 'Wealth of Nations', '1840226889.jpg', 2012, 1008, 'Adam Smith (1723-1790) was one of the brightest stars of the eighteenth-century Scottish Enlightenment. An Inquiry into the Nature and Causes of the Wealth of Nations was his most important book. First published in London in March 1776, it had been eagerly anticipated by Smith\'s contemporaries and became an immediate bestseller. That edition sold out quickly and others followed. Today, Smith\'s Wealth of Nations rightfully claims a place in the Western intellectual canon.\r\n\r\n\r\n\r\nIt is the first book of modern political economy, and still provides the foundation for the study of that discipline.\r\nBut it is much more than that. Along with important discussions of economics and political theory, Smith mixed plain common sense with large measures of history, philosophy, psychology, sociology, and much else. Few texts remind us so clearly that the Enlightenment was very much a lived experience, a concern with improving the human condition in practical ways for real people. A masterpiece by any measure, Wealth of Nations remains a classic of world literature to be usefully enjoyed by readers today.', 8.59, 3),
@@ -255,11 +248,11 @@ INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover
 (48, 38, '1471166910', 'The Madman\'s Library : The Greatest Curiosities of Literature', '1471166910.jpg', 2020, 256, '\'Anybody who loves the printed word will be bowled over by this amusing, erudite, beautiful book about books. It is in every way a triumph. One of the loveliest books to have been published for many, many years\' Alexander McCall Smith\r\n\'Quite simply the best gift for any book lover this year, or perhaps ever\' Lucy Atkins, Sunday Times Literary Book of the Year\r\n\'An utterly joyous journey into the deepest eccentricities of the human mind... The most cheering, fascinating book I\'ve read for ages\' Guardian\r\n\r\nFrom the author of the critically acclaimed and globally successful The Phantom Atlas, The Golden Atlas and The Sky Atlas comes a stunning new work. The Madman\'s Library is a unique, beautifully illustrated journey through the entire history of literature, delving into its darkest territories to hunt down the very strangest books ever written, and uncover the fascinating stories behind their creation.\r\n\r\nThis is a madman\'s library of eccentric and extraordinary volumes from around the world, many of which have been completely forgotten. Books written in blood and books that kill, books of the insane and books that hoaxed the globe, books invisible to the naked eye and books so long they could destroy the Universe, books worn into battle, books of code and cypher whose secrets remain undiscovered... and a few others that are just plain weird.\r\n\r\nFrom the 605-page Qur\'an written in the blood of Saddam Hussein, through the gorgeously decorated 15th-century lawsuit filed by the Devil against Jesus, to the lost art of binding books with human skin, every strand of strangeness imaginable (and many inconceivable) has been unearthed and bound together for a unique and richly illustrated collection ideal for every book-lover.', 22.44, 20),
 (49, 39, '9780826488848', 'Victorian Literature and Culture', '9780826488848.jpg', 2007, 160, '\"Introductions to British Literature and Culture\" are practical guides to key literary periods. Guides in the series are designed to help introduce a new module or area of study, providing concise information on the historical, literary and critical contexts and acting as an initial map of the knowledge needed to study the literature and culture of a specific period. This accessible introduction to Victorian literature and its contexts from 1837-1901 includes: an overview of the historical, cultural and intellectual background including politics and economics, popular culture, philosophy and religion; a survey of the developments in key genres including discussion of major writers such as the Brontes, the Brownings, Collins, Dickens, Eliot, Gaskell, Hardy, Rossetti, Shaw, Swinburne, Tennyson and Wilde; concise explanations of key terms needed to understand the literature and criticism; a guide to key critical approaches; a chronology mapping historical events and literary works; and guided further reading including websites and electronic resources.', 17.71, 5),
 (50, 40, ' 1465429883', 'The Literature Book : Big Ideas Simply Explained', ' 1465429883.jpg', 2016, 352, '\"Books, let\'s face it, are better than anything else.\" Nick Hornby Turn the pages of The Literature Book to discover over 100 of the world\'s most enthralling reads and the literary geniuses behind them. Storytelling is as old as humanity itself. Part of the Big Ideas Simply Explained series, The Literature Book introduces you to ancient classics from the Epic of Gilgamesh written 4,000 years ago, as well as the works of Shakespeare, Voltaire, Tolstoy, and more, and 20th-century masterpieces, including Catch-22, Beloved, and On the Road. The perfect reference for your bookshelf, it answers myriad questions such as what is stream of consciousness, who wrote To Kill a Mockingbird, and what links the poetry of Wordsworth with that of TS Eliot. Losing yourself in a great book transports you to another time and place, and The Literature Book sets each title in its social and political context. It helps you appreciate, for example, how Dickens\' Bleak House paints a picture of deprivation in 19th-century England, or how Stalin\'s climb to power was the backdrop for George Orwell\'s 1984. With succinct plot summaries, graphics, and inspiring quotations, this is a must-have reference for literature students and the perfect gift for book-lovers everywhere.\r\n\r\nSeries Overview: Big Ideas Simply Explained series uses creative design and innovative graphics along with straightforward and engaging writing to make complex subjects easier to understand. With over 7 million copies worldwide sold to date, these award-winning books provide just the information needed for students, families, or anyone interested in concise, thought-provoking refreshers on a single subject.', 24.61, 5),
-(51, 41, '1936749750', 'Robotics : DISCOVER THE SCIENCE AND TECHNOLOGY OF THE FUTURE with 20 PROJECTS', '1936749750.jpg', 2012, 128, 'Once, robots were only found in science fiction books and movies. Today, robots are everywhere! They assemble massive cars and tiny computer chips. They help doctors do delicate surgery. They vacuum our houses and mow our lawns. Robot toys play with us, follow our commands, and respond to our moods. We even send robots to explore the depths of the ocean and the expanse of space. In Robotics, children ages 9 and up learn how robots affect both the future and the present. Hands-on activities make learning both fun and lasting.', 16.54, 12),
+(51, 41, '1936749750', 'Robotics: Discover the Science and Technology of the Future 20 Projects', '1936749750.jpg', 2012, 128, 'Once, robots were only found in science fiction books and movies. Today, robots are everywhere! They assemble massive cars and tiny computer chips. They help doctors do delicate surgery. They vacuum our houses and mow our lawns. Robot toys play with us, follow our commands, and respond to our moods. We even send robots to explore the depths of the ocean and the expanse of space. In Robotics, children ages 9 and up learn how robots affect both the future and the present. Hands-on activities make learning both fun and lasting.', 16.54, 12),
 (52, 42, '9780470673423', 'Food Science and Technology', '9780470673423.jpg', 2017, 576, 'Food Science and Technology is considered the flagship textbook for degree level studies in food science, supported by the International Union of Food Science and Technology. The comprehensive text and reference book is designed to cover all the essential elements of food science and technology, including all core aspects of major food science and technology degree programs being taught worldwide. This second edition sees major development of the book\'s accessibility and features as well as a greater use of colour, photos and illustrations to enhance the reader\'s learning experience and to appeal to students in the subject. The editor, Geoffrey Campbell-Platt, is a world-renowned food scientist with a long career in industry and academia, and is currently President of the world s biggest professional association for food science, the International Union of Food Science and Technology (IUFoST). Each chapter is written by an expert in their chosen field, thus presenting a collection of authoritative authors in one volume, suitable for food science and technology degree programmes and food industry professionals.\r\nAbout IUFoST The International Union of Food Science and Technology (IUFoST) is a country-membership organisation representing some 65 member countries, and around 200,000 food scientists and technologists worldwide. IUFoST is the global voice of food science and technology, dedicated to promoting the sharing of knowledge and good practice in food science and technology internationally. IUFoST organises World Congresses of Food Science and Technology, and has established the International Academy of Food Science and Technology (IAFoST) to which eminent food scientists can be elected by peer review. For further information about IUFoST and its activities, visit: www.iufost.org\r\nshow less', 69.56, 5),
-(53, 43, '1421417758', 'Science and Technology in World History : An Introduction', '1421417758.jpg', 2016, 552, 'Tracing the relationship between science and technology from the dawn of civilization to the early twenty-first century, James E McClellan III and Harold Dorn\'s bestselling book argues that technology as \"applied science\" emerged relatively recently, as industry and governments began funding scientific research that would lead directly to new or improved technologies. McClellan and Dorn identify two great scientific traditions: the useful sciences, which societies patronized from time immemorial, and the exploration of questions about nature itself, which the ancient Greeks originated. The authors examine scientific traditions that took root in China, India, and Central and South America, as well as in a series of Near Eastern empires in late antiquity and the Middle Ages. From this comparative perspective, McClellan and Dorn survey the rise of the West, the Scientific Revolution of the seventeenth century, the Industrial Revolution, and the modern marriage of science and technology. They trace the development of world science and technology today while raising provocative questions about the sustainability of industrial civilization.\r\nThis new edition of Science and Technology in World History offers an enlarged thematic introduction and significantly extends its treatment of industrial civilization and the technological super system built on the modern electrical grid. The Internet and social media receive increased attention. Facts and figures have been thoroughly updated and the work includes a comprehensive Guide to Resources, incorporating the major published literature along with a vetted list of websites and Internet resources for students and lay readers.', 31.42, 5),
+(53, 43, '1421417758', 'Science and Technology in World History: An Introduction', '1421417758.jpg', 2016, 552, 'Tracing the relationship between science and technology from the dawn of civilization to the early twenty-first century, James E McClellan III and Harold Dorn\'s bestselling book argues that technology as \"applied science\" emerged relatively recently, as industry and governments began funding scientific research that would lead directly to new or improved technologies. McClellan and Dorn identify two great scientific traditions: the useful sciences, which societies patronized from time immemorial, and the exploration of questions about nature itself, which the ancient Greeks originated. The authors examine scientific traditions that took root in China, India, and Central and South America, as well as in a series of Near Eastern empires in late antiquity and the Middle Ages. From this comparative perspective, McClellan and Dorn survey the rise of the West, the Scientific Revolution of the seventeenth century, the Industrial Revolution, and the modern marriage of science and technology. They trace the development of world science and technology today while raising provocative questions about the sustainability of industrial civilization.\r\nThis new edition of Science and Technology in World History offers an enlarged thematic introduction and significantly extends its treatment of industrial civilization and the technological super system built on the modern electrical grid. The Internet and social media receive increased attention. Facts and figures have been thoroughly updated and the work includes a comprehensive Guide to Resources, incorporating the major published literature along with a vetted list of websites and Internet resources for students and lay readers.', 31.42, 5),
 (54, 44, '9780822349570', 'The Postcolonial Science and Technology Studies Reader', '9780822349570.jpg', 2011, 546, 'For twenty years, the renowned philosopher of science Sandra Harding has argued that science and technology studies, postcolonial studies, and feminist critique must inform one another. In The Postcolonial Science and Technology Studies Reader, Harding puts those fields in critical conversation, assembling the anthology that she has long wanted for classroom use. In classic and recent essays, international scholars from a range of disciplines think through a broad array of science and technology philosophies and practices. The contributors reevaluate conventional accounts of the West\'s scientific and technological projects in the past and present, rethink the strengths and limitations of non-Western societies\' knowledge traditions, and assess the legacies of colonialism and imperialism. The collection concludes with forward-looking essays, which explore strategies for cultivating new visions of a multicultural, democratic world of sciences and for turning those visions into realities. Feminist science and technology concerns run throughout the reader and are the focus of several essays. Harding provides helpful background for each essay in her introductions to the reader\'s four sections.', 32.72, 5),
-(55, 45, '9780631232100', 'Science, Technology, and Society : A Sociological Approach', '9780631232100.jpg', 2005, 164, '\"Science, Technology and Society: A Sociological Approach\" is a comprehensive guide to the emergent field of science, technology, and society (STS) studies and its implications for today\'s culture and society. This title discusses current STS topics, research tools, and theories. It tackles some of the most urgent issues in current STS studies, including power and culture, race, gender, colonialism, the Internet, cyborgs and robots, and biotechnology. It includes case studies, a glossary, and further reading lists.', 32.92, 4);
+(55, 45, '9780631232100', 'Science, Technology, and Society: A Sociological Approach', '9780631232100.jpg', 2005, 164, '\"Science, Technology and Society: A Sociological Approach\" is a comprehensive guide to the emergent field of science, technology, and society (STS) studies and its implications for today\'s culture and society. This title discusses current STS topics, research tools, and theories. It tackles some of the most urgent issues in current STS studies, including power and culture, race, gender, colonialism, the Internet, cyborgs and robots, and biotechnology. It includes case studies, a glossary, and further reading lists.', 32.92, 4);
 
 -- --------------------------------------------------------
 
@@ -352,7 +345,8 @@ CREATE TABLE `cart` (
 
 INSERT INTO `cart` (`cart_id`, `book_id`, `customer_id`, `quantity`, `total_price`) VALUES
 (1, 26, 2, 1, 13.48),
-(2, 18, 2, 1, 27.49);
+(2, 18, 2, 1, 27.49),
+(3, 26, 3, 1, 13.48);
 
 -- --------------------------------------------------------
 
@@ -481,7 +475,8 @@ CREATE TABLE `customer` (
 
 INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `email`, `birthday`, `phone`, `address`, `city`, `state`) VALUES
 (1, 'kom', 'ar', 'kj2006@hw.edu.uk', '2021-06-16', '5552', 'df', 'df', 'df'),
-(2, 'kom', 'javan', 'ahah@komar.com', '2021-06-09', '5555', 'iejrier', 'ijier', 'iejri');
+(2, 'kom', 'javan', 'ahah@komar.com', '2021-06-09', '5555', 'iejrier', 'ijier', 'iejri'),
+(3, 'Sheena', 'Fernandez', 'sheena.fernandez@obf.ateneo.edu', '2021-06-04', '07762321759', 'Heriot Watt University', 'CURRIE', 'Midlothian');
 
 -- --------------------------------------------------------
 
@@ -494,7 +489,7 @@ CREATE TABLE `customer_order` (
   `customer_id` int(11) DEFAULT NULL,
   `order_date` date NOT NULL,
   `shipping_status` varchar(50) NOT NULL,
-  `shipping_adress` varchar(200) NOT NULL
+  `shipping_address` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -561,6 +556,13 @@ CREATE TABLE `feedback` (
   `feedback_email` varchar(50) NOT NULL,
   `feedback_message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `feedback_name`, `feedback_email`, `feedback_message`) VALUES
+(1, 'Sheena Fernandez', 'sheena.fernandez@obf.ateneo.edu', 'Great online shop. Would definitely buy again');
 
 -- --------------------------------------------------------
 
@@ -662,7 +664,7 @@ CREATE TABLE `user` (
   `customer_id` int(11) DEFAULT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `admin_permission` tinyint(1) NOT NULL DEFAULT 0
+  `admin_permission` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -672,7 +674,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_permission`) VALUES
 (1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
 (2, 1, 'javan123', 'bda587389ad3548623073312d7119d05', 0),
-(3, 2, 'kj', '202cb962ac59075b964b07152d234b70', 0);
+(3, 2, 'kj', '202cb962ac59075b964b07152d234b70', 0),
+(4, 3, 'sfernandez', '202cb962ac59075b964b07152d234b70', 0);
 
 -- --------------------------------------------------------
 
@@ -684,6 +687,13 @@ CREATE TABLE `wishlist` (
   `book_id` int(11) NOT NULL,
   `customer_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`book_id`, `customer_id`) VALUES
+(36, 3);
 
 --
 -- Indexes for dumped tables
@@ -831,7 +841,7 @@ ALTER TABLE `book_feature`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -843,7 +853,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer_order`
@@ -855,7 +865,7 @@ ALTER TABLE `customer_order`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -873,7 +883,7 @@ ALTER TABLE `publisher`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -951,8 +961,3 @@ ALTER TABLE `user`
 ALTER TABLE `wishlist`
   ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

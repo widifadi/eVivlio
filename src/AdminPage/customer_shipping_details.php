@@ -18,18 +18,6 @@ $user_name = $_SESSION['user'];
 <p> <b> Enter your shipping details </b> </p>
 <form action="../src/AdminPage/customer_shipping_post.php" method="POST" id="login-form">
 
-<div class="form-group row">
-        <label for="firstName" class="col-sm-3 col-form-label signup-label">Customer ID</label>
-        <div class="col-sm-9">
-        <input type="text" class="form-control" id="update-firstName" name="firstName"  placeholder="First Name"  
-        readonly
-                  
-            value="<?php echo     $customer_details['customer_id'];?>"
-                            
-                               
-            >                
-        </div>
-    </div>
       
     <div class="form-group row">
         <label for="firstName" class="col-sm-3 col-form-label signup-label">First Name</label>
@@ -70,23 +58,10 @@ $user_name = $_SESSION['user'];
         </div>
     </div>
     <div class="form-group row">
-        <label for="stAddress" class="col-sm-3 col-form-label signup-label">Street Address</label>
+        <label for="stAddress" class="col-sm-3 col-form-label signup-label">Shipping Address</label>
         <div class="col-sm-9">
-        <input type="text" class="form-control" id="update-address" name="stAddress"
+        <input type="text" class="form-control" id="update-address" name="shipAddress"
             placeholder="Street Address" required>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="city" class="col-sm-3 col-form-label signup-label">City</label>
-        <div class="col-sm-9">
-        <input type="text" class="form-control" id="update-city" name="city"
-            placeholder="City" required>
-        </div>
-    </div>
-    <div class="form-group row">
-        <label for="state" class="col-sm-3 col-form-label signup-label">State</label>
-        <div class="col-sm-9">
-        <input type="text" class="form-control" id="update-state" name="state" placeholder="State">
         </div>
     </div>
     <div class="text-center">

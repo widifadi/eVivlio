@@ -67,11 +67,11 @@
     for ($x = 0; $x < count($book_title); $x++) {?> 
     <div class="row wl-book">
         <div class="col-2">
-            <img src="../assets/img/book-covers/<?= $book_cover[$x]?>" alt="book" width="100px" id="book-cover">
+            <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark"><img src="../assets/img/book-covers/<?= $book_cover[$x]?>" alt="book" width="100px" id="book-cover"></a>
         </div>
         <div class="col-6">
             <div class="row mt-3 ml-3">
-                <div id="book-title"> <a href="#" class="text-dark">"<?= $book_title[$x]?>", <?= $author_fn[$x]?>,<?= $author_ln[$x] ?> (<?= $book_year[$x] ?>)</a></div>
+                <div id="book-title"><a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>" class="text-dark">"<?= $book_title[$x]?>", <?= $author_fn[$x]?>,<?= $author_ln[$x] ?> (<?= $book_year[$x] ?>)</a></div>
             </div>
         </div>
         <div class="col-2">

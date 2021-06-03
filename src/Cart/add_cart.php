@@ -103,7 +103,7 @@
 
         $_SESSION['showAlert'] ='block';
         $_SESSION['message'] = 'Item removed from the cart';
-        header('location:cart_cart.php');
+        header('location:cart.php');
     }
 
     // For updating the quantity

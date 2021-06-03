@@ -4,7 +4,7 @@ require_once("../templates/header.php");
 if (isset($_SESSION['user'])|| $_SESSION['admin_permission'] == 0)
     {?>
 
-        <div class="container " style="margin-top: 100px; margin-bottom: -100px; width: 60%;">
+     <!--   <div class="container " style="margin-top: 100px; margin-bottom: -100px; width: 60%;">
 
 		<p> <b> Please check the order details </b></p>
  
@@ -23,7 +23,7 @@ if (isset($_SESSION['user'])|| $_SESSION['admin_permission'] == 0)
                     </thead>
                     <tbody>
                 </div>      
-            </div>
+            </div> -->
             <?php
     }
                 require_once("../database/database_functions.php");
@@ -67,27 +67,11 @@ if (isset($_SESSION['user'])|| $_SESSION['admin_permission'] == 0)
 <!-- The Customer Shipment Details Start from here ! -->
 
 
-
-<?php 
-
-if(isset($_POST['save-order'])){
-
-
-
-
-}
-
-?>
-
 <div class="container " style="margin-top: 100px; margin-bottom: -100px; width: 60%;">
     <?php 
 include('../src/AdminPage/customer_shipping_details.php');?>
 </div>	
 </div>
-
-
-
-
 
 
 <?php require_once("../templates/footer.php"); ?>

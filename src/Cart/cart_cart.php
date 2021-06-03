@@ -75,6 +75,7 @@
                 $book_result = mysqli_query($conn, $query_book);
                 $book_row = mysqli_fetch_assoc($book_result);
     
+                array_push($book_id, $book_item_id);
                 array_push($book_title, $book_row['book_title']);
                 array_push($book_cover, $book_row['book_cover']);
                 array_push($author_fn, $book_row['author_first_name']);

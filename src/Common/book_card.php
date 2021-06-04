@@ -34,6 +34,10 @@
         ?>
         <div class="row">
             <div class="col"></div>
+            <?php 
+                if ((!isset($_SESSION['user'])) ||
+                    (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1)) {
+            ?>
             <div class="col">
                 <em class="fas fa-cart-plus add-cart-btn" id="cart-<?php echo $book_id?>"></em>
             </div>
@@ -44,6 +48,7 @@
                 <em class="fas fa-heart add-wishlist-btn" id="wishlist-<?php echo $book_id?>"></em>
             </div>
             <?php
+                }
                 }
             ?>
             <div class="col"></div>

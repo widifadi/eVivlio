@@ -144,6 +144,10 @@
                 </div>
   
                 <br>
+                <?php 
+                if ((!isset($_SESSION['user'])) ||
+                    (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1)) {
+                ?>
                 <div class="card text-center">
                     <div class="card-header" style="color:#396273;">
                         Post a Review
@@ -184,6 +188,9 @@
                         </form>
                     </div>
                 </div>
+                <?php
+                    }
+                ?>
 
             </div>
         </div>

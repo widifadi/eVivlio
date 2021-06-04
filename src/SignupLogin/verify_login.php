@@ -51,7 +51,7 @@
                         if ($cart_row['book_id'] == $book_item_id) {
                             $new_quantity = $guest_book_qty + $cart_row['quantity'];
                             $increment_book_qty_query = "UPDATE cart SET quantity = $new_quantity 
-                                                        WHERE book_id=$book_item_id;";
+                                                        WHERE book_id=$book_item_id AND customer_id=$customer_id;";
 
                             if ($conn->query($increment_book_qty_query) === TRUE) {
                                 echo "Cart updated successfully. <br>";

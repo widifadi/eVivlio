@@ -38,25 +38,27 @@
         $state = $_POST['state'];
         $state = mysqli_real_escape_string($conn, $state);
 
-                $user_check= "SELECT * FROM user u JOIN customer c USING (customer_id) WHERE u.username='$username' OR c.email='$email' LIMIT 1";
-                echo $user_check;
-                $result=mysqli_query($conn,$user_check) or die($conn->error);
-                $users =mysqli_fetch_assoc($result);
-                if ($users) 
-                {
-                     if ($users['username'] === $username ){
+        $user_check= "SELECT * FROM user u 
+                    JOIN customer c USING (customer_id) 
+                    WHERE u.username='$username' OR c.email='$email' LIMIT 1";
+        echo $user_check;
+        $result=mysqli_query($conn,$user_check) or die($conn->error);
+        $users =mysqli_fetch_assoc($result);
+        if ($users) 
+        {
+                if ($users['username'] === $username ){
+                    header("location: ../../public/signup_login.php#pills-signup");
+                        }
+                    if($users['email'] === $email) {
                             header("location: ../../public/signup_login.php#pills-signup");
-                             }
-                            if($users['email'] === $email) {
-                                    header("location: ../../public/signup_login.php#pills-signup");
-                            }  
-                 } 
+                    }  
+            } 
 
-                 if($password != $password_check) {
-                    $_SESSION['showAlert'] ='block';
-                    $_SESSION['message'] = 'User Not Found! Try Again or Register here';
-                    header('location:../../public/signup_login.php#pills-signup');
-                     }
+            if($password != $password_check) {
+            $_SESSION['showAlert'] ='block';
+            $_SESSION['message'] = 'User Not Found! Try Again or Register here';
+            header('location:../../public/signup_login.php#pills-signup');
+                }
        
         else {
             $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 

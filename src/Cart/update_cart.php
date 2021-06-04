@@ -104,4 +104,39 @@
         }
 
     }
+
+    // Clear all function for cart 
+    if (isset($_SESSION['user'])) {
+        $userName = $_SESSION['user'];
+
+        // getting customer id
+        $sql = "SELECT customer_id FROM user WHERE username = '$userName'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()){
+                $customer = $row['customer_id'];
+            }
+        } else {
+            echo "Error in getting customer id!";
+        }
+    
+        if(isset($_GET['clear'])){
+            $stmt = $conn->prepare("DELETE FROM cart WHERE customer_id = '$customer'");
+            $stmt->execute();
+
+            $_SESSION['showAlert'] ='block';
+            $_SESSION['message'] = 'All item removed from the cart';
+            header('location:../../public/cart.php');
+        }
+    } else {
+
+        // if you are a guest
+        if(isset($_GET['clear'])){
+            unset($_SESSION['guest_cart']);
+
+            $_SESSION['showAlert'] ='block';
+            $_SESSION['message'] = 'All item removed from the cart';
+            header('location:../../public/cart.php');
+        }
+    }
 ?>

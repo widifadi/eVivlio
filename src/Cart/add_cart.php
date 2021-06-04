@@ -22,7 +22,6 @@
 
         if(isset($_POST['book_id'])){
             $bid = $_POST['book_id'];
-            $bqty = 1;
 
             $sql = "SELECT price FROM book WHERE book_id = '$bid'";
             $result = $conn->query($sql);
@@ -47,9 +46,10 @@
             }
 
             // Inserting book to the cart
-            $sql = "INSERT INTO cart (book_id,customer_id,quantity,total_price) VALUE ($bid,$customer,$bqty,$bprice)";
             if ($num_bid <= 0) {
 
+                $bqty = 1;
+                $sql = "INSERT INTO cart (book_id,customer_id,quantity,total_price) VALUE ($bid,$customer,$bqty,$bprice)";
                 if ($conn->query($sql) === TRUE) {
                 
                     // Bootsrap alert
@@ -61,6 +61,18 @@
                 }
 
             } else {
+
+                $sql = "SELECT quantity FROM cart WHERE book_id = $bid AND customer_id = $customer";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $bqty = $row['quantity'] + 1;
+                    }
+                } else {
+                    echo "Error getting book quantity to increment books!";
+                }
+                
+                $sql = "UPDATE cart SET quantity=$bqty WHERE book_id = $bid AND customer_id = $customer";
 
                 // Bootstrap alert
                 echo'<div class="alert alert-danger alert-dismissible mt-2" id="success-alert">

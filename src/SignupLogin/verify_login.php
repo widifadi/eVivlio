@@ -57,7 +57,7 @@
         }   
         }else {
     
-            header('location:../../public/signup_login.php#pills-login');
+            header('location:../../public/index.php');
              
             // TODO pass login error to login page
         }

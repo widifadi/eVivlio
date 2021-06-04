@@ -4,11 +4,10 @@
             <tr>
                 <th>Update</th>
                 <th scope="col">Order ID</th>
-                <!-- TODO customer name? -->
                 <th scope="col">Customer ID</th>
-                <!-- TODO change date to date&time? -->
                 <th scope="col">Order Date</th>
-                <th scope="col">Shipping Status</th> 
+                <th scope="col">Shipping Status</th>
+                <th scope="col">Shipping Address</th> 
             </tr>
         </thead>
         <tbody>
@@ -36,6 +35,7 @@
                 <td><?php echo $row['customer_id']; ?></td>
                 <td><?php echo $row['order_date']; ?></td>
                 <td><?php echo $row['shipping_status']; ?></td>
+                <td><?php echo $row['shipping_address']; ?></td>
             </tr> 
             <?php
                 }

@@ -5,6 +5,10 @@
     // Get POST data from AJAX
     $customer_id = $_POST['customer_id'];
 
+    // delete user if it exists
+    $delete_user = "DELETE FROM user WHERE customer_id=$customer_id; ";
+
+    // delete from all tables with relations
     $delete_cart = "DELETE FROM cart WHERE customer_id=$customer_id;";
     $delete_book_review = "DELETE FROM book_review WHERE customer_id=$customer_id;";
     $delete_customer_order = "DELETE FROM customer_order WHERE customer_id=$customer_id;";
@@ -16,6 +20,7 @@
     mysqli_query($conn, $delete_customer_order);
     mysqli_query($conn, $delete_payment);
     mysqli_query($conn, $delete_wishlist);
+    mysqli_query($conn, $delete_user);
 
     $delete_customer = "DELETE FROM customer WHERE customer_id=$customer_id; "; 
     if (mysqli_query($conn, $delete_customer)) {
@@ -24,10 +29,6 @@
         echo "Error deleting customer: " . mysqli_error($conn);
         exit;
     }
-
-    // delete user if it exists
-    $delete_user = "DELETE FROM user WHERE customer_id=$customer_id; ";
-    mysqli_query($conn, $delete_user);
     
     mysqli_close($conn);
 

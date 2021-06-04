@@ -14,8 +14,7 @@ $('.delete-user').click(function() {
             data: { "user_id": user_id, 
                     "customer_id": customer_id },
             success: function(response) {
-                
-                if (response == "customer 0 user 0" || response == "user 0") {
+                if (response == "00") {
                     $(".deleteuser-response").html("User deleted successfully. <br> Reloading the page.");
                     $(".deleteuser-response").addClass("alert-success");
                     $(".deleteuser-response").show();

@@ -9,7 +9,7 @@
 
     $delete_user = "DELETE FROM user WHERE user_id=$user_id; ";
     if (mysqli_query($conn, $delete_user)) {
-        echo "user 0";
+        echo "0";
     } else {
         echo "Error deleting user: " . mysqli_error($conn);
         exit;
@@ -30,7 +30,7 @@
 
     $delete_customer = "DELETE FROM customer WHERE customer_id=$customer_id; "; 
     if (mysqli_query($conn, $delete_customer)) {
-        echo "customer 0 ";
+        echo "0";
     } else {
         echo "Error deleting customer: " . mysqli_error($conn);
         echo $delete_customer;

@@ -53,7 +53,7 @@ require_once("../templates/header.php");
             $customer_ID = $customer_details['customer_id'];
 
     $payment_query = "INSERT INTO payment (customer_id, payment_date, payment_method)
-     VALUES  ('$customer_ID', '$exp_date', '$payment_method')";
+     VALUES  ('$customer_ID', '$order_date', '$payment_method')";
                         
         if ($conn->query($payment_query) === TRUE) {
            header('location:order_confirmation.php');
@@ -114,14 +114,14 @@ require_once("../templates/header.php");
 <div class="container" class="nav nav-pills mb-3 justify-content-center" style="margin-top: 100px; margin-bottom: 100px; margin: left 100px; width:40%;">
 	
         <form action="payment_process.php" method="post" id="login-form">
-        <p style="text-align: center"> <b> Please Proceed to Payment </b> <p>
+        <p style="text-align: center"> <b> Please Enter Card details </b> <p>
       
 
 
         <div class="form-group row">
                 <label for="card_type" class="col-sm-3 col-form-label signup-label">Type</label>
                 <div class="col-sm-9">
-                <select class="form-control" name="card_type">
+                <select class="form-control" name="card_type" required>
                         <option value="VISA">VISA</option>
                         <option value="MasterCard">MasterCard</option>
                         <option value="American Express">American Express</option>
@@ -131,26 +131,26 @@ require_once("../templates/header.php");
         <div class="form-group row"> 
             <label for="card_number" class="col-sm-3 col-form-label signup-label">Number</label>
              <div class="col-sm-9">
-              	<input type="text"  class="form-control" name="card_number">
+              	<input type="text"  class="form-control" name="card_number" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="card_PID" class="col-sm-3 col-form-label signup-label">PID</label>
             <div class="col-sm-9">
-              	<input type="text" class="form-control" name="card_PID">
+              	<input type="number" class="form-control" name="card_PID" required>
             </div>
         </div>
 
         <div class="form-group row">
             <label for="date" class="col-sm-3 col-form-label signup-label">Date</label>
             <div class="col-sm-9">
-              	<input type="date"  class="form-control" name="date">
+              	<input type="date"  class="form-control" name="date" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="card_owner" class="col-sm-3 col-form-label signup-label">Name</label>
             <div class="col-sm-9">
-              	<input type="text" class="form-control" name="card_owner">
+              	<input type="text" class="form-control" name="card_owner" required>
             </div>
         </div>  <div class="text-center">
               	<button type="reset" class="btn btn-primary">Cancel</button>

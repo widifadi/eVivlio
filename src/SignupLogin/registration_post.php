@@ -53,8 +53,9 @@
                  } 
 
                  if($password != $password_check) {
-                    echo 'Passwords do not match!';
-                    header("location: ../../public/signup_login.php#pills-signup");
+                    $_SESSION['showAlert'] ='block';
+                    $_SESSION['message'] = 'User Not Found! Try Again or Register here';
+                    header('location:../../public/signup_login.php#pills-signup');
                      }
        
         else {

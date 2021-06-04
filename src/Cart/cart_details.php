@@ -111,7 +111,7 @@
                     <h5 class="font-weight-bold"><strong>€ <?php echo $grand_total ?></strong></h5>
                 </li>
                 <?php 
-                    if (isset($_SESSION['user'])) {
+                    if (isset($_SESSION['user']) && $num_items != 0) {
                 ?>
                 </ul>
                 <a href="check_out.php" 
@@ -131,10 +131,16 @@
                 </a>
                 <?php
                     }
+
+                    if ($num_items != 0) {
                 ?>
+                </ul>
                 <a href="../src/Cart/update_cart.php?clear=all" class="btn btn-danger rounded-pill py-2 btn-block" onclick="return confirm('Are you sure you want to clear all your cart?');">
                 <i class="fas fa-trash" onclick="return confirm('Are you sure you want to clear your cart?')"></i>&nbsp; Clear Cart
                 </a>
+                <?php
+                    }
+                ?>
             </div>
         </div>
 

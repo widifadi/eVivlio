@@ -56,7 +56,7 @@
                 array_push($book_price,$row['price']*$row['quantity']);
                 array_push($book_qty,$row['quantity']);
 
-                $grand_total += $row['total_price'];
+                $grand_total += $row['price']*$row['quantity'];
                 $num_items += $row['quantity'];
             }
         }
@@ -115,8 +115,7 @@
                 ?>
                 </ul>
                 <a href="check_out.php" 
-                    class="btn btn-warning rounded-pill py-2 btn-block"
-                    onclick="bootstrapAlert()">
+                    class="btn btn-warning rounded-pill py-2 btn-block">
                     Proceed to checkout
                 </a>
                 <?php
@@ -144,6 +143,7 @@
                 <?php
                     }
                 ?>
+                <!-- <button class="btn btn-primary" onclick="bootstrapAlert()">Try me!</button> --> 
             </div>
         </div>
 

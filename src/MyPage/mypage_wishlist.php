@@ -3,6 +3,7 @@
     <em class="fas fa-chevron-right" style="color: grey;"></em>
     <a href="#"> My Wishlist </a> 
 </div> 
+<div id="message" class="d-flex justify-content-center"></div>
 <div style="display:<?php if(isset($_SESSION['showAlert'])){echo $_SESSION['showAlert'];} else {echo 'none';} unset($_SESSION['showAlert']); ?>" class="alert alert-success alert-dismissible mt-3">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <strong> <?php if(isset($_SESSION['message'])){echo $_SESSION['message'];} unset($_SESSION['showAlert']); ?></strong>

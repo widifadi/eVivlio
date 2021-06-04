@@ -68,6 +68,7 @@ $user_name = $_SESSION['user'];
 ?>
 
 				<div class="container " style="margin-top: 100px; margin-bottom: 200px; width: 50%;"> 
+				<form  id="login-form">
 
 						<div > 	<p style="text-align: center"> <b> Thank You for Shopping with Us! </b> </p>
 								<p style="text-align: center"> <b> ORDER RECIEPT </b> </p>
@@ -75,12 +76,12 @@ $user_name = $_SESSION['user'];
 
 						  <table>
 								<tr style="padding-bottom: 5em">
-							<th><th>	<th>Name</th> </th> </th>
- 								<th style="text-align: center;padding-right: 4em;"> Order Number </th>
-								<th style="text-align: center; padding-right: 4em;">Date Date </th>
+							<th><th  style="text-align: center;padding-left: 2em;">	<th>Name</th> </th> </th>
+ 								<th style="text-align: center;padding-left: 2em;"> Order Number </th>
+								<th style="text-align: center; padding-right: 4em;"> Date </th>
 								</tr>
 										<tr style="padding-bottom: 3em">
-										<th><th><td ><?php echo  $CustomerName; ?></td></th>
+										<th><th><td ><?php echo  $CustomerName; ?></td></th></th>
 									<td style="text-align: center"><?php echo $orderID;?></td>
 									<td style="text-align: center"><?php echo $Date; ?></td>
 									</tr>
@@ -92,33 +93,33 @@ $user_name = $_SESSION['user'];
 								</tr>
 									<?php for($p=0; $p<count($qtys); $p++){?>
 								<tr style="padding-bottom: 2em">
-					     <th>	<th> <td><?php echo $bookTitles[$p];?></td> </th>
-						<th style="text-align: center"><?php echo $qtys[$p];?> </th>
-									<td style="text-align: center"><?php echo$prices[$p];?></td>
-									
+								<td><td> <td><?php echo $bookTitles[$p];?></td> </td> </td>
+								<td style="text-align: center"><?php echo $qtys[$p];?> </td>
+									<td style="text-align: center;"><?php echo$prices[$p];?></td>									
 								</tr>
 									<?php
-									
 								$totalSUM+=$prices[$p];
-								
 								}?>
-								<tr style="padding-bottom: 20em">
-							<td> <th>Total Price</th> </td> <th> <td  style="text-align: center"><?php echo $totalSUM?> </th> </tr>
-							
-							<td> </td>
-					
-												
-						<th>							 </th> </tr>
+							<tr>
+							<tr style="padding-right: 5em">
+							<th><th>	<th></th> </th> </th>
+								<th style="text-align: center;padding-left	: 15em;"> Total Price </th>
+								<td style="text-align: center ">	 <?php echo $totalSUM?> </td> 
+							</tr>
+						
 						</table>	
+
 								<div style="text-align:center"	>
 									<button onClick="window.print()">Print Reciept</button>
 				       			</div>		
 					   
-					  &nbsp;&nbsp; 
+					  &nbsp;&nbsp;
 						<p style="text-align: center"> Please Check your email as well for order details </p>
 
 					</div>
+				</form>
 				</div>
+				
 
 
 

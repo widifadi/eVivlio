@@ -43,7 +43,7 @@ $user_name = $_SESSION['user'];
         <label for="email" class="col-sm-3 col-form-label signup-label">Email </label>
         <div class="col-sm-9">
         <input type="email" class="form-control" id="update-email" name="email"
-            placeholder="Email address">
+            placeholder="Email address" required>
         </div>
     </div>
 

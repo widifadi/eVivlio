@@ -10,64 +10,59 @@
         $userName = $_SESSION['user'];
 
         // getting customer id
-        $sql = "SELECT customer_id FROM user WHERE username = '$userName'";
+        $sql = "SELECT customer_id FROM user WHERE username='$userName'; ";
         $result = $conn->query($sql);
             if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()){
-                    $customer = $row['customer_id'];
+                while ($row = $result->fetch_assoc()) {
+                    $customer_id = $row['customer_id'];
                 }
             } else {
                 echo "Error in getting customer id!";
             }
 
         if(isset($_POST['book_id'])){
-            $bid = $_POST['book_id'];
-            $bqty = 1;
+            $book_id = $_POST['book_id'];
 
-            $sql = "SELECT price FROM book WHERE book_id = '$bid'";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()){
-                    $bprice = $row['price'];
-                }
-            } else {
-                echo "Error in getting book price!";
-            }
+            // query book price 
+            $book_query = "SELECT price FROM book WHERE book_id=$book_id";
+            $book_query_result = mysqli_query($conn, $book_query);
+            $book_row = mysqli_fetch_array($book_query_result);
+            $book_price = $book_row['price'];
 
             // Check if the book id with customer id already exist in the cart
-            $sql = "SELECT book_id FROM cart WHERE book_id = '$bid' AND customer_id = '$customer'";
-            $result = $conn->query($sql);
-            $num_bid = 0;
-            if ($result) {
-                while ($row = $result->fetch_assoc()):
-                    $num_bid += 1;
-                endwhile;
-            } else {
-                echo 'Error in checking book!';
-            }
+            $customer_cart_query = "SELECT * FROM cart 
+                        WHERE book_id=$book_id AND customer_id=$customer_id;";
+            $cart_result = mysqli_query($conn, $customer_cart_query); 
+            $cart_row = mysqli_fetch_assoc($cart_result);
 
-            // Inserting book to the cart
-            $sql = "INSERT INTO cart (book_id,customer_id,quantity,total_price) VALUE ($bid,$customer,$bqty,$bprice)";
-            if ($num_bid <= 0) {
+            if(mysqli_num_rows($cart_result) != 0) {
+                // if book exists, increment quantity
+                $new_quantity = $cart_row['quantity'] + 1 ;
+                $increment_book_qty_query = "UPDATE cart SET quantity = $new_quantity 
+                                    WHERE book_id=$book_id AND customer_id=$customer_id;";
 
-                if ($conn->query($sql) === TRUE) {
-                
-                    // Bootsrap alert
+                if ($conn->query($increment_book_qty_query) === TRUE) {
                     echo'<div class="alert alert-success alert-dismissible mt-2" id="success-alert">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>Book added to your cart!</strong>
-                        </div>';
-
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Cart updated.</strong>
+                            </div>';
+                } else {
+                    echo "Cart Table Error: " . $sql . "<br>" . $conn->error . "<br>";
                 }
-
             } else {
-
-                // Bootstrap alert
-                echo'<div class="alert alert-danger alert-dismissible mt-2" id="success-alert">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Book already added to your cart!</strong>
-                    </div>';
-
+                // insert book to cart
+                $insert_book_query = "INSERT INTO cart (book_id,quantity,customer_id, total_price) 
+                    VALUE ($book_id, 1, $customer_id, $book_price)";
+                    if ($conn->query($insert_book_query) === TRUE) {
+                        // Bootsrap alert
+                        echo'<div class="alert alert-success alert-dismissible mt-2" id="success-alert">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>Book added to your cart!</strong>
+                            </div>';
+                    } else {
+                        echo "Error: " . $sql . "<br>" . $conn->error;
+                    exit();
+                }
             }
         }
     } else {

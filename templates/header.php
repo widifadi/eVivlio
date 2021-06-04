@@ -56,72 +56,6 @@
                 <?php
                     session_start();
                     if (isset($_SESSION['user']) && $_SESSION['admin_permission'] == 0) {
-                        
-                        // This file is used for storing data coming from client to db
-                        require "../database/database_functions.php";
-                        $conn = db_connection();
-                        // getting customer id
-                        $userName = $_SESSION['user'];
-                        $sql = "SELECT customer_id FROM user WHERE username = '$userName'";
-                        $result = $conn->query($sql);
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()){
-                                    $customer = $row['customer_id'];
-                                }
-                            } else {
-                                echo "Error in getting customer id!";
-                            }
-                        // Check if $_SESSION['guest_cart'] is empty or not
-                        // if not empty, store the session array into cart
-                        if (isset($_SESSION['guest_cart'])) {
-                            foreach ($_SESSION['guest_cart'] as $book_item_id => $guest_book_qty) {
-                                // Check if $book_item_id has already in the cart
-                                // if already there increment the quantity
-                                $stmt = $conn->prepare("SELECT book_id,quantity FROM cart WHERE customer_id = $customer");
-                                $stmt->execute();
-                                $result = $stmt->get_result();
-
-                                while ($row = $result->fetch_assoc()) {
-
-                                    // Initialize book id check
-                                    $check = $row['book_id'];
-                                    // Check if the book id with customer id already exist in the cart
-                                    $num_bid = 0;
-                                    foreach ($book_item_id as $val_check) {
-                                        if ($val_check == $check) {
-                                            $num_bid += 1;
-                                        }
-                                    }
-                                    if ($num_bid <= 0) {
-                                        // Insert new book
-                                        $sql = "INSERT INTO cart (book_id,quantity,customer_id) VALUE ($book_item_id,$guest_book_qty,$customer)";
-                                        if ($conn->query($sql) === TRUE) {
-                
-                                            // Bootsrap alert
-                                            echo'<div class="alert alert-success alert-dismissible mt-2" id="success-alert">
-                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                    <strong>Your Cart is Updated</strong>
-                                                </div>';
-                        
-                                        }
-                                    } else {
-                                        // Update quantity
-                                        $new_qty = $row['quantity'] + $guest_book_qty;
-                                        $sql = "UPDATE cart SET quantity = $new_qty WHERE book_id=$book_item_id AND customer_id = $customer";
-                                        if ($conn->query($sql) === TRUE) {
-                
-                                            // Bootsrap alert
-                                            echo'<div class="alert alert-success alert-dismissible mt-2" id="success-alert">
-                                                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                                    <strong>Your Cart is Updated!</strong>
-                                                </div>';
-                        
-                                        }
-
-                                    }
-                                }
-                            }
-                        }
                 ?>
                 <a href="my_page.php">
                     <button class="btn menu-btn" id="mypage-btn">
@@ -133,8 +67,7 @@
                     }
                     // if user is not admin
                     if((!isset($_SESSION['user'])) ||
-                        (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1))
-                        {
+                        (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1)) {
                 ?>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">

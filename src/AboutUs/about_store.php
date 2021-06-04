@@ -4,10 +4,12 @@
         <a href="#"> About the Store </a> 
 </div>
 <div class="container">
-    <div class="text mb-2 about-text"> &nbsp &nbsp The name <i>eVivlio</i> comes from a greek word  
-    "Βιβλίο" which means "library". And "e" makes it into a new online format.
+    <div class="text mb-2 about-text"> 
+        &nbsp &nbsp The name <i>eVivlio</i> comes from a greek word  
+        "Βιβλίο" which means "library". And "e" makes it into a new online format.
     </div>
-    <div class="text mb-2 about-text"> &nbsp &nbsp eVivlio is an online bookstore brought to you 
+    <div class="text mb-2 about-text"> 
+        &nbsp &nbsp eVivlio is an online bookstore brought to you 
         by six awesome students under Smart Cities and Communities  Proggramme. 
     </div>
     <div class="text mb-2 about-text">

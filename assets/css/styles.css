@@ -697,3 +697,10 @@ a:hover {
     font-family: Helvetica;
     font-size: 12px;
 }
+
+.order-confirmation-div {
+    background-color: var(--blue-theme);
+    color: antiquewhite;
+    padding: 5px;
+    border-radius: 10px;
+}

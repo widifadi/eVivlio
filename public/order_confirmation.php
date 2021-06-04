@@ -1,13 +1,9 @@
 <?php
-require_once("../templates/header.php"); ?>
-<?php
- //include("../database/database_functions.php");
- // $conn = db_connection();
+require_once("../templates/header.php"); 
+
+ require_once("../database/database_functions.php");
+  $conn = db_connection();
 $user_name = $_SESSION['user'];
-   
-        ?>
-      	
-	<?php
 	$customer_query = "SELECT customer.email, customer.first_name, customer.last_name, customer.customer_id
 					    FROM user
 						JOIN
@@ -42,6 +38,7 @@ $user_name = $_SESSION['user'];
 				$qtys[]= array();
 				$prices[]= array();
 				$bookTitles[]= array();
+		
 				$totalSUM=0;
 				$index=0;
 
@@ -57,6 +54,7 @@ $user_name = $_SESSION['user'];
 
 					$orderBookitem= mysqli_query($conn, $BookQuery);
 					$orderBookitem= mysqli_fetch_assoc(	$orderBookitem);
+
 					$bookTitles[$index]  = $orderBookitem['book_title'];	
 					$index++;				 
 			 }
@@ -119,7 +117,4 @@ $user_name = $_SESSION['user'];
 				</form>
 				</div>
 				
-
-
-
 	<?php require_once("../templates/footer.php"); 

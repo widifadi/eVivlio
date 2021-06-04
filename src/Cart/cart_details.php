@@ -115,7 +115,8 @@
                 ?>
                 </ul>
                 <a href="check_out.php" 
-                    class="btn btn-warning rounded-pill py-2 btn-block">
+                    class="btn btn-warning rounded-pill py-2 btn-block"
+                    onclick="bootstrapAlert()">
                     Proceed to checkout
                 </a>
                 <?php
@@ -135,8 +136,10 @@
                     if ($num_items != 0) {
                 ?>
                 </ul>
-                <a href="../src/Cart/update_cart.php?clear=all" class="btn btn-danger rounded-pill py-2 btn-block" onclick="return confirm('Are you sure you want to clear all your cart?');">
-                <i class="fas fa-trash" onclick="return confirm('Are you sure you want to clear your cart?')"></i>&nbsp; Clear Cart
+                <a href="../src/Cart/update_cart.php?clear=all" 
+                    class="btn btn-danger rounded-pill py-2 btn-block" 
+                    onclick="return confirm('Are you sure you want to clear all your cart?');">
+                <i class="fas fa-trash"></i>&nbsp; Clear Cart
                 </a>
                 <?php
                     }

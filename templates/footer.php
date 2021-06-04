@@ -43,6 +43,7 @@
     <script src="../assets/js/cart.js"></script>
     <script src="../assets/js/update-quantity.js"></script>  
     <script src="../assets/js/feedback.js"></script> 
+    <script src="../assets/js/bootstrapAlert.js"></script>
 
 </body>
 </html>

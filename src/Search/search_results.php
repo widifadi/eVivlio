@@ -8,10 +8,11 @@
     <?php
         $keyword = $_GET["search"];
 
+
         require_once("../database/database_functions.php");
         require_once("../src/Common/book_card.php");
         $conn = db_connection();
-
+        $keyword = mysqli_real_escape_string($conn,$keyword);
         $query = "SELECT DISTINCT book.book_id, book.book_title, book.book_cover, 
                         book.publishing_year, book.price 
                     FROM book LEFT OUTER JOIN author_tag ON book.book_id = author_tag.book_id 

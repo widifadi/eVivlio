@@ -3,7 +3,7 @@
 </div>     
 <div class="container mt-3" id="contacts">
     <div class="faq-text" style= "font-size: 16px"id="contact-text">
-         Looking for product support?  Get in touch with us! </div>
+        Looking for product support?  Get in touch with us! </div>
     <div class="row mb-3">
         <div class="col-1">
         <i class="fas fa-phone-alt i-yellow"></i>
@@ -18,7 +18,7 @@
         <i class="fas fa-envelope i-yellow"></i>
         </div>
         <div class="col-8 contact-details">
-            <a class="title-link" href="mailto:contact@eVivlio.com"><span>contact@eVivlio.com</span></a>
+            <a class="title-link" href="mailto:contact@evivlio.com"><span>contact@evivlio.com</span></a>
         </div>
     </div>
     <div class="row mb-3">

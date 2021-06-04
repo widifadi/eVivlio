@@ -11,6 +11,7 @@
                WHERE category.category_name='$category'";
    $query_run= mysqli_query($conn,$query);
    $check_books=mysqli_num_rows($query_run) > 0;
+   
    if ($check_books) {
       while ($row=mysqli_fetch_assoc($query_run)) {
          $book_id = $row['book_id'];

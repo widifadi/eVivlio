@@ -67,8 +67,7 @@
                     }
                     // if user is not admin
                     if((!isset($_SESSION['user'])) ||
-                        (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1))
-                        {
+                        (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1)) {
                 ?>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">

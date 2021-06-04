@@ -54,7 +54,7 @@
 		$index++;				 
 	}
 
-	// require_once("../public/email.php"); 
+	require_once("../public/email.php"); 
 ?>
 
 

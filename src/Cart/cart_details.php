@@ -98,42 +98,40 @@
     <!-- Order Summary Section -->
     <div class="row">
         <div class="col-4">
-            <div class="row">
-                <div class="col">
-                <div class="bg-light rounded-pill px-4 py-3 font-weight-bold">Order summary </div>
-                    <div class="p-4">
-                        <ul class="list-unstyled mb-4">
-                        <li class="d-flex justify-content-between py-3 border-bottom">
-                            <strong class="text-muted" id="cart-number">Number of positions </strong>
-                            <strong><?= number_format($num_items,0) ?></strong></li>
-                        <li class="d-flex justify-content-between py-3 border-bottom">
-                            <strong class="text-muted" id="cart-total">Total</strong>
-                            <h5 class="font-weight-bold"><strong>€ <?php echo $grand_total ?></strong></h5>
-                        </li>
-                        <?php 
-                            if (isset($_SESSION['user'])) {
-                        ?>
-                        </ul>
-                        <a href="check_out.php" 
-                            class="btn btn-warning rounded-pill py-2 btn-block">
-                            Proceed to checkout
-                        </a>
-                        <?php
-                            }
-                        ?>
-                        <?php 
-                            if (!isset($_SESSION['user'])) {
-                        ?>
-                        </ul>
-                        <a href="signup_login.php" 
-                            class="btn btn-warning rounded-pill py-2 btn-block">
-                            Please login or register to purchase
-                        </a>
-                        <?php
-                            }
-                        ?>
-                    </div>
-                </div>
+            <div class="rounded-pill px-4 py-3 font-weight-bold" style="background-color:lightgray">
+                Order summary
+            </div>
+            <div class="p-4">
+                <ul class="list-unstyled mb-4">
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                    <strong class="text-muted" id="cart-number">Number of positions </strong>
+                    <strong><?= number_format($num_items,0) ?></strong></li>
+                <li class="d-flex justify-content-between py-3 border-bottom">
+                    <strong class="text-muted" id="cart-total">Total</strong>
+                    <h5 class="font-weight-bold"><strong>€ <?php echo $grand_total ?></strong></h5>
+                </li>
+                <?php 
+                    if (isset($_SESSION['user'])) {
+                ?>
+                </ul>
+                <a href="check_out.php" 
+                    class="btn btn-warning rounded-pill py-2 btn-block">
+                    Proceed to checkout
+                </a>
+                <?php
+                    }
+                ?>
+                <?php 
+                    if (!isset($_SESSION['user'])) {
+                ?>
+                </ul>
+                <a href="signup_login.php" 
+                    class="btn btn-warning rounded-pill py-2 btn-block">
+                    Please login or register to purchase
+                </a>
+                <?php
+                    }
+                ?>
             </div>
         </div>
 

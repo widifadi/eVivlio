@@ -60,7 +60,7 @@ $user_name = $_SESSION['user'];
 			 }
 
 
-	//		 require_once("../public/email.php"); 
+		// require_once("../public/email.php"); 
 			
 ?>
 

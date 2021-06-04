@@ -40,7 +40,7 @@
                         
         if ($conn->query($payment_query) === TRUE) {
             // header('location:order_confirmation.php');
-            header('location: temp_order_confirmation.php');
+          //  header('location: temp_order_confirmation.php');
         } else {
             echo "Customer Table Error: " . $sql . "<br>" . $conn->error . "<br>";
         }
@@ -65,22 +65,10 @@
         
 // INSERT int customer ORDER the shipping address which was saved in session
 
-            $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status, shipping_adress) 
+            $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status, shipping_address) 
                             VALUES( '$customer_ID', '$order_date', 'PLACED', '$shipping')";
                      mysqli_query($conn, $custOrder_query);
 
-        while ($row = mysqli_fetch_assoc($result)) {       
-            $bookId[$index]    =     $row['book_id'];
-            $qty[$index]       =     $row['quantity'];
-            $totalPrice[$index]=     $row['total_price'];
-            $index++;
-        }
-
-        $shipping= $_SESSION['shipping_address'];
-
-        $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status, shipping_adress) 
-                        VALUES( '$customer_ID', '$order_date', 'Order Received', '$shipping')";
-        mysqli_query($conn, $custOrder_query);
 
         $customerOrder_query = "SELECT order_id FROM customer_order WHERE 
             customer_id= '$customer_ID' ORDER BY order_id DESC LIMIT 1";                      
@@ -111,6 +99,7 @@
 
         $delete_query= "DELETE FROM cart WHERE customer_id= '$customer_ID'";
         mysqli_query($conn, $delete_query);
+         header('location:order_confirmation.php');
 
     }
 ?>

@@ -282,7 +282,7 @@ INSERT INTO `book_feature` (`feature_id`, `feature_name`) VALUES
 
 CREATE TABLE `book_review` (
   `book_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `rating` int(11) NOT NULL,
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

@@ -13,7 +13,7 @@
                         <h4 class="panel-title">
                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" 
                                 href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                What kind of books can I by from eVivlio?
+                                What kind of books can I buy from eVivlio?
                             </a>
                         </h4>
                     </div>

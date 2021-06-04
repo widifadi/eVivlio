@@ -23,6 +23,7 @@
                 ?>
             </div>
             <br>
+            <div id="message" class="d-flex justify-content-center"></div>
             <?php require_once("../src/Catalogue/book_list.php"); ?> 
         </div>
     </div>

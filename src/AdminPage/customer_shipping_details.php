@@ -1,6 +1,10 @@
 <?php 
 require_once("../templates/header.php");
+require_once("../database/database_functions.php");
+$conn = db_connection();
+?>
 
+<?php
 $user_name = $_SESSION['user'];
             
             // TODO select customer table WHERE username = username
@@ -12,6 +16,7 @@ $user_name = $_SESSION['user'];
             $customer_details = mysqli_fetch_assoc($customer_result);
             
         ?>
+
 
 <div class="container " style="margin-top: 0px; margin-bottom: 200px; width: 70%;">
 
@@ -43,13 +48,13 @@ $user_name = $_SESSION['user'];
         <label for="email" class="col-sm-3 col-form-label signup-label">Email </label>
         <div class="col-sm-9">
         <input type="email" class="form-control" id="update-email" name="email"
-            placeholder="Email address" required>
+            placeholder="Email address">
         </div>
     </div>
 
     <!-- TODO make country code selection -->
     <div class="form-group row">
-        <label for="phone" class="col-sm-3 col-form-label signup-label">Contact</label>
+        <label for="phone" class="col-sm-3 col-form-label signup-label">Contact Number</label>
         <div class="col-sm-9">
         <input type="text" class="form-control" id="update-phone"
             name="phone" placeholder="Contact Number" required>
@@ -64,7 +69,7 @@ $user_name = $_SESSION['user'];
     </div>
     <div class="text-center">
         <button class="btn yellow-theme-btn" type="submit" name="save-customer-shipping-btn"
-            id="save-customer-shipping-btn">Save Details and Start Payment Process</button>                                 
+            id="save-customer-shipping-btn">Save Details and start Payment</button>                                 
     </div>
     </form>
 </div>

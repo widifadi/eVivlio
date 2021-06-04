@@ -1,5 +1,5 @@
-<?php require_once("../../templates/header.php"); ?>
 <?php 
+
     include("../../database/database_functions.php");
     $conn = db_connection();
 

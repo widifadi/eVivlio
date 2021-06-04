@@ -1,5 +1,4 @@
 <?php
-
     require_once("../../database/database_functions.php");
     $conn = db_connection();
     
@@ -54,40 +53,17 @@
                         $increment_book_qty_query = "UPDATE cart SET quantity = $new_quantity 
                                                     WHERE book_id=$book_item_id AND customer_id=$customer_id;";
 
-                        if ($conn->query($increment_book_qty_query) === TRUE) {
-                            echo "Cart updated successfully. <br>";
-                        } else {
-                            echo "Cart Table Error: " . $sql . "<br>" . $conn->error . "<br>";
-                        }
-                    } else {
-                        // insert book to cart
-                        $insert_book_query = "INSERT INTO cart (book_id,quantity,customer_id, total_price) 
-                                VALUE ($book_item_id, $guest_book_qty, $customer_id, $total_price)";
-                        if ($conn->query($insert_book_query) === TRUE) {
-                            echo "Book inserted to cart. <br>";
-                        } else {
-                            echo "Error: " . $sql . "<br>" . $conn->error;
-                            exit();
-                        }
-                    }
-
-                    echo'<div class="alert alert-success alert-dismissible mt-2" id="success-alert">
-                            Your Cart is updated.
-                        </div>'; 
-                }
-            }
-
-        header("location: ../../public/index.php");
-        exit();
-
-    } else {
-        header('location:../../public/signup_login.php#pills-login');
-            
-        // TODO pass login error to login page
+        } 
+        }   
+        }else {
+    
+            header('location:../../public/signup_login.php#pills-login');
+             
+            // TODO pass login error to login page
         }
     }
 
-
+    }
     if (isset($conn)) {
         mysqli_close($conn);
     }

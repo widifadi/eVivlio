@@ -115,8 +115,7 @@
                 ?>
                 </ul>
                 <a href="check_out.php" 
-                    class="btn btn-warning rounded-pill py-2 btn-block"
-                    onclick="bootstrapAlert()">
+                    class="btn btn-warning rounded-pill py-2 btn-block">
                     Proceed to checkout
                 </a>
                 <?php
@@ -144,6 +143,7 @@
                 <?php
                     }
                 ?>
+                <!-- <button class="btn btn-primary" onclick="bootstrapAlert()">Try me!</button> --> 
             </div>
         </div>
 

@@ -143,7 +143,7 @@
             </div>
         </div>
         <div class="text-center">
-            <button type="reset" class="btn btn-primary">Cancel</button>
+            <button type="reset" class="btn btn-secondary">Cancel</button>
             <button type="submit" style="align-items:center;" 
                 class="btn btn-primary" name="save-order">Purchase
             </button>

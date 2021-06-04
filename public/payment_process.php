@@ -2,8 +2,7 @@
 require_once("../templates/header.php");
 ?>
 <?php
- include("../database/database_functions.php");
- $conn = db_connection();
+
  if (isset($_POST['save-order'])){
 
     $user_name = $_SESSION['user'];
@@ -33,17 +32,8 @@ require_once("../templates/header.php");
      $custID[]=array();
      $OrderID[]=array();
 
-   
-/*
-        for( $i=0; $i<count($bookId); $i++){
-            $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status) 
-                            VALUES( '$custID', '$order_date', 'PLACED')";
-                     mysqli_query($conn, $custOrder_query);
-        }
-
-
-*/
-
+ 
+// TO GET the customer ID 
     $customer_query = "SELECT * FROM customer 
             INNER JOIN user 
             ON customer.customer_id=user.customer_id
@@ -51,6 +41,8 @@ require_once("../templates/header.php");
             $customer_result = mysqli_query($conn, $customer_query);
             $customer_details = mysqli_fetch_assoc($customer_result);
             $customer_ID = $customer_details['customer_id'];
+
+//ISERT PAYMENT Details into payment table
 
     $payment_query = "INSERT INTO payment (customer_id, payment_date, payment_method)
      VALUES  ('$customer_ID', '$order_date', '$payment_method')";
@@ -60,6 +52,8 @@ require_once("../templates/header.php");
         } else {
             echo "Customer Table Error: " . $sql . "<br>" . $conn->error . "<br>";
         }
+
+        // insert from Cart to Customer ORder Table only when payment is processed
 
         $order_query = "SELECT * FROM cart WHERE customer_id= '$customer_ID'"; 
         $result = mysqli_query($conn, $order_query); 
@@ -78,6 +72,8 @@ require_once("../templates/header.php");
 
             $shipping= $_SESSION['shipping_address'];
         
+// INSERT int customer ORDER the shipping address which was saved in session
+
             $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status, shipping_adress) 
                             VALUES( '$customer_ID', '$order_date', 'PLACED', '$shipping')";
                      mysqli_query($conn, $custOrder_query);
@@ -111,17 +107,29 @@ require_once("../templates/header.php");
 ?>
 
 
+<!-- The PAYMENT FORM-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PaymentFORM</title>
+    <script defer src="../assets/js/form_errors.js"> </script>
+</head>
+
+<body>
+
+<div id="error"> </div>
 <div class="container" class="nav nav-pills mb-3 justify-content-center" style="margin-top: 100px; margin-bottom: 100px; margin: left 100px; width:40%;">
 	
         <form action="payment_process.php" method="post" id="login-form">
         <p style="text-align: center"> <b> Please Enter Card details </b> <p>
       
-
-
         <div class="form-group row">
                 <label for="card_type" class="col-sm-3 col-form-label signup-label">Type</label>
                 <div class="col-sm-9">
-                <select class="form-control" name="card_type" required>
+                <select class="form-control"  name="card_type" required>
                         <option value="VISA">VISA</option>
                         <option value="MasterCard">MasterCard</option>
                         <option value="American Express">American Express</option>
@@ -131,13 +139,13 @@ require_once("../templates/header.php");
         <div class="form-group row"> 
             <label for="card_number" class="col-sm-3 col-form-label signup-label">Number</label>
              <div class="col-sm-9">
-              	<input type="text"  class="form-control" name="card_number" required>
+              	<input type="text"  class="form-control" id="card_number" name="card_number" required>
             </div>
         </div>
         <div class="form-group row">
             <label for="card_PID" class="col-sm-3 col-form-label signup-label">PID</label>
             <div class="col-sm-9">
-              	<input type="number" class="form-control" name="card_PID" required>
+              	<input type="number" class="form-control" id="card_PID" name="card_PID" required>
             </div>
         </div>
 
@@ -153,11 +161,13 @@ require_once("../templates/header.php");
               	<input type="text" class="form-control" name="card_owner" required>
             </div>
         </div>  <div class="text-center">
-              	<button type="reset" class="btn btn-primary">Cancel</button>
+              	<button  type="button" class="btn btn-primary"> <a href="cart.php"> Cancel</button>
               	<button type="submit" style="align-items:center; "  class="btn btn-primary" name="save-order"  >Purchase</button>
         </div>
         </div>
             </div>
 		</div>
     </form>
+    </body>
+</html>
     <?php require_once("../templates/footer.php"); 

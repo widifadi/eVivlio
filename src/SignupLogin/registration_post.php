@@ -1,5 +1,4 @@
 <?php
-
     require_once("../../database/database_functions.php");
     $conn = db_connection();
 
@@ -45,16 +44,18 @@
                 if ($users) 
                 {
                      if ($users['username'] === $username ){
-                            header("location: ../../public/signup_login.php#pills-signup");
+
+                           echo "username already exists";
+                           header("location: ../../public/user_exists#pills-login");
                              }
-                            if($users['email'] === $email) {
-                                    header("location: ../../public/signup_login.php#pills-signup");
+                          if($users['email'] === $email) {
+                              echo "email already exists";
+                             header("location: ../../public/user_exists.php#pills-login");
                             }  
                  } 
 
                  if($password != $password_check) {
-                    $_SESSION['showAlert'] ='block';
-                    $_SESSION['message'] = 'User Not Found! Try Again or Register here';
+                     echo "Passwords do match";
                     header('location:../../public/signup_login.php#pills-signup');
                      }
        

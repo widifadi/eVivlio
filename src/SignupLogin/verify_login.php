@@ -1,9 +1,7 @@
 <?php
-
     require_once("../../database/database_functions.php");
     $conn = db_connection();
     
-
     if (isset($_POST['login_btn'])) {
         $username       =   $_POST['username'];
         $password       =   $_POST['password'];
@@ -36,6 +34,7 @@
             exit();
 
         } else {
+    
             header('location:../../public/signup_login.php#pills-login');
              
             // TODO pass login error to login page

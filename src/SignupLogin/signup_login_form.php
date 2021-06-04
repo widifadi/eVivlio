@@ -1,3 +1,4 @@
+
 <div class="container signup_login" style="margin-top: 100px; margin-bottom: 20px; width: 60%;">
        
     <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
@@ -12,12 +13,12 @@
                 aria-selected="false">Sign Up</a> 
         </li>
     </ul>
-
+<!---->
 
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-login" 
             role="tabpanel" aria-labelledby="pills-login-tab">
-            <form action="../src/SignupLogin/verify_login.php" method="post" id="login-form">
+            <form  action="../src/SignupLogin/verify_login.php" method="post" id="login-form">
                 <div class="form-group row">
                     <label for="username" class="col-sm-2 col-form-label">Username</label>
                     <div class="col-sm-10">
@@ -38,10 +39,12 @@
                 </div>
             </form>
         </div>
+        
+    
 
         <div class="tab-pane fade" id="pills-signup" role="tabpanel"
             aria-labelledby="pills-signup-tab">
-            <form action="../src/SignupLogin/registration_post.php" method="POST" id="signup-form">
+            <form action="../src/SignupLogin/registration_post.php" method="POST"   id="signup-form">
                 <div class="form-group row">
                     <label for="firstName" class="col-sm-3 col-form-label signup-label">First Name</label>
                     <div class="col-sm-9">

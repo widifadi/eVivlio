@@ -1,8 +1,8 @@
 <?php
 require_once("../templates/header.php"); ?>
 <?php
- include("../database/database_functions.php");
- $conn = db_connection();
+ //include("../database/database_functions.php");
+ // $conn = db_connection();
 $user_name = $_SESSION['user'];
    
         ?>
@@ -51,19 +51,18 @@ $user_name = $_SESSION['user'];
 					$prices[$index]		 = $orderBooks['total_price'];					
 					$orderedBookID= $orderBooks['book_id'];
 
-					$BookQuery= "SELECT book_title
+					$BookQuery= "SELECT book_title , stock 
 					 FROM book 
 					 WHERE book_id= '$orderedBookID'";
 
 					$orderBookitem= mysqli_query($conn, $BookQuery);
 					$orderBookitem= mysqli_fetch_assoc(	$orderBookitem);
-
 					$bookTitles[$index]  = $orderBookitem['book_title'];	
 					$index++;				 
 			 }
 
 
-			 require_once("../public/email.php"); 
+	//		 require_once("../public/email.php"); 
 			
 ?>
 

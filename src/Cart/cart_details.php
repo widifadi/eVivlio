@@ -143,7 +143,7 @@
                 <?php
                     }
                 ?>
-                <!-- <button class="btn btn-primary" onclick="bootstrapAlert()">Try me!</button> --> 
+                <!-- <button class="btn btn-primary" onclick="bootstrapAlert()">Try me!</button> for development!-->
             </div>
         </div>
 

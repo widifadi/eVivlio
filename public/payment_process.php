@@ -89,14 +89,20 @@
             $itemOrder_query= "INSERT INTO order_items (book_id, order_id, quantity,total_price) 
                             VALUES( '$b','$orderid', '$q', '$p')";
             mysqli_query($conn, $itemOrder_query);
+
+            // decrement book stock
+            $book_query = "SELECT * FROM book WHERE book_id=$b";
+            $book_query_result = mysqli_query($conn, $book_query);
+            $book_row = mysqli_fetch_array($book_query_result);
+            $new_stock = $book_row['stock'] - 1;
+
+            $decrement_book_stock_query = "UPDATE book SET stock = $new_stock 
+                                        WHERE book_id=$b;";
         }
 
         $delete_query= "DELETE FROM cart WHERE customer_id= '$customer_ID'";
-
-        // TODO decrement book stock
-
-
         mysqli_query($conn, $delete_query);
+
     }
 
 ?>

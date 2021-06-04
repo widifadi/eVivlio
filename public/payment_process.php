@@ -39,7 +39,8 @@
      VALUES  ('$customer_ID', '$order_date', '$payment_method')";
                         
         if ($conn->query($payment_query) === TRUE) {
-            header('location:order_confirmation.php');
+            // header('location:order_confirmation.php');
+            header('location: temp_order_confirmation.php');
         } else {
             echo "Customer Table Error: " . $sql . "<br>" . $conn->error . "<br>";
         }

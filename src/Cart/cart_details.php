@@ -39,7 +39,7 @@
 
             // Initialize book id check
             $check = $row['book_id'];
-            // Check if the book id with customer id already exist in the wishlist
+            // Check if the book id with customer id already exist in the cart
             $num_bid = 0;
             foreach ($book_id as $val_check) {
                 if ($val_check == $check) {

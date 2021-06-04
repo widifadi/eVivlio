@@ -51,9 +51,8 @@
                 }
             } else {
                 // insert book to cart
-                $total_price = $cart_row['quantity'] * $book_price;
                 $insert_book_query = "INSERT INTO cart (book_id,quantity,customer_id, total_price) 
-                    VALUE ($book_id, 1, $customer_id, $total_price)";
+                    VALUE ($book_id, 1, $customer_id, $book_price)";
                     if ($conn->query($insert_book_query) === TRUE) {
                         // Bootsrap alert
                         echo'<div class="alert alert-success alert-dismissible mt-2" id="success-alert">

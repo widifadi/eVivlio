@@ -56,7 +56,7 @@
                 array_push($book_price,$row['price']*$row['quantity']);
                 array_push($book_qty,$row['quantity']);
 
-                $grand_total += $row['total_price'];
+                $grand_total += $row['price']*$row['quantity'];
                 $num_items += $row['quantity'];
             }
         }

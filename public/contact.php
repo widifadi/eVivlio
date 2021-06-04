@@ -1,11 +1,7 @@
-<?php
-    require_once("../templates/header.php");
-?>
+<?php require_once("../templates/header.php"); ?>
 
 <div class="container" style="margin-top: 100px; margin-bottom: 20px;">
-
     <div class="row">
-
         <div class="col-3">
             <ul class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <li class="nav-item" role="presentation">
@@ -26,17 +22,17 @@
         <div class="col-9">
 
             <div class="tab-content" id="v-pills-tabContent">
-                <div class="tab-pane fade show active" style="margin-left:100px" 
+                <div class="tab-pane fade show active"
                     id="contact_details" role="tabpanel" aria-labelledby="v-pills-contacts-tab">
                     <?php include("../src/ContactUs/contact_details.php") ?>
                 </div>
 
-                <div class="tab-pane fade" style="margin-left:100px" 
+                <div class="tab-pane fade"
                     id="faq" role="tabpanel" aria-labelledby="v-pills-faq-tab">
                     <?php include("../src/ContactUs/contact_faq.php") ?>
                 </div>
 
-                <div class="tab-pane fade" style="margin-left:100px" 
+                <div class="tab-pane fade"
                     id="feedback" role="tabpanel" aria-labelledby="v-pills-feedback-tab">
                     <?php include("../src/ContactUs/contact_feedback.php") ?>
                 </div>

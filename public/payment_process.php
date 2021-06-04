@@ -70,7 +70,7 @@
         $shipping= $_SESSION['shipping_address'];
 
         $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status, shipping_adress) 
-                        VALUES( '$customer_ID', '$order_date', 'PLACED', '$shipping')";
+                        VALUES( '$customer_ID', '$order_date', 'Order Received', '$shipping')";
         mysqli_query($conn, $custOrder_query);
 
         $customerOrder_query = "SELECT order_id FROM customer_order WHERE 
@@ -92,6 +92,10 @@
         }
 
         $delete_query= "DELETE FROM cart WHERE customer_id= '$customer_ID'";
+
+        // TODO decrement book stock
+
+
         mysqli_query($conn, $delete_query);
     }
 

@@ -3,6 +3,7 @@
 <?php
  	require_once("../database/database_functions.php");
   	$conn = db_connection();
+
 	$user_name = $_SESSION['user'];
 	$customer_query = "SELECT customer.email, customer.first_name, customer.last_name, customer.customer_id
 					    FROM user JOIN customer ON customer.customer_id=user.customer_id 
@@ -14,8 +15,7 @@
 	$customerID = $result['customer_id']; 
 	$CustomerName = $result['first_name']." ". $result['last_name'];
 	$customerEmail = $result['email']; 
-
-						
+				
 	$order_query= "SELECT customer_order.order_id, customer_order.order_date
 					FROM customer_order WHERE customer_id= '$customerID' 
 					ORDER BY  order_id DESC LIMIT 1";
@@ -58,54 +58,59 @@
 			
 ?>
 
-<div class="container " style="margin-top: 100px; margin-bottom: 200px; width: 50%;"> 
-	<form  id="login-form">
+<div class="container order-confirmation-div" style="margin-top: 100px; margin-bottom: 200px; width: 50%;"> 
+	<p style="text-align: center"> <b> Thank you for shopping with us! </b> </p>
+	<br>
+	<p style="text-align: center"> <b> ORDER RECEIPT </b> </p>
 
-		<div><p style="text-align: center"> <b> Thank You for Shopping with Us! </b> </p>
-			<p style="text-align: center"> <b> ORDER RECIEPT </b> </p>
-
-
-			<table>
-				<tr style="padding-bottom: 5em">
-					<th><th  style="text-align: center;padding-left: 2em;">	<th>Name</th> </th> </th>
-					<th style="text-align: center;padding-left: 2em;"> Order Number </th>
-					<th style="text-align: center; padding-right: 4em;"> Date </th>
-				</tr>
-				<tr style="padding-bottom: 3em">
-					<th><th><td ><?php echo  $CustomerName; ?></td></th></th>
-						<td style="text-align: center"><?php echo $orderID;?></td>
-						<td style="text-align: center"><?php echo $Date; ?></td>
-				</tr>
-				<tr style="padding-bottom: 2em">
-					<th><th><th>Book Title</th> </th>
-								
-					<th style="text-align: center">Quantity</th>
-					<th style="text-align: center"> Price</th>
-				</tr>
-				<?php for ($p=0; $p<count($qtys); $p++) {?>
-				<tr style="padding-bottom: 2em">
-					<td><td> <td><?php echo $bookTitles[$p];?></td> </td> </td>
-					<td style="text-align: center"><?php echo $qtys[$p];?> </td>
-					<td style="text-align: center;"><?php echo$prices[$p];?></td>									
-				</tr>
-					<?php $totalSUM+=$prices[$p]; }?>
-				<tr>
-				<tr style="padding-right: 5em">
-					<th><th>	<th></th> </th> </th>
-					<th style="text-align: center;padding-left	: 15em;"> Total Price </th>
-					<td style="text-align: center ">	 <?php echo $totalSUM?> </td> 
-				</tr>		
-			</table>	
-
-			<div style="text-align:center"	>
-				<button class="btn btn-info mt-4" onClick="window.print()">Print Reciept</button>
-			</div>		
-					   
-			&nbsp;&nbsp;
-			<p style="text-align: center"> Please Check your email as well for order details </p>
-
+	<div class="row ml-3">Customer Details</div>
+	<div class="row ml-5" style="color:white">
+		<div class="col-4">
+			<strong>Name</strong><br>
+			<strong>Order Number</strong> <br>
+			<strong>Date</strong> <br>
 		</div>
-	</form>
+		<div class="col-8">
+			<?php echo $CustomerName; ?><br>
+			<?php echo $orderID; ?><br>
+			<?php echo $Date; ?><br>
+		</div>
+	</div>
+	
+	<br>
+	<div class="row ml-3">Ordered Book Details</div>
+	<table style="color:white; margin: 5px;">
+		<tr style="padding-bottom: 2em" class="text-center">
+			<th>Book Title</th>
+			<th>Quantity</th>
+			<th>Price</th>
+		</tr>
+		<?php 
+			for ($p=0; $p<count($qtys); $p++) {
+		?>
+		<tr style="padding-bottom: 2em">
+			<td><?php echo $bookTitles[$p];?></td>
+			<td class="text-center"><?php echo $qtys[$p];?> </td>
+			<td class="text-center"><?php echo $prices[$p];?></td>									
+		</tr>
+		<?php
+				$totalSUM+=$prices[$p]; 
+			}
+		?>
+		<tr class="text-center">
+			<td style="float:right"><strong>Total Price</strong></td>
+			<td></td>
+			<td><?php echo $totalSUM?></td> 
+		</tr>		
+	</table>
+
+	<div style="text-align:center">
+		<button class="btn btn-info mt-4" onClick="window.print()">Print Receipt</button>
+	</div>		
+				
+	<br>
+	<p style="text-align: center"> Please check your email as well for order details.</p>
+
 </div>
 				
 <?php require_once("../templates/footer.php"); ?>			 

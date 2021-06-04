@@ -1,6 +1,6 @@
-<?php
-	require_once("../templates/header.php"); 
+<?php require_once("../templates/header.php"); ?>
 
+<?php
  	require_once("../database/database_functions.php");
   	$conn = db_connection();
 	$user_name = $_SESSION['user'];
@@ -11,12 +11,12 @@
 	$result= mysqli_query($conn, $customer_query);
 	$result = mysqli_fetch_assoc($result);
 
-	$customerID= $result['customer_id']; 
-	$CustomerName= $result['first_name']. " ". $result['last_name'];
-	$customerEmail= $result['email']; 
+	$customerID = $result['customer_id']; 
+	$CustomerName = $result['first_name']." ". $result['last_name'];
+	$customerEmail = $result['email']; 
 
 						
-	$order_query= "SELECT	customer_order.order_id, customer_order.order_date
+	$order_query= "SELECT customer_order.order_id, customer_order.order_date
 					FROM customer_order WHERE customer_id= '$customerID' 
 					ORDER BY  order_id DESC LIMIT 1";
 
@@ -108,4 +108,4 @@
 	</form>
 </div>
 				
-<?php require_once("../templates/footer.php");				 
+<?php require_once("../templates/footer.php"); ?>			 

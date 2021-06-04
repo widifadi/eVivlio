@@ -18,11 +18,12 @@
         $PID = mysqli_real_escape_string($conn, $PID);
 
         // TODO get date of system
-        $order_date= $_POST['date'];
-        $order_date = mysqli_real_escape_string($conn, $order_date);
+      //  $order_date= $_POST[date("Y-m-d")];
+          $order_date= date("Y-m-d");
+        //  $order_date = mysqli_real_escape_string($conn, $order_date);
 
         $customer_name=$_POST['card_owner'];
-        $customer_name=mysqli_real_escape_string($conn, $order_date);
+        $customer_name=mysqli_real_escape_string($conn, $customer_name);
 
         // GET the customer ID 
         $customer_query = "SELECT * FROM customer 
@@ -79,12 +80,15 @@
             // decrement book stock
             $book_query = "SELECT * FROM book WHERE book_id=$b";
             $book_query_result = mysqli_query($conn, $book_query);
-            $book_row = mysqli_fetch_array($book_query_result);
-            $new_stock = $book_row['stock'] - 1;
+            $book_row = mysqli_fetch_assoc($book_query_result);
+            $new_stock = $book_row['stock'] - $q;
 
             $decrement_book_stock_query = "UPDATE book SET stock = $new_stock 
-                                        WHERE book_id=$b;";
+                                        WHERE book_id='$b'";
+                                    
+                    mysqli_query($conn, $decrement_book_stock_query);
         }
+
 
         $delete_query= "DELETE FROM cart WHERE customer_id= '$customer_ID'";
         mysqli_query($conn, $delete_query);
@@ -122,12 +126,12 @@
               	<input type="number" class="form-control" id="card_PID" name="card_PID" required>
             </div>
         </div>
-        <div class="form-group row">
+   <!--     <div class="form-group row">
             <label for="date" class="col-sm-3 col-form-label signup-label">Date</label>
             <div class="col-sm-9">
                 <input type="date"  class="form-control" name="date" required>
             </div>
-        </div>
+        </div> -->
         <div class="form-group row">
             <label for="card_owner" class="col-sm-3 col-form-label signup-label">Name</label>
             <div class="col-sm-9">

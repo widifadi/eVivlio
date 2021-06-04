@@ -98,7 +98,7 @@
 			</table>	
 
 			<div style="text-align:center"	>
-				<button onClick="window.print()">Print Reciept</button>
+				<button class="btn btn-info mt-4" onClick="window.print()">Print Reciept</button>
 			</div>		
 					   
 			&nbsp;&nbsp;

@@ -101,34 +101,5 @@
             }
         }
         
-    } 
-
-    // For removing item from cart
-
-    if(isset($_GET['remove'])){
-        $id = $_GET['remove'];
-
-        $stmt = $conn->prepare("DELETE FROM cart WHERE book_id = ?");
-        $stmt->bind_param("i",$id);
-        $stmt->execute();
-
-        $_SESSION['showAlert'] ='block';
-        $_SESSION['message'] = 'Item removed from the cart';
-        header('location:cart.php');
-    }
-
-    // For updating the quantity
-
-    if(isset($_POST['qty'])){
-        $qty = $_POST['qty'];
-        $pid = $_POST['pid'];
-        $pprice = $_POST['pprice'];
-
-        $tprice = $qty*$pprice;
-
-        $stmt = $conn->prepare("UPDATE cart SET qty=?, total_price=? WHERE id=?");
-        $stmt->bind_param("isi",$qty,$tprice,$pid);
-        $stmt->execute();
-    }
-    
+    }     
 ?>

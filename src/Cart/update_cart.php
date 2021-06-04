@@ -49,15 +49,59 @@
 
     // For updating the quantity
 
-    if(isset($_POST['quantity'])){
-        $qty = $_POST['quantity'];
-        $bid = $_POST['book_id'];
-        $bprice = $_POST['price'];
+    if (isset($_SESSION['user'])) {
+        $userName = $_SESSION['user'];
 
-        $bprice = $qty*$pprice;
+        // getting customer id
+        $sql = "SELECT customer_id FROM user WHERE username = '$userName'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()){
+                $customer = $row['customer_id'];
+            }
+        } else {
+            echo "Error in getting customer id!";
+        }
 
-        $stmt = $conn->prepare("UPDATE cart SET quantity=?, total_price=? WHERE book_id=? AND customer_id = $customer");
-        $stmt->bind_param("isi",$qty,$bprice,$bid);
-        $stmt->execute();
+        if(isset($_POST['quantity'])){
+            $qty = $_POST['quantity'];
+            $bid = $_POST['book_id'];
+
+            $sql = "SELECT price FROM book WHERE book_id = '$bid'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()){
+                        $bprice = $row['price'];
+                    }
+                } else {
+                    echo "Error in getting book price!";
+                }
+
+            $total_price = $qty*$bprice;
+
+            $stmt = $conn->prepare("UPDATE cart SET quantity=?, total_price=? WHERE book_id=? AND customer_id = $customer");
+            $stmt->bind_param("iii",$qty,$total_price,$bid);
+            $stmt->execute();
+        }
+    } else {
+        
+        // If you are guest
+        if(isset($_POST['quantity'])){
+            $bid = $_POST['book_id'];
+
+            $sql = "SELECT price FROM book WHERE book_id = '$bid'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()){
+                        $bprice = $row['price'];
+                    }
+                } else {
+                    echo "Error in getting book price!";
+                }
+
+            $total_price = $qty*$bprice;
+            $_SESSION['guest_cart'][$bid] = $_POST['quantity'];;
+        }
+
     }
 ?>

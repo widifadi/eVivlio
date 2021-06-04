@@ -39,7 +39,8 @@
     <script src="../assets/js/search-bar-visibility.js"></script>
     <script src="../assets/js/search.js"></script>
     <script src="../assets/js/wishlist.js"></script>    
-    <script src="../assets/js/cart.js"></script>  
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/update-quantity.js"></script>  
     <script src="../assets/js/feedback.js"></script> 
 
 </body>

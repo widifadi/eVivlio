@@ -53,11 +53,11 @@
                 array_push($author_fn,$row['author_first_name']);
                 array_push($author_ln,$row['author_last_name']);
                 array_push($book_year,$row['publishing_year']);
-                array_push($book_price,$row['price']);
+                array_push($book_price,$row['price']*$row['quantity']);
                 array_push($book_qty,$row['quantity']);
 
                 $grand_total += $row['total_price'];
-                $num_items += 1;
+                $num_items += $row['quantity'];
             }
         }
     } 
@@ -81,11 +81,11 @@
                 array_push($author_fn, $book_row['author_first_name']);
                 array_push($author_ln, $book_row['author_last_name']);
                 array_push($book_year, $book_row['publishing_year']);
-                array_push($book_price, $book_row['price']);
+                array_push($book_price, $book_row['price'] * $guest_book_qty);
                 array_push($book_qty, $guest_book_qty);
     
                 $grand_total += ($book_row['price'] * $guest_book_qty);
-                $num_items += 1;
+                $num_items += $guest_book_qty;
             }
 
         } 
@@ -170,7 +170,7 @@
                 </div>
                 <div class="col-2">
                     <input type="number" class="form-control itemQty" 
-                        value="<?= $book_qty[$x] ?>" style="width:75px;">
+                        id="<?=$book_id[$x]?>" value="<?=$book_qty[$x]?>" style="width:75px;">
                 </div>
                 <div class="col-2">
                     <a href="../src/Cart/update_cart.php?remove=<?=$book_id[$x]?>" class="text-danger" 

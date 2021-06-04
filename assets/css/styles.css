@@ -247,7 +247,6 @@ a:hover {
 
 /* Search Page end */
 
-
 /* SignUp Login page start */
 
 #login-form,
@@ -703,4 +702,12 @@ a:hover {
     color: antiquewhite;
     padding: 5px;
     border-radius: 10px;
+}
+
+.blue-bg-form {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: var(--blue-theme);
+    color: var(--light-yellow-theme);
+    /* width: 500px; */
 }

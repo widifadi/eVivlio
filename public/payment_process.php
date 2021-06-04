@@ -1,9 +1,9 @@
-<?php
-    require_once("../templates/header.php");
-?>
+<?php require_once("../templates/header.php"); ?>
+
 <?php
     include("../database/database_functions.php");
     $conn = db_connection();
+
     if (isset($_POST['save-order'])) {
 
         $user_name = $_SESSION['user'];
@@ -17,65 +17,54 @@
         $PID= $_POST['card_PID'];
         $PID = mysqli_real_escape_string($conn, $PID);
 
+        // TODO get date of system
         $order_date= $_POST['date'];
         $order_date = mysqli_real_escape_string($conn, $order_date);
 
         $customer_name=$_POST['card_owner'];
         $customer_name=mysqli_real_escape_string($conn, $order_date);
 
- 
-// TO GET the customer ID 
-    $customer_query = "SELECT * FROM customer 
-            INNER JOIN user 
-            ON customer.customer_id=user.customer_id
-             WHERE username='$user_name'"; 
-            $customer_result = mysqli_query($conn, $customer_query);
-            $customer_details = mysqli_fetch_assoc($customer_result);
-            $customer_ID = $customer_details['customer_id'];
+        // GET the customer ID 
+        $customer_query = "SELECT * FROM customer 
+                            INNER JOIN user 
+                            ON customer.customer_id=user.customer_id
+                            WHERE username='$user_name'"; 
+        $customer_result = mysqli_query($conn, $customer_query);
+        $customer_details = mysqli_fetch_assoc($customer_result);
+        $customer_ID = $customer_details['customer_id'];
 
-//ISERT PAYMENT Details into payment table
-
-    $payment_query = "INSERT INTO payment (customer_id, payment_date, payment_method)
-     VALUES  ('$customer_ID', '$order_date', '$payment_method')";
-                        
+        //INSERT PAYMENT Details into payment table
+        $payment_query = "INSERT INTO payment (customer_id, payment_date, payment_method)
+                            VALUES  ('$customer_ID', '$order_date', '$payment_method')";
+                            
         if ($conn->query($payment_query) === TRUE) {
-            // header('location:order_confirmation.php');
-          //  header('location: temp_order_confirmation.php');
+            echo "Payment details inserted successfully.";
         } else {
             echo "Customer Table Error: " . $sql . "<br>" . $conn->error . "<br>";
         }
 
         // insert from Cart to Customer ORder Table only when payment is processed
-
         $order_query = "SELECT * FROM cart WHERE customer_id= '$customer_ID'"; 
         $result = mysqli_query($conn, $order_query); 
         $index=0;
-       while ($row = mysqli_fetch_assoc($result)) 
-       {       
-              
-               $bookId[$index]    =     $row['book_id'];            
-               $qty[$index]       =     $row['quantity'];
-               $totalPrice[$index]=     $row['total_price'];
-               $index++;
-          
-       }
+        while ($row = mysqli_fetch_assoc($result)) {       
+            $bookId[$index]    = $row['book_id'];            
+            $qty[$index]       = $row['quantity'];
+            $totalPrice[$index]= $row['total_price'];
+            $index++;
+        }
 
-
-            $shipping= $_SESSION['shipping_address'];
+        $shipping= $_SESSION['shipping_address'];
         
-// INSERT int customer ORDER the shipping address which was saved in session
+        // INSERT int customer ORDER the shipping address which was saved in session
+        $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status, shipping_address) 
+                        VALUES( '$customer_ID', '$order_date', 'Order Received', '$shipping')";
+        mysqli_query($conn, $custOrder_query);
 
-            $custOrder_query= "INSERT INTO customer_order (customer_id, order_date, shipping_status, shipping_address) 
-                            VALUES( '$customer_ID', '$order_date', 'PLACED', '$shipping')";
-                     mysqli_query($conn, $custOrder_query);
-
-
-        $customerOrder_query = "SELECT order_id FROM customer_order WHERE 
-            customer_id= '$customer_ID' ORDER BY order_id DESC LIMIT 1";                      
+        $customerOrder_query = "SELECT order_id FROM customer_order 
+                                WHERE customer_id= '$customer_ID' ORDER BY order_id DESC LIMIT 1";                      
         $result = mysqli_query($conn, $customerOrder_query);
         $orderrow = mysqli_fetch_assoc($result);
-
-        // $lastOrder= "SELECT * FROM customer_order WHERE id=(SELECT max(id) FROM customer_order)";
                         
         $orderid=$orderrow['order_id'];
 
@@ -99,27 +88,27 @@
 
         $delete_query= "DELETE FROM cart WHERE customer_id= '$customer_ID'";
         mysqli_query($conn, $delete_query);
-         header('location:order_confirmation.php');
 
+        header('location:order_confirmation.php');
     }
 ?>
 
 <!-- The PAYMENT FORM-->
-
-<div class="container" class="nav nav-pills mb-3 justify-content-center" style="margin-top: 100px; margin-bottom: 100px; margin: left 100px; width:40%;">
-	
-        <form action="payment_process.php" method="post" id="login-form">
-        <p style="text-align: center"> <b> Please Enter Card details </b> <p>
-      
+<div class="container" class="nav nav-pills mb-3 justify-content-center" 
+    style="margin-top: 100px; margin-bottom: 100px; margin: left 100px; width:40%;">
+    <form class="blue-bg-form" action="payment_process.php" method="post">
+        <p style="text-align: center"> 
+            <strong>Please enter card details.</strong> 
+        <p>
         <div class="form-group row">
-                <label for="card_type" class="col-sm-3 col-form-label signup-label">Type</label>
-                <div class="col-sm-9">
+            <label for="card_type" class="col-sm-3 col-form-label signup-label">Type</label>
+            <div class="col-sm-9">
                 <select class="form-control"  name="card_type" required>
                         <option value="VISA">VISA</option>
                         <option value="MasterCard">MasterCard</option>
                         <option value="American Express">American Express</option>
-                    </select>  
-                 </div>
+                </select>  
+            </div>
          </div>
         <div class="form-group row"> 
             <label for="card_number" class="col-sm-3 col-form-label signup-label">Number</label>
@@ -144,10 +133,16 @@
             <div class="col-sm-9">
                 <input type="text" class="form-control" name="card_owner" required>
             </div>
-        </div>  <div class="text-center">
-              	<button  type="button" class="btn btn-primary"> <a href="cart.php"> Cancel</button>
-              	<button type="submit" style="align-items:center; "  class="btn btn-primary" name="save-order"  >Purchase</button>
+        </div>  
+        <div class="text-center">
+            <button type="button" class="btn btn-secondary">
+                <a href="cart.php">Cancel</a>
+            </button>
+            <button type="submit" style="align-items:center;" class="btn btn-primary" name="save-order">
+                Purchase
+            </button>
         </div>
     </form>
 </div>
-    <?php require_once("../templates/footer.php"); 
+
+<?php require_once("../templates/footer.php"); ?>

@@ -1,0 +1,35 @@
+1) go to XAMPP > php > open php.ini file
+
+2) inside php.ini  search for [email functions]  ( use ctrl f)
+3) make followinng changes where different
+
+[mail function]
+; For Win32 only.
+; http://php.net/smtp
+SMTP=smtp.gmail.com
+; http://php.net/smtp-port
+smtp_port=25
+
+; For Win32 only.
+; http://php.net/sendmail-from
+sendmail_from =evivlio.ihu@gmail.com
+
+; For Unix only.  You may supply arguments as well (default: "sendmail -t -i").
+; http://php.net/sendmail-path
+sendmail_path ="\"F:\installed\XAMPP\sendmail\sendmail.exe\" -t"
+  
+4) save changes
+
+5) go to XAMPP> sendemail> open sendemail.exe file
+6) make following changes where you find variable ( for example: find  smtp_server
+                                                      then assign smtp.gmail.com)
+                     
+
+    smtp_server=smtp.gmail.com
+    smtp_port=25
+    auth_username=evivlio.ihu@gmail.com
+    auth_password=crazysix
+    force_sender=evivlio.ihu@gmail.com
+
+7) save changes 
+

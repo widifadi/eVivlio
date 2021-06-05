@@ -1,34 +1,95 @@
 <div class="container catalog-breadcrumbs">
     <a href="my_page.php"> My Page </a> 
-    <i class="fas fa-chevron-right" style="color: grey;"></i>
-    <a href=""> My Wishlist </a> 
+    <em class="fas fa-chevron-right" style="color: grey;"></em>
+    <a href="#"> My Wishlist </a> 
 </div> 
-<div class="col "> 
+<div id="message" class="d-flex justify-content-center"></div>
+<div style="display:<?php if(isset($_SESSION['showAlert'])){echo $_SESSION['showAlert'];} else {echo 'none';} unset($_SESSION['showAlert']); ?>" class="alert alert-success alert-dismissible mt-3">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong> <?php if(isset($_SESSION['message'])){echo $_SESSION['message'];} unset($_SESSION['showAlert']); ?></strong>
+</div>
 <?php 
+
+    // declaring global variables
+    $book_id = array();
+    $book_title = array();
+    $book_cover = array();
+    $author_fn = array();
+    $author_ln = array();
+    $book_year = array();
+
     // Need to query based on customer id or guest id 
+    if (isset($_SESSION['user'])) {
+        $userName = $_SESSION['user'];
+
+        // getting customer id
+        $sql = "SELECT customer_id FROM user WHERE username = '$userName'";
+        $result = $conn->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()){
+                    $customer = $row['customer_id'];
+                }
+            } else {
+                echo "Error in getting customer id!";
+            }
+    }
+
     $stmt = $conn->prepare("SELECT * FROM wishlist 
                             JOIN book ON book.book_id = wishlist.book_id 
                             JOIN author_tag ON author_tag.book_id = book.book_id 
                             JOIN author ON author.author_id = author_tag.author_id 
-                            WHERE customer_id = 1");
+                            WHERE customer_id = $customer");
     $stmt->execute();
     $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()): ?> 
-    <div class="row wl-book">
+    while ($row = $result->fetch_assoc()):
+
+        // Initialize book id check
+        $check = $row['book_id'];
+        // Check if the book id with customer id already exist in the wishlist
+        $num_bid = 0;
+        foreach ($book_id as $val_check) {
+            if ($val_check == $check) {
+                $num_bid += 1;
+            }
+        }
+
+        if ($num_bid <= 0) {
+            array_push($book_id,$row['book_id']);
+            array_push($book_title,$row['book_title']);
+            array_push($book_cover,$row['book_cover']);
+            array_push($author_fn,$row['author_first_name']);
+            array_push($author_ln,$row['author_last_name']);
+            array_push($book_year,$row['publishing_year']);
+        }
+
+    endwhile;
+    
+    for ($x = 0; $x < count($book_title); $x++) {?> 
+    <div class="row p-2 wl-book">
         <div class="col-2">
-            <img src="<?= $row['book_cover'] ?>" alt="book" width="100px" id="book-cover">
+            <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>">
+                <img src="../assets/img/book-covers/<?= $book_cover[$x]?>" alt="book" width="100px" id="book-cover">
+            </a>
         </div>
-        <div class="col-4">
+        <div class="col-7">
+            <a href="../public/book_details.php?bookid=<?php echo $book_id[$x]?>">
+                <span class="book-title">"<?= $book_title[$x]?>"</span>
+                <br>
+                <span class="book-author"><?= $author_fn[$x]?> <?= $author_ln[$x] ?> (<?= $book_year[$x] ?>)</span>
+            </a>
+        </div>
+        <div class="col-3">
             <div class="row mt-3 ml-3">
-                <div id="book-title"> <a href="#" class="text-dark">"<?= $row['book_title'] ?>", <?= $row['author_first_name'], $row['author_last_name'] ?> (<?= $row['publishing_year'] ?>)</a></div>
-            </div>
-            <div class="row mt-3 ml-3">
-                <a href="#" class="text-dark"><i class="fa fa-shopping-cart"></i></a>
-                <a href="#" class="text-dark ml-5"><i class="fa fa-trash"></i></a>
+                <div class="col">
+                    <em class="fas fa-cart-plus add-cart-btn" id="cart-<?= $book_id[$x]?>"></em><!-- error getting the correct book id -->
+                </div>
+                <div class="col">
+                    <a href="../src/MyPage/wishlist_button.php?remove=<?=$book_id[$x]?>" class="text-danger" 
+                        onclick="return confirm('Are you sure you want to remove this item?');">
+                        <em class="fa fa-trash dlt-cart-btn"></em>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-<?php endwhile; $conn->close(); ?>
-</div>
-
-<!-- Need to add button functionality to add to cart from wishlist and to delete item from wishlist -->
+<?php } ?>

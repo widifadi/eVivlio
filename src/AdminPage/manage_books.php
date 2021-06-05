@@ -23,7 +23,7 @@
                         <tr>
                             <th scope="col">Update</th>
                             <th scope="col">Book ID</th> 
-                            <th scope="col">ISBN</th> 
+                            <th scope="col">ISBN</th>
                             <th scope="col">Title</th>
                             <th scope="col">Author</th>
                             <th scope="col">Publisher</th>
@@ -31,41 +31,21 @@
                             <th scope="col">Category</th>
                             <th scope="col">Pages</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Stock</th>
-                            <th scope="col">Feature</th>
+                            <th scope="col">Stock</th>       
+                            <th scope="col">Feature</th>                      
                         </tr>
                     </thead>
                     <tbody>
                         <?php 
                             require_once("../database/database_functions.php");
                             $conn = db_connection();
-                            
-                            // TODO do sql connection only once for the whole app
-                        /*    $servername = "localhost";
-                            $username = "root";
-                            $password = "";
-                            $dbname = "evivlio";
-                            // Create connection
-                            $conn = new mysqli($servername, $username,'', $dbname);
-                            // Check connection
-                            if ($conn->connect_error) {
-                                die("Connection failed: " . $conn->connect_error);
-                            }*/
 
                             $book_query = "SELECT * FROM book";
-                            $result = mysqli_query($conn, $book_query); 
-                            while($row = mysqli_fetch_assoc($result)) 
+                            $result = mysqli_query($conn, $book_query);
+
+                            while ($row = mysqli_fetch_assoc($result)) 
                             {
                                 $book_id = $row['book_id'];
-
-                                // get author
-                                // SELECT * author (join the author_tag table) where book_id=n
-
-                                // author1 = firstname . lastname
-
-                                // get publisher
-
-                                // category
                         ?>
                         <tr id=<?php echo $book_id ?> >
                             <td>
@@ -74,34 +54,21 @@
                                     data-toggle="modal" data-target=".update-book-modal"></em>
                                 <em class="fas fa-trash-alt delete-book"
                                     id="deletebook-<?php echo $book_id ?>" 
-                                    title='<?php echo $row['title'] ?>'
+                                    title='<?php echo $row['book_title'] ?>'
                                     data-toggle="modal" data-target=".delete-book-modal"></em>
                             </td>
-
 
                             <td><?php echo $book_id; ?></td>
                             <td><?php echo $row['isbn']; ?></td>
                             <td><?php echo $row['book_title']; ?></td>
-                            <!-- TODO get author name -->
-                             
-                            <td><?php echo "TODO"; ?></td>
-                            <!-- TODO get publisher name -->
-                            <td><?php echo $row['publisher_id']; ?></td>
+                            <td><?php echo get_book_authors($conn, $book_id); ?></td>
+                            <td><?php echo get_book_publisher($conn, $row['publisher_id']); ?></td>
                             <td><?php echo $row['publishing_year']; ?></td>
-                            <td>
-                                <?php 
-                                    echo "TODO"
-                                ?>
-                            </td>
+                            <td><?php echo get_book_categories($conn, $book_id); ?></td>
                             <td><?php echo $row['pages']; ?></td>
                             <td><?php echo $row['price']; ?></td>
                             <td><?php echo $row['stock']; ?></td>
-                            <td>
-                                <?php
-                                    echo "TODO"
-                                ?>
-                            </td>
-            
+                            <td><?php echo get_book_features($conn, $book_id); ?></td>
                         </tr>
                         <?php
                             }
@@ -133,11 +100,11 @@
             Delete <span id="book-title"></span>?
             <br>
             <br>
-            <div class="alert" id="delete-response" role="alert"></div>
+            <div class="alert delete-response" role="alert" style="display: none;"></div>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary" id="delete-book-btn">Delete Book</button>
+            <button type="button" class="btn btn-danger" id="delete-book-btn">Delete Book</button>
         </div>
         </div>
     </div>

@@ -1,5 +1,4 @@
 <?php
-
     require_once("../../database/database_functions.php");
     $conn = db_connection();
 
@@ -38,35 +37,48 @@
         $state = $_POST['state'];
         $state = mysqli_real_escape_string($conn, $state);
 
-        if ($password != $password_check) {
-            echo 'Passwords do not match!';
-        }
-
-        $user_check= "SELECT * FROM user WHERE username= '$username' LIMIT 1";
+        $user_check= "SELECT * FROM user u JOIN customer c USING (customer_id) 
+                        WHERE u.username='$username' OR c.email='$email' LIMIT 1";
+        echo $user_check;
         $result=mysqli_query($conn,$user_check) or die($conn->error);
         $users =mysqli_fetch_assoc($result);
-        if($users){
-            if($users['username']=== $username){
-                  echo " username already exists ! ";
-                  header("location: ../../public/user_exists.php#pills-signup");}
-            else{
-        $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 
-                        VALUES ('$first_name', '$last_name', '$email', '$birthdate', '$phone', '$street_address', '$city', '$state')";}
-        if ($conn->query($customer_query) === TRUE) {
-            echo "New customer created successfully. <br>" . $first_name;
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+        if ($users) {
+            if ($users['username'] === $username ) {
+                echo "username already exists";
+                header("location: ../../public/user_exists#pills-login");
+            }
+
+            if($users['email'] === $email) {
+                echo "email already exists";
+                header("location: ../../public/user_exists.php#pills-login");
+            } 
         }
-        $customer_id = mysqli_insert_id($conn);
-        $user_query = "INSERT INTO user (customer_id, username, password) 
-                    VALUES ('$customer_id', '$username', '$hash_password')";
-        if ($conn->query($user_query) === TRUE) {
-            echo "New user created successfully. <br>";
+
+        if($password != $password_check) {
+            echo "Passwords do match";
+            header('location:../../public/signup_login.php#pills-signup');
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            $customer_query = "INSERT INTO customer (first_name, last_name, email, birthday, phone, address, city, state) 
+                            VALUES ('$first_name', '$last_name', '$email', '$birthdate', '$phone', '$street_address', '$city', '$state')";
+
+            if ($conn->query($customer_query) === TRUE) {
+                    echo "New customer created successfully. <br>" . $first_name;
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                exit();
+            }
+
+            $customer_id = mysqli_insert_id($conn);
+            $user_query = "INSERT INTO user (customer_id, username, password) 
+                        VALUES ('$customer_id', '$username', '$hash_password')";
+            if ($conn->query($user_query) === TRUE) {
+                echo "New user created successfully. <br>";
+                header("location: ../../public/successful_registration.php");
+            } else {
+                echo "Error: " . $sql . "<br>" . $conn->error;
+                exit();
+            }
         }
-    }
-        header("location: ../../public/successful_registration.php");
     }
 
     if (isset($conn)) {

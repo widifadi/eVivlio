@@ -1,5 +1,4 @@
 <div class="container" id="feature-promos">
-    <span class="subtitle">Promos</span>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -8,13 +7,13 @@
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img class="d-block w-100" src="../assets/img/promos/new-release.png" alt="New Release">
+                <img class="d-block w-100" src="../assets/img/promos/new_release.png" alt="New Release">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="../assets/img/promos/summer-sale.png" alt="Summer Sale">
+                <img class="d-block w-100" src="../assets/img/promos/summer_sale.png" alt="Summer Sale">
             </div>
             <div class="carousel-item">
-            <img class="d-block w-100" src="../assets/img/promos/coming-soon.png" alt="Coming soon">
+                <img class="d-block w-100" src="../assets/img/promos/new_page.png" alt="Coming soon">
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

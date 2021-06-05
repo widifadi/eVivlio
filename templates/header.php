@@ -40,7 +40,7 @@
                 <!-- TODO error if empty -->
                 <div class="input-group header-search" style="margin-left:100px;">
                     <input type="text" class="form-control search-box search-input" id="header-search-box"
-                        placeholder="Search a book" 
+                        placeholder="Search a book or author" 
                         aria-label="Search keyword" aria-describedby="search-button">
                     <div class="input-group-append">
                         <span class="input-group-text dark-search-button search-btn" id="header-search">
@@ -65,9 +65,8 @@
                 <?php
                     }
                     // if user is not admin
-                    if(isset($_SESSION['user']) || 
-                    (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1))
-                         {
+                    if((!isset($_SESSION['user'])) ||
+                        (isset($_SESSION['admin_permission']) && $_SESSION['admin_permission'] !=1)) {
                 ?>
                 <a href="cart.php">
                     <button class="btn menu-btn" id="cart-btn">
@@ -91,6 +90,7 @@
 
                     // IF a user is not logged in
                     if(!isset($_SESSION['user'])) {
+
                 ?>
                 <a href="signup_login.php">
                     <button class="btn menu-btn" id="loginpage-btn">
@@ -117,23 +117,3 @@
             </div>
         </div>
     </nav>
-
-<!-- Ajax Code for cart -->
-<script type="text/javascript">
-        $(document).ready(function(){
-
-            load_cart_item_number();
-
-            // function to display item number on cart icon badge
-            function load_cart_item_number(){
-                $.ajax({
-                    url: '../Cart/cart_action.php',
-                    method: 'get',
-                    data: {cartItem:"cart_item"},
-                    success: function(response){
-                        $("#cart-item").html(response);
-                    }
-                });
-            }
-        });
-</script>

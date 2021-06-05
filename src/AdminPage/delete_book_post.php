@@ -1,29 +1,27 @@
 <?php 
-    // TODO do sql connection only once for the whole app
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "eVivlio";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    require_once("../../database/database_functions.php");
+    $conn = db_connection();
 
     // Get POST data from AJAX
     $book_id = $_POST['book_id'];
 
-    $delete_bestseller = "DELETE FROM best_seller WHERE book_id=$book_id;";
-    $delete_newrelease = "DELETE FROM new_release WHERE book_id=$book_id;";
-    $delete_editorspick = "DELETE FROM editors_pick WHERE book_id=$book_id;";
+    $delete_author_tag = "DELETE FROM author_tag WHERE book_id=$book_id;";
+    $delete_category_tag = "DELETE FROM category_tag WHERE book_id=$book_id;";
+    $delete_feature_tag = "DELETE FROM feature_tag WHERE book_id=$book_id;";
+    $delete_wishlist = "DELETE FROM wishlist WHERE book_id=$book_id;";
+    $delete_order_items = "DELETE FROM order_items WHERE book_id=$book_id;";
+    $delete_book_review = "DELETE FROM book_review WHERE book_id=$book_id;";
+    $delete_cart = "DELETE FROM cart WHERE book_id=$book_id;";
+
     $delete_book = "DELETE FROM book WHERE book_id=$book_id;";
 
-    mysqli_query($conn, $delete_newrelease);
-    mysqli_query($conn, $delete_bestseller);
-    mysqli_query($conn, $delete_editorspick);
+    mysqli_query($conn, $delete_author_tag);
+    mysqli_query($conn, $delete_category_tag);
+    mysqli_query($conn, $delete_feature_tag);
+    mysqli_query($conn, $delete_wishlist);
+    mysqli_query($conn, $delete_order_items);
+    mysqli_query($conn, $delete_book_review);
+    mysqli_query($conn, $delete_cart);
 
     if (mysqli_query($conn, $delete_book)) {
         echo "0";

@@ -43,8 +43,6 @@
                                         state = '$state'
                                        WHERE username='$user_name' ";
 
-        
-
         if ($conn->query($update_customer_query) === TRUE) {
             echo "Customer updated successfully. <br>";
         } else {

@@ -1,27 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 17, 2021 at 02:20 PM
--- Generation Time: May 20, 2021 at 12:21 AM
--- Generation Time: May 20, 2021 at 09:49 AM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 8.0.3
+-- Host: localhost:8889
+-- Generation Time: Jun 03, 2021 at 10:04 PM
+-- Server version: 5.7.32
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `evivlio`
 --
+CREATE DATABASE IF NOT EXISTS `evivlio` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `evivlio`;
 
 -- --------------------------------------------------------
 
@@ -40,8 +33,8 @@ CREATE TABLE `author` (
 --
 
 INSERT INTO `author` (`author_id`, `author_first_name`, `author_last_name`) VALUES
-(1, 'JRR', 'Tolkien'),
-(2, 'JK', 'Rowling'),
+(1, 'Melody ', 'Godfred'),
+(2, 'J.K.', 'Rowling'),
 (3, 'Stacey ', 'Abrams'),
 (4, 'John', ' Brooks '),
 (5, 'Benjamin', ' Graham'),
@@ -73,10 +66,10 @@ INSERT INTO `author` (`author_id`, `author_first_name`, `author_last_name`) VALU
 (31, 'Janet', ' Chapman'),
 (32, 'Susan ', 'Mallery '),
 (33, ' Nigel ', 'Warburton '),
-(34, ' Aristotle ', 'A'),
-(35, 'Plato', 'A'),
+(34, ' Aristotle ', ''),
+(35, 'Plato', ''),
 (36, ' Phillip ', 'Campbell '),
-(37, 'Epictetus', 'A'),
+(37, 'Epictetus', ''),
 (38, 'Marcus ', 'Aurelius'),
 (39, 'Orson ', 'Scott Card'),
 (40, 'John', ' Wyndham'),
@@ -117,9 +110,6 @@ CREATE TABLE `author_tag` (
 --
 
 INSERT INTO `author_tag` (`book_id`, `author_id`) VALUES
-(1, 1),
-(2, 2),
-(3, 2),
 (4, 3),
 (5, 4),
 (6, 5),
@@ -178,7 +168,10 @@ INSERT INTO `author_tag` (`book_id`, `author_id`) VALUES
 (54, 57),
 (55, 58),
 (55, 59),
-(55, 60);
+(55, 60),
+(1, 1),
+(3, 2),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -204,16 +197,16 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover`, `publishing_year`, `pages`, `summary`, `price`, `stock`) VALUES
-(1, 1, '9780261102217', 'The Hobbit', '9780261102217.jpg', 1991, 400, 'The Hobbit is a tale of high adventure, undertaken by a company of dwarves in search of dragon-guarded gold. A reluctant partner in this perilous quest is Bilbo Baggins, a comfort-loving unambitious hobbit, who surprises even himself by his resourcefulness and skill as a burglar. Encounters with trolls, goblins, dwarves, elves and giant spiders, conversations with the dragon, Smaug, and a rather unwilling presence at the Battle of Five Armies are just some of the adventures that befall Bilbo. Bilbo Baggins has taken his place among the ranks of the immortals of children\'s fiction. Written by Professor Tolkien for his own children, The Hobbit met with instant critical acclaim when published.\r\n', 11.04, 10),
-(2, 4, '978-1408855652', 'Harry Potter and the Philosopher\'s Stone', '978-1408855652.jpg', 2014, 256, 'Turning the envelope over, his hand trembling, Harry saw a purple wax seal bearing a coat of arms; a lion, an eagle, a badger and a snake surrounding a large letter \'H\'.\r\n\r\nHarry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry\'s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!', 29.4, 10),
-(3, 4, '9781408855706', 'Harry Potter and the Half-Blood Prince', '9781408855706.jpg', 2014, 560, 'When Dumbledore arrives at Privet Drive one summer night to collect Harry Potter, his wand hand is blackened and shrivelled, but he does not reveal why. Secrets and suspicion are spreading through the wizarding world, and Hogwarts itself is not safe. Harry is convinced that Malfoy bears the Dark Mark: there is a Death Eater amongst them. Harry will need powerful magic and true friends as he explores Voldemort\'s darkest secrets, and Dumbledore prepares him to face his destiny.\r\n\r\nThese new editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able new jackets by Jonny Duddle, with huge child appeal, to bring Harry Potter to the next generation of readers. It\'s time to PASS THE MAGIC ON ...', 10.29, 10),
+(1, 18, '9798699634767', 'Self Love Poetry: For Thinkers and Feelers ', '9798699634767.jpg', 2020, 212, 'In Self Love Poetry for Thinkers & Feelers, Godfred explores concepts like authenticity, surrender, resilience, gratitude (including the 2020 poem above), believing in yourself, and of course, love, through 100 pairs of self love poems each dedicated to a central theme. On the left side of the book are poems that light up the analytical, literal, left side of the brain and on the right side are poems that bring your creative side to life. Combined, the poems electrify your mind, body and soul and inspire all of us to embrace all parts of ourselves.\r\n\r\nThis empowering book will not only engage you to think and feel, but will encourage self-reflection, make you feel seen, empower you to love yourself, and inspire you to seek out the hope and beauty in the world… and in yourself. It’s the perfect gift to yourself or someone you love. ', 13.69, 18),
+(2, 46, '1408855895', 'Harry Potter and the Philosopher\'s Stone', '1408855895.jpg', 2014, 352, 'Harry Potter has never even heard of Hogwarts when the letters start dropping on the doormat at number four, Privet Drive. Addressed in green ink on yellowish parchment with a purple seal, they are swiftly confiscated by his grisly aunt and uncle. Then, on Harry\'s eleventh birthday, a great beetle-eyed giant of a man called Rubeus Hagrid bursts in with some astonishing news: Harry Potter is a wizard, and he has a place at Hogwarts School of Witchcraft and Wizardry. An incredible adventure is about to begin!\r\n\r\nThese editions of the classic and internationally bestselling, multi-award-winning series feature instantly pick-up-able jackets by award-winning illustrator Jonny Duddle, and are the perfect starting point for anyone who\'s ready to lose themselves in the biggest children\'s books of all time.', 12.99, 35),
+(3, 46, '1408845679', 'Harry Potter and the Goblet of Fire', '1408845679.jpg', 2019, 464, 'Dragons! Daring! Danger! The first fully illustrated edition of Harry Potter and the Goblet of Fire is an extraordinary creative achievement by two extraordinary talents. Jim Kay\'s inspired reimagining of J.K. Rowling\'s classic series has captured a devoted following worldwide, and the drama just gets bigger as the series progresses. With over 150 illustrations, Jim Kay\'s unique vision delivers breathtaking scenes and unforgettable characters - including fan favourites Cedric Diggory, Fleur Delacour and Viktor Krum illustrated by Jim Kay for the first time.\r\n\r\nFizzing with magic and brimming with humour, this full-colour edition will captivate fans and new readers alike as Harry, now in his fourth year at Hogwarts School of Witchcraft and Wizardry, finds himself competing in the legendary Triwizard Tournament and facing death-defying tasks, dragons and Dark wizards . Making magic in paint, pencil and pixels, this is the Wizarding World as we have never seen it before.', 25.74, 33),
 (4, 3, '1250214807', 'Lead from the Outside: How to Build Your Future and Make Real Change', '1250214807.jpg', 2019, 256, 'Leadership is hard. Convincing others--and often yourself--that you possess the answers and are capable of world-affecting change requires confidence, insight, and sheer bravado. Lead from the Outside is the handbook for outsiders, written with the awareness of the experiences and challenges that hinder anyone who exists beyond the structure of traditional white male power--women, people of color, members of the LGBTQ community, and millennials ready to make a difference.\r\n\r\nIn Lead from the Outside, Stacey Abrams argues that knowing your own passion is the key to success, regardless of the scale or target. From launching a company, to starting a day care center for homeless teen moms, to running a successful political campaign, finding what you want to fight for is as critical as knowing how to turn thought into action. Stacey uses her experience and hard-won insights to break down how ambition, fear, money, and failure function in leadership, while offering personal stories that illuminate practical strategies.\r\n\r\nStacey includes exercises to help you hone your skills and realize your aspirations. She discusses candidly what she has learned over the course of her impressive career: that differences in race, gender, and class are surmountable. With direction and dedication, being in the minority actually provides unique and vital strength, which we can employ to rise to the top and make real change.', 12.06, 10),
 (5, 4, '1497644895', 'Business Adventures: Twelve Classic Tales from the World of Wall Street', '1497644895.jpg', 2014, 464, 'What do the $350 million Ford Motor Company disaster known as the Edsel, the fast and incredible rise of Xerox, and the unbelievable scandals at General Electric and Texas Gulf Sulphur have in common? Each is an example of how an iconic company was defined by a particular moment of fame or notoriety; these notable and fascinating accounts are as relevant today to understanding the intricacies of corporate life as they were when the events happened.\r\nStories about Wall Street are infused with drama and adventure and reveal the machinations and volatile nature of the world of finance. Longtime New Yorker contributor John Brooks’s insightful reportage is so full of personality and critical detail that whether he is looking at the astounding market crash of 1962, the collapse of a well-known brokerage firm, or the bold attempt by American bankers to save the British pound, one gets the sense that history repeats itself.\r\nFive additional stories on equally fascinating subjects round out this wonderful collection that will both entertain and inform readers . . . Business Adventures is truly financial journalism at its liveliest and best.', 14.25, 21),
 (6, 5, '9780060555', 'Intelligent Investor: The Definitive Book on Value Investing - A Book of Practical Counsel', '9780060555.jpg', 2003, 640, 'The greatest investment advisor of the twentieth century, Benjamin Graham taught and inspired people worldwide. Graham\'s philosophy of “value investing”—which shields investors from substantial error and teaches them to develop long-term strategies—has made The Intelligent Investor the stock market bible ever since its original publication in 1949.\r\nOver the years, market developments have proven the wisdom of Graham’s strategies. While preserving the integrity of Graham’s original text, this revised edition includes updated commentary by noted financial journalist Jason Zweig, whose perspective incorporates the realities of today’s market, draws parallels between Graham’s examples and today’s financial headlines, and gives readers a more thorough understanding of how to apply Graham’s principles.\r\nVital and indispensable, The Intelligent Investor is the most important book you will ever read on how to reach your financial goals.', 14.23, 8),
 (7, 6, '1633691780', 'The Innovator\'s Dilemma: When New Technologies Cause Great Firms to Fail (Management of Innovation a', '1633691780.jpg', 2016, 288, 'A Wall Street Journal and Businessweek bestseller. Named by Fast Company as one of the most influential leadership books in its Leadership Hall of Fame. An innovation classic. From Steve Jobs to Jeff Bezos, Clay Christensen’s work continues to underpin today’s most innovative leaders and organizations.\r\nThe bestselling classic on disruptive innovation, by renowned author Clayton M. Christensen.\r\nHis work is cited by the world’s best-known thought leaders, from Steve Jobs to Malcolm Gladwell. In this classic bestseller—one of the most influential business books of all time—innovation expert Clayton Christensen shows how even the most outstanding companies can do everything right—yet still lose market leadership.\r\nChristensen explains why most companies miss out on new waves of innovation. No matter the industry, he says, a successful company with established products will get pushed aside unless managers know how and when to abandon traditional business practices.\r\n\r\nOffering both successes and failures from leading companies as a guide, The Innovator’s Dilemma gives you a set of rules for capitalizing on the phenomenon of disruptive innovation.\r\n\r\nSharp, cogent, and provocative—and consistently noted as one of the most valuable business ideas of all time—The Innovator’s Dilemma is the book no manager, leader, or entrepreneur should be without.', 15.99, 17),
 (8, 7, '1501111108', 'Grit: The Power of Passion and Perseverance ', '1501111108.jpg', 2016, 352, 'In this instant New York Times bestseller, pioneering psychologist Angela Duckworth shows anyone striving to succeed--be it parents, students, educators, athletes, or business people--that the secret to outstanding achievement is not talent but a special blend of passion and persistence she calls \"grit.\"\r\n\r\nDrawing on her own powerful story as the daughter of a scientist who frequently noted her lack of \"genius,\" Duckworth, now a celebrated researcher and professor, describes her early eye-opening stints in teaching, business consulting, and neuroscience, which led to the hypothesis that what really drives success is not \"genius\" but a unique combination of passion and long-term perseverance.\r\n\r\nIn Grit, she takes readers into the field to visit cadets struggling through their first days at West Point, teachers working in some of the toughest schools, and young finalists in the National Spelling Bee. She also mines fascinating insights from history and shows what can be gleaned from modern experiments in peak performance. Finally, she shares what she\'s learned from interviewing dozens of high achievers--from JP Morgan CEO Jamie Dimon to New Yorker cartoon editor Bob Mankoff to Seattle Seahawks Coach Pete Carroll.\r\nAmong Grit\'s most valuable insights:\r\n*Why any effort you make ultimately counts twice toward your goal\r\n*How grit can be learned, regardless of I.Q. or circumstances\r\n*How lifelong interest is triggered\r\n*How much of optimal practice is suffering and how much ecstasy\r\n*Which is better for your child--a warm embrace or high standards\r\n*The magic of the Hard Thing Rule\r\n\r\nWinningly personal, insightful, and even life-changing, Grit is a book about what goes through your head when you fall down, and how that--not talent or luck--makes all the difference.', 14.95, 10),
 (9, 8, '1250235375', 'Radical Candor: Be a Kick-Ass Boss Without Losing Your Humanity ', '1250235375.jpg', 2019, 336, 'The idea is simple: You don\'t have to choose between being a pushover and a jerk. Using Radical Candor--avoiding the perils of Obnoxious Aggression, Manipulative Insincerity, and Ruinous Empathy--you can be kind and clear at the same time.\r\nKim Scott was a highly successful leader at Google before decamping to Apple, where she developed and taught a management class. Since the original publication of Radical Candor in 2017, Scott has earned international fame with her vital approach to effective leadership and co-founded the Radical Candor executive education company, which helps companies put the book\'s philosophy into practice.\r\nRadical Candor is about caring personally and challenging directly, about soliciting criticism to improve your leadership and also providing guidance that helps others grow. It focuses on praise but doesn\'t shy away from criticism--to help you love your work and the people you work with.\r\nRadically Candid relationships with team members enable bosses to fulfill their three core responsibilities:\r\n1. Create a culture of Compassionate Candor\r\n2. Build a cohesive team\r\n3. Achieve results collaboratively\r\nRequired reading for the most successful organizations, Radical Candor has raised the bar for management practices worldwide.', 13.79, 18),
-(10, 9, '9780553383713', '\"Emotional Intelligence: Why It Can Matter More Than IQ\" by Daniel Goleman', '9780553383713.jpg', 2005, 352, 'Everyone knows that high IQ is no guarantee of success, happiness, or virtue, but until Emotional Intelligence, we could only guess why. Daniel Goleman\'s brilliant report from the frontiers of psychology and neuroscience offers startling new insight into our “two minds”—the rational and the emotional—and how they together shape our destiny.\r\n\r\nDrawing on groundbreaking brain and behavioral research, Goleman shows the factors at work when people of high IQ flounder and those of modest IQ do surprisingly well. These factors, which include self-awareness, self-discipline, and empathy, add up to a different way of being smart—and they aren’t fixed at birth. Although shaped by childhood experiences, emotional intelligence can be nurtured and strengthened throughout our adulthood—with immediate benefits to our health, our relationships, and our work. \r\n \r\nThe twenty-fifth-anniversary edition of Emotional Intelligence could not come at a better time—we spend so much of our time online, more and more jobs are becoming automated and digitized, and our children are picking up new technology faster than we ever imagined. With a new introduction from the author, the twenty-fifth-anniversary edition prepares readers, now more than ever, to reach their fullest potential and stand out from the pack with the help of EI.', 12, 22),
+(10, 9, '9780553383713', 'Emotional Intelligence: Why It Can Matter More Than IQ', '9780553383713.jpg', 2005, 352, 'Everyone knows that high IQ is no guarantee of success, happiness, or virtue, but until Emotional Intelligence, we could only guess why. Daniel Goleman\'s brilliant report from the frontiers of psychology and neuroscience offers startling new insight into our “two minds”—the rational and the emotional—and how they together shape our destiny.\r\n\r\nDrawing on groundbreaking brain and behavioral research, Goleman shows the factors at work when people of high IQ flounder and those of modest IQ do surprisingly well. These factors, which include self-awareness, self-discipline, and empathy, add up to a different way of being smart—and they aren’t fixed at birth. Although shaped by childhood experiences, emotional intelligence can be nurtured and strengthened throughout our adulthood—with immediate benefits to our health, our relationships, and our work. \r\n \r\nThe twenty-fifth-anniversary edition of Emotional Intelligence could not come at a better time—we spend so much of our time online, more and more jobs are becoming automated and digitized, and our children are picking up new technology faster than we ever imagined. With a new introduction from the author, the twenty-fifth-anniversary edition prepares readers, now more than ever, to reach their fullest potential and stand out from the pack with the help of EI.', 12, 22),
 (11, 10, '1409341267', 'The Business Book : Big Ideas Simply Explained', '1409341267.jpg', 2015, 352, 'You can achieve your business dream. Beat the odds as you learn from the best - including Henry Ford, Steve Jobs, and Bill Gates - and turn your idea into an amazing and profitable enterprise.\r\n\r\nThe Business Book helps you over the hurdles facing every new business, such as finding a gap in the market, securing finance, employing people, and creating an eye-catching brand. It is a plain-speaking visual guide to 80 of the most important commerce theories including chaos theory, critical path analysis, market mapping, and the MABA matrix.\r\n\r\nIts graphics and flow diagrams demystify complicated concepts and explain the ideas of seminal business thinkers, such as Malcolm Gladwell\'s \"tipping point\", Michael Porter\'s \"five forces\", and Meredith Belbin\'s theories on effective teamwork. It shows that you can succeed with stories of rags-to-riches entrepreneurs, including the founders of Hewlett-Packard, who began their global enterprise from their garage.\r\n\r\nWhether you are a student, a CEO, or a would-be entrepreneur, The Business Book will inspire you and put you on the inside track to making your goal a reality.', 18.45, 17),
 (12, 11, '1949474496', 'Fiona Flamingo', '1949474496.jpg', 2019, 56, 'Follow Fiona through her color-changing, feather-filled day as she learns to accept not only being a different color from the rest of her flamingo flock, but also that it\'s okay to be scared, angry, and sad at times. ', 14.95, 10),
 (13, 10, '1949474852', 'A Friend is Someone Who... ', '1949474852.jpg', 2020, 50, 'Do you remember your first friend? Your friends always find a way to double your joys and halve your sorrows. This fun, rhyming book helps children understand the value of having friends and of being a friend to others.', 14.95, 17),
@@ -244,10 +237,10 @@ INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover
 (38, 33, '9780141033013', 'The Midwich Cuckoos', '9780141033013.jpg', 2008, 224, '\'Exciting, unsettling and technically brilliant\' - Spectator\r\nIn the sleepy English village of Midwich, a mysterious silver object appears and all the inhabitants fall unconscious. A day later the object is gone and everyone awakens unharmed - except that all the women in the village are discovered to be pregnant.\r\nThe resultant children of Midwich do not belong to their parents: all are blonde, all are golden eyed. They grow up too fast and their minds exhibit frightening abilities that give them control over others and brings them into conflict with the villagers just as a chilling realisation dawns on the world outside . . .\r\nThe Midwich Cuckoos is the classic tale of aliens in our midst, exploring how we respond when confronted by those who are innately superior to us in every conceivable way.', 8, 2),
 (39, 22, '1101910097', 'The Big Book of Science Fiction', '1101910097.jpg', 2016, 1216, 'Quite possibly the greatest science fiction collection of all time--past, present, and future! What if life was neverending? What if you could change your body to adapt to an alien ecology? What if the pope were a robot? Spanning galaxies and millennia, this must-have anthology showcases classic contributions from H. G. Wells, Arthur C. Clarke, Octavia E. Butler, and Kurt Vonnegut, alongside a century of the eccentrics, rebels, and visionaries who have inspired generations of readers. Within its pages, you\'ll find beloved worlds of space opera, hard SF, cyberpunk, the New Wave, and more. Learn about the secret history of science fiction, from titans of literature who also wrote SF to less well-known authors from more than twenty-five countries, some never before translated into English. In The Big Book of Science Fiction, literary power couple Ann and Jeff VanderMeer transport readers from Mars to Mechanopolis, planet Earth to parts unknown. Immerse yourself in the genre that predicted electric cars, space tourism, and smartphones. Sit back, buckle up, and dial in the coordinates, as this stellar anthology has got worlds within worlds. Including:\r\n- Legendary tales from Isaac Asimov and Ursula K. Le Guin\r\n- An unearthed sci-fi story from W. E. B. Du Bois\r\n- The first publication of the work of cybernetic visionary David R. Bunch in twenty years\r\n- A rare and brilliant novella by Chinese international sensation Cixin Liu Plus:\r\n- Aliens!\r\n- Space battles!\r\n- Robots!\r\n- Technology gone wrong!\r\n- Technology gone right!', 33.56, 8),
 (40, 34, '9780575094192', 'The Stars My Destination', '9780575094192.jpg', 2010, 256, 'That\'s the official verdict on Gully Foyle, unskilled space crewman.\r\n\r\nBut right now he is the only survivor on his drifting, wrecked spaceship, and when another space vessel - the Vorga - ignores his distress flares and sails by, Gully becomes obsessed with revenge. He endures 170 days alone in deep space before finding refuge on the Sargasso Asteroid and returning to Earth to track down the crew and owners of the Vorga. But, as he works out his murderous grudge, Gully Foyle also uncovers a secret of momentous proportions ...', 6.94, 6),
-(41, 33, '9780141032993', 'The Kraken Wakes ', '9780141032993.jpg', 2008, 240, 'It started with fireballs raining down from the sky and crashing into the oceans\' deeps. Then ships began sinking mysteriously and later \'sea tanks\' emerged from the deeps to claim people . . .\r\n\r\nFor journalists Mike and Phyllis Watson, what at first appears to be a curiosity becomes a global calamity. Helpless, they watch as humanity struggles to survive now that water - one of the compounds upon which life depends - is turned against them. Finally, sea levels begin their inexorable rise . . .\r\n\r\nThe Kraken Wakes is a brilliant novel of how humankind responds to the threat of its own extinction and, ultimately, asks what we are prepared to do in order to survive.', 11.18, 15),
-(42, 35, '1473222532', 'Judgment Night', '1473222532.jpg', 2019, 352, 'Released in 1952, Judgment Night collects five Moore novellas from the pages of editor John W. Campbell, Jr.\'s Astounding Science Fiction magazine:\r\n\r\n\'\'Judgment Night\'\' (first published in August and September, 1943) balances a lush rendering of a future galactic empire with a sober meditation on the nature of power and its inevitable loss;\r\n\r\n\'\'The Code\'\' (July, 1945) pays homage to the classic Faust with modern theories and Lovecraftian dread;\r\n\r\n\'\'Promised Land\'\' (February, 1950) and \'\'Heir Apparent\'\' (July, 1950) both document the grim twisting that mankind must undergo in order to spread into the solar system;\r\n\r\n\'\'Paradise Street\'\' (September, 1950) shows a futuristic take on the old western conflict between lone hunter and wilderness-taming settlers.\r\n\r\nChosen by the author herself as the best of her longer-form writing, these stories show a gifted wordsmith working at the height of her talents.', 10.43, 15);
+(41, 33, '9780141032993', 'The Kraken Wakes ', '9780141032993.jpg', 2008, 240, 'It started with fireballs raining down from the sky and crashing into the oceans\' deeps. Then ships began sinking mysteriously and later \'sea tanks\' emerged from the deeps to claim people . . .\r\n\r\nFor journalists Mike and Phyllis Watson, what at first appears to be a curiosity becomes a global calamity. Helpless, they watch as humanity struggles to survive now that water - one of the compounds upon which life depends - is turned against them. Finally, sea levels begin their inexorable rise . . .\r\n\r\nThe Kraken Wakes is a brilliant novel of how humankind responds to the threat of its own extinction and, ultimately, asks what we are prepared to do in order to survive.', 11.18, 15);
 INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover`, `publishing_year`, `pages`, `summary`, `price`, `stock`) VALUES
-(43, 2, '1472835697', 'Zona Alfa : Salvage and Survival in the Exclusion Zone', '1472835697.jpg', 2020, 64, 'Zona Alfa is a set of simple, fast-play skirmish rules for scavenging, exploring, and surviving in a near-future, post-apocalyptic Eastern European setting. Players take on the role of bandits, mercenaries, and military units fighting over the blasted Exclusion Zone and its abandoned artefacts. Customise your fighters with a variety of weapons and specialisms to create your ideal warband. With extended rules for campaigns, character progression, terrain, and environmental hazards, Zona Alfa contains all the tools required to engage in blistering firefights within the Exclusion Zone.', 14.89, 14),
+(42, 35, '1473222532', 'Judgment Night', '1473222532.jpg', 2019, 352, 'Released in 1952, Judgment Night collects five Moore novellas from the pages of editor John W. Campbell, Jr.\'s Astounding Science Fiction magazine:\r\n\r\n\'\'Judgment Night\'\' (first published in August and September, 1943) balances a lush rendering of a future galactic empire with a sober meditation on the nature of power and its inevitable loss;\r\n\r\n\'\'The Code\'\' (July, 1945) pays homage to the classic Faust with modern theories and Lovecraftian dread;\r\n\r\n\'\'Promised Land\'\' (February, 1950) and \'\'Heir Apparent\'\' (July, 1950) both document the grim twisting that mankind must undergo in order to spread into the solar system;\r\n\r\n\'\'Paradise Street\'\' (September, 1950) shows a futuristic take on the old western conflict between lone hunter and wilderness-taming settlers.\r\n\r\nChosen by the author herself as the best of her longer-form writing, these stories show a gifted wordsmith working at the height of her talents.', 10.43, 15),
+(43, 2, '1472835697', 'Zona Alfa: Salvage and Survival in the Exclusion Zone', '1472835697.jpg', 2020, 64, 'Zona Alfa is a set of simple, fast-play skirmish rules for scavenging, exploring, and surviving in a near-future, post-apocalyptic Eastern European setting. Players take on the role of bandits, mercenaries, and military units fighting over the blasted Exclusion Zone and its abandoned artefacts. Customise your fighters with a variety of weapons and specialisms to create your ideal warband. With extended rules for campaigns, character progression, terrain, and environmental hazards, Zona Alfa contains all the tools required to engage in blistering firefights within the Exclusion Zone.', 14.89, 14),
 (44, 10, '194947450X', 'I Can Yell Louder', '194947450X.jpg', 2020, 48, 'Michelle loves to yell and scream as loudly as she can. The word \"quiet\" isn\'t even in her vocabulary...until one of Michelle\'s classmates comes up with a plan to beat her at her own game.', 14.95, 19),
 (45, 36, '1840221666', 'The Divine Comedy', '1840221666.jpg', 2019, 592, 'Dante Alighieri (1265-1321) is one of the most important and innovative figures of the European Middle Ages. Writing his Comedy (the epithet Divine was added by later admirers) in exile from his native Florence, he aimed to address a world gone astray both morally and politically. At the same time, he sought to push back the restrictive rules which traditionally governed writing in the Italian vernacular, to produce a radically new and all-encompassing work.\r\n\r\n\r\nThe Comedy tells of the journey of a character who is at one and the same time both Dante himself and Everyman through the three realms of the Christian afterlife: Hell, Purgatory and Heaven. He presents a vision of the afterlife which is strikingly original in its conception, with a complex architecture and a coherent structure. On this journey Dante\'s protagonist - and his reader - meet characters who are variously noble, grotesque, beguiling, fearful, ridiculous, admirable, horrific and tender, and through them he is shown the consequences of sin, repentance and virtue, as he learns to avoid Hell and, through cleansing in Purgatory, to taste the joys of Heaven.', 7.94, 7),
 (46, 37, '1840226889', 'Wealth of Nations', '1840226889.jpg', 2012, 1008, 'Adam Smith (1723-1790) was one of the brightest stars of the eighteenth-century Scottish Enlightenment. An Inquiry into the Nature and Causes of the Wealth of Nations was his most important book. First published in London in March 1776, it had been eagerly anticipated by Smith\'s contemporaries and became an immediate bestseller. That edition sold out quickly and others followed. Today, Smith\'s Wealth of Nations rightfully claims a place in the Western intellectual canon.\r\n\r\n\r\n\r\nIt is the first book of modern political economy, and still provides the foundation for the study of that discipline.\r\nBut it is much more than that. Along with important discussions of economics and political theory, Smith mixed plain common sense with large measures of history, philosophy, psychology, sociology, and much else. Few texts remind us so clearly that the Enlightenment was very much a lived experience, a concern with improving the human condition in practical ways for real people. A masterpiece by any measure, Wealth of Nations remains a classic of world literature to be usefully enjoyed by readers today.', 8.59, 3),
@@ -255,11 +248,11 @@ INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover
 (48, 38, '1471166910', 'The Madman\'s Library : The Greatest Curiosities of Literature', '1471166910.jpg', 2020, 256, '\'Anybody who loves the printed word will be bowled over by this amusing, erudite, beautiful book about books. It is in every way a triumph. One of the loveliest books to have been published for many, many years\' Alexander McCall Smith\r\n\'Quite simply the best gift for any book lover this year, or perhaps ever\' Lucy Atkins, Sunday Times Literary Book of the Year\r\n\'An utterly joyous journey into the deepest eccentricities of the human mind... The most cheering, fascinating book I\'ve read for ages\' Guardian\r\n\r\nFrom the author of the critically acclaimed and globally successful The Phantom Atlas, The Golden Atlas and The Sky Atlas comes a stunning new work. The Madman\'s Library is a unique, beautifully illustrated journey through the entire history of literature, delving into its darkest territories to hunt down the very strangest books ever written, and uncover the fascinating stories behind their creation.\r\n\r\nThis is a madman\'s library of eccentric and extraordinary volumes from around the world, many of which have been completely forgotten. Books written in blood and books that kill, books of the insane and books that hoaxed the globe, books invisible to the naked eye and books so long they could destroy the Universe, books worn into battle, books of code and cypher whose secrets remain undiscovered... and a few others that are just plain weird.\r\n\r\nFrom the 605-page Qur\'an written in the blood of Saddam Hussein, through the gorgeously decorated 15th-century lawsuit filed by the Devil against Jesus, to the lost art of binding books with human skin, every strand of strangeness imaginable (and many inconceivable) has been unearthed and bound together for a unique and richly illustrated collection ideal for every book-lover.', 22.44, 20),
 (49, 39, '9780826488848', 'Victorian Literature and Culture', '9780826488848.jpg', 2007, 160, '\"Introductions to British Literature and Culture\" are practical guides to key literary periods. Guides in the series are designed to help introduce a new module or area of study, providing concise information on the historical, literary and critical contexts and acting as an initial map of the knowledge needed to study the literature and culture of a specific period. This accessible introduction to Victorian literature and its contexts from 1837-1901 includes: an overview of the historical, cultural and intellectual background including politics and economics, popular culture, philosophy and religion; a survey of the developments in key genres including discussion of major writers such as the Brontes, the Brownings, Collins, Dickens, Eliot, Gaskell, Hardy, Rossetti, Shaw, Swinburne, Tennyson and Wilde; concise explanations of key terms needed to understand the literature and criticism; a guide to key critical approaches; a chronology mapping historical events and literary works; and guided further reading including websites and electronic resources.', 17.71, 5),
 (50, 40, ' 1465429883', 'The Literature Book : Big Ideas Simply Explained', ' 1465429883.jpg', 2016, 352, '\"Books, let\'s face it, are better than anything else.\" Nick Hornby Turn the pages of The Literature Book to discover over 100 of the world\'s most enthralling reads and the literary geniuses behind them. Storytelling is as old as humanity itself. Part of the Big Ideas Simply Explained series, The Literature Book introduces you to ancient classics from the Epic of Gilgamesh written 4,000 years ago, as well as the works of Shakespeare, Voltaire, Tolstoy, and more, and 20th-century masterpieces, including Catch-22, Beloved, and On the Road. The perfect reference for your bookshelf, it answers myriad questions such as what is stream of consciousness, who wrote To Kill a Mockingbird, and what links the poetry of Wordsworth with that of TS Eliot. Losing yourself in a great book transports you to another time and place, and The Literature Book sets each title in its social and political context. It helps you appreciate, for example, how Dickens\' Bleak House paints a picture of deprivation in 19th-century England, or how Stalin\'s climb to power was the backdrop for George Orwell\'s 1984. With succinct plot summaries, graphics, and inspiring quotations, this is a must-have reference for literature students and the perfect gift for book-lovers everywhere.\r\n\r\nSeries Overview: Big Ideas Simply Explained series uses creative design and innovative graphics along with straightforward and engaging writing to make complex subjects easier to understand. With over 7 million copies worldwide sold to date, these award-winning books provide just the information needed for students, families, or anyone interested in concise, thought-provoking refreshers on a single subject.', 24.61, 5),
-(51, 41, '1936749750', 'Robotics : DISCOVER THE SCIENCE AND TECHNOLOGY OF THE FUTURE with 20 PROJECTS', '1936749750.jpg', 2012, 128, 'Once, robots were only found in science fiction books and movies. Today, robots are everywhere! They assemble massive cars and tiny computer chips. They help doctors do delicate surgery. They vacuum our houses and mow our lawns. Robot toys play with us, follow our commands, and respond to our moods. We even send robots to explore the depths of the ocean and the expanse of space. In Robotics, children ages 9 and up learn how robots affect both the future and the present. Hands-on activities make learning both fun and lasting.', 16.54, 12),
+(51, 41, '1936749750', 'Robotics: Discover the Science and Technology of the Future 20 Projects', '1936749750.jpg', 2012, 128, 'Once, robots were only found in science fiction books and movies. Today, robots are everywhere! They assemble massive cars and tiny computer chips. They help doctors do delicate surgery. They vacuum our houses and mow our lawns. Robot toys play with us, follow our commands, and respond to our moods. We even send robots to explore the depths of the ocean and the expanse of space. In Robotics, children ages 9 and up learn how robots affect both the future and the present. Hands-on activities make learning both fun and lasting.', 16.54, 12),
 (52, 42, '9780470673423', 'Food Science and Technology', '9780470673423.jpg', 2017, 576, 'Food Science and Technology is considered the flagship textbook for degree level studies in food science, supported by the International Union of Food Science and Technology. The comprehensive text and reference book is designed to cover all the essential elements of food science and technology, including all core aspects of major food science and technology degree programs being taught worldwide. This second edition sees major development of the book\'s accessibility and features as well as a greater use of colour, photos and illustrations to enhance the reader\'s learning experience and to appeal to students in the subject. The editor, Geoffrey Campbell-Platt, is a world-renowned food scientist with a long career in industry and academia, and is currently President of the world s biggest professional association for food science, the International Union of Food Science and Technology (IUFoST). Each chapter is written by an expert in their chosen field, thus presenting a collection of authoritative authors in one volume, suitable for food science and technology degree programmes and food industry professionals.\r\nAbout IUFoST The International Union of Food Science and Technology (IUFoST) is a country-membership organisation representing some 65 member countries, and around 200,000 food scientists and technologists worldwide. IUFoST is the global voice of food science and technology, dedicated to promoting the sharing of knowledge and good practice in food science and technology internationally. IUFoST organises World Congresses of Food Science and Technology, and has established the International Academy of Food Science and Technology (IAFoST) to which eminent food scientists can be elected by peer review. For further information about IUFoST and its activities, visit: www.iufost.org\r\nshow less', 69.56, 5),
-(53, 43, '1421417758', 'Science and Technology in World History : An Introduction', '1421417758.jpg', 2016, 552, 'Tracing the relationship between science and technology from the dawn of civilization to the early twenty-first century, James E McClellan III and Harold Dorn\'s bestselling book argues that technology as \"applied science\" emerged relatively recently, as industry and governments began funding scientific research that would lead directly to new or improved technologies. McClellan and Dorn identify two great scientific traditions: the useful sciences, which societies patronized from time immemorial, and the exploration of questions about nature itself, which the ancient Greeks originated. The authors examine scientific traditions that took root in China, India, and Central and South America, as well as in a series of Near Eastern empires in late antiquity and the Middle Ages. From this comparative perspective, McClellan and Dorn survey the rise of the West, the Scientific Revolution of the seventeenth century, the Industrial Revolution, and the modern marriage of science and technology. They trace the development of world science and technology today while raising provocative questions about the sustainability of industrial civilization.\r\nThis new edition of Science and Technology in World History offers an enlarged thematic introduction and significantly extends its treatment of industrial civilization and the technological super system built on the modern electrical grid. The Internet and social media receive increased attention. Facts and figures have been thoroughly updated and the work includes a comprehensive Guide to Resources, incorporating the major published literature along with a vetted list of websites and Internet resources for students and lay readers.', 31.42, 5),
+(53, 43, '1421417758', 'Science and Technology in World History: An Introduction', '1421417758.jpg', 2016, 552, 'Tracing the relationship between science and technology from the dawn of civilization to the early twenty-first century, James E McClellan III and Harold Dorn\'s bestselling book argues that technology as \"applied science\" emerged relatively recently, as industry and governments began funding scientific research that would lead directly to new or improved technologies. McClellan and Dorn identify two great scientific traditions: the useful sciences, which societies patronized from time immemorial, and the exploration of questions about nature itself, which the ancient Greeks originated. The authors examine scientific traditions that took root in China, India, and Central and South America, as well as in a series of Near Eastern empires in late antiquity and the Middle Ages. From this comparative perspective, McClellan and Dorn survey the rise of the West, the Scientific Revolution of the seventeenth century, the Industrial Revolution, and the modern marriage of science and technology. They trace the development of world science and technology today while raising provocative questions about the sustainability of industrial civilization.\r\nThis new edition of Science and Technology in World History offers an enlarged thematic introduction and significantly extends its treatment of industrial civilization and the technological super system built on the modern electrical grid. The Internet and social media receive increased attention. Facts and figures have been thoroughly updated and the work includes a comprehensive Guide to Resources, incorporating the major published literature along with a vetted list of websites and Internet resources for students and lay readers.', 31.42, 5),
 (54, 44, '9780822349570', 'The Postcolonial Science and Technology Studies Reader', '9780822349570.jpg', 2011, 546, 'For twenty years, the renowned philosopher of science Sandra Harding has argued that science and technology studies, postcolonial studies, and feminist critique must inform one another. In The Postcolonial Science and Technology Studies Reader, Harding puts those fields in critical conversation, assembling the anthology that she has long wanted for classroom use. In classic and recent essays, international scholars from a range of disciplines think through a broad array of science and technology philosophies and practices. The contributors reevaluate conventional accounts of the West\'s scientific and technological projects in the past and present, rethink the strengths and limitations of non-Western societies\' knowledge traditions, and assess the legacies of colonialism and imperialism. The collection concludes with forward-looking essays, which explore strategies for cultivating new visions of a multicultural, democratic world of sciences and for turning those visions into realities. Feminist science and technology concerns run throughout the reader and are the focus of several essays. Harding provides helpful background for each essay in her introductions to the reader\'s four sections.', 32.72, 5),
-(55, 45, '9780631232100', 'Science, Technology, and Society : A Sociological Approach', '9780631232100.jpg', 2005, 164, '\"Science, Technology and Society: A Sociological Approach\" is a comprehensive guide to the emergent field of science, technology, and society (STS) studies and its implications for today\'s culture and society. This title discusses current STS topics, research tools, and theories. It tackles some of the most urgent issues in current STS studies, including power and culture, race, gender, colonialism, the Internet, cyborgs and robots, and biotechnology. It includes case studies, a glossary, and further reading lists.', 32.92, 4);
+(55, 45, '9780631232100', 'Science, Technology, and Society: A Sociological Approach', '9780631232100.jpg', 2005, 164, '\"Science, Technology and Society: A Sociological Approach\" is a comprehensive guide to the emergent field of science, technology, and society (STS) studies and its implications for today\'s culture and society. This title discusses current STS topics, research tools, and theories. It tackles some of the most urgent issues in current STS studies, including power and culture, race, gender, colonialism, the Internet, cyborgs and robots, and biotechnology. It includes case studies, a glossary, and further reading lists.', 32.92, 4);
 
 -- --------------------------------------------------------
 
@@ -269,7 +262,7 @@ INSERT INTO `book` (`book_id`, `publisher_id`, `isbn`, `book_title`, `book_cover
 
 CREATE TABLE `book_feature` (
   `feature_id` int(11) NOT NULL,
-  `feature_name` varchar(50) NOT NULL
+  `feature_name` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -294,6 +287,44 @@ CREATE TABLE `book_review` (
   `content` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `book_review`
+--
+
+INSERT INTO `book_review` (`book_id`, `customer_id`, `rating`, `content`) VALUES
+(2, 1, 0, 'This book far EXCEEDS every expectation I had of it. The illustrations in general are breathtaking, add to those the several \"interactive\" illustrations that reveal even more beautiful detail and you have the recipe for a story that captures both the imagination and senses. This is a true collector\'s edition and I will definitely be purchasing the rest of the books as they are released. '),
+(2, 1, 0, 'This book far EXCEEDS every expectation I had of it. The illustrations in general are breathtaking, add to those the several \"interactive\" illustrations that reveal even more beautiful detail and you have the recipe for a story that captures both the imagination and senses. This is a true collector\'s edition and I will definitely be purchasing the rest of the books as they are released. '),
+(1, 1, 4, 'This book came to me at a time when I really needed it - learning to love myself through a mental health disorder. It proved encouraging to me in remembering to love my self and that I amethyst of loving (even with my perceived faults). I have several of the poems bookmarked and revisit them when I need some encouragement and to be reminded of loving myself.\r\nHighly highly recommend this wonderful work of art '),
+(14, 1, 2, 'I bought this book as a gift for my daughter and new grand baby. I was shocked when it arrived. It is so cheaply made...the quality of the pages are like newspaper print and were defective as well. I would NEVER consider giving this as a gift, I don\'t care how sweet the story is. 14 euros is insane for this book. It should be sold in the 99 Cent Store! '),
+(28, 1, 2, 'I don\'t know how anyone could screw something up this bad. The book has no page numbers, an incomplete ending, and is full of absolute nonsense words. I am now dumber for having read only one page of this \"book\" and have polluted my mind with incomprehensible word like \"vues - tra\", \"wom - ra sa\", and \"pregu n Tarle\". Anyone who gives this fives stars is either being paid or an illiterate fool. '),
+(42, 1, 5, 'This is a fantastic re-issue from Red Jacket Press. It really is just like getting the original Gnome press edition--but better, thanks to the slipcase. Great job. '),
+(15, 1, 2, 'The colors were bright. I didn’t like the pages being slippery and the story line seems choppy. I know it’s not high literature but it’s annoying when it doesn’t flow and the kid asks to read it repeatedly. '),
+(43, 1, 4, 'As a big fan of post-ap games I\'ve been waiting eagerly for this to arrive and the wait has been 100% worthwhile! For those that love the journeys into the exclusion zone genre and want to replicate this in tabletop game form ZONA ALFA will be worth every penny. Like the majority of the Osprey Games books it\'s beautifully, and in this case completely logically presented, and these deceptively simple yet comprehensive rules (with a really great backstory full of amazing characters!) will let you \"get your miniatures game on\" immediately. If you like STALKER and the \"Metro\" books then this is a \"must have\"... \"Everything else is for chickens to laugh at\"! '),
+(4, 1, 5, 'Informative\r\nInfuriatingly Relatable\r\nNecessary\r\nMotivational\r\nResourceful\r\nThought Provoking\r\nTransparent\r\nExcellent\r\n\r\nAt times I listened while preparing dinner with my 11yr old one room over, in the dining room. After over hearing 5-10 minutes, he asked me who she was & if he could also listen with me. That made my heart smile. '),
+(12, 1, 5, 'I read this book - looking for how it would affect my 4-year-old\' grandson\'s understanding of feelings and prejudiceness. As a preschool teacher, I am very picky. This book wonderfully captured emotions and differences on each page. A perfect book for parent and child conversations. A great segway into the issues of today\'s world. '),
+(17, 1, 5, 'This book was recommended by my child\'s psychologist and I am more than pleased with this book! As a parent I am struggling with my dragon and sometimes so feel like I\'m all alone in not knowing how to best help him. My dragon is highly anxious and has meltdowns daily however he was able to connect that Diggory Doo the dragon is just like him. When we read the book together for the first time I cried because it hit home in so many ways'),
+(3, 1, 5, 'Great book, good quality hard cover. '),
+(18, 1, 5, 'Menand’s material is fascinating throughout, even if you are too young for the Cold War to seem like the “formative” years of your life. The book lies somewhere between journalism and scholarship, with satisfactions found throughout that range—and you won’t find too many books that try to fit Elvis Presley and Claude Levi-Strauss into the same framework.\r\n\r\nFor readers with other books on the go, don’t be intimidated by the length of this one. I was determined to read it quickly and did so, but taking it a section at a time should be equally satisfying.'),
+(20, 1, 4, 'This meticulously researched book is now the gold standard, and quite possibly the last word, on the remarkable life if the greatest firearms inventor who ever lived. Yet, it is also a very enjoyable book to read, with enough \" human interest\" antidotes and heretofore unknown stories to excite and keep a reader\'s interests. For all it\'s readability, though, this is first and foremost the definitive telling of the John Moses Brown story. Well done, Sir, well done! '),
+(22, 1, 5, 'Stacey Lee writes absolutely wonderful historical fiction that utilizes settings to their medium potential while providing a perspective that many of most kids haven\'t seen before. The Titanic is a fantastic backdrop to a story about family, class, and different sorts of love. This book broke my heart and then stitched it back together.'),
+(23, 1, 4, 'An excellent overview of history from the earliest times. For fairly obvious reasons it\'s a Dates And Names book but weaves together the various kingdom and empires and it gave me a better understanding of which of them co-existed and when..\r\nA great read for the casual student of history. '),
+(46, 1, 4, 'This book reads like a novel but is a well documented history of our nation’s trade policies. Mr. Johnson hasn’t just put facts together he has told a fascinating story. Never dull.'),
+(48, 1, 5, 'Crammed with weird and wonderful, beautiful and macabre, a great book to dip into. Well presented with fantastic illustrations. A treasure for any book lover.'),
+(47, 1, 4, 'The length of the book might be a set back for some people like it was for me, but once you get into it you will find yourself pleased with the depth of understanding that Marx presents.'),
+(50, 1, 4, 'This is an excellent book for what it is - an overview and short synopsis of 109 pieces of literature. The books are separated into major categories (legends, romanticism, contemporary, etc). I recommend this book. Please mark if you find my review helpful. Thank you so much! '),
+(24, 1, 5, 'This is my first book by Barbara O Neal. I instantly connected to her writing style, her storytelling, her characters. It doesn’t hurt that I’m a fan of mermaids. I’m at a loss for words to convey how much I loved this book, how sad I was to finish it. When you feel as though you’re losing friends, well that says something. The story weaves between settings, the past and present...there are many opportunities to feel lost. I wasn’t. This is poignant, horrifying, happy, yet confusingly always amazing. My heart for those sisters, their connection. Read this book. I’m trying to decide what my next from this author will be... '),
+(29, 1, 4, 'A really great romantic adventure! The characters test are old friends that you wish were real!\r\nThe HEA is wonderful. All loose ends are tied up and the bad guys caught! Great fun! '),
+(30, 1, 5, 'I loved this story. I even liked the characters from past and present stories. And I also loved the whole story line. However; I didn\'t like the way that Maggie jumped to conclusions, after overhearing a partial conversation. So instead of sticking around and talking about what she overheard, she leaves. Then she automatically let\'s her mind take over, and the next thing we know, she making the worst assumptions of her life, which leads to a huge misunderstanding. That didn\'t quite ring true of the strong woman, we all came to love and admire. Jake was a saint, and a dream come true. And Alex was the sweetest little kid, who had a bit of a stubborn side himself.\r\n\r\nI love this small town vibe, and the citizens who dwell there. This story was so, so good. '),
+(39, 1, 1, 'Despite the misleading title, which touts some of the Science Fiction Greats, (only a few and their minor works), this book is really a frenetic feminist rant! I must admit, that I did find one or two \"gems\" in there, but to have to go though over 1000 of page to find them is simply not worth the effort!\r\nDon\'t waste your money! '),
+(41, 1, 2, 'It took about 125 pages before it actually got a little bit interesting, but the excitement was short lived and soon I was back to reading about the mundane doings of husband and wife journalists, Mike and Phyllis. Wyndham\'s style is not for everyone. He spends a lot of time on the small, often mundane details, which I ordinarily don\'t mind but in Kraken they were tedious. I found myself skipping entire paragraphs/pages looking for the next bit of dialogue that would push the story forward, but after 145 pages I just dropped it.'),
+(51, 1, 4, 'My nephew loves to read and learn. Sometimes the books he wants are out of stock and not available in the store. Lately, Amazon has been my go-to place for all books. The books are fairly priced and delivered quickly. This book gave us the information we need and was very informative. A great read at a great value.'),
+(53, 1, 4, 'The book provides an excellent overview of world science and technology for readers at any level...highly recommended.'),
+(55, 1, 3, 'Purchased this book for class, did not much care for it. I was expecting something a little different based on the cover but the book fell short. I wish the book provided more details on the technological side instead of heavily on the societal side. Provides some interesting approaches for thinking in a sociological manner. '),
+(31, 1, 3, 'Having read Sutherland\'s Lives of the Novelists, and listened to his marvelous lecture series on British Literature (via Audible) I knew I was in for a treat. And this new book did not disappoint, being (as it was) written in Professor Sutherland\'s distinctive style.\r\nI was never bored; rather, I was inspired to read MORE. I can genuinely recommend this book to anyone who needs a good reason to return to Literature. And for those who never left it, Sutherland will help you to get even more out of reading. '),
+(32, 1, 4, 'I purchased this book because I want to underline and write in the margins. It’s the typical quality of a signer classic. Might endure a few read through a but will fall apart if handled too roughly or too long. The compilation of texts is a great starting point for reading Aristotle. '),
+(34, 1, 5, 'I have home schooled for 20+ years and this series looks great. Based on this first book, I decided to purchase the entire set. It has great information and is written well. I would recommend it for learning or schooling, whichever you choose. '),
+(19, 2, 5, 'This is an amazing book.');
+
 -- --------------------------------------------------------
 
 --
@@ -303,10 +334,19 @@ CREATE TABLE `book_review` (
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
   `book_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `quantity` int(11) NOT NULL,
   `total_price` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `book_id`, `customer_id`, `quantity`, `total_price`) VALUES
+(1, 26, 2, 1, 13.48),
+(2, 18, 2, 1, 27.49),
+(3, 26, 3, 1, 13.48);
 
 -- --------------------------------------------------------
 
@@ -404,7 +444,12 @@ INSERT INTO `category_tag` (`book_id`, `category_id`) VALUES
 (52, 4),
 (53, 7),
 (54, 7),
-(55, 7);
+(55, 7),
+(1, 4),
+(3, 2),
+(3, 5),
+(2, 2),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -424,6 +469,15 @@ CREATE TABLE `customer` (
   `state` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customer_id`, `first_name`, `last_name`, `email`, `birthday`, `phone`, `address`, `city`, `state`) VALUES
+(1, 'kom', 'ar', 'kj2006@hw.edu.uk', '2021-06-16', '5552', 'df', 'df', 'df'),
+(2, 'kom', 'javan', 'ahah@komar.com', '2021-06-09', '5555', 'iejrier', 'ijier', 'iejri'),
+(3, 'Sheena', 'Fernandez', 'sheena.fernandez@obf.ateneo.edu', '2021-06-04', '07762321759', 'Heriot Watt University', 'CURRIE', 'Midlothian');
+
 -- --------------------------------------------------------
 
 --
@@ -432,9 +486,10 @@ CREATE TABLE `customer` (
 
 CREATE TABLE `customer_order` (
   `order_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `order_date` date NOT NULL,
-  `shipping_status` varchar(50) NOT NULL
+  `shipping_status` varchar(50) NOT NULL,
+  `shipping_address` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -484,7 +539,10 @@ INSERT INTO `feature_tag` (`book_id`, `feature_id`) VALUES
 (51, 1),
 (52, 3),
 (53, 2),
-(55, 2);
+(55, 2),
+(1, 1),
+(3, 1),
+(2, 2);
 
 -- --------------------------------------------------------
 
@@ -498,6 +556,13 @@ CREATE TABLE `feedback` (
   `feedback_email` varchar(50) NOT NULL,
   `feedback_message` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `feedback_name`, `feedback_email`, `feedback_message`) VALUES
+(1, 'Sheena Fernandez', 'sheena.fernandez@obf.ateneo.edu', 'Great online shop. Would definitely buy again');
 
 -- --------------------------------------------------------
 
@@ -520,7 +585,7 @@ CREATE TABLE `order_items` (
 
 CREATE TABLE `payment` (
   `payment_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `payment_date` date NOT NULL,
   `payment_method` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -585,7 +650,8 @@ INSERT INTO `publisher` (`publisher_id`, `publisher`) VALUES
 (42, 'John Wiley & Sons Inc'),
 (43, 'JOHNS HOPKINS UNIVERSITY PRESS'),
 (44, 'Duke University Press'),
-(45, 'John Wiley and Sons Ltd');
+(45, 'John Wiley and Sons Ltd'),
+(46, 'Bloomsbury Children\'s Books');
 
 -- --------------------------------------------------------
 
@@ -598,7 +664,7 @@ CREATE TABLE `user` (
   `customer_id` int(11) DEFAULT NULL,
   `username` varchar(12) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `admin_permission` tinyint(1) NOT NULL DEFAULT 0
+  `admin_permission` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -606,7 +672,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_permission`) VALUES
-(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+(1, NULL, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1),
+(2, 1, 'javan123', 'bda587389ad3548623073312d7119d05', 0),
+(3, 2, 'kj', '202cb962ac59075b964b07152d234b70', 0),
+(4, 3, 'sfernandez', '202cb962ac59075b964b07152d234b70', 0);
 
 -- --------------------------------------------------------
 
@@ -616,8 +685,15 @@ INSERT INTO `user` (`user_id`, `customer_id`, `username`, `password`, `admin_per
 
 CREATE TABLE `wishlist` (
   `book_id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL
+  `customer_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`book_id`, `customer_id`) VALUES
+(36, 3);
 
 --
 -- Indexes for dumped tables
@@ -747,13 +823,13 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `author`
 --
 ALTER TABLE `author`
-  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `author_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `book_feature`
@@ -765,7 +841,7 @@ ALTER TABLE `book_feature`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -777,7 +853,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `customer_order`
@@ -789,7 +865,7 @@ ALTER TABLE `customer_order`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `feedback_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -801,13 +877,13 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `publisher`
 --
 ALTER TABLE `publisher`
-  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `publisher_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -821,13 +897,67 @@ ALTER TABLE `author_tag`
   ADD CONSTRAINT `author_tag_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE;
 
 --
+-- Constraints for table `book`
+--
+ALTER TABLE `book`
+  ADD CONSTRAINT `book_ibfk_1` FOREIGN KEY (`publisher_id`) REFERENCES `publisher` (`publisher_id`) ON UPDATE CASCADE;
+
+--
 -- Constraints for table `book_review`
 --
 ALTER TABLE `book_review`
   ADD CONSTRAINT `book_review_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `book_review_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
-COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
+-- Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `category_tag`
+--
+ALTER TABLE `category_tag`
+  ADD CONSTRAINT `category_tag_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `category_tag_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `customer_order`
+--
+ALTER TABLE `customer_order`
+  ADD CONSTRAINT `customer_order_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `feature_tag`
+--
+ALTER TABLE `feature_tag`
+  ADD CONSTRAINT `feature_tag_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `feature_tag_ibfk_2` FOREIGN KEY (`feature_id`) REFERENCES `book_feature` (`feature_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_items_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `customer_order` (`order_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `payment`
+--
+ALTER TABLE `payment`
+  ADD CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD CONSTRAINT `wishlist_ibfk_1` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `wishlist_ibfk_2` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON UPDATE CASCADE;

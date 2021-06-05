@@ -1,5 +1,7 @@
-<form action="../src/AdminPage/update_book_post.php" method="POST" id="update-book-form" 
-    enctype="multipart/form-data">
+<form id="update-book-form" enctype="multipart/form-data">
+    
+    <input type="number" id="update-book-id" name="book_id" hidden>
+    
     <div class="form-group row">
         <label for="isbn" class="col-sm-3 col-form-label updatebook-label">ISBN</label>
         <div class="col-sm-9">
@@ -16,25 +18,46 @@
         </div>
     </div>
 
+    <input type="text" id="current-book-cover" name="current_book_cover" hidden>
     <div class="form-group row">
-        <label for="cover" class="col-sm-3 col-form-label updatebook-label">Book Cover</label>
+        <label for="update-cover" class="col-sm-3 col-form-label updatebook-label">Book Cover</label>
         <div class="col-sm-9">
-        <img class="" id="update-cover" src="" width="100px" alt="book cover"> <br>
-        Choose new cover: <input type="file" name="cover" id="cover">
+        <img class="" id="current-cover" src="" width="100px" alt="book cover"> <br>
+        Choose new cover: <input type="file" name="cover" id="update-cover">
         </div>
     </div>
 
     <div class="form-group row">
         <label for="author" class="col-sm-3 col-form-label updatebook-label">Author</label>
         <div class="col-sm-9">
-            <div class="row">
+        <div class="row" style="margin-bottom: 10px;">
                 <div class="col">
-                    <input type="text" class="form-control" id="update-author1-firstname" name="author_firstname" 
-                        placeholder="First Name" required>
+                    <input type="text" class="form-control" name="author_firstname[]" 
+                        placeholder="First Name" id="update-author-firstname-0" required>
                 </div>
                 <div class="col">
-                    <input type="text" class="form-control" id="update-author1-lastname" name="author_lastname" 
-                        placeholder="Last Name" required>
+                    <input type="text" class="form-control" name="author_lastname[]" 
+                        placeholder="Last Name" id="update-author-lastname-0">
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 10px;">
+                <div class="col">
+                    <input type="text" class="form-control" name="author_firstname[]" 
+                        placeholder="First Name" id="update-author-firstname-1">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="author_lastname[]" 
+                        placeholder="Last Name" id="update-author-lastname-1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <input type="text" class="form-control" name="author_firstname[]" 
+                        placeholder="First Name" id="update-author-firstname-2">
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="author_lastname[]" 
+                        placeholder="Last Name" id="update-author-lastname-2">
                 </div>
             </div>
         </div>
@@ -57,42 +80,42 @@
     </div>
 
     <div class="form-group row">
-        <label for="category" class="col-sm-3 col-form-label updatebook-label">Category</label>
+        <label for="update-category" class="col-sm-3 col-form-label updatebook-label">Category</label>
         <div class="col-sm-9 form-check">
             <div class="row">
                 <div class="col">
                     <input class="form-check-input update-category" type="checkbox" name="category[]" 
-                        value="Business" id="business">
-                    <label class="form-check-label" for="business">Business</label><br>
+                        value="Business" id="update-category-1">
+                    <label class="form-check-label" for="update-category-1">Business</label><br>
 
                     <input class="form-check-input update-category" type="checkbox" name="category[]" 
-                        value="Children Collection" id="childrens">
-                    <label class="form-check-label" for="childrens">Children's Collection</label><br>
+                        value="Children Collection" id="update-category-2">
+                    <label class="form-check-label" for="update-category-2">Children's Collection</label><br>
 
                     <input class="form-check-input update-category" type="checkbox" name="category[]" 
-                        value="History" id="history"> 
-                    <label class="form-check-label" for="history">History</label><br>                    
+                        value="History" id="update-category-3"> 
+                    <label class="form-check-label" for="update-category-3">History</label><br>                    
 
                     <input class="form-check-input update-category" type="checkbox" name="category[]" 
-                        value="Literature" id="literature">
-                    <label class="form-check-label" for="literature">Literature</label><br>                
+                        value="Literature" id="update-category-4">
+                    <label class="form-check-label" for="update-category-4">Literature</label><br>                
                 </div>
                 <div class="col">
                     <input class="form-check-input update-category" type="checkbox" name="category[]" 
-                        value="Novels" id="novels">
-                    <label class="form-check-label" for="novels">Novels</label><br>
+                        value="Novels" id="update-category-5">
+                    <label class="form-check-label" for="update-category-5">Novels</label><br>
 
                     <input class="form-check-input update-category" type="checkbox" name="category[]"
-                        value="Science Fiction" id="scifi">
-                    <label class="form-check-label" for="scifi">Science Fiction</label><br>
+                        value="Science Fiction" id="update-category-6">
+                    <label class="form-check-label" for="update-category-6">Science Fiction</label><br>
 
                     <input class="form-check-input update-category" type="checkbox" name="category[]" 
-                        value="Science and Technology" id="scitech">
-                    <label class="form-check-label" for="scitech">Science & Technology</label><br>
+                        value="Science and Technology" id="update-category-7">
+                    <label class="form-check-label" for="update-category-7">Science & Technology</label><br>
 
                     <input class="form-check-input update-category" type="checkbox" name="category[]" 
-                        value="Philosophy" id="philo">
-                    <label class="form-check-label" for="philo">Philosophy</label><br>                                    
+                        value="Philosophy" id="update-category-8">
+                    <label class="form-check-label" for="update-category-8">Philosophy</label><br>                                    
                 </div>
             </div>
         </div>
@@ -135,17 +158,17 @@
     <div class="form-group row">
         <label for="feature" class="col-sm-3 col-form-label updatebook-label">Feature</label>
         <div class="col-sm-9 form-check">
-            <input class="form-check-input update-features" type="checkbox" name="feature[]" 
-                value="best_seller" id="best-seller"> 
-            <label class="form-check-label" for="best-seller">Best Seller of the Month</label><br>
+            <input class="form-check-input update-feature" type="checkbox" name="feature[]" 
+                value="Best Sellers" id="update-feature-1"> 
+            <label class="form-check-label" for="update-feature-1">Best Seller of the Month</label><br>
 
-            <input class="form-check-input update-features" type="checkbox" name="feature[]" 
-                value="editors_pick" id="editors-pick"> 
-            <label class="form-check-label" for="editors-pick">Editor's Pick</label><br>
+            <input class="form-check-input update-feature" type="checkbox" name="feature[]" 
+                value="Editor Recommends" id="update-feature-2"> 
+            <label class="form-check-label" for="update-feature-2">Editor's Pick</label><br>
 
-            <input class="form-check-input update-features" type="checkbox" name="feature[]" 
-                value="new_release" id="new-release"> 
-            <label class="form-check-label" for="new-release">New Release</label><br>
+            <input class="form-check-input update-feature" type="checkbox" name="feature[]" 
+                value="New Release" id="update-feature-3"> 
+            <label class="form-check-label" for="update-feature-3">New Release</label><br>
         </div>
     </div>
     
@@ -153,5 +176,9 @@
         <button class="btn blue-theme-btn" type="submit" name="update-book-btn"
             id="update-book-btn">Update Book Details</button>                                 
     </div>
+    
+    <br> 
+    <div class="alert manage-book-response" role="alert" style="display: none;"></div>
+
 </form>
 

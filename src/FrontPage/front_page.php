@@ -12,7 +12,7 @@
         <form>
         <div class="input-group mb-3 page-search" id="front-page-search-group">
             <input type="text" class="form-control search-box" id="frontpage-search-box"
-                placeholder="Search a book" 
+                placeholder="Search a book or author" 
                 aria-label="Search keyword" aria-describedby="frontpage-search-button">
             <div class="input-group-append">
                 <span class="input-group-text search-btn" id="frontpage-search">

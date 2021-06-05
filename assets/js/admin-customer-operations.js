@@ -14,19 +14,20 @@ $('.delete-customer').click(function() {
             url: delete_post,
             data: { "customer_id": customer_id },
             success: function(response) {
-                console.log(response);
                 
                 if (response == "0") {
-                    $("#deletecustomer-response").html("User deleted successfully. <br> Reloading the page.");
-                    $("#deletecustomer-response").addClass("alert-success");
+                    $(".deletecustomer-response").html("User deleted successfully. <br> Reloading the page.");
+                    $(".deletecustomer-response").addClass("alert-success");
+                    $(".deletecustomer-response").show();
 
                     setTimeout(function() {
                         location.reload();
                     }, 2000);
 
                 } else {
-                    $("#deletecustomer-response").html(response + "<br> Reloading the page.");
-                    $("#deletecustomer-response").addClass("alert-danger");
+                    $(".deletecustomer-response").html(response + "<br> Reloading the page.");
+                    $(".deletecustomer-response").addClass("alert-danger");
+                    $(".deletecustomer-response").show();
 
                     setTimeout(function() {
                         location.reload();
@@ -41,12 +42,12 @@ $('.delete-customer').click(function() {
 $('.update-customer').click(function() {
     var update_customer_id = $(this).attr('id').split("-")[1];
 
-    var update_customer_get = "../src/AdminPage/update_customer_get.php";
+    var update_customer_details = "../src/AdminPage/update_customer_details.php";
 
-    // GET book details
+    // get book details
     $.ajax({
-        type: 'GET',
-        url: update_customer_get,
+        type: 'POST',
+        url: update_customer_details,
         data: { "customer_id": update_customer_id },
         success: function(response) {
             var details = jQuery.parseJSON(response);

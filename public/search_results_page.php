@@ -4,7 +4,7 @@
     <div id="search-page-search-container">
         <div class="input-group mb-3 page-search">
             <input type="text" class="form-control search-box search-input" id="searchpage-search-box"
-                placeholder="Search a book" 
+                placeholder="Search a book or author" 
                 aria-label="Search keyword" aria-describedby="search-button">
             <div class="input-group-append">
                 <span class="input-group-text dark-search-button search-btn" id="searchpage-search">
